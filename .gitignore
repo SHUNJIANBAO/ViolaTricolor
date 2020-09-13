@@ -1,0 +1,14 @@
+Library/
+obj/
+Temp/
+.vs/
+Assembly-CSharp.csproj
+Assembly-CSharp-Editor.csproj
+Assembly-CSharp-firstpass.csproj
+ViolaTricolor.sln
+Assets/Scripts/
+Assets/Scripts.meta
+Assets/Editor/Demo/
+Assets/Editor/Demo.meta
+Assets/GameAssets/
+Assets/GameAssets.meta
