@@ -28,6 +28,12 @@ public class UIDialogPanel : UIPanelBase
         get { return _isTyping || _isBodyMoving; }
     }
 
+    bool _isShowDialog;
+    public bool IsShowDialog
+    {
+        get => _isShowDialog;
+    }
+
     string _curName;
     Color _grayColor;
 
@@ -43,8 +49,8 @@ public class UIDialogPanel : UIPanelBase
     Image Image_CenterBody;
     Image Image_BottomBody;
 
-    RectTransform Panel_LeftName;
-    RectTransform Panel_RightName;
+    CanvasGroup Panel_LeftName;
+    CanvasGroup Panel_RightName;
     Text Text_LeftName;
     Text Text_RightName;
     #endregion
@@ -65,8 +71,8 @@ public class UIDialogPanel : UIPanelBase
         Text_TalkContent = GetUI<Text>("Text_TalkContent");
         Panel_TalkContent = GetUI<RectTransform>("Panel_TalkContent");
 
-        Panel_LeftName = GetUI<RectTransform>("Panel_LeftName");
-        Panel_RightName = GetUI<RectTransform>("Panel_RightName");
+        Panel_LeftName = GetUI<CanvasGroup>("Panel_LeftName");
+        Panel_RightName = GetUI<CanvasGroup>("Panel_RightName");
         Text_LeftName = GetUI<Text>("Text_LeftName");
         Text_RightName = GetUI<Text>("Text_RightName");
     }
@@ -92,9 +98,9 @@ public class UIDialogPanel : UIPanelBase
         Image_CenterBody.color = Color.clear;
         Image_BottomBody.color = Color.clear;
         //Image_CenterBody.rectTransform.position = Image_CenterBody.rectTransform.position + Vector3.down * Image_CenterBody.rectTransform.rect.height;
-        Panel_LeftName.gameObject.SetActive(false);
-        Panel_RightName.gameObject.SetActive(false);
-        Panel_TalkContent.anchoredPosition = new Vector2(Panel_TalkContent.anchoredPosition.x, Panel_TalkContent.anchoredPosition.y - Panel_TalkContent.rect.height * 0.5f);
+        Panel_LeftName.alpha = 0;
+        Panel_RightName.alpha = 0;
+        Panel_TalkContent.anchoredPosition = new Vector2(Panel_TalkContent.anchoredPosition.x, Panel_TalkContent.anchoredPosition.y - Panel_TalkContent.rect.height);
     }
 
 
@@ -166,20 +172,26 @@ public class UIDialogPanel : UIPanelBase
 
     #region TalkController
 
-    public void ShowDialog(string defaultContent="",Action callback=null)
+    public void ShowDialog(Action callback = null)
     {
-        Text_TalkContent.text = defaultContent;
-        Panel_TalkContent.DOAnchorPosY(Panel_TalkContent.position.y + Panel_TalkContent.rect.height * 0.5f, 0.5f).OnComplete(() =>
+        if (_isShowDialog) return;
+        if (_curTalkAsset != null)
+            SetName(_curTalkAsset.TalkerName, _curTalkAsset.BodyPos);
+        Panel_TalkContent.DOAnchorPosY(Panel_TalkContent.position.y + Panel_TalkContent.rect.height, 0.5f).OnComplete(() =>
         {
+            _isShowDialog = true;
             callback?.Invoke();
         });
     }
 
-    public void HideDialog(Action callback=null)
+    public void HideDialog(Action callback = null)
     {
-        Panel_TalkContent.DOAnchorPosY(Panel_TalkContent.position.y - Panel_TalkContent.rect.height * 0.5f, 0.5f).OnComplete(() =>
+        if (!_isShowDialog) return;
+        SetName("", E_BodyPos.None);
+        Panel_TalkContent.DOAnchorPosY(Panel_TalkContent.position.y - Panel_TalkContent.rect.height, 0.5f).OnComplete(() =>
         {
-            SetName("", E_BodyPos.None);
+            _isShowDialog = false;
+            //SetName("", E_BodyPos.None);
             callback?.Invoke();
         });
     }
@@ -296,39 +308,39 @@ public class UIDialogPanel : UIPanelBase
         _curName = roleName;
         if (string.IsNullOrEmpty(roleName))
         {
-            Panel_LeftName.gameObject.SetActive(false);
-            Panel_RightName.gameObject.SetActive(false);
+            Panel_LeftName.DOFade(0, TransitionTime);
+            Panel_RightName.DOFade(0, TransitionTime);
             return;
         }
         switch (pos)
         {
             case E_BodyPos.None:
-                Panel_LeftName.gameObject.SetActive(false);
-                Panel_RightName.gameObject.SetActive(false);
+                Panel_LeftName.DOFade(0, TransitionTime);
+                Panel_RightName.DOFade(0, TransitionTime);
                 break;
             case E_BodyPos.Left:
             case E_BodyPos.OnlyLeft:
                 Text_LeftName.text = roleName;
-                Panel_LeftName.gameObject.SetActive(true);
-                Panel_RightName.gameObject.SetActive(false);
+                Panel_LeftName.DOFade(1, TransitionTime);
+                Panel_RightName.DOFade(0, TransitionTime);
                 break;
             case E_BodyPos.Right:
             case E_BodyPos.OnlyRight:
                 Text_RightName.text = roleName;
-                Panel_LeftName.gameObject.SetActive(false);
-                Panel_RightName.gameObject.SetActive(true);
+                Panel_LeftName.DOFade(0, TransitionTime);
+                Panel_RightName.DOFade(1, TransitionTime);
                 break;
             case E_BodyPos.Center:
             case E_BodyPos.OnlyCenter:
                 Text_RightName.text = roleName;
-                Panel_LeftName.gameObject.SetActive(false);
-                Panel_RightName.gameObject.SetActive(true);
+                Panel_LeftName.DOFade(0, TransitionTime);
+                Panel_RightName.DOFade(1, TransitionTime);
                 break;
             case E_BodyPos.Bottom:
             case E_BodyPos.OnlyBottom:
                 Text_LeftName.text = roleName;
-                Panel_LeftName.gameObject.SetActive(true);
-                Panel_RightName.gameObject.SetActive(false);
+                Panel_LeftName.DOFade(1, TransitionTime);
+                Panel_RightName.DOFade(0, TransitionTime);
                 break;
         }
     }

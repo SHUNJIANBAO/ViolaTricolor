@@ -75,6 +75,11 @@ public class DialogManager : Singleton<DialogManager>
         }
         else
         {
+            if (!_dialogPanel.IsShowDialog)
+            {
+                _dialogPanel.ShowDialog();
+                return;
+            }
             bool result = _dialogPanel.Talk(_curDialogAsset.TalkAssetsList[_index]);
             if (result)
                 _index++;
@@ -104,5 +109,12 @@ public class DialogManager : Singleton<DialogManager>
                 });
                 break;
         }
+    }
+
+    public void HideDialog()
+    {
+        if (!_isOpen) return;
+        if (_dialogPanel.IsShowDialog)
+            _dialogPanel.HideDialog();
     }
 }
