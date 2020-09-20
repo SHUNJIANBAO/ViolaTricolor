@@ -93,10 +93,6 @@ public class UIDialogPanel : UIPanelBase
         base.OnInit();
         _grayColor = Color.gray;// = new Color(100 / 255f, 100 / 255f, 100 / 255f, 1);
 
-        Image_LeftBody.color = Color.clear;
-        Image_RightBody.color = Color.clear;
-        Image_CenterBody.color = Color.clear;
-        Image_BottomBody.color = Color.clear;
         //Image_CenterBody.rectTransform.position = Image_CenterBody.rectTransform.position + Vector3.down * Image_CenterBody.rectTransform.rect.height;
         Panel_LeftName.alpha = 0;
         Panel_RightName.alpha = 0;
@@ -111,6 +107,13 @@ public class UIDialogPanel : UIPanelBase
     public override void OnOpen(params object[] objs)
     {
         base.OnOpen(objs);
+        Text_TalkContent.text = "";
+        Image_LeftBody.color = Color.clear;
+        Image_RightBody.color = Color.clear;
+        Image_CenterBody.color = Color.clear;
+        Image_BottomBody.color = Color.clear;
+        Image_LeftBody.rectTransform.position = new Vector2(-Image_LeftBody.rectTransform.rect.width, 0);
+        Image_RightBody.rectTransform.position = new Vector2(Image_RightBody.rectTransform.rect.width, 0);
         ShowDialog();
         if (objs != null && objs.Length > 0)
         {
@@ -142,7 +145,7 @@ public class UIDialogPanel : UIPanelBase
     /// <returns></returns>
     public override IEnumerator OpenAnim(System.Action callback, params object[] args)
     {
-        while (_isBodyMoving)
+        while (_isBodyMoving || !_isShowDialog)
         {
             yield return null;
         }
@@ -160,7 +163,7 @@ public class UIDialogPanel : UIPanelBase
     {
         HideBodys();
         HideDialog();
-        while (_isBodyMoving)
+        while (_isBodyMoving || _isShowDialog)
         {
             yield return null;
         }
@@ -382,7 +385,7 @@ public class UIDialogPanel : UIPanelBase
                 HideBodys();
                 return;
             case E_BodyPos.Left:
-                Image_LeftBody.rectTransform.position = Image_LeftBody.rectTransform.position + Vector3.left * Image_LeftBody.rectTransform.rect.width;
+                Image_LeftBody.rectTransform.position = new Vector2(-Image_LeftBody.rectTransform.rect.width, 0);
                 Image_RightBody.color = Image_RightBody.color == Color.clear ? Color.clear : _grayColor;
                 Image_CenterBody.color = Image_CenterBody.color == Color.clear ? Color.clear : _grayColor;
                 ShowBody(false, E_ImagePosType.Bottom, Image_BottomBody);
@@ -400,7 +403,7 @@ public class UIDialogPanel : UIPanelBase
                 }
                 break;
             case E_BodyPos.Right:
-                Image_RightBody.rectTransform.position = Image_RightBody.rectTransform.position + Vector3.right * Image_RightBody.rectTransform.rect.width;
+                Image_RightBody.rectTransform.position = new Vector2(Image_RightBody.rectTransform.rect.width, 0);
                 Image_LeftBody.color = Image_LeftBody.color == Color.clear ? Color.clear : _grayColor;
                 Image_CenterBody.color = Image_CenterBody.color == Color.clear ? Color.clear : _grayColor;
                 ShowBody(false, E_ImagePosType.Bottom, Image_BottomBody);
@@ -438,7 +441,7 @@ public class UIDialogPanel : UIPanelBase
                 ShowBody(true, E_ImagePosType.Bottom, Image_BottomBody);
                 break;
             case E_BodyPos.OnlyLeft:
-                Image_LeftBody.rectTransform.position = Image_LeftBody.rectTransform.position + Vector3.left * Image_LeftBody.rectTransform.rect.width;
+                Image_LeftBody.rectTransform.position = new Vector2(-Image_LeftBody.rectTransform.rect.width, 0);
                 if (Image_LeftBody.color != Color.clear)
                 {
                     ShowBody(false, E_ImagePosType.Left, Image_LeftBody, () =>
@@ -456,7 +459,7 @@ public class UIDialogPanel : UIPanelBase
                 ShowBody(false, E_ImagePosType.Bottom, Image_BottomBody);
                 break;
             case E_BodyPos.OnlyRight:
-                Image_RightBody.rectTransform.position = Image_RightBody.rectTransform.position + Vector3.right * Image_RightBody.rectTransform.rect.width;
+                Image_RightBody.rectTransform.position = new Vector2(Image_RightBody.rectTransform.rect.width, 0);
                 if (Image_RightBody.color != Color.clear)
                 {
                     ShowBody(false, E_ImagePosType.Right, Image_RightBody, () =>
@@ -512,7 +515,7 @@ public class UIDialogPanel : UIPanelBase
         switch (bodyPos)
         {
             case E_ImagePosType.Left:
-                endValue = value ? bodyImage.rectTransform.anchoredPosition.x + bodyImage.rectTransform.rect.width : bodyImage.rectTransform.anchoredPosition.x - bodyImage.rectTransform.rect.width;
+                endValue = value ? 0 : -bodyImage.rectTransform.rect.width;
                 bodyImage.rectTransform.DOAnchorPosX(endValue, TransitionTime);
                 bodyImage.DOColor(value ? Color.white : Color.clear, TransitionTime * (value ? 1 : 2)).OnComplete(() =>
                 {
@@ -521,7 +524,7 @@ public class UIDialogPanel : UIPanelBase
                 });
                 break;
             case E_ImagePosType.Right:
-                endValue = value ? bodyImage.rectTransform.anchoredPosition.x - bodyImage.rectTransform.rect.width : bodyImage.rectTransform.anchoredPosition.x + bodyImage.rectTransform.rect.width;
+                endValue = value ? 0 : bodyImage.rectTransform.rect.width;
                 bodyImage.rectTransform.DOAnchorPosX(endValue, TransitionTime);
                 bodyImage.DOColor(value ? Color.white : Color.clear, TransitionTime * (value ? 1 : 2)).OnComplete(() =>
                 {
@@ -546,10 +549,14 @@ public class UIDialogPanel : UIPanelBase
 
     public void HideBodys()
     {
-        ShowBody(false, E_ImagePosType.Left, Image_LeftBody);
-        ShowBody(false, E_ImagePosType.Right, Image_RightBody);
-        ShowBody(false, E_ImagePosType.Center, Image_CenterBody);
-        ShowBody(false, E_ImagePosType.Bottom, Image_BottomBody);
+        if (Image_LeftBody.color != Color.clear)
+            ShowBody(false, E_ImagePosType.Left, Image_LeftBody);
+        if (Image_RightBody.color != Color.clear)
+            ShowBody(false, E_ImagePosType.Right, Image_RightBody);
+        if (Image_CenterBody.color != Color.clear)
+            ShowBody(false, E_ImagePosType.Center, Image_CenterBody);
+        if (Image_BottomBody.color != Color.clear)
+            ShowBody(false, E_ImagePosType.Bottom, Image_BottomBody);
     }
 
     #endregion

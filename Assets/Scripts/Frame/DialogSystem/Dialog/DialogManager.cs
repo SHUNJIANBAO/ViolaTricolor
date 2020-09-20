@@ -86,9 +86,13 @@ public class DialogManager : Singleton<DialogManager>
         }
     }
 
-    //todo
+    /// <summary>
+    /// 段落结束
+    /// </summary>
     public void TalkEnd()
     {
+        GameData.Instance.ReadAsset(_curDialogAsset);
+        GameData.Save();
         switch (_curDialogAsset.TalkEndEventType)
         {
             case E_TalkEndEventType.Night:
@@ -105,7 +109,7 @@ public class DialogManager : Singleton<DialogManager>
                     IsTalking = false;
                     _isClosing = false;
                     _curDialogAsset = null;
-                    //ActionManager.Instance.Invoke(ActionType.TalkEnd);
+                    UIManager.Instance.OpenPanel<UIMainMenuPanel>();
                 });
                 break;
         }

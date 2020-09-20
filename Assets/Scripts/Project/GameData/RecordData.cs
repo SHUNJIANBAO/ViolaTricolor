@@ -9,7 +9,6 @@ public struct RecordInfo
     public int RecordIndex;
     public DialogAsset RecordDiaologAsset;
     public int TalkIndex;
-    public List<DialogAsset> ReadedAssetList;
 }
 
 /// <summary>
@@ -35,7 +34,6 @@ public class RecordData : Data<RecordData>
     public RecordInfo CreateNewRecord()
     {
         RecordInfo info = new RecordInfo();
-        info.ReadedAssetList = new List<DialogAsset>();
         return info;
     }
 

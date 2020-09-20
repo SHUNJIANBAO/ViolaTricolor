@@ -30,6 +30,6 @@ public class PlayerManager : Singleton<PlayerManager>
 
     public bool IsReaded(DialogAsset asset)
     {
-        return CurrentRecord.ReadedAssetList.Contains(asset);
+        return GameData.Instance.IsReaded(asset);
     }
 }

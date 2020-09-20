@@ -3,8 +3,11 @@ using System.Collections.Generic;
 
 public enum ActionType
 {
-    GameLoad,
-    GameSave,
+    SetWordSize,
+    SetTyperSpeed,
+    SetSkipUnRead,
+    SetDialogAlpha,
+    SetShowShortcutKey,
 }
 
 public class ActionBase
