@@ -25,7 +25,7 @@ public class DialogEditorWindow : EditorWindow
     DialogAsset _copyAsset;
     DialogAsset _curDialogAsset;
 
-    ReorderableList _dialogList;
+    ReorderableList _talkList;
     ReorderableList _talkAudioEventList;
     ReorderableList _talkEndEventList;
     #endregion
@@ -79,7 +79,7 @@ public class DialogEditorWindow : EditorWindow
     {
         EditorGUILayout.BeginHorizontal();
         _scrollPos = EditorGUILayout.BeginScrollView(_scrollPos, GUILayout.Width(200));
-        _dialogList.DoLayoutList();
+        _talkList.DoLayoutList();
         EditorGUILayout.EndScrollView();
         GUILayout.Box("", GUILayout.Width(position.width - 210), GUILayout.Height(position.height - 30));
         _talkAssetRect = new Rect(210, 60, position.width - 230, position.height - 70);
@@ -95,6 +95,7 @@ public class DialogEditorWindow : EditorWindow
         switch (_copyAsset.TalkEndEventType)
         {
             case E_TalkEndEventType.Night:
+                _copyAsset.LinkedDialogAsset = (DialogAsset)EditorGUILayout.ObjectField("连接对话", _copyAsset.LinkedDialogAsset, typeof(DialogAsset), false);
                 break;
             case E_TalkEndEventType.Select:
                 _talkEndEventList.DoLayoutList();
@@ -114,11 +115,11 @@ public class DialogEditorWindow : EditorWindow
 
 
     #region DialogPanel
-    void InitDialogAsset(DialogAsset asset)
+    void InitTalkAsset(DialogAsset asset)
     {
-        _dialogList = new ReorderableList(asset.TalkAssetsList, typeof(TalkAsset));
-        _dialogList.headerHeight = 0;
-        _dialogList.drawElementCallback = (rect, index, isActive, isFocused) =>
+        _talkList = new ReorderableList(asset.TalkAssetsList, typeof(TalkAsset));
+        _talkList.headerHeight = 0;
+        _talkList.drawElementCallback = (rect, index, isActive, isFocused) =>
         {
             var talkAsset = asset.TalkAssetsList[index];
             GUI.Label(rect, asset.TalkAssetsList[index].TalkId.ToString());
@@ -133,7 +134,7 @@ public class DialogEditorWindow : EditorWindow
             _curTalkAsset = asset.TalkAssetsList[0];
             InitAudioEventList(_curTalkAsset);
         }
-        _dialogList.onAddCallback = AddTalkAsset;
+        _talkList.onAddCallback = AddTalkAsset;
     }
 
     void InitTalkEndEventList(DialogAsset asset)
@@ -212,7 +213,11 @@ public class DialogEditorWindow : EditorWindow
         if (asset == null) return;
         _talkScrollPos = EditorGUILayout.BeginScrollView(_talkScrollPos);
         EditorGUILayout.BeginHorizontal();
-        asset.Body = (Sprite)EditorGUILayout.ObjectField(asset.Body, typeof(Sprite), false, GUILayout.Width(150), GUILayout.Height(250));
+        EditorGUILayout.BeginVertical(GUILayout.Width(150));
+        EditorGUIUtility.labelWidth = 60;
+        asset.Body = (Body)EditorGUILayout.ObjectField("角色立绘", asset.Body, typeof(Body), false);
+        EditorGUILayout.ObjectField(asset.Body != null ? asset.Body.BodyImage.sprite : null, typeof(Sprite), false, GUILayout.Height(250));
+        EditorGUILayout.EndVertical();
         EditorGUILayout.BeginVertical();
 
         EditorGUILayout.BeginHorizontal();
@@ -221,6 +226,12 @@ public class DialogEditorWindow : EditorWindow
         EditorGUIUtility.labelWidth = 60;
         asset.TalkerName = EditorGUILayout.TextField("角色名", asset.TalkerName);
         asset.TalkEvent = (E_TalkEvent)EditorGUILayout.EnumPopup("触发事件", asset.TalkEvent);
+        EditorGUILayout.EndHorizontal();
+
+        EditorGUILayout.BeginHorizontal();
+        GUILayout.Label("表情图片");
+        asset.FaceSprite = (Sprite)EditorGUILayout.ObjectField(asset.FaceSprite, typeof(Sprite), false);
+        asset.FaceAnimation = (AnimationClip)EditorGUILayout.ObjectField("表情动画", asset.FaceAnimation, typeof(AnimationClip), false);
         GUILayout.Label("背景图片");
         asset.Background = (Sprite)EditorGUILayout.ObjectField(asset.Background, typeof(Sprite), false);
         EditorGUILayout.EndHorizontal();
@@ -296,7 +307,7 @@ public class DialogEditorWindow : EditorWindow
         if (SaveAsDialogAsset(_curDialogAsset))
         {
             _copyAsset = _curDialogAsset.Copy();
-            InitDialogAsset(_copyAsset);
+            InitTalkAsset(_copyAsset);
             InitTalkEndEventList(_copyAsset);
         }
     }
@@ -312,7 +323,7 @@ public class DialogEditorWindow : EditorWindow
 
         _curDialogAsset = AssetDatabase.LoadAssetAtPath(assetPath, typeof(DialogAsset)) as DialogAsset;
         _copyAsset = _curDialogAsset.Copy();
-        InitDialogAsset(_copyAsset);
+        InitTalkAsset(_copyAsset);
         InitTalkEndEventList(_copyAsset);
     }
 
@@ -322,16 +333,13 @@ public class DialogEditorWindow : EditorWindow
         {
             AssetDatabase.RemoveObjectFromAsset(talkAsset);
         }
-        foreach (var selectAsset in dialogAsset.SelectDialogAssetList)
-        {
-            AssetDatabase.RemoveObjectFromAsset(selectAsset);
-        }
         dialogAsset.TalkAssetsList.Clear();
-        dialogAsset.SelectDialogAssetList.Clear();
 
         dialogAsset.OptionName = copyAsset.OptionName;
         dialogAsset.UnLockType = copyAsset.UnLockType;
         dialogAsset.NeedDialogAsset = copyAsset.NeedDialogAsset;
+        dialogAsset.LinkedDialogAsset = copyAsset.LinkedDialogAsset;
+        dialogAsset.SelectDialogAssetList = new List<DialogAsset>(copyAsset.SelectDialogAssetList);
 
         dialogAsset.TalkEndEventType = copyAsset.TalkEndEventType;
 
@@ -343,10 +351,6 @@ public class DialogEditorWindow : EditorWindow
             tempTalkAsset.name = tempTalkAsset.TalkId.ToString();
             AssetDatabase.AddObjectToAsset(tempTalkAsset, dialogAsset);
             dialogAsset.TalkAssetsList.Add(tempTalkAsset);
-        }
-        foreach (var seleteAsset in copyAsset.SelectDialogAssetList)
-        {
-            dialogAsset.SelectDialogAssetList.Add(seleteAsset);
         }
 
         EditorUtility.SetDirty(dialogAsset);

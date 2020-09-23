@@ -6,7 +6,9 @@ public class TalkAsset : ScriptableObject
 {
     public int TalkId;
     //public Sprite Icon;
-    public Sprite Body;
+    public Body Body;
+    public Sprite FaceSprite;
+    public AnimationClip FaceAnimation;
     public Sprite Background;
     public AudioClip Bgm;
     public int DubDelay;
@@ -26,6 +28,8 @@ public class TalkAsset : ScriptableObject
         asset.TalkId = TalkId;
         //asset.Icon = Icon;
         asset.Body = Body;
+        asset.FaceSprite = FaceSprite;
+        asset.FaceAnimation = FaceAnimation;
         asset.Background = Background;
         asset.Bgm = Bgm;
         asset.DubDelay = DubDelay;

@@ -43,11 +43,18 @@ public class UIDialogPanel : UIPanelBase
     Coroutine _talkStopCoroutine;
 
     Text Text_TalkContent;
+    Button Button_Talk;
     Image Image_BG;
     Image Image_LeftBody;
     Image Image_RightBody;
     Image Image_CenterBody;
     Image Image_BottomBody;
+    Image Image_LeftFace;
+    Image Image_RightFace;
+    Image Image_CenterFace;
+    Animation Animation_LeftFace;
+    Animation Animation_RightFace;
+    Animation Animation_CenterFace;
 
     CanvasGroup Panel_LeftName;
     CanvasGroup Panel_RightName;
@@ -65,9 +72,18 @@ public class UIDialogPanel : UIPanelBase
         base.GetUIComponent();
         Image_BG = GetUI<Image>("Image_BG");
         Image_LeftBody = GetUI<Image>("Image_LeftBody");
+        Image_LeftFace = GetUI<Image>("Image_LeftFace");
         Image_RightBody = GetUI<Image>("Image_RightBody");
+        Image_RightFace = GetUI<Image>("Image_RightFace");
         Image_CenterBody = GetUI<Image>("Image_CenterBody");
+        Image_CenterFace = GetUI<Image>("Image_CenterFace");
         Image_BottomBody = GetUI<Image>("Image_BottomBody");
+        Button_Talk = GetUI<Button>("Image_BG");
+
+        Animation_LeftFace = Image_LeftFace.GetComponent<Animation>();
+        Animation_RightFace = Image_RightFace.GetComponent<Animation>();
+        Animation_CenterFace = Image_CenterFace.GetComponent<Animation>();
+
         Text_TalkContent = GetUI<Text>("Text_TalkContent");
         Panel_TalkContent = GetUI<RectTransform>("Panel_TalkContent");
 
@@ -83,6 +99,7 @@ public class UIDialogPanel : UIPanelBase
     protected override void AddUIListener()
     {
         base.AddUIListener();
+        AddButtonListen(Button_Talk, () => DialogManager.Instance.Talk());
     }
 
     /// <summary>
@@ -112,6 +129,9 @@ public class UIDialogPanel : UIPanelBase
         Image_RightBody.color = Color.clear;
         Image_CenterBody.color = Color.clear;
         Image_BottomBody.color = Color.clear;
+        Image_LeftFace.color = Color.clear;
+        Image_RightFace.color = Color.clear;
+        Image_CenterFace.color = Color.clear;
         Image_LeftBody.rectTransform.position = new Vector2(-Image_LeftBody.rectTransform.rect.width, 0);
         Image_RightBody.rectTransform.position = new Vector2(Image_RightBody.rectTransform.rect.width, 0);
         ShowDialog();
@@ -122,7 +142,7 @@ public class UIDialogPanel : UIPanelBase
             _curName = asset.TalkerName;
             PlayBgm(asset.Bgm);
             SetBackground(asset.Background);
-            SetBodySpriteByPosType(asset.BodyPos, asset.Body);
+            SetBodySpriteByPosType(asset.BodyPos, asset.Body, asset.FaceSprite, asset.FaceAnimation);
             ShowBodyByPosType(asset.BodyPos);
         }
     }
@@ -207,6 +227,8 @@ public class UIDialogPanel : UIPanelBase
             StopTyper();
             return false;
         }
+        AudioManager.Instance.StopAudioByType(E_AudioType.Dub);
+        AudioManager.Instance.StopAudioByType(E_AudioType.Audio);
         if (_isBodyMoving)
         {
             return false;
@@ -227,7 +249,7 @@ public class UIDialogPanel : UIPanelBase
         _curTalkAsset = asset;
         PlayBgm(asset.Bgm);
         SetBackground(asset.Background);
-        SetBodySpriteByPosType(asset.BodyPos, asset.Body);
+        SetBodySpriteByPosType(asset.BodyPos, asset.Body, asset.FaceSprite, asset.FaceAnimation);
         SetAudioEventList(asset.AudioEventList);
         if (_curName != asset.TalkerName)
             ShowBodyByPosType(asset.BodyPos);
@@ -350,28 +372,46 @@ public class UIDialogPanel : UIPanelBase
     #endregion
 
     #region Body
-    void SetBodySpriteByPosType(E_BodyPos pos, Sprite sprite)
+    void SetBodySpriteByPosType(E_BodyPos pos, Body body, Sprite face, AnimationClip faceAnimation)
     {
         switch (pos)
         {
             case E_BodyPos.Left:
             case E_BodyPos.OnlyLeft:
-                Image_LeftBody.sprite = sprite;
+                Image_LeftBody.sprite = body.BodyImage.sprite;
                 Image_LeftBody.SetNativeSize();
+                Image_LeftFace.sprite = face;
+                Image_LeftFace.SetNativeSize();
+                Image_LeftFace.transform.localPosition = body.FaceImage.transform.localPosition;
+                if (Animation_LeftFace.clip != faceAnimation)
+                    Animation_LeftFace.clip = faceAnimation;
+                Image_LeftFace.gameObject.SetActive(Image_LeftFace.sprite != null);
                 break;
             case E_BodyPos.Right:
             case E_BodyPos.OnlyRight:
-                Image_RightBody.sprite = sprite;
+                Image_RightBody.sprite = body.BodyImage.sprite;
                 Image_RightBody.SetNativeSize();
+                Image_RightFace.sprite = face;
+                Image_RightFace.SetNativeSize();
+                Image_RightFace.transform.localPosition = body.FaceImage.transform.localPosition;
+                if (Animation_RightFace.clip != faceAnimation)
+                    Animation_RightFace.clip = faceAnimation;
+                Image_RightFace.gameObject.SetActive(Image_RightFace.sprite != null);
                 break;
             case E_BodyPos.Center:
             case E_BodyPos.OnlyCenter:
-                Image_CenterBody.sprite = sprite;
+                Image_CenterBody.sprite = body.BodyImage.sprite;
                 Image_CenterBody.SetNativeSize();
+                Image_CenterFace.sprite = face;
+                Image_CenterFace.SetNativeSize();
+                Image_CenterFace.transform.localPosition = body.FaceImage.transform.localPosition;
+                if (Animation_CenterFace.clip != faceAnimation)
+                    Animation_CenterFace.clip = faceAnimation;
+                Image_CenterFace.gameObject.SetActive(Image_CenterFace.sprite != null);
                 break;
             case E_BodyPos.Bottom:
             case E_BodyPos.OnlyBottom:
-                Image_BottomBody.sprite = sprite;
+                Image_BottomBody.sprite = body.BodyImage.sprite;
                 break;
         }
 
@@ -522,6 +562,7 @@ public class UIDialogPanel : UIPanelBase
                     _isBodyMoving = false;
                     callback?.Invoke();
                 });
+                Image_LeftFace.DOColor(value ? Color.white : Color.clear, TransitionTime * (value ? 1 : 2));
                 break;
             case E_ImagePosType.Right:
                 endValue = value ? 0 : bodyImage.rectTransform.rect.width;
@@ -531,6 +572,7 @@ public class UIDialogPanel : UIPanelBase
                     _isBodyMoving = false;
                     callback?.Invoke();
                 });
+                Image_RightFace.DOColor(value ? Color.white : Color.clear, TransitionTime * (value ? 1 : 2));
                 break;
             case E_ImagePosType.Center:
                 bodyImage.DOColor(value ? Color.white : Color.clear, TransitionTime).OnComplete(() =>
@@ -538,6 +580,7 @@ public class UIDialogPanel : UIPanelBase
                     _isBodyMoving = false;
                     callback?.Invoke();
                 });
+                Image_CenterFace.DOColor(value ? Color.white : Color.clear, TransitionTime * (value ? 1 : 2));
                 break;
             case E_ImagePosType.Bottom:
                 bodyImage.color = value ? Color.white : Color.clear;

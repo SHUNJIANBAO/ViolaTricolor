@@ -36,11 +36,11 @@ public class DialogManager : Singleton<DialogManager>
         if (!_curDialogAsset) return;
         if (_isClosing) return;
 
-        if (talkId!=-1)
+        if (talkId != -1)
         {
             for (int i = 0; i < _curDialogAsset.TalkAssetsList.Count; i++)
             {
-                if (_curDialogAsset.TalkAssetsList[i].TalkId==talkId)
+                if (_curDialogAsset.TalkAssetsList[i].TalkId == talkId)
                 {
                     _index = i;
                     break;
@@ -64,7 +64,7 @@ public class DialogManager : Singleton<DialogManager>
              }, _curDialogAsset.TalkAssetsList[_index]);
         }
 
-        if (!_isOpen) return;
+        if (!_isOpen || _dialogPanel == null) return;
 
         if (!_isClosing && _index >= _curDialogAsset.TalkAssetsList.Count)
         {
@@ -96,21 +96,34 @@ public class DialogManager : Singleton<DialogManager>
         switch (_curDialogAsset.TalkEndEventType)
         {
             case E_TalkEndEventType.Night:
+                UIManager.Instance.OpenPanel<UIMaskPanel>(true, () =>
+                {
+                    _index = 0;
+                    _isOpen = false;
+                    IsTalking = false;
+                    _isClosing = false;
+                    _dialogPanel = null;
+                    UIManager.Instance.CloseAllNormalPanel(false);
+                    UIManager.Instance.OpenPanel<UINoteBookPanel>();
+                    SetTalkAsset(_curDialogAsset.LinkedDialogAsset);
+                }, E_MaskType.GameStateChange);
                 break;
             case E_TalkEndEventType.Select:
                 UIManager.Instance.OpenPanel<UISelectPanel>(true, null, _curDialogAsset.SelectDialogAssetList);
                 break;
             case E_TalkEndEventType.GameOver:
                 _isClosing = true;
-                UIManager.Instance.ClosePanel<UIDialogPanel>(true, () =>
+                UIManager.Instance.OpenPanel<UIMaskPanel>(true, () =>
                 {
                     _index = 0;
                     _isOpen = false;
                     IsTalking = false;
                     _isClosing = false;
                     _curDialogAsset = null;
+                    _dialogPanel = null;
+                    UIManager.Instance.CloseAllNormalPanel(false);
                     UIManager.Instance.OpenPanel<UIMainMenuPanel>();
-                });
+                }, E_MaskType.GameStateChange);
                 break;
         }
     }

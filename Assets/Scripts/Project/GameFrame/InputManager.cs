@@ -22,10 +22,10 @@ public class InputManager : MonoBehaviour
                 }
             }
         }
-        if (Input.GetMouseButtonDown(0))
-        {
-            DialogManager.Instance.Talk();
-        }
+        //if (Input.GetMouseButtonDown(0))
+        //{
+        //    DialogManager.Instance.Talk();
+        //}
         if (Input.GetMouseButtonDown(1))
         {
             DialogManager.Instance.HideDialog();
