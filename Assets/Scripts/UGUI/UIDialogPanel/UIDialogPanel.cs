@@ -412,6 +412,7 @@ public class UIDialogPanel : UIPanelBase
             case E_BodyPos.Bottom:
             case E_BodyPos.OnlyBottom:
                 Image_BottomBody.sprite = body.BodyImage.sprite;
+                Image_BottomBody.SetNativeSize();
                 break;
         }
 
