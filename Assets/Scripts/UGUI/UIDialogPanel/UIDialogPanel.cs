@@ -20,6 +20,7 @@ public class UIDialogPanel : UIPanelBase
 
     #region 参数
     public float TransitionTime = 0.5f;
+    float _typerSpeed;
 
     bool _isTyping;
     bool _isBodyMoving;
@@ -37,7 +38,7 @@ public class UIDialogPanel : UIPanelBase
     string _curName;
     Color _grayColor;
 
-    RectTransform Panel_TalkContent;
+    Image Panel_TalkContent;
     TalkAsset _curTalkAsset;
     Coroutine _talkCoroutine;
     Coroutine _talkStopCoroutine;
@@ -85,7 +86,7 @@ public class UIDialogPanel : UIPanelBase
         Animation_CenterFace = Image_CenterFace.GetComponent<Animation>();
 
         Text_TalkContent = GetUI<Text>("Text_TalkContent");
-        Panel_TalkContent = GetUI<RectTransform>("Panel_TalkContent");
+        Panel_TalkContent = GetUI<Image>("Panel_TalkContent");
 
         Panel_LeftName = GetUI<CanvasGroup>("Panel_LeftName");
         Panel_RightName = GetUI<CanvasGroup>("Panel_RightName");
@@ -99,6 +100,10 @@ public class UIDialogPanel : UIPanelBase
     protected override void AddUIListener()
     {
         base.AddUIListener();
+        ActionManager.Instance.AddListener(ActionType.SetWordSize, SetWordSize);
+        ActionManager.Instance.AddListener(ActionType.SetTyperSpeed, SetTyperSpeed);
+        ActionManager.Instance.AddListener(ActionType.SetDialogAlpha, SetDialogAlpha);
+        ActionManager.Instance.AddListener(ActionType.SetShowShortcutKey, SetShowShortcutKey);
         AddButtonListen(Button_Talk, () => DialogManager.Instance.Talk());
     }
 
@@ -108,12 +113,17 @@ public class UIDialogPanel : UIPanelBase
     protected override void OnInit()
     {
         base.OnInit();
+        SetWordSize();
+        SetTyperSpeed();
+        SetDialogAlpha();
+        SetShowShortcutKey();
+
         _grayColor = Color.gray;// = new Color(100 / 255f, 100 / 255f, 100 / 255f, 1);
 
         //Image_CenterBody.rectTransform.position = Image_CenterBody.rectTransform.position + Vector3.down * Image_CenterBody.rectTransform.rect.height;
         Panel_LeftName.alpha = 0;
         Panel_RightName.alpha = 0;
-        Panel_TalkContent.anchoredPosition = new Vector2(Panel_TalkContent.anchoredPosition.x, Panel_TalkContent.anchoredPosition.y - Panel_TalkContent.rect.height);
+        Panel_TalkContent.rectTransform.anchoredPosition = new Vector2(Panel_TalkContent.rectTransform.anchoredPosition.x, Panel_TalkContent.rectTransform.anchoredPosition.y - Panel_TalkContent.rectTransform.rect.height);
     }
 
 
@@ -193,6 +203,61 @@ public class UIDialogPanel : UIPanelBase
 
     #region 成员方法
 
+    void SetTyperSpeed(params object[] objs)
+    {
+        switch (GameConfigData.Instance.TyperSpeedLevel)
+        {
+            case 0:
+                _typerSpeed = GameConfig.Instance.TyperSpeedLevel1;
+                break;
+            case 1:
+                _typerSpeed = GameConfig.Instance.TyperSpeedLevel2;
+                break;
+            case 2:
+                _typerSpeed = GameConfig.Instance.TyperSpeedLevel3;
+                break;
+        }
+    }
+
+    void SetWordSize(params object[] objs)
+    {
+        switch (GameConfigData.Instance.WordSizeLevel)
+        {
+            case 0:
+                Text_TalkContent.fontSize = GameConfig.Instance.WordSizeLevel1;
+                break;
+            case 1:
+                Text_TalkContent.fontSize = GameConfig.Instance.WordSizeLevel2;
+                break;
+            case 2:
+                Text_TalkContent.fontSize = GameConfig.Instance.WordSizeLevel3;
+                break;
+        }
+    }
+
+    void SetDialogAlpha(params object[] objs)
+    {
+        Color tmpColor = Panel_TalkContent.color;
+        switch (GameConfigData.Instance.DialogAlphaLevel)
+        {
+            case 0:
+                tmpColor.a = GameConfig.Instance.DialogAlphaLevel1;
+                break;
+            case 1:
+                tmpColor.a = GameConfig.Instance.DialogAlphaLevel2;
+                break;
+            case 2:
+                tmpColor.a = GameConfig.Instance.DialogAlphaLevel3;
+                break;
+        }
+        Panel_TalkContent.color = tmpColor;
+    }
+
+    void SetShowShortcutKey(params object[] objs)
+    {
+        Debug.LogError("未实装方法:是否显示快捷键");
+    }
+
     #region TalkController
 
     public void ShowDialog(Action callback = null)
@@ -200,7 +265,7 @@ public class UIDialogPanel : UIPanelBase
         if (_isShowDialog) return;
         if (_curTalkAsset != null)
             SetName(_curTalkAsset.TalkerName, _curTalkAsset.BodyPos);
-        Panel_TalkContent.DOAnchorPosY(Panel_TalkContent.position.y + Panel_TalkContent.rect.height, 0.5f).OnComplete(() =>
+        Panel_TalkContent.rectTransform.DOAnchorPosY(Panel_TalkContent.rectTransform.position.y + Panel_TalkContent.rectTransform.rect.height, 0.5f).OnComplete(() =>
         {
             _isShowDialog = true;
             callback?.Invoke();
@@ -211,7 +276,7 @@ public class UIDialogPanel : UIPanelBase
     {
         if (!_isShowDialog) return;
         SetName("", E_BodyPos.None);
-        Panel_TalkContent.DOAnchorPosY(Panel_TalkContent.position.y - Panel_TalkContent.rect.height, 0.5f).OnComplete(() =>
+        Panel_TalkContent.rectTransform.DOAnchorPosY(Panel_TalkContent.rectTransform.position.y - Panel_TalkContent.rectTransform.rect.height, 0.5f).OnComplete(() =>
         {
             _isShowDialog = false;
             //SetName("", E_BodyPos.None);
@@ -291,7 +356,7 @@ public class UIDialogPanel : UIPanelBase
         {
             PlayAudioByIndex(wordCount);
             Text_TalkContent.text += word;
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(_typerSpeed);
             wordCount++;
         }
 

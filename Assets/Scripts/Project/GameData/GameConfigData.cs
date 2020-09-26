@@ -16,11 +16,11 @@ public class GameConfigData : Data<GameConfigData>
     public bool IsShowShortcutKey;//是否显示快捷键
 
     [Range(0, 10)]
-    public int BgmVolumeLevel;
+    public int BgmVolumeLevel = 10;
     [Range(0, 10)]
-    public int DubVoumeLevel;
+    public int DubVoumeLevel = 10;
     [Range(0, 10)]
-    public int AudioVolumeLevel;
+    public int AudioVolumeLevel = 10;
     [Range(0, 10)]
-    public int MasterVolumeLevel;
+    public int MasterVolumeLevel = 10;
 }
