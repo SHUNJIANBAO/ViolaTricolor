@@ -75,14 +75,30 @@ public class DialogManager : Singleton<DialogManager>
         }
         else
         {
-            if (!_dialogPanel.IsShowDialog)
+            if (!_dialogPanel.IsCanTalk()) return;
+            //对话框类型相同直接谈话，不同则切换模式后谈话
+            if (_dialogPanel.IsSameDialogType(_curDialogAsset.TalkAssetsList[_index].DialogType))
             {
-                _dialogPanel.ShowDialog();
-                return;
-            }
-            bool result = _dialogPanel.Talk(_curDialogAsset.TalkAssetsList[_index]);
-            if (result)
+                _dialogPanel.Talk(_curDialogAsset.TalkAssetsList[_index]);
                 _index++;
+            }
+            else
+            {
+                switch (_curDialogAsset.TalkAssetsList[_index].DialogType)
+                {
+                    case E_DialogType.Normal:
+                        break;
+                    case E_DialogType.FullScreen:
+                        _dialogPanel.HideBodys();
+                        _dialogPanel.HideDialog(true);
+                        break;
+                }
+                UIManager.Instance.OpenPanel<UIMaskPanel>(true, () =>
+                {
+                    _dialogPanel.InitByAsset(_curDialogAsset.TalkAssetsList[_index]);
+                    Talk(_curDialogAsset.TalkAssetsList[_index].TalkId);
+                }, E_MaskType.GameStateChange);
+            }
         }
     }
 
@@ -132,6 +148,6 @@ public class DialogManager : Singleton<DialogManager>
     {
         if (!_isOpen) return;
         if (_dialogPanel.IsShowDialog)
-            _dialogPanel.HideDialog();
+            _dialogPanel.HideDialog(false);
     }
 }

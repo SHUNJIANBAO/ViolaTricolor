@@ -17,6 +17,10 @@ public class TalkAsset : ScriptableObject
     public E_BodyPos BodyPos;
     public E_TalkEvent TalkEvent;
 
+    public E_DialogType DialogType;
+    public bool IsNewTalk;
+    public bool IsNewPage;
+
     public List<AudioEvent> AudioEventList = new List<AudioEvent>();
     //public List<TyperRhythm> WordList = new List<TyperRhythm>();
 
@@ -39,6 +43,9 @@ public class TalkAsset : ScriptableObject
         asset.BodyPos = BodyPos;
         asset.TalkEvent = TalkEvent;
         asset.Content = Content;
+        asset.DialogType = DialogType;
+        asset.IsNewTalk = IsNewTalk;
+        asset.IsNewPage = IsNewPage;
         //asset.WordList = new List<TyperRhythm>(WordList);
         return asset;
     }
@@ -64,6 +71,12 @@ public enum E_BodyPos
     OnlyRight,
     OnlyCenter,
     OnlyBottom,
+}
+
+public enum E_DialogType
+{
+    Normal,
+    FullScreen
 }
 
 [System.Serializable]

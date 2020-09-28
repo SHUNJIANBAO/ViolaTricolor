@@ -212,42 +212,63 @@ public class DialogEditorWindow : EditorWindow
     {
         if (asset == null) return;
         _talkScrollPos = EditorGUILayout.BeginScrollView(_talkScrollPos);
-        EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.BeginVertical(GUILayout.Width(150));
-        EditorGUIUtility.labelWidth = 60;
-        asset.Body = (Body)EditorGUILayout.ObjectField("角色立绘", asset.Body, typeof(Body), false);
-        EditorGUILayout.ObjectField(asset.Body != null ? asset.Body.BodyImage.sprite : null, typeof(Sprite), false, GUILayout.Height(250));
-        EditorGUILayout.EndVertical();
-        EditorGUILayout.BeginVertical();
 
         EditorGUILayout.BeginHorizontal();
-        EditorGUIUtility.labelWidth = 90;
-        asset.BodyPos = (E_BodyPos)EditorGUILayout.EnumPopup("立绘显示类型", asset.BodyPos);
         EditorGUIUtility.labelWidth = 60;
-        asset.TalkerName = EditorGUILayout.TextField("角色名", asset.TalkerName);
-        asset.TalkEvent = (E_TalkEvent)EditorGUILayout.EnumPopup("触发事件", asset.TalkEvent);
-        EditorGUILayout.EndHorizontal();
-
-        EditorGUILayout.BeginHorizontal();
-        GUILayout.Label("表情图片");
-        asset.FaceSprite = (Sprite)EditorGUILayout.ObjectField(asset.FaceSprite, typeof(Sprite), false);
-        asset.FaceAnimation = (AnimationClip)EditorGUILayout.ObjectField("表情动画", asset.FaceAnimation, typeof(AnimationClip), false);
+        asset.DialogType = (E_DialogType)EditorGUILayout.EnumPopup("对话框类型", asset.DialogType);
+        if (asset.DialogType == E_DialogType.FullScreen)
+        {
+            EditorGUIUtility.labelWidth = 90;
+            asset.IsNewTalk = EditorGUILayout.Toggle("是否为新段落", asset.IsNewTalk);
+            asset.IsNewPage= EditorGUILayout.Toggle("是否为新的一页", asset.IsNewPage);
+        }
         GUILayout.Label("背景图片");
         asset.Background = (Sprite)EditorGUILayout.ObjectField(asset.Background, typeof(Sprite), false);
-        EditorGUILayout.EndHorizontal();
-
-        EditorGUILayout.BeginHorizontal();
-        EditorGUIUtility.labelWidth = 90;
-        asset.DubDelay = EditorGUILayout.IntField("配音等待字数", asset.DubDelay);
-        EditorGUIUtility.labelWidth = 60;
-        asset.Dub = (AudioClip)EditorGUILayout.ObjectField("角色配音", asset.Dub, typeof(AudioClip), false);
         asset.Bgm = (AudioClip)EditorGUILayout.ObjectField("背景音乐", asset.Bgm, typeof(AudioClip), false);
         EditorGUILayout.EndHorizontal();
 
-        GUILayout.Label("音频列表");
-        _audioEventScrollPos = EditorGUILayout.BeginScrollView(_audioEventScrollPos, GUILayout.Height(90));
-        _talkAudioEventList?.DoLayoutList();
-        EditorGUILayout.EndScrollView();
+
+        if (asset.DialogType == E_DialogType.Normal)
+        {
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.BeginVertical(GUILayout.Width(150));
+            EditorGUIUtility.labelWidth = 60;
+            asset.Body = (Body)EditorGUILayout.ObjectField("角色立绘", asset.Body, typeof(Body), false);
+            EditorGUILayout.ObjectField(asset.Body != null ? asset.Body.BodyImage.sprite : null, typeof(Sprite), false, GUILayout.Height(250));
+            EditorGUILayout.EndVertical();
+        }
+
+        EditorGUILayout.BeginVertical();
+
+        if (asset.DialogType == E_DialogType.Normal)
+        {
+            EditorGUILayout.BeginHorizontal();
+            EditorGUIUtility.labelWidth = 90;
+            asset.BodyPos = (E_BodyPos)EditorGUILayout.EnumPopup("立绘显示类型", asset.BodyPos);
+            EditorGUIUtility.labelWidth = 60;
+            GUILayout.Label("表情图片");
+            asset.FaceSprite = (Sprite)EditorGUILayout.ObjectField(asset.FaceSprite, typeof(Sprite), false);
+            asset.FaceAnimation = (AnimationClip)EditorGUILayout.ObjectField("表情动画", asset.FaceAnimation, typeof(AnimationClip), false);
+            asset.TalkEvent = (E_TalkEvent)EditorGUILayout.EnumPopup("触发事件", asset.TalkEvent);
+            EditorGUILayout.EndHorizontal();
+
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.EndHorizontal();
+
+            EditorGUILayout.BeginHorizontal();
+            EditorGUIUtility.labelWidth = 60;
+            asset.TalkerName = EditorGUILayout.TextField("角色名", asset.TalkerName);
+            asset.Dub = (AudioClip)EditorGUILayout.ObjectField("角色配音", asset.Dub, typeof(AudioClip), false);
+            EditorGUIUtility.labelWidth = 90;
+            asset.DubDelay = EditorGUILayout.IntField("配音等待字数", asset.DubDelay);
+            EditorGUILayout.EndHorizontal();
+
+            GUILayout.Label("音频列表");
+            _audioEventScrollPos = EditorGUILayout.BeginScrollView(_audioEventScrollPos, GUILayout.Height(90));
+            _talkAudioEventList?.DoLayoutList();
+            EditorGUILayout.EndScrollView();
+        }
+
         GUILayout.Label("对话内容");
         asset.Content = EditorGUILayout.TextArea(asset.Content, GUILayout.Height(80));
 

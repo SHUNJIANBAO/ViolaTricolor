@@ -110,17 +110,17 @@ public class UIMaskPanel : UIPanelBase
         switch (maskType)
         {
             case E_MaskType.Black:
-                _duration = 0.1f;
+                _duration = GameConfig.Instance.BlackTransitionTime;
                 Image_Black.gameObject.SetActive(true);
                 Image_White.gameObject.SetActive(false);
                 break;
             case E_MaskType.White:
-                _duration = 0.1f;
+                _duration = GameConfig.Instance.WhiteTransitionTime;
                 Image_Black.gameObject.SetActive(false);
                 Image_White.gameObject.SetActive(true);
                 break;
             case E_MaskType.GameStateChange:
-                _duration = 0.5f;
+                _duration = GameConfig.Instance.GameStateChangeTransitionTime;
                 Image_Black.gameObject.SetActive(true);
                 Image_White.gameObject.SetActive(false);
                 break;

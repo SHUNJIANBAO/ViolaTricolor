@@ -1,11 +1,11 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
+using PbAudioSystem;
+using PbUISystem;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using DG.Tweening;
-using System;
-using PbUISystem;
-using PbAudioSystem;
 
 [RequireComponent(typeof(CanvasGroup))]
 public class UIDialogPanel : UIPanelBase
@@ -44,6 +44,7 @@ public class UIDialogPanel : UIPanelBase
     Coroutine _talkStopCoroutine;
 
     Text Text_TalkContent;
+    Text Text_FullScreenTalkContent;
     Button Button_Talk;
     Image Image_BG;
     Image Image_LeftBody;
@@ -61,6 +62,8 @@ public class UIDialogPanel : UIPanelBase
     CanvasGroup Panel_RightName;
     Text Text_LeftName;
     Text Text_RightName;
+
+    GameObject Panel_FullScreenDialog;
     #endregion
 
     #region 继承方法
@@ -86,12 +89,14 @@ public class UIDialogPanel : UIPanelBase
         Animation_CenterFace = Image_CenterFace.GetComponent<Animation>();
 
         Text_TalkContent = GetUI<Text>("Text_TalkContent");
+        Text_FullScreenTalkContent = GetUI<Text>("Text_FullScreenTalkContent");
         Panel_TalkContent = GetUI<Image>("Panel_TalkContent");
 
         Panel_LeftName = GetUI<CanvasGroup>("Panel_LeftName");
         Panel_RightName = GetUI<CanvasGroup>("Panel_RightName");
         Text_LeftName = GetUI<Text>("Text_LeftName");
         Text_RightName = GetUI<Text>("Text_RightName");
+        Panel_FullScreenDialog = GetUI<GameObject>("Panel_FullScreenDialog");
     }
 
     /// <summary>
@@ -123,7 +128,9 @@ public class UIDialogPanel : UIPanelBase
         //Image_CenterBody.rectTransform.position = Image_CenterBody.rectTransform.position + Vector3.down * Image_CenterBody.rectTransform.rect.height;
         Panel_LeftName.alpha = 0;
         Panel_RightName.alpha = 0;
-        Panel_TalkContent.rectTransform.anchoredPosition = new Vector2(Panel_TalkContent.rectTransform.anchoredPosition.x, Panel_TalkContent.rectTransform.anchoredPosition.y - Panel_TalkContent.rectTransform.rect.height);
+        _isShowDialog = false;
+        Panel_TalkContent.transform.localPosition = new Vector3(0, -Panel_TalkContent.rectTransform.rect.height);
+        //Panel_TalkContent.rectTransform.anchoredPosition = new Vector2(Panel_TalkContent.rectTransform.anchoredPosition.x, Panel_TalkContent.rectTransform.anchoredPosition.y - Panel_TalkContent.rectTransform.rect.height);
     }
 
 
@@ -144,16 +151,16 @@ public class UIDialogPanel : UIPanelBase
         Image_CenterFace.color = Color.clear;
         Image_LeftBody.rectTransform.position = new Vector2(-Image_LeftBody.rectTransform.rect.width, 0);
         Image_RightBody.rectTransform.position = new Vector2(Image_RightBody.rectTransform.rect.width, 0);
-        ShowDialog();
+        //ShowDialog();
         if (objs != null && objs.Length > 0)
         {
             var asset = objs[0] as TalkAsset;
 
             _curName = asset.TalkerName;
-            PlayBgm(asset.Bgm);
-            SetBackground(asset.Background);
+            InitByAsset(asset);
             SetBodySpriteByPosType(asset.BodyPos, asset.Body, asset.FaceSprite, asset.FaceAnimation);
             ShowBodyByPosType(asset.BodyPos);
+            ShowDialog();
         }
     }
 
@@ -192,7 +199,7 @@ public class UIDialogPanel : UIPanelBase
     public override IEnumerator CloseAnim(System.Action callback, params object[] args)
     {
         HideBodys();
-        HideDialog();
+        HideDialog(true);
         while (_isBodyMoving || _isShowDialog)
         {
             yield return null;
@@ -202,6 +209,25 @@ public class UIDialogPanel : UIPanelBase
     #endregion
 
     #region 成员方法
+    public bool IsSameDialogType(E_DialogType type)
+    {
+        if (_curTalkAsset == null)
+        {
+            return true;
+        }
+        return _curTalkAsset.DialogType == type;
+    }
+
+    public void InitByAsset(TalkAsset asset)
+    {
+        _curTalkAsset = asset;
+        AudioManager.Instance.StopAudioByType(E_AudioType.Dub);
+        AudioManager.Instance.StopAudioByType(E_AudioType.Audio);
+        PlayBgm(asset.Bgm);
+        SetBackground(asset.Background);
+        Panel_FullScreenDialog.SetActive(asset.DialogType == E_DialogType.FullScreen);
+    }
+
 
     void SetTyperSpeed(params object[] objs)
     {
@@ -225,12 +251,15 @@ public class UIDialogPanel : UIPanelBase
         {
             case 0:
                 Text_TalkContent.fontSize = GameConfig.Instance.WordSizeLevel1;
+                Text_FullScreenTalkContent.fontSize = GameConfig.Instance.WordSizeLevel1;
                 break;
             case 1:
                 Text_TalkContent.fontSize = GameConfig.Instance.WordSizeLevel2;
+                Text_FullScreenTalkContent.fontSize = GameConfig.Instance.WordSizeLevel2;
                 break;
             case 2:
                 Text_TalkContent.fontSize = GameConfig.Instance.WordSizeLevel3;
+                Text_FullScreenTalkContent.fontSize = GameConfig.Instance.WordSizeLevel3;
                 break;
         }
     }
@@ -265,51 +294,70 @@ public class UIDialogPanel : UIPanelBase
         if (_isShowDialog) return;
         if (_curTalkAsset != null)
             SetName(_curTalkAsset.TalkerName, _curTalkAsset.BodyPos);
-        Panel_TalkContent.rectTransform.DOAnchorPosY(Panel_TalkContent.rectTransform.position.y + Panel_TalkContent.rectTransform.rect.height, 0.5f).OnComplete(() =>
+        Panel_TalkContent.rectTransform.DOAnchorPosY(0, 0.5f).OnComplete(() =>
         {
             _isShowDialog = true;
             callback?.Invoke();
         });
     }
 
-    public void HideDialog(Action callback = null)
+    public void HideDialog(bool clearContent, Action callback = null)
     {
         if (!_isShowDialog) return;
         SetName("", E_BodyPos.None);
-        Panel_TalkContent.rectTransform.DOAnchorPosY(Panel_TalkContent.rectTransform.position.y - Panel_TalkContent.rectTransform.rect.height, 0.5f).OnComplete(() =>
-        {
-            _isShowDialog = false;
-            //SetName("", E_BodyPos.None);
-            callback?.Invoke();
-        });
+        Panel_TalkContent.rectTransform.DOAnchorPosY(-Panel_TalkContent.rectTransform.rect.height, 0.5f).OnComplete(() =>
+      {
+          _isShowDialog = false;
+          //SetName("", E_BodyPos.None);
+          if (clearContent) Text_TalkContent.text = "";
+          callback?.Invoke();
+      });
     }
 
-
-    public bool Talk(TalkAsset asset)
+    public bool IsCanTalk()
     {
         if (_isTyping)
         {
-            StopTyper();
+            StopTyper(_curTalkAsset.DialogType);
             return false;
         }
-        AudioManager.Instance.StopAudioByType(E_AudioType.Dub);
-        AudioManager.Instance.StopAudioByType(E_AudioType.Audio);
         if (_isBodyMoving)
         {
             return false;
         }
-        StartCoroutine(PlayTalk(asset));
+        //if (_curTalkAsset.DialogType == E_DialogType.Normal && !IsShowDialog)
+        //{
+        //    ShowDialog();
+        //    //return false;
+        //}
+
         return true;
+
+    }
+
+    public void Talk(TalkAsset asset)
+    {
+        AudioManager.Instance.StopAudioByType(E_AudioType.Dub);
+        AudioManager.Instance.StopAudioByType(E_AudioType.Audio);
+        switch (asset.DialogType)
+        {
+            case E_DialogType.Normal:
+                StartCoroutine(PlayNormalTalk(asset));
+                break;
+            case E_DialogType.FullScreen:
+                StartCoroutine(PlayFullScreenTalk(asset));
+                break;
+        }
     }
 
     public void StopTalk()
     {
         if (_talkStopCoroutine != null)
             StopCoroutine(_talkStopCoroutine);
-        _talkStopCoroutine = StartCoroutine(StopTalkIE());
+        _talkStopCoroutine = StartCoroutine(StopTalkIE(_curTalkAsset.DialogType));
     }
 
-    IEnumerator PlayTalk(TalkAsset asset)
+    IEnumerator PlayNormalTalk(TalkAsset asset)
     {
         _curTalkAsset = asset;
         PlayBgm(asset.Bgm);
@@ -319,6 +367,10 @@ public class UIDialogPanel : UIPanelBase
         if (_curName != asset.TalkerName)
             ShowBodyByPosType(asset.BodyPos);
         yield return new WaitForEndOfFrame();
+        if (!IsShowDialog)
+        {
+            ShowDialog();
+        }
         while (_isBodyMoving)
         {
             yield return null;
@@ -328,40 +380,72 @@ public class UIDialogPanel : UIPanelBase
         StartTyper(asset.Content);
     }
 
-    IEnumerator StopTalkIE()
+    IEnumerator PlayFullScreenTalk(TalkAsset asset)
     {
-        while (_isBodyMoving)
+        _curTalkAsset = asset;
+        SetBackground(asset.Background);
+        PlayBgm(asset.Bgm);
+        StartFullScreenTyper(asset.Content, asset.IsNewTalk, asset.IsNewPage);
+        yield return null;
+    }
+
+    IEnumerator StopTalkIE(E_DialogType type)
+    {
+        switch (type)
         {
-            yield return null;
+            case E_DialogType.Normal:
+                while (_isBodyMoving)
+                {
+                    yield return null;
+                }
+                break;
         }
         if (_isTyping)
-            StopTyper();
+            StopTyper(type);
 
     }
 
     #endregion
 
     #region Typer
-    void StartTyper(string content)
+    string _targetContent;
+    void StartTyper(string content, string startStr = "")
     {
-        _talkCoroutine = StartCoroutine(Typer(content));
+        _targetContent = startStr + content;
+        Text_TalkContent.text = startStr;
+        _talkCoroutine = StartCoroutine(Typer(Text_TalkContent, content));
     }
-    IEnumerator Typer(string content)
+
+    void StartFullScreenTyper(string content, bool isNewTalk, bool isClear)
+    {
+        if (isClear)
+        {
+            Text_FullScreenTalkContent.text = "";
+        }
+        if (isNewTalk)
+        {
+            Text_FullScreenTalkContent.text += "\n\u3000";
+        }
+        _targetContent = Text_FullScreenTalkContent.text + content;
+        _talkCoroutine = StartCoroutine(Typer(Text_FullScreenTalkContent, content));
+    }
+
+    IEnumerator Typer(Text text, string content)
     {
         _isTyping = true;
-        Text_TalkContent.text = "";
         int wordCount = 0;
 
         foreach (var word in content)
         {
             PlayAudioByIndex(wordCount);
-            Text_TalkContent.text += word;
+            text.text += word;
             yield return new WaitForSeconds(_typerSpeed);
             wordCount++;
         }
 
         _isTyping = false;
     }
+
 
     //IEnumerator Typer(List<TyperRhythm> wordList)
     //{
@@ -371,23 +455,31 @@ public class UIDialogPanel : UIPanelBase
     //    foreach (var word in wordList)
     //    {
     //        Text_TalkContent.text += word.Word;
-    //        if (word.WaitTime > 0)
+    //        if (word.WaitTime > 0).
     //            yield return new WaitForSeconds(word.WaitTime);
     //    }
 
     //    _isTyping = false;
     //}
 
-    void StopTyper()
+    void StopTyper(E_DialogType type)
     {
         if (_talkCoroutine != null)
             StopCoroutine(_talkCoroutine);
-        Text_TalkContent.text = "";
+        //Text_TalkContent.text = "";
         //foreach (var word in _curTalkAsset.WordList)
         //{
         //    Text_TalkContent.text += word.Word;
         //}
-        Text_TalkContent.text = _curTalkAsset.Content;
+        switch (type)
+        {
+            case E_DialogType.Normal:
+                Text_TalkContent.text = _targetContent;
+                break;
+            case E_DialogType.FullScreen:
+                Text_FullScreenTalkContent.text = _targetContent;
+                break;
+        }
         _isTyping = false;
     }
     #endregion
@@ -622,22 +714,22 @@ public class UIDialogPanel : UIPanelBase
         {
             case E_ImagePosType.Left:
                 endValue = value ? 0 : -bodyImage.rectTransform.rect.width;
-                bodyImage.rectTransform.DOAnchorPosX(endValue, TransitionTime);
-                bodyImage.DOColor(value ? Color.white : Color.clear, TransitionTime * (value ? 1 : 2)).OnComplete(() =>
+                bodyImage.rectTransform.DOAnchorPosX(endValue, TransitionTime).OnComplete(() =>
                 {
                     _isBodyMoving = false;
                     callback?.Invoke();
                 });
+                bodyImage.DOColor(value ? Color.white : Color.clear, TransitionTime * (value ? 1 : 2));
                 Image_LeftFace.DOColor(value ? Color.white : Color.clear, TransitionTime * (value ? 1 : 2));
                 break;
             case E_ImagePosType.Right:
                 endValue = value ? 0 : bodyImage.rectTransform.rect.width;
-                bodyImage.rectTransform.DOAnchorPosX(endValue, TransitionTime);
-                bodyImage.DOColor(value ? Color.white : Color.clear, TransitionTime * (value ? 1 : 2)).OnComplete(() =>
+                bodyImage.rectTransform.DOAnchorPosX(endValue, TransitionTime).OnComplete(() =>
                 {
                     _isBodyMoving = false;
                     callback?.Invoke();
                 });
+                bodyImage.DOColor(value ? Color.white : Color.clear, TransitionTime * (value ? 1 : 2));
                 Image_RightFace.DOColor(value ? Color.white : Color.clear, TransitionTime * (value ? 1 : 2));
                 break;
             case E_ImagePosType.Center:
@@ -683,9 +775,11 @@ public class UIDialogPanel : UIPanelBase
     void PlayBgm(AudioClip audio)
     {
         if (_currentAudio == audio) return;
-        _currentAudio = audio;
         if (audio != null)
+        {
+            _currentAudio = audio;
             AudioManager.Instance.Play(audio, E_AudioType.Bgm, true, true);
+        }
     }
 
     void PlayDub(AudioClip audio)

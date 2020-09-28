@@ -16,4 +16,8 @@ public class GameConfig : MonoSingleton<GameConfig>
     public float DialogAlphaLevel1 = 0.2f;
     public float DialogAlphaLevel2 = 0.5f;
     public float DialogAlphaLevel3 = 0.8f;
+    [Header("切屏过渡时间")]
+    public float BlackTransitionTime=0.1f;
+    public float WhiteTransitionTime=0.1f;
+    public float GameStateChangeTransitionTime=0.5f;
 }

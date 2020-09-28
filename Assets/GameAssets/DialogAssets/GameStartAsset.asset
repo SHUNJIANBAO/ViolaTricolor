@@ -1,158 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-7770965262194009996
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6b35c27257741442ab93e8657cbf08a, type: 3}
-  m_Name: 4
-  m_EditorClassIdentifier: 
-  TalkId: 4
-  Body: {fileID: 0}
-  FaceSprite: {fileID: 0}
-  FaceAnimation: {fileID: 0}
-  Background: {fileID: 0}
-  Bgm: {fileID: 0}
-  DubDelay: 0
-  Dub: {fileID: 0}
-  TalkerName: 
-  BodyPos: 0
-  TalkEvent: 0
-  AudioEventList: []
-  Content: "\u7136\u540E\u5C31\u6563\u573A\u4E86\u3002\u3002\u3002\u3002\u3002"
---- !u!114 &-2588855443602989813
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6b35c27257741442ab93e8657cbf08a, type: 3}
-  m_Name: 1
-  m_EditorClassIdentifier: 
-  TalkId: 1
-  Body: {fileID: 8016273694264784401, guid: 75db53d3daad49c419989a1a4c475668, type: 3}
-  FaceSprite: {fileID: 0}
-  FaceAnimation: {fileID: 0}
-  Background: {fileID: 21300000, guid: f6f7491872cd47747a9f785c4cfe867e, type: 3}
-  Bgm: {fileID: 8300000, guid: ed9aae482269bb443892db09bef2b1fe, type: 3}
-  DubDelay: 0
-  Dub: {fileID: 8300000, guid: 910115caa09f72c42b82a34b08398913, type: 3}
-  TalkerName: "\u59B9\u7EA2"
-  BodyPos: 1
-  TalkEvent: 0
-  AudioEventList: []
-  Content: "\u554A\u554A\u554A\u554A\u554A"
---- !u!114 &-915031189185120553
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6b35c27257741442ab93e8657cbf08a, type: 3}
-  m_Name: 5
-  m_EditorClassIdentifier: 
-  TalkId: 5
-  Body: {fileID: 8016273694264784401, guid: 75db53d3daad49c419989a1a4c475668, type: 3}
-  FaceSprite: {fileID: 0}
-  FaceAnimation: {fileID: 0}
-  Background: {fileID: 0}
-  Bgm: {fileID: 0}
-  DubDelay: 0
-  Dub: {fileID: 8300000, guid: 910115caa09f72c42b82a34b08398913, type: 3}
-  TalkerName: "\u59B9\u7EA2"
-  BodyPos: 3
-  TalkEvent: 0
-  AudioEventList: []
-  Content: "\u7237\u53C8\u56DE\u6765\u4E86"
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 014c16a60c3197346b3efe8ce131ad28, type: 3}
-  m_Name: GameStartAsset
-  m_EditorClassIdentifier: 
-  OptionName: 
-  UnLockType: 0
-  NeedDialogAsset: {fileID: 0}
-  TalkEndEventType: 0
-  LinkedDialogAsset: {fileID: 11400000, guid: 04e2903b2ac87734ca189b564736fbcf, type: 2}
-  SelectDialogAssetList:
-  - {fileID: 11400000, guid: 04e2903b2ac87734ca189b564736fbcf, type: 2}
-  - {fileID: 11400000, guid: ea2a0989346f09a488fed3fd91df504f, type: 2}
-  TalkAssetsList:
-  - {fileID: -2588855443602989813}
-  - {fileID: 7729643339278199203}
-  - {fileID: 6115707400733291005}
-  - {fileID: -7770965262194009996}
-  - {fileID: -915031189185120553}
-  - {fileID: 6688291658160304681}
---- !u!114 &6115707400733291005
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6b35c27257741442ab93e8657cbf08a, type: 3}
-  m_Name: 3
-  m_EditorClassIdentifier: 
-  TalkId: 3
-  Body: {fileID: 3824271601306615221, guid: 70b91d118afc59341aca40f2220ac033, type: 3}
-  FaceSprite: {fileID: 0}
-  FaceAnimation: {fileID: 0}
-  Background: {fileID: 0}
-  Bgm: {fileID: 0}
-  DubDelay: 0
-  Dub: {fileID: 0}
-  TalkerName: "\u6797\u539F"
-  BodyPos: 2
-  TalkEvent: 0
-  AudioEventList: []
-  Content: "\u53D1\u7684\u4EC0\u4E48\u75AF"
---- !u!114 &6688291658160304681
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6b35c27257741442ab93e8657cbf08a, type: 3}
-  m_Name: 6
-  m_EditorClassIdentifier: 
-  TalkId: 6
-  Body: {fileID: 3824271601306615221, guid: 70b91d118afc59341aca40f2220ac033, type: 3}
-  FaceSprite: {fileID: 0}
-  FaceAnimation: {fileID: 0}
-  Background: {fileID: 0}
-  Bgm: {fileID: 0}
-  DubDelay: 0
-  Dub: {fileID: 8300000, guid: 910115caa09f72c42b82a34b08398913, type: 3}
-  TalkerName: "\u6797\u539F"
-  BodyPos: 4
-  TalkEvent: 0
-  AudioEventList: []
-  Content: "\u8FD9\u4E48\u5C2C\u7684\u5417\uFF1F\n\u6211\u4F5B\u4E86\u3002\u3002\u3002"
---- !u!114 &7729643339278199203
+--- !u!114 &-4992996647884441688
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -175,5 +23,262 @@ MonoBehaviour:
   TalkerName: "\u6797\u539F"
   BodyPos: 2
   TalkEvent: 0
+  DialogType: 1
+  IsNewTalk: 1
+  IsNewPage: 0
   AudioEventList: []
-  Content: "\uFF1F\uFF1F\uFF1F"
+  Content: "\u5168\u5C4F\u5BF9\u8BDD\u6846\u7684\u5F00\u5934\u5168\u5C4F\u5BF9\u8BDD\u6846\u7684\u5F00\u5934\u5168\u5C4F\u5BF9\u8BDD\u6846\u7684\u5F00\u5934\u5168\u5C4F\u5BF9\u8BDD\u6846\u7684\u5F00\u5934\uFF0C"
+--- !u!114 &-4254679376517863056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6b35c27257741442ab93e8657cbf08a, type: 3}
+  m_Name: 7
+  m_EditorClassIdentifier: 
+  TalkId: 7
+  Body: {fileID: 0}
+  FaceSprite: {fileID: 0}
+  FaceAnimation: {fileID: 0}
+  Background: {fileID: 0}
+  Bgm: {fileID: 0}
+  DubDelay: 0
+  Dub: {fileID: 0}
+  TalkerName: 
+  BodyPos: 0
+  TalkEvent: 0
+  DialogType: 1
+  IsNewTalk: 0
+  IsNewPage: 0
+  AudioEventList: []
+  Content: "\u7B2C\u4E8C\u53E5\u7B2C\u4E8C\u53E5\u7B2C\u4E8C\u53E5\u7B2C\u4E8C\u53E5\u7B2C\u4E8C\u53E5\u7B2C\u4E8C\u53E5"
+--- !u!114 &-2824987440454425900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6b35c27257741442ab93e8657cbf08a, type: 3}
+  m_Name: 1
+  m_EditorClassIdentifier: 
+  TalkId: 1
+  Body: {fileID: 8016273694264784401, guid: 75db53d3daad49c419989a1a4c475668, type: 3}
+  FaceSprite: {fileID: 0}
+  FaceAnimation: {fileID: 0}
+  Background: {fileID: 21300000, guid: f6f7491872cd47747a9f785c4cfe867e, type: 3}
+  Bgm: {fileID: 8300000, guid: ed9aae482269bb443892db09bef2b1fe, type: 3}
+  DubDelay: 0
+  Dub: {fileID: 8300000, guid: 910115caa09f72c42b82a34b08398913, type: 3}
+  TalkerName: "\u59B9\u7EA2"
+  BodyPos: 1
+  TalkEvent: 0
+  DialogType: 0
+  IsNewTalk: 0
+  IsNewPage: 0
+  AudioEventList: []
+  Content: "\u554A\u554A\u554A\u554A\u554A"
+--- !u!114 &-336856421502637641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6b35c27257741442ab93e8657cbf08a, type: 3}
+  m_Name: 4
+  m_EditorClassIdentifier: 
+  TalkId: 4
+  Body: {fileID: 0}
+  FaceSprite: {fileID: 0}
+  FaceAnimation: {fileID: 0}
+  Background: {fileID: 0}
+  Bgm: {fileID: 0}
+  DubDelay: 0
+  Dub: {fileID: 0}
+  TalkerName: 
+  BodyPos: 0
+  TalkEvent: 0
+  DialogType: 0
+  IsNewTalk: 0
+  IsNewPage: 0
+  AudioEventList: []
+  Content: "\u7136\u540E\u5C31\u6563\u573A\u4E86\u3002\u3002\u3002\u3002\u3002"
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 014c16a60c3197346b3efe8ce131ad28, type: 3}
+  m_Name: GameStartAsset
+  m_EditorClassIdentifier: 
+  OptionName: 
+  UnLockType: 0
+  NeedDialogAsset: {fileID: 0}
+  TalkEndEventType: 0
+  LinkedDialogAsset: {fileID: 11400000, guid: 04e2903b2ac87734ca189b564736fbcf, type: 2}
+  SelectDialogAssetList:
+  - {fileID: 11400000, guid: 04e2903b2ac87734ca189b564736fbcf, type: 2}
+  - {fileID: 11400000, guid: ea2a0989346f09a488fed3fd91df504f, type: 2}
+  TalkAssetsList:
+  - {fileID: -2824987440454425900}
+  - {fileID: -4992996647884441688}
+  - {fileID: -4254679376517863056}
+  - {fileID: 7071271191512078818}
+  - {fileID: 1375079130444089883}
+  - {fileID: 7359235310718460537}
+  - {fileID: -336856421502637641}
+  - {fileID: 7583258860514934683}
+  - {fileID: 3712530396434581293}
+--- !u!114 &1375079130444089883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6b35c27257741442ab93e8657cbf08a, type: 3}
+  m_Name: 9
+  m_EditorClassIdentifier: 
+  TalkId: 9
+  Body: {fileID: 0}
+  FaceSprite: {fileID: 0}
+  FaceAnimation: {fileID: 0}
+  Background: {fileID: 0}
+  Bgm: {fileID: 0}
+  DubDelay: 0
+  Dub: {fileID: 0}
+  TalkerName: 
+  BodyPos: 0
+  TalkEvent: 0
+  DialogType: 1
+  IsNewTalk: 1
+  IsNewPage: 1
+  AudioEventList: []
+  Content: "\u65B0\u7684\u4E00\u9875\u65B0\u7684\u4E00\u9875\u65B0\u7684\u4E00\u9875\u65B0\u7684\u4E00\u9875\u65B0\u7684\u4E00\u9875\u65B0\u7684\u4E00\u9875"
+--- !u!114 &3712530396434581293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6b35c27257741442ab93e8657cbf08a, type: 3}
+  m_Name: 6
+  m_EditorClassIdentifier: 
+  TalkId: 6
+  Body: {fileID: 3824271601306615221, guid: 70b91d118afc59341aca40f2220ac033, type: 3}
+  FaceSprite: {fileID: 0}
+  FaceAnimation: {fileID: 0}
+  Background: {fileID: 0}
+  Bgm: {fileID: 0}
+  DubDelay: 0
+  Dub: {fileID: 8300000, guid: 910115caa09f72c42b82a34b08398913, type: 3}
+  TalkerName: "\u6797\u539F"
+  BodyPos: 4
+  TalkEvent: 0
+  DialogType: 0
+  IsNewTalk: 0
+  IsNewPage: 0
+  AudioEventList: []
+  Content: "\u8FD9\u4E48\u5C2C\u7684\u5417\uFF1F\n\u6211\u4F5B\u4E86\u3002\u3002\u3002"
+--- !u!114 &7071271191512078818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6b35c27257741442ab93e8657cbf08a, type: 3}
+  m_Name: 8
+  m_EditorClassIdentifier: 
+  TalkId: 8
+  Body: {fileID: 0}
+  FaceSprite: {fileID: 0}
+  FaceAnimation: {fileID: 0}
+  Background: {fileID: 0}
+  Bgm: {fileID: 0}
+  DubDelay: 0
+  Dub: {fileID: 0}
+  TalkerName: 
+  BodyPos: 0
+  TalkEvent: 0
+  DialogType: 1
+  IsNewTalk: 1
+  IsNewPage: 0
+  AudioEventList: []
+  Content: "\u65B0\u7684\u4E00\u6BB5\u65B0\u7684\u4E00\u6BB5\u65B0\u7684\u4E00\u6BB5\u65B0\u7684\u4E00\u6BB5\u65B0\u7684\u4E00\u6BB5\u65B0\u7684\u4E00\u6BB5"
+--- !u!114 &7359235310718460537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6b35c27257741442ab93e8657cbf08a, type: 3}
+  m_Name: 3
+  m_EditorClassIdentifier: 
+  TalkId: 3
+  Body: {fileID: 3824271601306615221, guid: 70b91d118afc59341aca40f2220ac033, type: 3}
+  FaceSprite: {fileID: 0}
+  FaceAnimation: {fileID: 0}
+  Background: {fileID: 0}
+  Bgm: {fileID: 0}
+  DubDelay: 0
+  Dub: {fileID: 0}
+  TalkerName: "\u6797\u539F"
+  BodyPos: 2
+  TalkEvent: 0
+  DialogType: 0
+  IsNewTalk: 0
+  IsNewPage: 0
+  AudioEventList: []
+  Content: "\u53D1\u7684\u4EC0\u4E48\u75AF"
+--- !u!114 &7583258860514934683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6b35c27257741442ab93e8657cbf08a, type: 3}
+  m_Name: 5
+  m_EditorClassIdentifier: 
+  TalkId: 5
+  Body: {fileID: 8016273694264784401, guid: 75db53d3daad49c419989a1a4c475668, type: 3}
+  FaceSprite: {fileID: 0}
+  FaceAnimation: {fileID: 0}
+  Background: {fileID: 0}
+  Bgm: {fileID: 0}
+  DubDelay: 0
+  Dub: {fileID: 8300000, guid: 910115caa09f72c42b82a34b08398913, type: 3}
+  TalkerName: "\u59B9\u7EA2"
+  BodyPos: 3
+  TalkEvent: 0
+  DialogType: 0
+  IsNewTalk: 0
+  IsNewPage: 0
+  AudioEventList: []
+  Content: "\u7237\u53C8\u56DE\u6765\u4E86"
