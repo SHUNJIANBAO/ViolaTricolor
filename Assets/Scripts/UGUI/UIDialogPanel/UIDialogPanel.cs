@@ -225,6 +225,7 @@ public class UIDialogPanel : UIPanelBase
         AudioManager.Instance.StopAudioByType(E_AudioType.Audio);
         PlayBgm(asset.Bgm);
         SetBackground(asset.Background);
+        Text_FullScreenTalkContent.text = "";
         Panel_FullScreenDialog.SetActive(asset.DialogType == E_DialogType.FullScreen);
     }
 
