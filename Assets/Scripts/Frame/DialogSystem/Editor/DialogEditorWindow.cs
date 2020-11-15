@@ -228,9 +228,9 @@ public class DialogEditorWindow : EditorWindow
         EditorGUILayout.EndHorizontal();
 
 
+        EditorGUILayout.BeginHorizontal();
         if (asset.DialogType == E_DialogType.Normal)
         {
-            EditorGUILayout.BeginHorizontal();
             EditorGUILayout.BeginVertical(GUILayout.Width(150));
             EditorGUIUtility.labelWidth = 60;
             asset.Body = (Body)EditorGUILayout.ObjectField("角色立绘", asset.Body, typeof(Body), false);
