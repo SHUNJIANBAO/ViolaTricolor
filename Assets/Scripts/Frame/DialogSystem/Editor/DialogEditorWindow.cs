@@ -81,7 +81,7 @@ public class DialogEditorWindow : EditorWindow
         _scrollPos = EditorGUILayout.BeginScrollView(_scrollPos, GUILayout.Width(200));
         _talkList.DoLayoutList();
         EditorGUILayout.EndScrollView();
-        GUILayout.Box("", GUILayout.Width(position.width - 210), GUILayout.Height(position.height - 30));
+        //GUILayout.Box("", GUILayout.Width(position.width - 210), GUILayout.Height(position.height - 30));
         _talkAssetRect = new Rect(210, 60, position.width - 230, position.height - 70);
         GUILayout.BeginArea(_talkAssetRect);
         DrawTalkAsset(_curTalkAsset);
