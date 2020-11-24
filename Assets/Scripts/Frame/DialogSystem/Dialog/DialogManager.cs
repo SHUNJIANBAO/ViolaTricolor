@@ -31,16 +31,16 @@ public class DialogManager : Singleton<DialogManager>
         _curDialogAsset = asset;
     }
 
-    public void Talk(int talkId = -1)
+    public void Talk(int dialogueId = -1)
     {
         if (!_curDialogAsset) return;
         if (_isClosing) return;
 
-        if (talkId != -1)
+        if (dialogueId != -1)
         {
-            for (int i = 0; i < _curDialogAsset.TalkAssetsList.Count; i++)
+            for (int i = 0; i < _curDialogAsset.DialogueAssetList.Count; i++)
             {
-                if (_curDialogAsset.TalkAssetsList[i].TalkId == talkId)
+                if (_curDialogAsset.DialogueAssetList[i].DialogueId == dialogueId)
                 {
                     _index = i;
                     break;
@@ -61,12 +61,12 @@ public class DialogManager : Singleton<DialogManager>
              {
                  _isOpen = true;
                  Talk();
-             }, _curDialogAsset.TalkAssetsList[_index]);
+             }, _curDialogAsset.DialogueAssetList[_index]);
         }
 
         if (!_isOpen || _dialogPanel == null) return;
 
-        if (!_isClosing && _index >= _curDialogAsset.TalkAssetsList.Count)
+        if (!_isClosing && _index >= _curDialogAsset.DialogueAssetList.Count)
         {
             if (_dialogPanel.IsTalking)
                 _dialogPanel.StopTalk();
@@ -77,14 +77,14 @@ public class DialogManager : Singleton<DialogManager>
         {
             if (!_dialogPanel.IsCanTalk()) return;
             //对话框类型相同直接谈话，不同则切换模式后谈话
-            if (_dialogPanel.IsSameDialogType(_curDialogAsset.TalkAssetsList[_index].DialogType))
+            if (_dialogPanel.IsSameDialogType(_curDialogAsset.DialogueAssetList[_index].DialogType))
             {
-                _dialogPanel.Talk(_curDialogAsset.TalkAssetsList[_index]);
+                _dialogPanel.Talk(_curDialogAsset.DialogueAssetList[_index]);
                 _index++;
             }
             else
             {
-                switch (_curDialogAsset.TalkAssetsList[_index].DialogType)
+                switch (_curDialogAsset.DialogueAssetList[_index].DialogType)
                 {
                     case E_DialogType.Normal:
                         break;
@@ -95,8 +95,8 @@ public class DialogManager : Singleton<DialogManager>
                 }
                 UIManager.Instance.OpenPanel<UIMaskPanel>(true, () =>
                 {
-                    _dialogPanel.InitByAsset(_curDialogAsset.TalkAssetsList[_index]);
-                    Talk(_curDialogAsset.TalkAssetsList[_index].TalkId);
+                    _dialogPanel.SetMessageByAsset(_curDialogAsset.DialogueAssetList[_index]);
+                    Talk(_curDialogAsset.DialogueAssetList[_index].DialogueId);
                 }, E_MaskType.GameStateChange);
             }
         }

@@ -6,31 +6,34 @@ using UnityEngine.UI;
 
 public class CreateBodyPrefab : EditorWindow
 {
-    [MenuItem("工具/创建立绘")]
+    public enum E_PrefabType
+    {
+        Body,
+        Background,
+    }
+
+    [MenuItem("工具/创建预制体")]
     static void OpenWindow()
     {
         var window = GetWindow<CreateBodyPrefab>();
-        window.titleContent = new GUIContent("创建立绘");
+        window.titleContent = new GUIContent("创建预制体");
         window.Show();
     }
     const string _demoPath = "Assets/Editor/BodyDemo.prefab";
 
     string _prefabName;
-    Sprite _body;
-    Sprite _normalFace;
-    AnimationClip _normalFaceClip;
+    Sprite _image;
+    E_PrefabType _prefabType;
+    //RuntimeAnimatorController _animatorController;
     private void OnGUI()
     {
         _prefabName = EditorGUILayout.TextField("预制体名", _prefabName);
+        _prefabType = (E_PrefabType)EditorGUILayout.EnumPopup("预制体类型",_prefabType);
         EditorGUILayout.BeginHorizontal();
-        GUILayout.Label("立绘");
-        _body = (Sprite)EditorGUILayout.ObjectField(_body, typeof(Sprite), false);
+        GUILayout.Label("默认图片");
+        _image = (Sprite)EditorGUILayout.ObjectField(_image, typeof(Sprite), false);
         EditorGUILayout.EndHorizontal();
-        EditorGUILayout.BeginHorizontal();
-        GUILayout.Label("默认表情");
-        _normalFace = (Sprite)EditorGUILayout.ObjectField( _normalFace, typeof(Sprite), false);
-        EditorGUILayout.EndHorizontal();
-        _normalFaceClip = (AnimationClip)EditorGUILayout.ObjectField("默认表情动画", _normalFaceClip, typeof(AnimationClip), false);
+        //_animatorController = (RuntimeAnimatorController)EditorGUILayout.ObjectField("动画", _animatorController, typeof(RuntimeAnimatorController), false);
         if (GUILayout.Button("创建"))
         {
             if (string.IsNullOrEmpty(_prefabName))
@@ -38,9 +41,9 @@ public class CreateBodyPrefab : EditorWindow
                 ShowNotification(new GUIContent("预制体名不能为空"));
                 return;
             }
-            if (_body == null)
+            if (_image == null)
             {
-                ShowNotification(new GUIContent("立绘不能为空"));
+                ShowNotification(new GUIContent("图片不能为空"));
                 return;
             }
             CreateBody();
@@ -55,13 +58,20 @@ public class CreateBodyPrefab : EditorWindow
         GameObject go = GameObject.Instantiate(obj, canvas, false);
         go.name = _prefabName;
         var bodyImage = go.GetComponent<Image>();
-        bodyImage.sprite = _body;
+        bodyImage.sprite = _image;
         bodyImage.SetNativeSize();
-        var body = go.GetComponent<Body>();
-        body.SetFace(_normalFace);
-        body.SetFaceAnimation(_normalFaceClip);
+        //var bodyAnimator = go.GetComponent<Animator>();
+        //bodyAnimator.runtimeAnimatorController = _animatorController;
 
-        PrefabUtility.SaveAsPrefabAssetAndConnect(go, "Assets/GameAssets/Prefabs/Body/" + _prefabName + ".prefab", InteractionMode.AutomatedAction);
+        switch (_prefabType)
+        {
+            case E_PrefabType.Body:
+                PrefabUtility.SaveAsPrefabAssetAndConnect(go, "Assets/GameAssets/Prefabs/Body/" + _prefabName + ".prefab", InteractionMode.AutomatedAction);
+                break;
+            case E_PrefabType.Background:
+                PrefabUtility.SaveAsPrefabAssetAndConnect(go, "Assets/GameAssets/Prefabs/Background/" + _prefabName + ".prefab", InteractionMode.AutomatedAction);
+                break;
+        }
         DestroyImmediate(go);
     }
 }

@@ -10,14 +10,6 @@ using UnityEngine.UI;
 [RequireComponent(typeof(CanvasGroup))]
 public class UIDialogPanel : UIPanelBase
 {
-    enum E_ImagePosType
-    {
-        Left,
-        Right,
-        Center,
-        Bottom,
-    }
-
     #region 参数
     public float TransitionTime = 0.5f;
     float _typerSpeed;
@@ -39,7 +31,7 @@ public class UIDialogPanel : UIPanelBase
     Color _grayColor;
 
     Image Panel_TalkContent;
-    TalkAsset _curTalkAsset;
+    DialogueAsset _curDialogueAsset;
     Coroutine _talkCoroutine;
     Coroutine _talkStopCoroutine;
 
@@ -51,12 +43,10 @@ public class UIDialogPanel : UIPanelBase
     Image Image_RightBody;
     Image Image_CenterBody;
     Image Image_BottomBody;
-    Image Image_LeftFace;
-    Image Image_RightFace;
-    Image Image_CenterFace;
-    Animation Animation_LeftFace;
-    Animation Animation_RightFace;
-    Animation Animation_CenterFace;
+    Animator Animator_LeftBody;
+    Animator Animator_RightBody;
+    Animator Animator_CenterBody;
+    Animator Animator_BottomBody;
 
     CanvasGroup Panel_LeftName;
     CanvasGroup Panel_RightName;
@@ -76,17 +66,15 @@ public class UIDialogPanel : UIPanelBase
         base.GetUIComponent();
         Image_BG = GetUI<Image>("Image_BG");
         Image_LeftBody = GetUI<Image>("Image_LeftBody");
-        Image_LeftFace = GetUI<Image>("Image_LeftFace");
         Image_RightBody = GetUI<Image>("Image_RightBody");
-        Image_RightFace = GetUI<Image>("Image_RightFace");
         Image_CenterBody = GetUI<Image>("Image_CenterBody");
-        Image_CenterFace = GetUI<Image>("Image_CenterFace");
         Image_BottomBody = GetUI<Image>("Image_BottomBody");
-        Button_Talk = GetUI<Button>("Image_BG");
 
-        Animation_LeftFace = Image_LeftFace.GetComponent<Animation>();
-        Animation_RightFace = Image_RightFace.GetComponent<Animation>();
-        Animation_CenterFace = Image_CenterFace.GetComponent<Animation>();
+        Animator_LeftBody = GetUI<Animator>("Image_LeftBody");
+        Animator_RightBody = GetUI<Animator>("Image_RightBody");
+        Animator_CenterBody = GetUI<Animator>("Image_CenterBody");
+        Animator_BottomBody = GetUI<Animator>("Image_BottomBody");
+        Button_Talk = GetUI<Button>("Image_BG");
 
         Text_TalkContent = GetUI<Text>("Text_TalkContent");
         Text_FullScreenTalkContent = GetUI<Text>("Text_FullScreenTalkContent");
@@ -146,20 +134,16 @@ public class UIDialogPanel : UIPanelBase
         Image_RightBody.color = Color.clear;
         Image_CenterBody.color = Color.clear;
         Image_BottomBody.color = Color.clear;
-        Image_LeftFace.color = Color.clear;
-        Image_RightFace.color = Color.clear;
-        Image_CenterFace.color = Color.clear;
         Image_LeftBody.rectTransform.position = new Vector2(-Image_LeftBody.rectTransform.rect.width, 0);
         Image_RightBody.rectTransform.position = new Vector2(Image_RightBody.rectTransform.rect.width, 0);
-        //ShowDialog();
+
         if (objs != null && objs.Length > 0)
         {
-            var asset = objs[0] as TalkAsset;
+            var asset = objs[0] as DialogueAsset;
 
             _curName = asset.TalkerName;
-            InitByAsset(asset);
-            SetBodySpriteByPosType(asset.BodyPos, asset.Body, asset.FaceSprite, asset.FaceAnimation);
-            ShowBodyByPosType(asset.BodyPos);
+            //SetMessageByAsset(asset);
+            //ShowBodyByPosType(asset.BodyPos);
             ShowDialog();
         }
     }
@@ -211,22 +195,33 @@ public class UIDialogPanel : UIPanelBase
     #region 成员方法
     public bool IsSameDialogType(E_DialogType type)
     {
-        if (_curTalkAsset == null)
+        if (_curDialogueAsset == null)
         {
             return true;
         }
-        return _curTalkAsset.DialogType == type;
+        return _curDialogueAsset.DialogType == type;
     }
 
-    public void InitByAsset(TalkAsset asset)
+    public void SetMessageByAsset(DialogueAsset asset)
     {
-        _curTalkAsset = asset;
+        _curDialogueAsset = asset;
         AudioManager.Instance.StopAudioByType(E_AudioType.Dub);
         AudioManager.Instance.StopAudioByType(E_AudioType.Audio);
+        SetDelayEventList(asset.DelayEventList);
         PlayBgm(asset.Bgm);
         SetBackground(asset.Background);
         Text_FullScreenTalkContent.text = "";
         Panel_FullScreenDialog.SetActive(asset.DialogType == E_DialogType.FullScreen);
+
+        SetBodySpriteByPosType(E_BodyPos.Left, asset.LeftBody);
+        SetBodySpriteByPosType(E_BodyPos.Right, asset.RightBody);
+        SetBodySpriteByPosType(E_BodyPos.Center, asset.CenterBody);
+        SetBodySpriteByPosType(E_BodyPos.Bottom, asset.BottomBody);
+
+        ShowBodyByBodyShowType(E_BodyPos.Left, asset.LeftBodyShowType);
+        ShowBodyByBodyShowType(E_BodyPos.Right, asset.RightBodyShowType);
+        ShowBodyByBodyShowType(E_BodyPos.Center, asset.CenterBodyShowType);
+        ShowBodyByBodyShowType(E_BodyPos.Bottom, asset.BottomBodyShowType);
     }
 
 
@@ -293,8 +288,8 @@ public class UIDialogPanel : UIPanelBase
     public void ShowDialog(Action callback = null)
     {
         if (_isShowDialog) return;
-        if (_curTalkAsset != null)
-            SetName(_curTalkAsset.TalkerName, _curTalkAsset.BodyPos);
+        if (_curDialogueAsset != null)
+            SetName(_curDialogueAsset.TalkerName, _curDialogueAsset.NamePos);
         Panel_TalkContent.rectTransform.DOAnchorPosY(0, 0.5f).OnComplete(() =>
         {
             _isShowDialog = true;
@@ -305,7 +300,7 @@ public class UIDialogPanel : UIPanelBase
     public void HideDialog(bool clearContent, Action callback = null)
     {
         if (!_isShowDialog) return;
-        SetName("", E_BodyPos.None);
+        SetName("", E_NamePos.None);
         Panel_TalkContent.rectTransform.DOAnchorPosY(-Panel_TalkContent.rectTransform.rect.height, 0.5f).OnComplete(() =>
       {
           _isShowDialog = false;
@@ -319,14 +314,14 @@ public class UIDialogPanel : UIPanelBase
     {
         if (_isTyping)
         {
-            StopTyper(_curTalkAsset.DialogType);
+            StopTyper(_curDialogueAsset.DialogType);
             return false;
         }
         if (_isBodyMoving)
         {
             return false;
         }
-        //if (_curTalkAsset.DialogType == E_DialogType.Normal && !IsShowDialog)
+        //if (_curDialogueAsset.DialogType == E_DialogType.Normal && !IsShowDialog)
         //{
         //    ShowDialog();
         //    //return false;
@@ -336,10 +331,9 @@ public class UIDialogPanel : UIPanelBase
 
     }
 
-    public void Talk(TalkAsset asset)
+    public void Talk(DialogueAsset asset)
     {
-        AudioManager.Instance.StopAudioByType(E_AudioType.Dub);
-        AudioManager.Instance.StopAudioByType(E_AudioType.Audio);
+        SetMessageByAsset(asset);
         switch (asset.DialogType)
         {
             case E_DialogType.Normal:
@@ -355,18 +349,14 @@ public class UIDialogPanel : UIPanelBase
     {
         if (_talkStopCoroutine != null)
             StopCoroutine(_talkStopCoroutine);
-        _talkStopCoroutine = StartCoroutine(StopTalkIE(_curTalkAsset.DialogType));
+        _talkStopCoroutine = StartCoroutine(StopTalkIE(_curDialogueAsset.DialogType));
     }
 
-    IEnumerator PlayNormalTalk(TalkAsset asset)
+    IEnumerator PlayNormalTalk(DialogueAsset asset)
     {
-        _curTalkAsset = asset;
-        PlayBgm(asset.Bgm);
-        SetBackground(asset.Background);
-        SetBodySpriteByPosType(asset.BodyPos, asset.Body, asset.FaceSprite, asset.FaceAnimation);
-        SetAudioEventList(asset.AudioEventList);
-        if (_curName != asset.TalkerName)
-            ShowBodyByPosType(asset.BodyPos);
+        _curDialogueAsset = asset;
+
+
         yield return new WaitForEndOfFrame();
         if (!IsShowDialog)
         {
@@ -376,17 +366,17 @@ public class UIDialogPanel : UIPanelBase
         {
             yield return null;
         }
-        SetName(asset.TalkerName, asset.BodyPos);
+        SetName(asset.TalkerName, asset.NamePos);
         PlayDub(asset.Dub);
-        StartTyper(asset.Content);
+        StartTyper(asset.WordList);
     }
 
-    IEnumerator PlayFullScreenTalk(TalkAsset asset)
+    IEnumerator PlayFullScreenTalk(DialogueAsset asset)
     {
-        _curTalkAsset = asset;
+        _curDialogueAsset = asset;
         SetBackground(asset.Background);
         PlayBgm(asset.Bgm);
-        StartFullScreenTyper(asset.Content, asset.IsNewTalk, asset.IsNewPage);
+        StartFullScreenTyper(asset.WordList, asset.IsNewTalk, asset.IsNewPage);
         yield return null;
     }
 
@@ -410,14 +400,19 @@ public class UIDialogPanel : UIPanelBase
 
     #region Typer
     string _targetContent;
-    void StartTyper(string content, string startStr = "")
+    void StartTyper(List<TyperRhythm> wordList, string startStr = "")
     {
+        string content = "";
+        foreach (var word in wordList)
+        {
+            content += word.Word;
+        }
         _targetContent = startStr + content;
         Text_TalkContent.text = startStr;
-        _talkCoroutine = StartCoroutine(Typer(Text_TalkContent, content));
+        _talkCoroutine = StartCoroutine(Typer(Text_TalkContent, wordList));
     }
 
-    void StartFullScreenTyper(string content, bool isNewTalk, bool isClear)
+    void StartFullScreenTyper(List<TyperRhythm> wordList, bool isNewTalk, bool isClear)
     {
         if (isClear)
         {
@@ -427,20 +422,26 @@ public class UIDialogPanel : UIPanelBase
         {
             Text_FullScreenTalkContent.text += "\n\u3000";
         }
+        string content = "";
+        foreach (var word in wordList)
+        {
+            content += word.Word;
+        }
         _targetContent = Text_FullScreenTalkContent.text + content;
-        _talkCoroutine = StartCoroutine(Typer(Text_FullScreenTalkContent, content));
+        _talkCoroutine = StartCoroutine(Typer(Text_FullScreenTalkContent, wordList));
     }
 
-    IEnumerator Typer(Text text, string content)
+    IEnumerator Typer(Text text, List<TyperRhythm> wordList)
     {
         _isTyping = true;
         int wordCount = 0;
 
-        foreach (var word in content)
+        foreach (var word in wordList)
         {
-            PlayAudioByIndex(wordCount);
-            text.text += word;
-            yield return new WaitForSeconds(_typerSpeed);
+            PlayTalkEventByIndex(wordCount);
+            text.text += word.Word;
+            if (word.WaitTime > 0)
+                yield return new WaitForSeconds(word.WaitTime * _typerSpeed);
             wordCount++;
         }
 
@@ -468,7 +469,7 @@ public class UIDialogPanel : UIPanelBase
         if (_talkCoroutine != null)
             StopCoroutine(_talkCoroutine);
         //Text_TalkContent.text = "";
-        //foreach (var word in _curTalkAsset.WordList)
+        //foreach (var word in _curDialogueAsset.WordList)
         //{
         //    Text_TalkContent.text += word.Word;
         //}
@@ -486,7 +487,7 @@ public class UIDialogPanel : UIPanelBase
     #endregion
 
     #region Name
-    void SetName(string roleName, E_BodyPos pos)
+    void SetName(string roleName, E_NamePos pos)
     {
         _curName = roleName;
         if (string.IsNullOrEmpty(roleName))
@@ -497,252 +498,225 @@ public class UIDialogPanel : UIPanelBase
         }
         switch (pos)
         {
-            case E_BodyPos.None:
+            case E_NamePos.None:
                 Panel_LeftName.DOFade(0, TransitionTime);
                 Panel_RightName.DOFade(0, TransitionTime);
                 break;
-            case E_BodyPos.Left:
-            case E_BodyPos.OnlyLeft:
+            case E_NamePos.Left:
                 Text_LeftName.text = roleName;
                 Panel_LeftName.DOFade(1, TransitionTime);
                 Panel_RightName.DOFade(0, TransitionTime);
                 break;
-            case E_BodyPos.Right:
-            case E_BodyPos.OnlyRight:
+            case E_NamePos.Right:
                 Text_RightName.text = roleName;
                 Panel_LeftName.DOFade(0, TransitionTime);
                 Panel_RightName.DOFade(1, TransitionTime);
-                break;
-            case E_BodyPos.Center:
-            case E_BodyPos.OnlyCenter:
-                Text_RightName.text = roleName;
-                Panel_LeftName.DOFade(0, TransitionTime);
-                Panel_RightName.DOFade(1, TransitionTime);
-                break;
-            case E_BodyPos.Bottom:
-            case E_BodyPos.OnlyBottom:
-                Text_LeftName.text = roleName;
-                Panel_LeftName.DOFade(1, TransitionTime);
-                Panel_RightName.DOFade(0, TransitionTime);
                 break;
         }
     }
     #endregion
 
     #region Body
-    void SetBodySpriteByPosType(E_BodyPos pos, Body body, Sprite face, AnimationClip faceAnimation)
+    public void ChangeBody(E_BodyPos pos,GameObject body,E_BodyShowType showType)
     {
+        SetBodySpriteByPosType(pos, body);
+        ShowBodyByBodyShowType(pos, showType);
+    }
+
+    void SetBodySpriteByPosType(E_BodyPos pos, GameObject body)
+    {
+        if (body == null) return;
         switch (pos)
         {
             case E_BodyPos.Left:
-            case E_BodyPos.OnlyLeft:
-                Image_LeftBody.sprite = body.BodyImage.sprite;
+                Image_LeftBody.sprite = body.GetComponent<Image>().sprite;
+                Animator_LeftBody.runtimeAnimatorController = body.GetComponent<Animator>()?.runtimeAnimatorController;
                 Image_LeftBody.SetNativeSize();
-                Image_LeftFace.sprite = face;
-                Image_LeftFace.SetNativeSize();
-                Image_LeftFace.transform.localPosition = body.FaceImage.transform.localPosition;
-                if (Animation_LeftFace.clip != faceAnimation)
-                    Animation_LeftFace.clip = faceAnimation;
-                Image_LeftFace.gameObject.SetActive(Image_LeftFace.sprite != null);
                 break;
             case E_BodyPos.Right:
-            case E_BodyPos.OnlyRight:
-                Image_RightBody.sprite = body.BodyImage.sprite;
+                Image_RightBody.sprite = body.GetComponent<Image>().sprite;
+                Animator_RightBody.runtimeAnimatorController = body.GetComponent<Animator>()?.runtimeAnimatorController;
                 Image_RightBody.SetNativeSize();
-                Image_RightFace.sprite = face;
-                Image_RightFace.SetNativeSize();
-                Image_RightFace.transform.localPosition = body.FaceImage.transform.localPosition;
-                if (Animation_RightFace.clip != faceAnimation)
-                    Animation_RightFace.clip = faceAnimation;
-                Image_RightFace.gameObject.SetActive(Image_RightFace.sprite != null);
                 break;
             case E_BodyPos.Center:
-            case E_BodyPos.OnlyCenter:
-                Image_CenterBody.sprite = body.BodyImage.sprite;
+                Image_CenterBody.sprite = body.GetComponent<Image>().sprite;
+                Animator_CenterBody.runtimeAnimatorController = body.GetComponent<Animator>()?.runtimeAnimatorController;
                 Image_CenterBody.SetNativeSize();
-                Image_CenterFace.sprite = face;
-                Image_CenterFace.SetNativeSize();
-                Image_CenterFace.transform.localPosition = body.FaceImage.transform.localPosition;
-                if (Animation_CenterFace.clip != faceAnimation)
-                    Animation_CenterFace.clip = faceAnimation;
-                Image_CenterFace.gameObject.SetActive(Image_CenterFace.sprite != null);
                 break;
             case E_BodyPos.Bottom:
-            case E_BodyPos.OnlyBottom:
-                Image_BottomBody.sprite = body.BodyImage.sprite;
+                Image_BottomBody.sprite = body.GetComponent<Image>().sprite;
+                Animator_BottomBody.runtimeAnimatorController = body.GetComponent<Animator>()?.runtimeAnimatorController;
                 Image_BottomBody.SetNativeSize();
                 break;
         }
 
     }
 
-    void ShowBodyByPosType(E_BodyPos bodyPosType)
+    void ShowBodyByBodyShowType(E_BodyPos bodyPosType,E_BodyShowType showType)
     {
         switch (bodyPosType)
         {
-            case E_BodyPos.None:
-                HideBodys();
-                return;
             case E_BodyPos.Left:
-                Image_LeftBody.rectTransform.position = new Vector2(-Image_LeftBody.rectTransform.rect.width, 0);
-                Image_RightBody.color = Image_RightBody.color == Color.clear ? Color.clear : _grayColor;
-                Image_CenterBody.color = Image_CenterBody.color == Color.clear ? Color.clear : _grayColor;
-                ShowBody(false, E_ImagePosType.Bottom, Image_BottomBody);
-                if (Image_LeftBody.color != Color.clear)
+                switch (showType)
                 {
-                    ShowBody(false, E_ImagePosType.Left, Image_LeftBody, () =>
-                     {
-                         Image_LeftBody.DOKill();
-                         ShowBody(true, E_ImagePosType.Left, Image_LeftBody);
-                     });
-                }
-                else
-                {
-                    ShowBody(true, E_ImagePosType.Left, Image_LeftBody);
+                    case E_BodyShowType.Show:
+                        if (Image_LeftBody.color != Color.clear)
+                        {
+                            ShowBody(false, bodyPosType, Image_LeftBody, () =>
+                            {
+                                Image_LeftBody.DOKill();
+                                ShowBody(true, bodyPosType, Image_LeftBody);
+                            });
+                        }
+                        else
+                        {
+                            Image_LeftBody.rectTransform.anchoredPosition = new Vector2(-Image_LeftBody.rectTransform.rect.width, 0);
+                            ShowBody(true, bodyPosType, Image_LeftBody);
+                        }
+                        break;
+                    case E_BodyShowType.Hide:
+                        ShowBody(false, bodyPosType, Image_LeftBody, () =>
+                        {
+                            Image_LeftBody.DOKill();
+                        });
+                        break;
+                    case E_BodyShowType.Highlight:
+                        Image_LeftBody.color = Color.white;
+                        break;
+                    case E_BodyShowType.Gray:
+                        Image_LeftBody.color = Color.gray;
+                        break;
                 }
                 break;
             case E_BodyPos.Right:
-                Image_RightBody.rectTransform.position = new Vector2(Image_RightBody.rectTransform.rect.width, 0);
-                Image_LeftBody.color = Image_LeftBody.color == Color.clear ? Color.clear : _grayColor;
-                Image_CenterBody.color = Image_CenterBody.color == Color.clear ? Color.clear : _grayColor;
-                ShowBody(false, E_ImagePosType.Bottom, Image_BottomBody);
-                if (Image_RightBody.color != Color.clear)
+                switch (showType)
                 {
-                    ShowBody(false, E_ImagePosType.Right, Image_RightBody, () =>
-                    {
-                        Image_RightBody.DOKill();
-                        ShowBody(true, E_ImagePosType.Right, Image_RightBody);
-                    });
-                }
-                else
-                {
-                    ShowBody(true, E_ImagePosType.Right, Image_RightBody);
+                    case E_BodyShowType.Show:
+                        if (Image_RightBody.color != Color.clear)
+                        {
+                            ShowBody(false, bodyPosType, Image_RightBody, () =>
+                            {
+                                Image_RightBody.DOKill();
+                                ShowBody(true, bodyPosType, Image_RightBody);
+                            });
+                        }
+                        else
+                        {
+                            Image_RightBody.rectTransform.anchoredPosition = new Vector2(Image_RightBody.rectTransform.rect.width, 0);
+                            ShowBody(true, bodyPosType, Image_RightBody);
+                        }
+                        break;
+                    case E_BodyShowType.Hide:
+                        ShowBody(false, bodyPosType, Image_RightBody, () =>
+                        {
+                            Image_RightBody.DOKill();
+                        });
+                        break;
+                    case E_BodyShowType.Highlight:
+                        Image_RightBody.color = Color.white;
+                        break;
+                    case E_BodyShowType.Gray:
+                        Image_RightBody.color = Color.gray;
+                        break;
                 }
                 break;
             case E_BodyPos.Center:
-                Image_LeftBody.color = Image_LeftBody.color == Color.clear ? Color.clear : _grayColor;
-                Image_RightBody.color = Image_RightBody.color == Color.clear ? Color.clear : _grayColor;
-                ShowBody(false, E_ImagePosType.Bottom, Image_BottomBody);
-                if (Image_CenterBody.color != Color.clear)
+                switch (showType)
                 {
-                    ShowBody(false, E_ImagePosType.Center, Image_CenterBody, () =>
-                    {
-                        Image_CenterBody.DOKill();
-                        ShowBody(true, E_ImagePosType.Center, Image_CenterBody);
-                    });
-                }
-                else
-                {
-                    ShowBody(true, E_ImagePosType.Center, Image_CenterBody);
+                    case E_BodyShowType.Show:
+                        if (Image_CenterBody.color != Color.clear)
+                        {
+                            ShowBody(false, bodyPosType, Image_CenterBody, () =>
+                            {
+                                Image_CenterBody.DOKill();
+                                ShowBody(true, bodyPosType, Image_CenterBody);
+                            });
+                        }
+                        else
+                        {
+                            ShowBody(true, bodyPosType, Image_CenterBody);
+                        }
+                        break;
+                    case E_BodyShowType.Hide:
+                        ShowBody(false, bodyPosType, Image_CenterBody, () =>
+                        {
+                            Image_CenterBody.DOKill();
+                        });
+                        break;
+                    case E_BodyShowType.Highlight:
+                        Image_CenterBody.color = Color.white;
+                        break;
+                    case E_BodyShowType.Gray:
+                        Image_CenterBody.color = Color.gray;
+                        break;
                 }
                 break;
             case E_BodyPos.Bottom:
-                ShowBody(true, E_ImagePosType.Bottom, Image_BottomBody);
-                break;
-            case E_BodyPos.OnlyLeft:
-                Image_LeftBody.rectTransform.position = new Vector2(-Image_LeftBody.rectTransform.rect.width, 0);
-                if (Image_LeftBody.color != Color.clear)
+                switch (showType)
                 {
-                    ShowBody(false, E_ImagePosType.Left, Image_LeftBody, () =>
-                    {
-                        Image_LeftBody.DOKill();
-                        ShowBody(true, E_ImagePosType.Left, Image_LeftBody);
-                    });
+                    case E_BodyShowType.Show:
+                        ShowBody(true, bodyPosType, Image_BottomBody);
+                        break;
+                    case E_BodyShowType.Hide:
+                        ShowBody(false, bodyPosType, Image_BottomBody);
+                        break;
+                    case E_BodyShowType.Highlight:
+                        Image_BottomBody.color = Color.white;
+                        break;
+                    case E_BodyShowType.Gray:
+                        Image_BottomBody.color = Color.gray;
+                        break;
                 }
-                else
-                {
-                    ShowBody(true, E_ImagePosType.Left, Image_LeftBody);
-                }
-                ShowBody(false, E_ImagePosType.Right, Image_RightBody);
-                ShowBody(false, E_ImagePosType.Center, Image_CenterBody);
-                ShowBody(false, E_ImagePosType.Bottom, Image_BottomBody);
-                break;
-            case E_BodyPos.OnlyRight:
-                Image_RightBody.rectTransform.position = new Vector2(Image_RightBody.rectTransform.rect.width, 0);
-                if (Image_RightBody.color != Color.clear)
-                {
-                    ShowBody(false, E_ImagePosType.Right, Image_RightBody, () =>
-                    {
-                        Image_RightBody.DOKill();
-                        ShowBody(true, E_ImagePosType.Right, Image_RightBody);
-                    });
-                }
-                else
-                {
-                    ShowBody(true, E_ImagePosType.Right, Image_RightBody);
-                }
-                ShowBody(false, E_ImagePosType.Left, Image_LeftBody);
-                ShowBody(false, E_ImagePosType.Center, Image_CenterBody);
-                ShowBody(false, E_ImagePosType.Bottom, Image_BottomBody);
-                break;
-            case E_BodyPos.OnlyCenter:
-                if (Image_CenterBody.color != Color.clear)
-                {
-                    ShowBody(false, E_ImagePosType.Center, Image_CenterBody, () =>
-                    {
-                        Image_CenterBody.DOKill();
-                        ShowBody(true, E_ImagePosType.Center, Image_CenterBody);
-                    });
-                }
-                else
-                {
-                    ShowBody(true, E_ImagePosType.Center, Image_CenterBody);
-                }
-                ShowBody(false, E_ImagePosType.Left, Image_LeftBody);
-                ShowBody(false, E_ImagePosType.Right, Image_RightBody);
-                ShowBody(false, E_ImagePosType.Bottom, Image_BottomBody);
-                break;
-            case E_BodyPos.OnlyBottom:
-                ShowBody(false, E_ImagePosType.Left, Image_LeftBody);
-                ShowBody(false, E_ImagePosType.Right, Image_RightBody);
-                ShowBody(false, E_ImagePosType.Center, Image_CenterBody);
-                ShowBody(true, E_ImagePosType.Bottom, Image_BottomBody);
                 break;
         }
-
     }
 
 
-    void ShowBody(bool value, E_ImagePosType bodyPos, Image bodyImage, Action callback = null)
+    void ShowBody(bool value, E_BodyPos bodyPos, Image bodyImage, Action callback = null)
     {
         _isBodyMoving = true;
         if (value) bodyImage.color = Color.clear;
+        Color targetColor = value ? Color.white : Color.clear;
+        float colorTransitionTime = TransitionTime * (value ? 1 : 2);
         bodyImage.transform.SetAsLastSibling();
         bodyImage.DOKill();
 
         float endValue = 0;
         switch (bodyPos)
         {
-            case E_ImagePosType.Left:
+            case E_BodyPos.Left:
                 endValue = value ? 0 : -bodyImage.rectTransform.rect.width;
                 bodyImage.rectTransform.DOAnchorPosX(endValue, TransitionTime).OnComplete(() =>
                 {
                     _isBodyMoving = false;
+                    bodyImage.DOKill();
+                    bodyImage.color = targetColor;
                     callback?.Invoke();
                 });
-                bodyImage.DOColor(value ? Color.white : Color.clear, TransitionTime * (value ? 1 : 2));
-                Image_LeftFace.DOColor(value ? Color.white : Color.clear, TransitionTime * (value ? 1 : 2));
+                bodyImage.DOColor(targetColor, colorTransitionTime);
                 break;
-            case E_ImagePosType.Right:
+            case E_BodyPos.Right:
                 endValue = value ? 0 : bodyImage.rectTransform.rect.width;
                 bodyImage.rectTransform.DOAnchorPosX(endValue, TransitionTime).OnComplete(() =>
                 {
                     _isBodyMoving = false;
+                    bodyImage.DOKill();
+                    bodyImage.color = targetColor;
                     callback?.Invoke();
                 });
-                bodyImage.DOColor(value ? Color.white : Color.clear, TransitionTime * (value ? 1 : 2));
-                Image_RightFace.DOColor(value ? Color.white : Color.clear, TransitionTime * (value ? 1 : 2));
+                bodyImage.DOColor(targetColor, colorTransitionTime);
                 break;
-            case E_ImagePosType.Center:
-                bodyImage.DOColor(value ? Color.white : Color.clear, TransitionTime).OnComplete(() =>
+            case E_BodyPos.Center:
+                bodyImage.DOColor(targetColor, colorTransitionTime).OnComplete(() =>
                 {
                     _isBodyMoving = false;
+                    bodyImage.DOKill();
+                    bodyImage.color = targetColor;
                     callback?.Invoke();
                 });
-                Image_CenterFace.DOColor(value ? Color.white : Color.clear, TransitionTime * (value ? 1 : 2));
                 break;
-            case E_ImagePosType.Bottom:
-                bodyImage.color = value ? Color.white : Color.clear;
+            case E_BodyPos.Bottom:
+                bodyImage.color = targetColor;
                 _isBodyMoving = false;
                 callback?.Invoke();
                 break;
@@ -752,22 +726,35 @@ public class UIDialogPanel : UIPanelBase
     public void HideBodys()
     {
         if (Image_LeftBody.color != Color.clear)
-            ShowBody(false, E_ImagePosType.Left, Image_LeftBody);
+            ShowBody(false, E_BodyPos.Left, Image_LeftBody);
         if (Image_RightBody.color != Color.clear)
-            ShowBody(false, E_ImagePosType.Right, Image_RightBody);
+            ShowBody(false, E_BodyPos.Right, Image_RightBody);
         if (Image_CenterBody.color != Color.clear)
-            ShowBody(false, E_ImagePosType.Center, Image_CenterBody);
+            ShowBody(false, E_BodyPos.Center, Image_CenterBody);
         if (Image_BottomBody.color != Color.clear)
-            ShowBody(false, E_ImagePosType.Bottom, Image_BottomBody);
+            ShowBody(false, E_BodyPos.Bottom, Image_BottomBody);
     }
 
     #endregion
 
     #region Background
-    void SetBackground(Sprite sprite)
+    GameObject _curBg;
+    void SetBackground(GameObject bg)
     {
-        if (sprite != null)
-            Image_BG.sprite = sprite;
+        if (bg != null)
+        {
+            if (_curBg != null)
+            {
+                if (_curBg.name == bg.gameObject.name)
+                {
+                    return;
+                }
+                GameObject.Destroy(bg);
+            }
+            _curBg = GameObject.Instantiate(bg, Image_BG.transform, false);
+            _curBg.name = bg.name;
+            //Image_BG.sprite = sprite;
+        }
     }
     #endregion
 
@@ -789,21 +776,39 @@ public class UIDialogPanel : UIPanelBase
             AudioManager.Instance.Play(audio, E_AudioType.Dub, false, true);
     }
 
-    Dictionary<int, AudioClip> _audioEventDict = new Dictionary<int, AudioClip>();
-    void SetAudioEventList(List<AudioEvent> audioEventList)
+    Dictionary<int, List<TalkEvent>> _talkEventDelayDict = new Dictionary<int, List<TalkEvent>>();
+    void SetDelayEventList(List<DelayEvent> eventList)
     {
-        _audioEventDict.Clear();
-        foreach (var audioEvent in audioEventList)
+        _talkEventDelayDict.Clear();
+        foreach (var tempEvent in eventList)
         {
-            _audioEventDict.Add(audioEvent.AudioDelay, audioEvent.Audio);
+            TalkEvent tempTalkEvent = null;
+            switch (tempEvent.EventType)
+            {
+                case E_EventType.PlayAudio:
+                    tempTalkEvent = new PlayAudioEvent(tempEvent);
+                    break;
+                case E_EventType.ChangeBody:
+                    tempTalkEvent = new ChangeBodyEvent(tempEvent);
+                    break;
+            }
+            if (!_talkEventDelayDict.TryGetValue(tempEvent.Delay, out List<TalkEvent> tempList))
+            {
+                tempList = new List<TalkEvent>();
+                _talkEventDelayDict.Add(tempEvent.Delay, tempList);
+            }
+            tempList.Add(tempTalkEvent);
         }
     }
 
-    void PlayAudioByIndex(int index)
+    void PlayTalkEventByIndex(int delayIndex)
     {
-        if (_audioEventDict.TryGetValue(index, out AudioClip audio))
+        if (_talkEventDelayDict.TryGetValue(delayIndex, out List<TalkEvent> tempEventList))
         {
-            AudioManager.Instance.Play(audio, E_AudioType.Audio);
+            foreach (var tempEvent in tempEventList)
+            {
+                tempEvent.Play();
+            }
         }
     }
     #endregion

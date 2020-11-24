@@ -12,7 +12,7 @@ public class DialogAsset : ScriptableObject
     public DialogAsset LinkedDialogAsset; //连接的段落
     public List<DialogAsset> SelectDialogAssetList = new List<DialogAsset>();
 
-    public List<TalkAsset> TalkAssetsList = new List<TalkAsset>();
+    public List<DialogueAsset> DialogueAssetList = new List<DialogueAsset>();
 
     public DialogAsset Copy()
     {
@@ -29,10 +29,10 @@ public class DialogAsset : ScriptableObject
 
         asset.SelectDialogAssetList = new List<DialogAsset>(SelectDialogAssetList);
 
-        asset.TalkAssetsList = new List<TalkAsset>();
-        foreach (var talkAsset in TalkAssetsList)
+        asset.DialogueAssetList = new List<DialogueAsset>();
+        foreach (var dialogueAsset in DialogueAssetList)
         {
-            asset.TalkAssetsList.Add(talkAsset.Copy());
+            asset.DialogueAssetList.Add(dialogueAsset.Copy());
         }
         return asset;
     }

@@ -5,14 +5,18 @@ using UnityEditor;
 using System.IO;
 using System.Linq;
 using UnityEditorInternal;
+using PbAudioSystem;
 
 public class DialogEditorWindow : EditorWindow
 {
+    #region Proprety
     int _selectIndex;
-    TalkAsset _curTalkAsset;
+    DialogueAsset _curDialogueAsset;
     string[] _selectToolBarArray = new string[3] { "进入条件", "对话列表", "结束事件" };
     const string _defaultPath = "Assets/GameAssets/DialogAssets/";
+    #endregion
 
+    #region Window
     [MenuItem("工具/对话编辑器")]
     static void OpenWindow()
     {
@@ -20,20 +24,28 @@ public class DialogEditorWindow : EditorWindow
         window.titleContent = new GUIContent("对话编辑");
         window.Show();
     }
+    #endregion
 
     #region Assets
     DialogAsset _copyAsset;
     DialogAsset _curDialogAsset;
 
-    ReorderableList _talkList;
-    ReorderableList _talkAudioEventList;
+    ReorderableList _dialogueList;
+    ReorderableList _talkEventList;
     ReorderableList _talkEndEventList;
     #endregion
 
     private void OnEnable()
     {
         _copyAsset = null;
-        _curTalkAsset = null;
+        _curDialogueAsset = null;
+
+        _wordTextStyle = new GUIStyle();
+        _wordTextStyle.fontSize = 20;
+        _wordTextStyle.fontStyle = FontStyle.Bold;
+        _wordTextStyle.normal.textColor = Color.white;
+        _wordTextStyle.alignment = TextAnchor.MiddleCenter;
+
     }
 
     private void OnGUI()
@@ -74,17 +86,18 @@ public class DialogEditorWindow : EditorWindow
     }
 
     Rect _talkAssetRect;
+    float _talkAssetRectWidth => position.width - 230;
     Vector2 _scrollPos;
     void DrawDialogPanel()
     {
         EditorGUILayout.BeginHorizontal();
         _scrollPos = EditorGUILayout.BeginScrollView(_scrollPos, GUILayout.Width(200));
-        _talkList.DoLayoutList();
+        _dialogueList.DoLayoutList();
         EditorGUILayout.EndScrollView();
         //GUILayout.Box("", GUILayout.Width(position.width - 210), GUILayout.Height(position.height - 30));
-        _talkAssetRect = new Rect(210, 60, position.width - 230, position.height - 70);
+        _talkAssetRect = new Rect(210, 60, _talkAssetRectWidth, position.height - 70);
         GUILayout.BeginArea(_talkAssetRect);
-        DrawTalkAsset(_curTalkAsset);
+        DrawDialogueAsset(_curDialogueAsset);
         GUILayout.EndArea();
         EditorGUILayout.EndHorizontal();
     }
@@ -117,24 +130,24 @@ public class DialogEditorWindow : EditorWindow
     #region DialogPanel
     void InitTalkAsset(DialogAsset asset)
     {
-        _talkList = new ReorderableList(asset.TalkAssetsList, typeof(TalkAsset));
-        _talkList.headerHeight = 0;
-        _talkList.drawElementCallback = (rect, index, isActive, isFocused) =>
+        _dialogueList = new ReorderableList(asset.DialogueAssetList, typeof(DialogueAsset));
+        _dialogueList.headerHeight = 0;
+        _dialogueList.drawElementCallback = (rect, index, isActive, isFocused) =>
         {
-            var talkAsset = asset.TalkAssetsList[index];
-            GUI.Label(rect, asset.TalkAssetsList[index].TalkId.ToString());
+            var talkAsset = asset.DialogueAssetList[index];
+            GUI.Label(rect, asset.DialogueAssetList[index].DialogueId.ToString());
             if (isFocused)
             {
-                _curTalkAsset = talkAsset;
-                InitAudioEventList(_curTalkAsset);
+                _curDialogueAsset = talkAsset;
+                InitAudioEventList(_curDialogueAsset);
             }
         };
-        if (asset.TalkAssetsList != null && asset.TalkAssetsList.Count > 0)
+        if (asset.DialogueAssetList != null && asset.DialogueAssetList.Count > 0)
         {
-            _curTalkAsset = asset.TalkAssetsList[0];
-            InitAudioEventList(_curTalkAsset);
+            _curDialogueAsset = asset.DialogueAssetList[0];
+            InitAudioEventList(_curDialogueAsset);
         }
-        _talkList.onAddCallback = AddTalkAsset;
+        _dialogueList.onAddCallback = AddDialogueAsset;
     }
 
     void InitTalkEndEventList(DialogAsset asset)
@@ -146,7 +159,7 @@ public class DialogEditorWindow : EditorWindow
         };
         _talkEndEventList.drawElementCallback = (rect, index, isActive, isFocused) =>
         {
-            var talkAsset = asset.TalkAssetsList[index];
+            var talkAsset = asset.DialogueAssetList[index];
             asset.SelectDialogAssetList[index] = (DialogAsset)EditorGUI.ObjectField(rect, asset.SelectDialogAssetList[index], typeof(DialogAsset), false);
         };
         _talkEndEventList.onAddCallback = (list) =>
@@ -167,52 +180,95 @@ public class DialogEditorWindow : EditorWindow
     }
 
 
-    void InitAudioEventList(TalkAsset talkAsset)
+    void InitAudioEventList(DialogueAsset dialogueAsset)
     {
-        if (talkAsset == null) return;
-        _talkAudioEventList = new ReorderableList(talkAsset.AudioEventList, typeof(AudioEvent));
-        _talkAudioEventList.headerHeight = 0;
-        _talkAudioEventList.drawElementCallback = (rect, index, isActive, isFocused) =>
+        if (dialogueAsset == null) return;
+        _talkEventList = new ReorderableList(dialogueAsset.DelayEventList, typeof(DelayEvent));
+        _talkEventList.headerHeight = 0;
+        _talkEventList.drawElementCallback = (rect, index, isActive, isFocused) =>
         {
             float posX = rect.position.x;
-            int width = 100;
+            int width = 120;
             int height = 20;
+            EditorGUIUtility.labelWidth = 60;
 
             Rect tempRect = new Rect(posX, rect.position.y, width, height);
-            talkAsset.AudioEventList[index].AudioDelay = EditorGUI.IntField(tempRect, "等待字数", talkAsset.AudioEventList[index].AudioDelay);
-
+            dialogueAsset.DelayEventList[index].Delay = EditorGUI.IntField(tempRect, "等待字数", dialogueAsset.DelayEventList[index].Delay);
             posX += width;
-            width = 200;
             tempRect = new Rect(posX, rect.position.y, width, height);
-            talkAsset.AudioEventList[index].Audio = (AudioClip)EditorGUI.ObjectField(tempRect, "音效", talkAsset.AudioEventList[index].Audio, typeof(AudioClip), false);
+            dialogueAsset.DelayEventList[index].EventType = (E_EventType)EditorGUI.EnumPopup(tempRect, dialogueAsset.DelayEventList[index].EventType);
+
+            switch (dialogueAsset.DelayEventList[index].EventType)
+            {
+                case E_EventType.PlayAudio:
+                    posX += width;
+                    width = 200;
+                    tempRect = new Rect(posX, rect.position.y, width, height);
+                    dialogueAsset.DelayEventList[index].AuidoType = (E_AudioType)EditorGUI.EnumPopup(tempRect, "声音类型", dialogueAsset.DelayEventList[index].AuidoType);
+                    posX += width;
+                    width = 200;
+                    tempRect = new Rect(posX, rect.position.y, width, height);
+                    dialogueAsset.DelayEventList[index].Audio = (AudioClip)EditorGUI.ObjectField(tempRect, "音效", dialogueAsset.DelayEventList[index].Audio, typeof(AudioClip), false);
+                    break;
+                case E_EventType.ChangeBody:
+                    posX += width;
+                    width = 200;
+                    tempRect = new Rect(posX, rect.position.y, width, height);
+                    dialogueAsset.DelayEventList[index].BodyPos = (E_BodyPos)EditorGUI.EnumPopup(tempRect, "立绘位置", dialogueAsset.DelayEventList[index].BodyPos);
+
+                    posX += width;
+                    width = 200;
+                    tempRect = new Rect(posX, rect.position.y, width, height);
+                    dialogueAsset.DelayEventList[index].BodyShowType = (E_BodyShowType)EditorGUI.EnumPopup(tempRect, "显示类型", dialogueAsset.DelayEventList[index].BodyShowType);
+
+                    posX += width;
+                    width = 200;
+                    tempRect = new Rect(posX, rect.position.y, width, height);
+                    EditorGUIUtility.labelWidth = 40;
+                    dialogueAsset.DelayEventList[index].Body = (GameObject)EditorGUI.ObjectField(tempRect, "立绘", dialogueAsset.DelayEventList[index].Body, typeof(GameObject), false);
+
+                    break;
+                default:
+                    break;
+            }
         };
 
     }
 
 
-    void AddTalkAsset(ReorderableList reorderable)
+    void AddDialogueAsset(ReorderableList reorderable)
     {
-        TalkAsset talkAsset = ScriptableObject.CreateInstance<TalkAsset>();
+        DialogueAsset dialogueAsset = null;
         if (reorderable.list.Count > 0)
         {
-            var list = reorderable.list as List<TalkAsset>;
-            talkAsset.TalkId = list.Max(i => i.TalkId) + 1;
+            dialogueAsset = ScriptableObject.CreateInstance<DialogueAsset>();
+            var list = reorderable.list as List<DialogueAsset>;
+            var maxId = list.Max(i => i.DialogueId);
+            var asset = list.Find(i => i.DialogueId == maxId);
+            dialogueAsset = asset.Copy();
+            dialogueAsset.DialogueId = maxId + 1;
         }
         else
         {
-            talkAsset.TalkId = 1;
+            dialogueAsset = ScriptableObject.CreateInstance<DialogueAsset>();
+            dialogueAsset.DialogueId = 1;
         }
-        talkAsset.name = talkAsset.TalkId.ToString();
-        _copyAsset.TalkAssetsList.Add(talkAsset);
+        dialogueAsset.name = dialogueAsset.DialogueId.ToString();
+        _copyAsset.DialogueAssetList.Add(dialogueAsset);
     }
 
     Vector2 _talkScrollPos;
-    Vector2 _audioEventScrollPos;
-    void DrawTalkAsset(TalkAsset asset)
+    Vector2 _eventScrollPos;
+    void DrawDialogueAsset(DialogueAsset asset)
     {
         if (asset == null) return;
         _talkScrollPos = EditorGUILayout.BeginScrollView(_talkScrollPos);
+        DrawDialogueView(asset);
+        EditorGUILayout.EndScrollView();
+    }
 
+    void DrawDialogueView(DialogueAsset asset)
+    {
         EditorGUILayout.BeginHorizontal();
         EditorGUIUtility.labelWidth = 60;
         asset.DialogType = (E_DialogType)EditorGUILayout.EnumPopup("对话框类型", asset.DialogType);
@@ -220,66 +276,104 @@ public class DialogEditorWindow : EditorWindow
         {
             EditorGUIUtility.labelWidth = 90;
             asset.IsNewTalk = EditorGUILayout.Toggle("是否为新段落", asset.IsNewTalk);
-            asset.IsNewPage= EditorGUILayout.Toggle("是否为新的一页", asset.IsNewPage);
+            asset.IsNewPage = EditorGUILayout.Toggle("是否为新的一页", asset.IsNewPage);
         }
-        GUILayout.Label("背景图片");
-        asset.Background = (Sprite)EditorGUILayout.ObjectField(asset.Background, typeof(Sprite), false);
+        GUILayout.Label("背景");
+        asset.Background = (GameObject)EditorGUILayout.ObjectField(asset.Background, typeof(GameObject), false);
         asset.Bgm = (AudioClip)EditorGUILayout.ObjectField("背景音乐", asset.Bgm, typeof(AudioClip), false);
         EditorGUILayout.EndHorizontal();
 
 
-        EditorGUILayout.BeginHorizontal();
         if (asset.DialogType == E_DialogType.Normal)
         {
-            EditorGUILayout.BeginVertical(GUILayout.Width(150));
             EditorGUIUtility.labelWidth = 60;
-            asset.Body = (Body)EditorGUILayout.ObjectField("角色立绘", asset.Body, typeof(Body), false);
-            EditorGUILayout.ObjectField(asset.Body != null ? asset.Body.BodyImage.sprite : null, typeof(Sprite), false, GUILayout.Height(250));
-            EditorGUILayout.EndVertical();
-        }
 
-        EditorGUILayout.BeginVertical();
-
-        if (asset.DialogType == E_DialogType.Normal)
-        {
             EditorGUILayout.BeginHorizontal();
-            EditorGUIUtility.labelWidth = 90;
-            asset.BodyPos = (E_BodyPos)EditorGUILayout.EnumPopup("立绘显示类型", asset.BodyPos);
-            EditorGUIUtility.labelWidth = 60;
-            GUILayout.Label("表情图片");
-            asset.FaceSprite = (Sprite)EditorGUILayout.ObjectField(asset.FaceSprite, typeof(Sprite), false);
-            asset.FaceAnimation = (AnimationClip)EditorGUILayout.ObjectField("表情动画", asset.FaceAnimation, typeof(AnimationClip), false);
-            asset.TalkEvent = (E_TalkEvent)EditorGUILayout.EnumPopup("触发事件", asset.TalkEvent);
+            asset.LeftBody = (GameObject)EditorGUILayout.ObjectField("立绘(左)", asset.LeftBody, typeof(GameObject), false);
+            asset.LeftBodyShowType = (E_BodyShowType)EditorGUILayout.EnumPopup("显示类型", asset.LeftBodyShowType);
             EditorGUILayout.EndHorizontal();
 
             EditorGUILayout.BeginHorizontal();
+            asset.RightBody = (GameObject)EditorGUILayout.ObjectField("立绘(右)", asset.RightBody, typeof(GameObject), false);
+            asset.RightBodyShowType = (E_BodyShowType)EditorGUILayout.EnumPopup("显示类型", asset.RightBodyShowType);
+            EditorGUILayout.EndHorizontal();
+
+            EditorGUILayout.BeginHorizontal();
+            asset.CenterBody = (GameObject)EditorGUILayout.ObjectField("立绘(中)", asset.CenterBody, typeof(GameObject), false);
+            asset.CenterBodyShowType = (E_BodyShowType)EditorGUILayout.EnumPopup("显示类型", asset.CenterBodyShowType);
+            EditorGUILayout.EndHorizontal();
+
+            EditorGUILayout.BeginHorizontal();
+            asset.BottomBody = (GameObject)EditorGUILayout.ObjectField("立绘(下)", asset.BottomBody, typeof(GameObject), false);
+            asset.BottomBodyShowType = (E_BodyShowType)EditorGUILayout.EnumPopup("显示类型", asset.BottomBodyShowType);
             EditorGUILayout.EndHorizontal();
 
             EditorGUILayout.BeginHorizontal();
             EditorGUIUtility.labelWidth = 60;
+            asset.NamePos = (E_NamePos)EditorGUILayout.EnumPopup("名字位置", asset.NamePos);
             asset.TalkerName = EditorGUILayout.TextField("角色名", asset.TalkerName);
-            asset.Dub = (AudioClip)EditorGUILayout.ObjectField("角色配音", asset.Dub, typeof(AudioClip), false);
+
             EditorGUIUtility.labelWidth = 90;
             asset.DubDelay = EditorGUILayout.IntField("配音等待字数", asset.DubDelay);
+            asset.Dub = (AudioClip)EditorGUILayout.ObjectField("角色配音", asset.Dub, typeof(AudioClip), false);
             EditorGUILayout.EndHorizontal();
 
-            GUILayout.Label("音频列表");
-            _audioEventScrollPos = EditorGUILayout.BeginScrollView(_audioEventScrollPos, GUILayout.Height(90));
-            _talkAudioEventList?.DoLayoutList();
+            GUILayout.Label("事件列表");
+            _eventScrollPos = EditorGUILayout.BeginScrollView(_eventScrollPos, GUILayout.Height(90));
+            _talkEventList?.DoLayoutList();
             EditorGUILayout.EndScrollView();
+
         }
 
+
         GUILayout.Label("对话内容");
+        EditorGUILayout.BeginHorizontal();
         asset.Content = EditorGUILayout.TextArea(asset.Content, GUILayout.Height(80));
-
-        EditorGUILayout.EndVertical();
+        if (GUILayout.Button("生成", GUILayout.Width(80), GUILayout.Height(80)))
+        {
+            asset.WordList = new List<TyperRhythm>();
+            foreach (var word in asset.Content)
+            {
+                TyperRhythm typerWord = new TyperRhythm(word, 0.05f);
+                asset.WordList.Add(typerWord);
+            }
+        }
         EditorGUILayout.EndHorizontal();
+        if (asset.WordList.Count > 0)
+        {
+            DrawTyperWordList(asset.WordList);
+        }
 
-        //GUILayout.Label("背景图");
-        //asset.Background = (Sprite)EditorGUILayout.ObjectField(asset.Background, typeof(Texture2D), false);//, GUILayout.Width(192*3), GUILayout.Height(108*3));
 
+    }
 
-        EditorGUILayout.EndScrollView();
+    float _wordWidth = 30;
+    void DrawTyperWordList(List<TyperRhythm> wordList)
+    {
+        int count = 0;
+        EditorGUILayout.BeginHorizontal();
+        foreach (var word in wordList)
+        {
+            count++;
+            if (count*(_wordWidth+7) >= _talkAssetRectWidth)
+            {
+                count = 0;
+                EditorGUILayout.EndHorizontal();
+                EditorGUILayout.BeginHorizontal();
+            }
+            DrawTyperWord(word, _wordWidth);
+        }
+        GUILayout.FlexibleSpace();
+        EditorGUILayout.EndHorizontal();
+    }
+
+    GUIStyle _wordTextStyle;
+    void DrawTyperWord(TyperRhythm word, float width)
+    {
+        EditorGUILayout.BeginVertical();
+        EditorGUILayout.TextField(word.Word.ToString(), _wordTextStyle, GUILayout.Width(width), GUILayout.Height(width));
+        word.WaitTime = EditorGUILayout.FloatField(word.WaitTime, GUILayout.Width(width));
+        EditorGUILayout.EndVertical();
     }
     #endregion
 
@@ -350,11 +444,11 @@ public class DialogEditorWindow : EditorWindow
 
     void SaveDialogAsset(DialogAsset dialogAsset, DialogAsset copyAsset)
     {
-        foreach (var talkAsset in dialogAsset.TalkAssetsList)
+        foreach (var talkAsset in dialogAsset.DialogueAssetList)
         {
             AssetDatabase.RemoveObjectFromAsset(talkAsset);
         }
-        dialogAsset.TalkAssetsList.Clear();
+        dialogAsset.DialogueAssetList.Clear();
 
         dialogAsset.OptionName = copyAsset.OptionName;
         dialogAsset.UnLockType = copyAsset.UnLockType;
@@ -366,12 +460,12 @@ public class DialogEditorWindow : EditorWindow
 
         AssetDatabase.SaveAssets();
         AssetDatabase.Refresh();
-        foreach (var talkAsset in copyAsset.TalkAssetsList)
+        foreach (var talkAsset in copyAsset.DialogueAssetList)
         {
             var tempTalkAsset = talkAsset.Copy();
-            tempTalkAsset.name = tempTalkAsset.TalkId.ToString();
+            tempTalkAsset.name = tempTalkAsset.DialogueId.ToString();
             AssetDatabase.AddObjectToAsset(tempTalkAsset, dialogAsset);
-            dialogAsset.TalkAssetsList.Add(tempTalkAsset);
+            dialogAsset.DialogueAssetList.Add(tempTalkAsset);
         }
 
         EditorUtility.SetDirty(dialogAsset);
@@ -390,9 +484,9 @@ public class DialogEditorWindow : EditorWindow
         if (string.IsNullOrEmpty(assetPath)) return false;
         AssetDatabase.CreateAsset(newAsset, assetPath);
 
-        foreach (var talkAsset in newAsset.TalkAssetsList)
+        foreach (var talkAsset in newAsset.DialogueAssetList)
         {
-            talkAsset.name = talkAsset.TalkId.ToString();
+            talkAsset.name = talkAsset.DialogueId.ToString();
             AssetDatabase.AddObjectToAsset(talkAsset, newAsset);
         }
         AssetDatabase.SaveAssets();

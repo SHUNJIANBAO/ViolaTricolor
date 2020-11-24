@@ -1,5 +1,113 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8926927717282602339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1477e4a55f894b34fb78f5a0eea75bf2, type: 3}
+  m_Name: 4
+  m_EditorClassIdentifier: 
+  DialogueId: 4
+  DialogType: 0
+  IsNewTalk: 0
+  IsNewPage: 0
+  LeftBody: {fileID: 2090996299867685549, guid: 8341bac6158a83843855744e94826006,
+    type: 3}
+  LeftBodyShowType: 1
+  CenterBody: {fileID: 0}
+  CenterBodyShowType: 1
+  RightBody: {fileID: 2090996299867685549, guid: 8341bac6158a83843855744e94826006,
+    type: 3}
+  RightBodyShowType: 1
+  BottomBody: {fileID: 0}
+  BottomBodyShowType: 1
+  Background: {fileID: 7618039307841704438, guid: 64648189cc6ceec4ea8aefac98a1d21b,
+    type: 3}
+  Bgm: {fileID: 0}
+  DubDelay: 0
+  Dub: {fileID: 0}
+  TalkerName: 321
+  NamePos: 1
+  Content: 654654654
+  WordList:
+  - Word: 54
+    WaitTime: 1
+  - Word: 53
+    WaitTime: 1
+  - Word: 52
+    WaitTime: 1
+  - Word: 54
+    WaitTime: 0.05
+  - Word: 53
+    WaitTime: 0.05
+  - Word: 52
+    WaitTime: 0.05
+  - Word: 54
+    WaitTime: 0.05
+  - Word: 53
+    WaitTime: 0.05
+  - Word: 52
+    WaitTime: 0.05
+  DelayEventList: []
+--- !u!114 &-6659411506836995746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1477e4a55f894b34fb78f5a0eea75bf2, type: 3}
+  m_Name: 2
+  m_EditorClassIdentifier: 
+  DialogueId: 2
+  DialogType: 0
+  IsNewTalk: 0
+  IsNewPage: 0
+  LeftBody: {fileID: 2090996299867685549, guid: 8341bac6158a83843855744e94826006,
+    type: 3}
+  LeftBodyShowType: 0
+  CenterBody: {fileID: 0}
+  CenterBodyShowType: 1
+  RightBody: {fileID: 2090996299867685549, guid: 8341bac6158a83843855744e94826006,
+    type: 3}
+  RightBodyShowType: 0
+  BottomBody: {fileID: 0}
+  BottomBodyShowType: 1
+  Background: {fileID: 7618039307841704438, guid: 64648189cc6ceec4ea8aefac98a1d21b,
+    type: 3}
+  Bgm: {fileID: 0}
+  DubDelay: 0
+  Dub: {fileID: 0}
+  TalkerName: 321
+  NamePos: 1
+  Content: 654654654
+  WordList:
+  - Word: 54
+    WaitTime: 1
+  - Word: 53
+    WaitTime: 1
+  - Word: 52
+    WaitTime: 1
+  - Word: 54
+    WaitTime: 0.05
+  - Word: 53
+    WaitTime: 0.05
+  - Word: 52
+    WaitTime: 0.05
+  - Word: 54
+    WaitTime: 0.05
+  - Word: 53
+    WaitTime: 0.05
+  - Word: 52
+    WaitTime: 0.05
+  DelayEventList: []
 --- !u!114 &-4992996647884441688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56,6 +164,59 @@ MonoBehaviour:
   IsNewPage: 0
   AudioEventList: []
   Content: "\u7B2C\u4E8C\u53E5\u7B2C\u4E8C\u53E5\u7B2C\u4E8C\u53E5\u7B2C\u4E8C\u53E5\u7B2C\u4E8C\u53E5\u7B2C\u4E8C\u53E5"
+--- !u!114 &-3118432468477408186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1477e4a55f894b34fb78f5a0eea75bf2, type: 3}
+  m_Name: 6
+  m_EditorClassIdentifier: 
+  DialogueId: 6
+  DialogType: 0
+  IsNewTalk: 0
+  IsNewPage: 0
+  LeftBody: {fileID: 2090996299867685549, guid: 8341bac6158a83843855744e94826006,
+    type: 3}
+  LeftBodyShowType: 1
+  CenterBody: {fileID: 0}
+  CenterBodyShowType: 1
+  RightBody: {fileID: 0}
+  RightBodyShowType: 1
+  BottomBody: {fileID: 0}
+  BottomBodyShowType: 1
+  Background: {fileID: 7618039307841704438, guid: 64648189cc6ceec4ea8aefac98a1d21b,
+    type: 3}
+  Bgm: {fileID: 0}
+  DubDelay: 0
+  Dub: {fileID: 0}
+  TalkerName: 321
+  NamePos: 1
+  Content: 654654654
+  WordList:
+  - Word: 54
+    WaitTime: 1
+  - Word: 53
+    WaitTime: 1
+  - Word: 52
+    WaitTime: 1
+  - Word: 54
+    WaitTime: 0.05
+  - Word: 53
+    WaitTime: 0.05
+  - Word: 52
+    WaitTime: 0.05
+  - Word: 54
+    WaitTime: 0.05
+  - Word: 53
+    WaitTime: 0.05
+  - Word: 52
+    WaitTime: 0.05
+  DelayEventList: []
 --- !u!114 &-2824987440454425900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,16 +293,67 @@ MonoBehaviour:
   SelectDialogAssetList:
   - {fileID: 11400000, guid: 04e2903b2ac87734ca189b564736fbcf, type: 2}
   - {fileID: 11400000, guid: ea2a0989346f09a488fed3fd91df504f, type: 2}
-  TalkAssetsList:
-  - {fileID: -2824987440454425900}
-  - {fileID: -4992996647884441688}
-  - {fileID: -4254679376517863056}
-  - {fileID: 7071271191512078818}
-  - {fileID: 1375079130444089883}
-  - {fileID: 7359235310718460537}
-  - {fileID: -336856421502637641}
-  - {fileID: 7583258860514934683}
-  - {fileID: 3712530396434581293}
+  DialogueAssetList:
+  - {fileID: 7439115437922320502}
+  - {fileID: -6659411506836995746}
+  - {fileID: 672975843480035853}
+  - {fileID: -8926927717282602339}
+  - {fileID: 3567071566670468810}
+  - {fileID: -3118432468477408186}
+--- !u!114 &672975843480035853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1477e4a55f894b34fb78f5a0eea75bf2, type: 3}
+  m_Name: 3
+  m_EditorClassIdentifier: 
+  DialogueId: 3
+  DialogType: 0
+  IsNewTalk: 0
+  IsNewPage: 0
+  LeftBody: {fileID: 2090996299867685549, guid: 8341bac6158a83843855744e94826006,
+    type: 3}
+  LeftBodyShowType: 1
+  CenterBody: {fileID: 0}
+  CenterBodyShowType: 1
+  RightBody: {fileID: 2090996299867685549, guid: 8341bac6158a83843855744e94826006,
+    type: 3}
+  RightBodyShowType: 2
+  BottomBody: {fileID: 0}
+  BottomBodyShowType: 1
+  Background: {fileID: 7618039307841704438, guid: 64648189cc6ceec4ea8aefac98a1d21b,
+    type: 3}
+  Bgm: {fileID: 0}
+  DubDelay: 0
+  Dub: {fileID: 0}
+  TalkerName: 321
+  NamePos: 1
+  Content: 654654654
+  WordList:
+  - Word: 54
+    WaitTime: 1
+  - Word: 53
+    WaitTime: 1
+  - Word: 52
+    WaitTime: 1
+  - Word: 54
+    WaitTime: 0.05
+  - Word: 53
+    WaitTime: 0.05
+  - Word: 52
+    WaitTime: 0.05
+  - Word: 54
+    WaitTime: 0.05
+  - Word: 53
+    WaitTime: 0.05
+  - Word: 52
+    WaitTime: 0.05
+  DelayEventList: []
 --- !u!114 &1375079130444089883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,6 +382,59 @@ MonoBehaviour:
   IsNewPage: 1
   AudioEventList: []
   Content: "\u65B0\u7684\u4E00\u9875\u65B0\u7684\u4E00\u9875\u65B0\u7684\u4E00\u9875\u65B0\u7684\u4E00\u9875\u65B0\u7684\u4E00\u9875\u65B0\u7684\u4E00\u9875"
+--- !u!114 &3567071566670468810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1477e4a55f894b34fb78f5a0eea75bf2, type: 3}
+  m_Name: 5
+  m_EditorClassIdentifier: 
+  DialogueId: 5
+  DialogType: 0
+  IsNewTalk: 0
+  IsNewPage: 0
+  LeftBody: {fileID: 2090996299867685549, guid: 8341bac6158a83843855744e94826006,
+    type: 3}
+  LeftBodyShowType: 1
+  CenterBody: {fileID: 0}
+  CenterBodyShowType: 1
+  RightBody: {fileID: 0}
+  RightBodyShowType: 1
+  BottomBody: {fileID: 0}
+  BottomBodyShowType: 1
+  Background: {fileID: 7618039307841704438, guid: 64648189cc6ceec4ea8aefac98a1d21b,
+    type: 3}
+  Bgm: {fileID: 0}
+  DubDelay: 0
+  Dub: {fileID: 0}
+  TalkerName: 321
+  NamePos: 1
+  Content: 654654654
+  WordList:
+  - Word: 54
+    WaitTime: 1
+  - Word: 53
+    WaitTime: 1
+  - Word: 52
+    WaitTime: 1
+  - Word: 54
+    WaitTime: 0.05
+  - Word: 53
+    WaitTime: 0.05
+  - Word: 52
+    WaitTime: 0.05
+  - Word: 54
+    WaitTime: 0.05
+  - Word: 53
+    WaitTime: 0.05
+  - Word: 52
+    WaitTime: 0.05
+  DelayEventList: []
 --- !u!114 &3712530396434581293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,6 +519,59 @@ MonoBehaviour:
   IsNewPage: 0
   AudioEventList: []
   Content: "\u53D1\u7684\u4EC0\u4E48\u75AF"
+--- !u!114 &7439115437922320502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1477e4a55f894b34fb78f5a0eea75bf2, type: 3}
+  m_Name: 1
+  m_EditorClassIdentifier: 
+  DialogueId: 1
+  DialogType: 0
+  IsNewTalk: 0
+  IsNewPage: 0
+  LeftBody: {fileID: 2090996299867685549, guid: 8341bac6158a83843855744e94826006,
+    type: 3}
+  LeftBodyShowType: 0
+  CenterBody: {fileID: 0}
+  CenterBodyShowType: 1
+  RightBody: {fileID: 0}
+  RightBodyShowType: 1
+  BottomBody: {fileID: 0}
+  BottomBodyShowType: 1
+  Background: {fileID: 7618039307841704438, guid: 64648189cc6ceec4ea8aefac98a1d21b,
+    type: 3}
+  Bgm: {fileID: 0}
+  DubDelay: 0
+  Dub: {fileID: 0}
+  TalkerName: 321
+  NamePos: 1
+  Content: 654654654
+  WordList:
+  - Word: 54
+    WaitTime: 1
+  - Word: 53
+    WaitTime: 1
+  - Word: 52
+    WaitTime: 1
+  - Word: 54
+    WaitTime: 0.05
+  - Word: 53
+    WaitTime: 0.05
+  - Word: 52
+    WaitTime: 0.05
+  - Word: 54
+    WaitTime: 0.05
+  - Word: 53
+    WaitTime: 0.05
+  - Word: 52
+    WaitTime: 0.05
+  DelayEventList: []
 --- !u!114 &7583258860514934683
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -23,6 +23,99 @@ MonoBehaviour:
   TalkEvent: 0
   AudioEventList: []
   Content: sdfsadfsadfsd
+--- !u!114 &-5631380455010713893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1477e4a55f894b34fb78f5a0eea75bf2, type: 3}
+  m_Name: 1
+  m_EditorClassIdentifier: 
+  DialogueId: 1
+  DialogType: 0
+  IsNewTalk: 0
+  IsNewPage: 0
+  LeftBody: {fileID: 6909675011619908789, guid: 75db53d3daad49c419989a1a4c475668,
+    type: 3}
+  CenterBody: {fileID: 0}
+  RightBody: {fileID: 0}
+  BottomBody: {fileID: 0}
+  Background: {fileID: 0}
+  Bgm: {fileID: 0}
+  DubDelay: 56
+  Dub: {fileID: 0}
+  TalkerName: 23
+  NamePos: 0
+  Content: 235125323543245344521352463456
+  WordList:
+  - Word: 50
+    WaitTime: 0.05
+  - Word: 51
+    WaitTime: 0.05
+  - Word: 53
+    WaitTime: 0.05
+  - Word: 49
+    WaitTime: 0.05
+  - Word: 50
+    WaitTime: 0.05
+  - Word: 53
+    WaitTime: 0.05
+  - Word: 51
+    WaitTime: 0.05
+  - Word: 50
+    WaitTime: 0.05
+  - Word: 51
+    WaitTime: 0.05
+  - Word: 53
+    WaitTime: 0.05
+  - Word: 52
+    WaitTime: 0.05
+  - Word: 51
+    WaitTime: 0.05
+  - Word: 50
+    WaitTime: 0.05
+  - Word: 52
+    WaitTime: 0.05
+  - Word: 53
+    WaitTime: 0.05
+  - Word: 51
+    WaitTime: 0.05
+  - Word: 52
+    WaitTime: 0.05
+  - Word: 52
+    WaitTime: 0.05
+  - Word: 53
+    WaitTime: 0.05
+  - Word: 50
+    WaitTime: 0.05
+  - Word: 49
+    WaitTime: 0.05
+  - Word: 51
+    WaitTime: 0.05
+  - Word: 53
+    WaitTime: 0.05
+  - Word: 50
+    WaitTime: 0.05
+  - Word: 52
+    WaitTime: 0.05
+  - Word: 54
+    WaitTime: 0.05
+  - Word: 51
+    WaitTime: 0.05
+  - Word: 52
+    WaitTime: 0.05
+  - Word: 53
+    WaitTime: 0.2
+  - Word: 54
+    WaitTime: 0.05
+  DelayEventList:
+  - Delay: 6
+    EventType: 0
+    Audio: {fileID: 0}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39,6 +132,41 @@ MonoBehaviour:
   UnLockType: 0
   NeedDialogAsset: {fileID: 0}
   TalkEndEventType: 2
+  LinkedDialogAsset: {fileID: 0}
   SelectDialogAssetList: []
-  TalkAssetsList:
-  - {fileID: -7178233571918646061}
+  DialogueAssetList:
+  - {fileID: -5631380455010713893}
+  - {fileID: 8103820281183177679}
+--- !u!114 &8103820281183177679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1477e4a55f894b34fb78f5a0eea75bf2, type: 3}
+  m_Name: 2
+  m_EditorClassIdentifier: 
+  DialogueId: 2
+  DialogType: 0
+  IsNewTalk: 0
+  IsNewPage: 0
+  LeftBody: {fileID: 6909675011619908789, guid: 75db53d3daad49c419989a1a4c475668,
+    type: 3}
+  CenterBody: {fileID: 0}
+  RightBody: {fileID: 0}
+  BottomBody: {fileID: 0}
+  Background: {fileID: 0}
+  Bgm: {fileID: 0}
+  DubDelay: 56
+  Dub: {fileID: 0}
+  TalkerName: 23
+  NamePos: 0
+  Content: 131313
+  WordList: []
+  DelayEventList:
+  - Delay: 5
+    EventType: 0
+    Audio: {fileID: 0}
