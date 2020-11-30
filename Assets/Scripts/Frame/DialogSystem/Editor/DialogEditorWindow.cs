@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using UnityEditorInternal;
 using PbAudioSystem;
+using System.Text.RegularExpressions;
 
 public class DialogEditorWindow : EditorWindow
 {
@@ -332,9 +333,39 @@ public class DialogEditorWindow : EditorWindow
         if (GUILayout.Button("生成", GUILayout.Width(80), GUILayout.Height(80)))
         {
             asset.WordList = new List<TyperRhythm>();
-            foreach (var word in asset.Content)
+
+
+            for (int i = 0; i < asset.Content.Length; i++)
             {
-                TyperRhythm typerWord = new TyperRhythm(word, 0.05f);
+                bool isDirective = false;
+                string word = null;
+                if (asset.Content[i] == '<')
+                {
+                    int count = 0;
+                    for (int j = i; j < asset.Content.Length; j++)
+                    {
+                        word += asset.Content[j];
+                        if (asset.Content[j] == '>')
+                        {
+                            Regex reg = new Regex(@"<color=#\w{6}");
+                            if (word.Equals("<b>") || word.Equals("</b>") || reg.IsMatch(word) || word.Equals("</color>"))
+                            {
+                                isDirective = true;
+                            }
+                            break;
+                        }
+                        count++;
+                    }
+                    if (isDirective)
+                        i += count;
+                    else
+                        word = asset.Content[i].ToString();
+                }
+                else
+                {
+                    word = asset.Content[i].ToString();
+                }
+                TyperRhythm typerWord = new TyperRhythm(word, 0.05f, isDirective);
                 asset.WordList.Add(typerWord);
             }
         }
@@ -354,8 +385,9 @@ public class DialogEditorWindow : EditorWindow
         EditorGUILayout.BeginHorizontal();
         foreach (var word in wordList)
         {
+            if (word.IsDrective) continue;
             count++;
-            if (count*(_wordWidth+7) >= _talkAssetRectWidth)
+            if (count * (_wordWidth + 7) >= _talkAssetRectWidth)
             {
                 count = 0;
                 EditorGUILayout.EndHorizontal();

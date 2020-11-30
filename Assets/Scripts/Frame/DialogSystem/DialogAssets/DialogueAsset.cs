@@ -97,11 +97,13 @@ public class DelayEvent
 [System.Serializable]
 public class TyperRhythm
 {
-    public char Word;
+    public string Word;
     public float WaitTime;
-    public TyperRhythm(char word, float waitTime)
+    public bool IsDrective;
+    public TyperRhythm(string word, float waitTime,bool isDrective)
     {
         Word = word;
         WaitTime = waitTime;
+        IsDrective = isDrective;
     }
 }

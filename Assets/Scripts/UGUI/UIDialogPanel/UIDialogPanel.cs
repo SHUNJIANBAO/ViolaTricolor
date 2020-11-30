@@ -14,6 +14,8 @@ public class UIDialogPanel : UIPanelBase
     public float TransitionTime = 0.5f;
     float _typerSpeed;
 
+    bool _isSkip;
+    bool _isSkiping;
     bool _isTyping;
     bool _isBodyMoving;
     public bool IsTalking
@@ -26,9 +28,6 @@ public class UIDialogPanel : UIPanelBase
     {
         get => _isShowDialog;
     }
-
-    string _curName;
-    Color _grayColor;
 
     Image Panel_TalkContent;
     DialogueAsset _curDialogueAsset;
@@ -111,8 +110,6 @@ public class UIDialogPanel : UIPanelBase
         SetDialogAlpha();
         SetShowShortcutKey();
 
-        _grayColor = Color.gray;// = new Color(100 / 255f, 100 / 255f, 100 / 255f, 1);
-
         //Image_CenterBody.rectTransform.position = Image_CenterBody.rectTransform.position + Vector3.down * Image_CenterBody.rectTransform.rect.height;
         Panel_LeftName.alpha = 0;
         Panel_RightName.alpha = 0;
@@ -141,7 +138,6 @@ public class UIDialogPanel : UIPanelBase
         {
             var asset = objs[0] as DialogueAsset;
 
-            _curName = asset.TalkerName;
             //SetMessageByAsset(asset);
             //ShowBodyByPosType(asset.BodyPos);
             ShowDialog();
@@ -314,7 +310,7 @@ public class UIDialogPanel : UIPanelBase
     {
         if (_isTyping)
         {
-            StopTyper(_curDialogueAsset.DialogType);
+            StopTyper();
             return false;
         }
         if (_isBodyMoving)
@@ -392,14 +388,14 @@ public class UIDialogPanel : UIPanelBase
                 break;
         }
         if (_isTyping)
-            StopTyper(type);
+            StopTyper();
 
     }
 
     #endregion
 
     #region Typer
-    string _targetContent;
+    //string _targetContent;
     void StartTyper(List<TyperRhythm> wordList, string startStr = "")
     {
         string content = "";
@@ -407,7 +403,7 @@ public class UIDialogPanel : UIPanelBase
         {
             content += word.Word;
         }
-        _targetContent = startStr + content;
+        //_targetContent = startStr + content;
         Text_TalkContent.text = startStr;
         _talkCoroutine = StartCoroutine(Typer(Text_TalkContent, wordList));
     }
@@ -427,7 +423,7 @@ public class UIDialogPanel : UIPanelBase
         {
             content += word.Word;
         }
-        _targetContent = Text_FullScreenTalkContent.text + content;
+        //_targetContent = Text_FullScreenTalkContent.text + content;
         _talkCoroutine = StartCoroutine(Typer(Text_FullScreenTalkContent, wordList));
     }
 
@@ -440,56 +436,40 @@ public class UIDialogPanel : UIPanelBase
         {
             PlayTalkEventByIndex(wordCount);
             text.text += word.Word;
-            if (word.WaitTime > 0)
+            if (word.WaitTime > 0 && !_isSkip && !_isSkiping&& !word.IsDrective)
                 yield return new WaitForSeconds(word.WaitTime * _typerSpeed);
             wordCount++;
         }
-
+        _isSkip = false;
         _isTyping = false;
     }
 
-
-    //IEnumerator Typer(List<TyperRhythm> wordList)
-    //{
-    //    _isTyping = true;
-    //    Text_TalkContent.text = "";
-
-    //    foreach (var word in wordList)
-    //    {
-    //        Text_TalkContent.text += word.Word;
-    //        if (word.WaitTime > 0).
-    //            yield return new WaitForSeconds(word.WaitTime);
-    //    }
-
-    //    _isTyping = false;
-    //}
-
-    void StopTyper(E_DialogType type)
+    void StopTyper()
     {
-        if (_talkCoroutine != null)
-            StopCoroutine(_talkCoroutine);
-        //Text_TalkContent.text = "";
+        _isSkip = true;
+        //if (_talkCoroutine != null)
+        //    StopCoroutine(_talkCoroutine);//Text_TalkContent.text = "";
         //foreach (var word in _curDialogueAsset.WordList)
         //{
         //    Text_TalkContent.text += word.Word;
         //}
-        switch (type)
-        {
-            case E_DialogType.Normal:
-                Text_TalkContent.text = _targetContent;
-                break;
-            case E_DialogType.FullScreen:
-                Text_FullScreenTalkContent.text = _targetContent;
-                break;
-        }
-        _isTyping = false;
+        //switch (type)
+        //{
+        //    case E_DialogType.Normal:
+        //        Text_TalkContent.text = _targetContent;
+        //        break;
+        //    case E_DialogType.FullScreen:
+
+        //        Text_FullScreenTalkContent.text = _targetContent;
+        //        break;
+        //}
+        //_isTyping = false;
     }
     #endregion
 
     #region Name
     void SetName(string roleName, E_NamePos pos)
     {
-        _curName = roleName;
         if (string.IsNullOrEmpty(roleName))
         {
             Panel_LeftName.DOFade(0, TransitionTime);
@@ -517,7 +497,7 @@ public class UIDialogPanel : UIPanelBase
     #endregion
 
     #region Body
-    public void ChangeBody(E_BodyPos pos,GameObject body,E_BodyShowType showType)
+    public void ChangeBody(E_BodyPos pos, GameObject body, E_BodyShowType showType)
     {
         SetBodySpriteByPosType(pos, body);
         ShowBodyByBodyShowType(pos, showType);
@@ -552,7 +532,7 @@ public class UIDialogPanel : UIPanelBase
 
     }
 
-    void ShowBodyByBodyShowType(E_BodyPos bodyPosType,E_BodyShowType showType)
+    void ShowBodyByBodyShowType(E_BodyPos bodyPosType, E_BodyShowType showType)
     {
         switch (bodyPosType)
         {
