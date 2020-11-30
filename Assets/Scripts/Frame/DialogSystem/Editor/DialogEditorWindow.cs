@@ -347,8 +347,8 @@ public class DialogEditorWindow : EditorWindow
                         word += asset.Content[j];
                         if (asset.Content[j] == '>')
                         {
-                            Regex reg = new Regex(@"<color=#\w{6}");
-                            if (word.Equals("<b>") || word.Equals("</b>") || reg.IsMatch(word) || word.Equals("</color>"))
+                            Regex reg = new Regex(@"<c=\w{6}");
+                            if (word.Equals("<b>") || word.Equals("</b>") || reg.IsMatch(word) || word.Equals("</c>"))
                             {
                                 isDirective = true;
                             }

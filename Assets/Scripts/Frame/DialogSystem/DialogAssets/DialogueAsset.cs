@@ -100,10 +100,16 @@ public class TyperRhythm
     public string Word;
     public float WaitTime;
     public bool IsDrective;
-    public TyperRhythm(string word, float waitTime,bool isDrective)
+    public TyperRhythm(string word, float waitTime, bool isDrective)
     {
         Word = word;
         WaitTime = waitTime;
         IsDrective = isDrective;
+        if (isDrective)
+        {
+            Word=Word.Replace("<c=", "<color=#");
+            Word=Word.Replace("</c>", "</color>");
+        }
+
     }
 }

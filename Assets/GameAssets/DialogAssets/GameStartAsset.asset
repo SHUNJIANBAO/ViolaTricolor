@@ -1,1329 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8855332327918764045
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1477e4a55f894b34fb78f5a0eea75bf2, type: 3}
-  m_Name: 11
-  m_EditorClassIdentifier: 
-  DialogueId: 11
-  DialogType: 0
-  IsNewTalk: 0
-  IsNewPage: 0
-  LeftBody: {fileID: 0}
-  LeftBodyShowType: 1
-  CenterBody: {fileID: 0}
-  CenterBodyShowType: 1
-  RightBody: {fileID: 0}
-  RightBodyShowType: 1
-  BottomBody: {fileID: 0}
-  BottomBodyShowType: 1
-  Background: {fileID: 3308985845883351212, guid: f06b32b21f4d72446af58e864a21d1bb,
-    type: 3}
-  Bgm: {fileID: 0}
-  DubDelay: 0
-  Dub: {fileID: 0}
-  TalkerName: 
-  NamePos: 0
-  Content: "\uF06C\u4E00\u65C1\u7684\u7537\u5B50\u94FA\u5F00\u5377\u5B97\uFF0C\u4F3C\u4E4E\u5728\u505A\u7B14\u5F55\u2026\u2026\u610F\u5916\u8FD8\u86EE\u6B63\u5F0F\u7684\u3002"
-  WordList:
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  DelayEventList: []
---- !u!114 &-8825891016548715307
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1477e4a55f894b34fb78f5a0eea75bf2, type: 3}
-  m_Name: 5
-  m_EditorClassIdentifier: 
-  DialogueId: 5
-  DialogType: 0
-  IsNewTalk: 0
-  IsNewPage: 0
-  LeftBody: {fileID: 0}
-  LeftBodyShowType: 1
-  CenterBody: {fileID: 7154556819876718590, guid: de6365d05c9644d4abee4266c6541dc9,
-    type: 3}
-  CenterBodyShowType: 1
-  RightBody: {fileID: 0}
-  RightBodyShowType: 1
-  BottomBody: {fileID: 0}
-  BottomBodyShowType: 1
-  Background: {fileID: 3308985845883351212, guid: f06b32b21f4d72446af58e864a21d1bb,
-    type: 3}
-  Bgm: {fileID: 0}
-  DubDelay: 0
-  Dub: {fileID: 0}
-  TalkerName: 
-  NamePos: 0
-  Content: "\uF06C\u88AB\u770B\u62BC\u7684\u8FD9\u6BB5\u65F6\u95F4\u91CC\uFF0C\u6211\u4E0D\u65AD\u5730\u5728\u8111\u4E2D\u601D\u7D22\u7740\u8BE5\u5982\u4F55\u5BF9\u7B54\u3002"
-  WordList:
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  DelayEventList: []
---- !u!114 &-7379203816911020062
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1477e4a55f894b34fb78f5a0eea75bf2, type: 3}
-  m_Name: 14
-  m_EditorClassIdentifier: 
-  DialogueId: 14
-  DialogType: 0
-  IsNewTalk: 0
-  IsNewPage: 0
-  LeftBody: {fileID: 0}
-  LeftBodyShowType: 1
-  CenterBody: {fileID: 5341689530235567728, guid: 73af1b03a06c0614180faee2b38e7f9e,
-    type: 3}
-  CenterBodyShowType: 2
-  RightBody: {fileID: 0}
-  RightBodyShowType: 1
-  BottomBody: {fileID: 0}
-  BottomBodyShowType: 1
-  Background: {fileID: 3308985845883351212, guid: f06b32b21f4d72446af58e864a21d1bb,
-    type: 3}
-  Bgm: {fileID: 0}
-  DubDelay: 0
-  Dub: {fileID: 0}
-  TalkerName: "\u59B9\u7EA2"
-  NamePos: 1
-  Content: "\uF06C\u201C\u59D3\u540D\uFF1F\u201D"
-  WordList:
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  DelayEventList: []
---- !u!114 &-7353783448814185457
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1477e4a55f894b34fb78f5a0eea75bf2, type: 3}
-  m_Name: 29
-  m_EditorClassIdentifier: 
-  DialogueId: 29
-  DialogType: 0
-  IsNewTalk: 0
-  IsNewPage: 0
-  LeftBody: {fileID: 0}
-  LeftBodyShowType: 1
-  CenterBody: {fileID: 5341689530235567728, guid: 73af1b03a06c0614180faee2b38e7f9e,
-    type: 3}
-  CenterBodyShowType: 2
-  RightBody: {fileID: 0}
-  RightBodyShowType: 1
-  BottomBody: {fileID: 0}
-  BottomBodyShowType: 1
-  Background: {fileID: 3308985845883351212, guid: f06b32b21f4d72446af58e864a21d1bb,
-    type: 3}
-  Bgm: {fileID: 0}
-  DubDelay: 0
-  Dub: {fileID: 0}
-  TalkerName: 
-  NamePos: 0
-  Content: "\uF06C\u662F\u8FD9\u4E2A\u504F\u50FB\u7684\u6751\u5B50\u66F4\u6CE8\u91CD\u6280\u672F\u800C\u975E\u6587\u5316\u5417\uFF1F\u5982\u679C\u662F\u8FD9\u6837\uFF0C\u6211\u5012\u4E5F\u6CA1\u6709\u60F3\u548C\u5979\u7406\u8BBA\u4E00\u756A\u7684\u6253\u7B97\u3002"
-  WordList:
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  DelayEventList: []
---- !u!114 &-7269985909351456668
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1477e4a55f894b34fb78f5a0eea75bf2, type: 3}
-  m_Name: 20
-  m_EditorClassIdentifier: 
-  DialogueId: 20
-  DialogType: 0
-  IsNewTalk: 0
-  IsNewPage: 0
-  LeftBody: {fileID: 0}
-  LeftBodyShowType: 1
-  CenterBody: {fileID: 5341689530235567728, guid: 73af1b03a06c0614180faee2b38e7f9e,
-    type: 3}
-  CenterBodyShowType: 2
-  RightBody: {fileID: 0}
-  RightBodyShowType: 1
-  BottomBody: {fileID: 0}
-  BottomBodyShowType: 1
-  Background: {fileID: 3308985845883351212, guid: f06b32b21f4d72446af58e864a21d1bb,
-    type: 3}
-  Bgm: {fileID: 0}
-  DubDelay: 0
-  Dub: {fileID: 0}
-  TalkerName: 
-  NamePos: 0
-  Content: "\u5BF9\u65B9\u7684\u773C\u795E\u770B\u8D77\u6765\u9887\u4E3A\u53E4\u602A\u2026\u2026\u4ED4\u7EC6\u60F3\u60F3\uFF0C\u5728\u5F53\u5B66\u751F\uFF0C\u4E5F\u5C31\u610F\u5473\u7740\u8FD8\u6CA1\u6709\u5DE5\u4F5C\u3001\u662F\u8FD9\u4E2A\u610F\u601D\u5427\uFF1F"
-  WordList:
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  DelayEventList: []
---- !u!114 &-6735213441056879490
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1477e4a55f894b34fb78f5a0eea75bf2, type: 3}
-  m_Name: 31
-  m_EditorClassIdentifier: 
-  DialogueId: 31
-  DialogType: 0
-  IsNewTalk: 0
-  IsNewPage: 0
-  LeftBody: {fileID: 0}
-  LeftBodyShowType: 1
-  CenterBody: {fileID: 0}
-  CenterBodyShowType: 1
-  RightBody: {fileID: 0}
-  RightBodyShowType: 1
-  BottomBody: {fileID: 0}
-  BottomBodyShowType: 1
-  Background: {fileID: 3308985845883351212, guid: f06b32b21f4d72446af58e864a21d1bb,
-    type: 3}
-  Bgm: {fileID: 0}
-  DubDelay: 0
-  Dub: {fileID: 0}
-  TalkerName: "\u6797\u539F"
-  NamePos: 0
-  Content: "\uF06C\u6211\u4E0A\u524D\u4E00\u6B65\uFF0C\u6253\u7B97\u62FF\u8FC7\u653E\u5728\u684C\u5B50\u4E0A\u7684\u767B\u5C71\u5305\u3002"
-  WordList:
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  DelayEventList: []
---- !u!114 &-6515095835569604772
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1477e4a55f894b34fb78f5a0eea75bf2, type: 3}
-  m_Name: 22
-  m_EditorClassIdentifier: 
-  DialogueId: 22
-  DialogType: 0
-  IsNewTalk: 0
-  IsNewPage: 0
-  LeftBody: {fileID: 0}
-  LeftBodyShowType: 1
-  CenterBody: {fileID: 5341689530235567728, guid: 73af1b03a06c0614180faee2b38e7f9e,
-    type: 3}
-  CenterBodyShowType: 3
-  RightBody: {fileID: 0}
-  RightBodyShowType: 1
-  BottomBody: {fileID: 0}
-  BottomBodyShowType: 1
-  Background: {fileID: 3308985845883351212, guid: f06b32b21f4d72446af58e864a21d1bb,
-    type: 3}
-  Bgm: {fileID: 0}
-  DubDelay: 0
-  Dub: {fileID: 0}
-  TalkerName: "\u6797\u539F"
-  NamePos: 1
-  Content: "\u201C\u5443\uFF0C\u6216\u8BB8\u89E3\u91CA\u4E3A\u300C\u5B66\u5F92\u300D\u66F4\u9760\u8C31\u70B9\u3002\u201D"
-  WordList:
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  DelayEventList: []
---- !u!114 &-6093931240025811189
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1477e4a55f894b34fb78f5a0eea75bf2, type: 3}
-  m_Name: 27
-  m_EditorClassIdentifier: 
-  DialogueId: 27
-  DialogType: 0
-  IsNewTalk: 0
-  IsNewPage: 0
-  LeftBody: {fileID: 0}
-  LeftBodyShowType: 1
-  CenterBody: {fileID: 5341689530235567728, guid: 73af1b03a06c0614180faee2b38e7f9e,
-    type: 3}
-  CenterBodyShowType: 2
-  RightBody: {fileID: 0}
-  RightBodyShowType: 1
-  BottomBody: {fileID: 0}
-  BottomBodyShowType: 1
-  Background: {fileID: 3308985845883351212, guid: f06b32b21f4d72446af58e864a21d1bb,
-    type: 3}
-  Bgm: {fileID: 0}
-  DubDelay: 0
-  Dub: {fileID: 0}
-  TalkerName: 
-  NamePos: 0
-  Content: "\uF06C\u603B\u4E4B\uFF0C\u80FD\u591F\u987A\u5229\u7406\u89E3\u771F\u662F\u5E2E\u5927\u5FD9\u4E86\u3002"
-  WordList:
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  DelayEventList: []
---- !u!114 &-5847571280785408528
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1477e4a55f894b34fb78f5a0eea75bf2, type: 3}
-  m_Name: 21
-  m_EditorClassIdentifier: 
-  DialogueId: 21
-  DialogType: 0
-  IsNewTalk: 0
-  IsNewPage: 0
-  LeftBody: {fileID: 0}
-  LeftBodyShowType: 1
-  CenterBody: {fileID: 5341689530235567728, guid: 73af1b03a06c0614180faee2b38e7f9e,
-    type: 3}
-  CenterBodyShowType: 2
-  RightBody: {fileID: 0}
-  RightBodyShowType: 1
-  BottomBody: {fileID: 0}
-  BottomBodyShowType: 1
-  Background: {fileID: 3308985845883351212, guid: f06b32b21f4d72446af58e864a21d1bb,
-    type: 3}
-  Bgm: {fileID: 0}
-  DubDelay: 0
-  Dub: {fileID: 0}
-  TalkerName: 
-  NamePos: 0
-  Content: "\u653E\u5728\u4E61\u4E0B\uFF0C\u4EE5\u6211\u73B0\u5728\u7684\u5E74\u9F84\uFF0C\u80AF\u5B9A\u88AB\u5F53\u505A\u662F\u5403\u95F2\u996D\u7684\u4E86\u3002"
-  WordList:
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  DelayEventList: []
---- !u!114 &-4992996647884441688
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6b35c27257741442ab93e8657cbf08a, type: 3}
-  m_Name: 2
-  m_EditorClassIdentifier: 
-  TalkId: 2
-  Body: {fileID: 3824271601306615221, guid: 70b91d118afc59341aca40f2220ac033, type: 3}
-  FaceSprite: {fileID: 0}
-  FaceAnimation: {fileID: 0}
-  Background: {fileID: 0}
-  Bgm: {fileID: 0}
-  DubDelay: 0
-  Dub: {fileID: 8300000, guid: 910115caa09f72c42b82a34b08398913, type: 3}
-  TalkerName: "\u6797\u539F"
-  BodyPos: 2
-  TalkEvent: 0
-  DialogType: 1
-  IsNewTalk: 1
-  IsNewPage: 0
-  AudioEventList: []
-  Content: "\u5168\u5C4F\u5BF9\u8BDD\u6846\u7684\u5F00\u5934\u5168\u5C4F\u5BF9\u8BDD\u6846\u7684\u5F00\u5934\u5168\u5C4F\u5BF9\u8BDD\u6846\u7684\u5F00\u5934\u5168\u5C4F\u5BF9\u8BDD\u6846\u7684\u5F00\u5934\uFF0C"
---- !u!114 &-4686301783635489431
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1477e4a55f894b34fb78f5a0eea75bf2, type: 3}
-  m_Name: 25
-  m_EditorClassIdentifier: 
-  DialogueId: 25
-  DialogType: 0
-  IsNewTalk: 0
-  IsNewPage: 0
-  LeftBody: {fileID: 0}
-  LeftBodyShowType: 1
-  CenterBody: {fileID: 5341689530235567728, guid: 73af1b03a06c0614180faee2b38e7f9e,
-    type: 3}
-  CenterBodyShowType: 2
-  RightBody: {fileID: 0}
-  RightBodyShowType: 1
-  BottomBody: {fileID: 0}
-  BottomBodyShowType: 1
-  Background: {fileID: 3308985845883351212, guid: f06b32b21f4d72446af58e864a21d1bb,
-    type: 3}
-  Bgm: {fileID: 0}
-  DubDelay: 0
-  Dub: {fileID: 0}
-  TalkerName: "\u59B9\u7EA2"
-  NamePos: 1
-  Content: "\uF06C\u201C\u6211\u660E\u767D\u4E86\u3002\u201D"
-  WordList:
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  DelayEventList: []
---- !u!114 &-4254679376517863056
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6b35c27257741442ab93e8657cbf08a, type: 3}
-  m_Name: 7
-  m_EditorClassIdentifier: 
-  TalkId: 7
-  Body: {fileID: 0}
-  FaceSprite: {fileID: 0}
-  FaceAnimation: {fileID: 0}
-  Background: {fileID: 0}
-  Bgm: {fileID: 0}
-  DubDelay: 0
-  Dub: {fileID: 0}
-  TalkerName: 
-  BodyPos: 0
-  TalkEvent: 0
-  DialogType: 1
-  IsNewTalk: 0
-  IsNewPage: 0
-  AudioEventList: []
-  Content: "\u7B2C\u4E8C\u53E5\u7B2C\u4E8C\u53E5\u7B2C\u4E8C\u53E5\u7B2C\u4E8C\u53E5\u7B2C\u4E8C\u53E5\u7B2C\u4E8C\u53E5"
---- !u!114 &-3884115145753455368
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1477e4a55f894b34fb78f5a0eea75bf2, type: 3}
-  m_Name: 19
-  m_EditorClassIdentifier: 
-  DialogueId: 19
-  DialogType: 0
-  IsNewTalk: 0
-  IsNewPage: 0
-  LeftBody: {fileID: 0}
-  LeftBodyShowType: 1
-  CenterBody: {fileID: 5341689530235567728, guid: 73af1b03a06c0614180faee2b38e7f9e,
-    type: 3}
-  CenterBodyShowType: 3
-  RightBody: {fileID: 0}
-  RightBodyShowType: 1
-  BottomBody: {fileID: 0}
-  BottomBodyShowType: 1
-  Background: {fileID: 3308985845883351212, guid: f06b32b21f4d72446af58e864a21d1bb,
-    type: 3}
-  Bgm: {fileID: 0}
-  DubDelay: 0
-  Dub: {fileID: 0}
-  TalkerName: "\u6797\u539F"
-  NamePos: 1
-  Content: "\u201C\u2026\u2026\u60A8\u662F\u4E0D\u7406\u89E3\u300C\u5B66\u751F\u300D\u7684\u610F\u601D\u5417\uFF1F\u201D"
-  WordList:
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  DelayEventList: []
---- !u!114 &-3560976742923553637
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1477e4a55f894b34fb78f5a0eea75bf2, type: 3}
-  m_Name: 26
-  m_EditorClassIdentifier: 
-  DialogueId: 26
-  DialogType: 0
-  IsNewTalk: 0
-  IsNewPage: 0
-  LeftBody: {fileID: 0}
-  LeftBodyShowType: 1
-  CenterBody: {fileID: 5341689530235567728, guid: 73af1b03a06c0614180faee2b38e7f9e,
-    type: 3}
-  CenterBodyShowType: 2
-  RightBody: {fileID: 0}
-  RightBodyShowType: 1
-  BottomBody: {fileID: 0}
-  BottomBodyShowType: 1
-  Background: {fileID: 3308985845883351212, guid: f06b32b21f4d72446af58e864a21d1bb,
-    type: 3}
-  Bgm: {fileID: 0}
-  DubDelay: 0
-  Dub: {fileID: 0}
-  TalkerName: 
-  NamePos: 0
-  Content: "\uF06C\u59B9\u7EA2\u5C0F\u59D0\u82E5\u6709\u6240\u601D\uFF0C\u6700\u540E\u7EC8\u4E8E\u70B9\u4E86\u70B9\u5934\uFF0C\u4E5F\u4E0D\u77E5\u662F\u5426\u63A5\u53D7\u4E86\u6211\u7684\u8BF4\u6CD5\u3002"
-  WordList:
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  DelayEventList: []
---- !u!114 &-3313043388845557636
+--- !u!114 &-9212824638315803182
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1502,7 +179,7 @@ MonoBehaviour:
     WaitTime: 0.05
     IsDrective: 0
   DelayEventList: []
---- !u!114 &-3053416761137818374
+--- !u!114 &-8046401752419168572
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1512,9 +189,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1477e4a55f894b34fb78f5a0eea75bf2, type: 3}
-  m_Name: 8
+  m_Name: 29
   m_EditorClassIdentifier: 
-  DialogueId: 8
+  DialogueId: 29
   DialogType: 0
   IsNewTalk: 0
   IsNewPage: 0
@@ -1534,7 +211,7 @@ MonoBehaviour:
   Dub: {fileID: 0}
   TalkerName: 
   NamePos: 0
-  Content: "\uF06C\u867D\u7136\u662F\u5E74\u8F7B\u5C11\u5973\uFF0C\u4F46\u767D\u53D1\u8D64\u773C\u7684\u6837\u5B50\u7ADF\u4E5F\u6709\u4E9B\u538B\u8FEB\u529B\u3002"
+  Content: "\uF06C\u662F\u8FD9\u4E2A\u504F\u50FB\u7684\u6751\u5B50\u66F4\u6CE8\u91CD\u6280\u672F\u800C\u975E\u6587\u5316\u5417\uFF1F\u5982\u679C\u662F\u8FD9\u6837\uFF0C\u6211\u5012\u4E5F\u6CA1\u6709\u60F3\u548C\u5979\u7406\u8BBA\u4E00\u756A\u7684\u6253\u7B97\u3002"
   WordList:
   - Word: 
     WaitTime: 0.05
@@ -1611,8 +288,653 @@ MonoBehaviour:
   - Word: 
     WaitTime: 0.05
     IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
   DelayEventList: []
---- !u!114 &-2824987440454425900
+--- !u!114 &-7415354428727812332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1477e4a55f894b34fb78f5a0eea75bf2, type: 3}
+  m_Name: 18
+  m_EditorClassIdentifier: 
+  DialogueId: 18
+  DialogType: 0
+  IsNewTalk: 0
+  IsNewPage: 0
+  LeftBody: {fileID: 0}
+  LeftBodyShowType: 1
+  CenterBody: {fileID: 5341689530235567728, guid: 73af1b03a06c0614180faee2b38e7f9e,
+    type: 3}
+  CenterBodyShowType: 2
+  RightBody: {fileID: 0}
+  RightBodyShowType: 1
+  BottomBody: {fileID: 0}
+  BottomBodyShowType: 1
+  Background: {fileID: 3308985845883351212, guid: f06b32b21f4d72446af58e864a21d1bb,
+    type: 3}
+  Bgm: {fileID: 0}
+  DubDelay: 0
+  Dub: {fileID: 0}
+  TalkerName: "\u59B9\u7EA2"
+  NamePos: 1
+  Content: "\uF06C\u201C\u90A3\u662F\u4EC0\u4E48\uFF1F\u201D"
+  WordList:
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  DelayEventList: []
+--- !u!114 &-7242231186429175353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1477e4a55f894b34fb78f5a0eea75bf2, type: 3}
+  m_Name: 25
+  m_EditorClassIdentifier: 
+  DialogueId: 25
+  DialogType: 0
+  IsNewTalk: 0
+  IsNewPage: 0
+  LeftBody: {fileID: 0}
+  LeftBodyShowType: 1
+  CenterBody: {fileID: 5341689530235567728, guid: 73af1b03a06c0614180faee2b38e7f9e,
+    type: 3}
+  CenterBodyShowType: 2
+  RightBody: {fileID: 0}
+  RightBodyShowType: 1
+  BottomBody: {fileID: 0}
+  BottomBodyShowType: 1
+  Background: {fileID: 3308985845883351212, guid: f06b32b21f4d72446af58e864a21d1bb,
+    type: 3}
+  Bgm: {fileID: 0}
+  DubDelay: 0
+  Dub: {fileID: 0}
+  TalkerName: "\u59B9\u7EA2"
+  NamePos: 1
+  Content: "\uF06C\u201C\u6211\u660E\u767D\u4E86\u3002\u201D"
+  WordList:
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  DelayEventList: []
+--- !u!114 &-6909337559787554854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1477e4a55f894b34fb78f5a0eea75bf2, type: 3}
+  m_Name: 27
+  m_EditorClassIdentifier: 
+  DialogueId: 27
+  DialogType: 0
+  IsNewTalk: 0
+  IsNewPage: 0
+  LeftBody: {fileID: 0}
+  LeftBodyShowType: 1
+  CenterBody: {fileID: 5341689530235567728, guid: 73af1b03a06c0614180faee2b38e7f9e,
+    type: 3}
+  CenterBodyShowType: 2
+  RightBody: {fileID: 0}
+  RightBodyShowType: 1
+  BottomBody: {fileID: 0}
+  BottomBodyShowType: 1
+  Background: {fileID: 3308985845883351212, guid: f06b32b21f4d72446af58e864a21d1bb,
+    type: 3}
+  Bgm: {fileID: 0}
+  DubDelay: 0
+  Dub: {fileID: 0}
+  TalkerName: 
+  NamePos: 0
+  Content: "\uF06C\u603B\u4E4B\uFF0C\u80FD\u591F\u987A\u5229\u7406\u89E3\u771F\u662F\u5E2E\u5927\u5FD9\u4E86\u3002"
+  WordList:
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  DelayEventList: []
+--- !u!114 &-6878798832744393159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1477e4a55f894b34fb78f5a0eea75bf2, type: 3}
+  m_Name: 24
+  m_EditorClassIdentifier: 
+  DialogueId: 24
+  DialogType: 0
+  IsNewTalk: 0
+  IsNewPage: 0
+  LeftBody: {fileID: 0}
+  LeftBodyShowType: 1
+  CenterBody: {fileID: 5341689530235567728, guid: 73af1b03a06c0614180faee2b38e7f9e,
+    type: 3}
+  CenterBodyShowType: 3
+  RightBody: {fileID: 0}
+  RightBodyShowType: 1
+  BottomBody: {fileID: 0}
+  BottomBodyShowType: 1
+  Background: {fileID: 3308985845883351212, guid: f06b32b21f4d72446af58e864a21d1bb,
+    type: 3}
+  Bgm: {fileID: 0}
+  DubDelay: 0
+  Dub: {fileID: 0}
+  TalkerName: "\u6797\u539F"
+  NamePos: 1
+  Content: "\uF06C\u201C\u4E2D\u6587\u7CFB\uFF0C\u975E\u8981\u89E3\u91CA\u7684\u8BDD\u5927\u6982\u7B97\u662F\u2026\u2026\u4E00\u95E8\u5916\u56FD\u7684\u8BED\u8A00\u4E0E\u6587\u5B57\u5B66\u79D1\uFF1F\u201D"
+  WordList:
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  DelayEventList: []
+--- !u!114 &-6320640135563257609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1477e4a55f894b34fb78f5a0eea75bf2, type: 3}
+  m_Name: 31
+  m_EditorClassIdentifier: 
+  DialogueId: 31
+  DialogType: 0
+  IsNewTalk: 0
+  IsNewPage: 0
+  LeftBody: {fileID: 0}
+  LeftBodyShowType: 1
+  CenterBody: {fileID: 0}
+  CenterBodyShowType: 1
+  RightBody: {fileID: 0}
+  RightBodyShowType: 1
+  BottomBody: {fileID: 0}
+  BottomBodyShowType: 1
+  Background: {fileID: 3308985845883351212, guid: f06b32b21f4d72446af58e864a21d1bb,
+    type: 3}
+  Bgm: {fileID: 0}
+  DubDelay: 0
+  Dub: {fileID: 0}
+  TalkerName: "\u6797\u539F"
+  NamePos: 0
+  Content: "\uF06C\u6211\u4E0A\u524D\u4E00\u6B65\uFF0C\u6253\u7B97\u62FF\u8FC7\u653E\u5728\u684C\u5B50\u4E0A\u7684\u767B\u5C71\u5305\u3002"
+  WordList:
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  DelayEventList: []
+--- !u!114 &-6283890613598345740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1477e4a55f894b34fb78f5a0eea75bf2, type: 3}
+  m_Name: 2
+  m_EditorClassIdentifier: 
+  DialogueId: 2
+  DialogType: 0
+  IsNewTalk: 0
+  IsNewPage: 0
+  LeftBody: {fileID: 0}
+  LeftBodyShowType: 1
+  CenterBody: {fileID: 0}
+  CenterBodyShowType: 1
+  RightBody: {fileID: 0}
+  RightBodyShowType: 1
+  BottomBody: {fileID: 0}
+  BottomBodyShowType: 1
+  Background: {fileID: 3308985845883351212, guid: f06b32b21f4d72446af58e864a21d1bb,
+    type: 3}
+  Bgm: {fileID: 0}
+  DubDelay: 0
+  Dub: {fileID: 0}
+  TalkerName: "\uFF1F\uFF08\u7537\u58F0\uFF09"
+  NamePos: 1
+  Content: "\u201C\u662F\u3002\u201D"
+  WordList:
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  DelayEventList: []
+--- !u!114 &-5032597619676196300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1477e4a55f894b34fb78f5a0eea75bf2, type: 3}
+  m_Name: 7
+  m_EditorClassIdentifier: 
+  DialogueId: 7
+  DialogType: 0
+  IsNewTalk: 0
+  IsNewPage: 0
+  LeftBody: {fileID: 0}
+  LeftBodyShowType: 1
+  CenterBody: {fileID: 5341689530235567728, guid: 73af1b03a06c0614180faee2b38e7f9e,
+    type: 3}
+  CenterBodyShowType: 2
+  RightBody: {fileID: 0}
+  RightBodyShowType: 1
+  BottomBody: {fileID: 0}
+  BottomBodyShowType: 1
+  Background: {fileID: 3308985845883351212, guid: f06b32b21f4d72446af58e864a21d1bb,
+    type: 3}
+  Bgm: {fileID: 0}
+  DubDelay: 0
+  Dub: {fileID: 0}
+  TalkerName: 
+  NamePos: 0
+  Content: "\uF06C\u4E00\u65C1\u9760\u5728\u5899\u4E0A\u7684\u3001\u5F88\u6709\u9996\u9886\u8303\u5973\u5B69\u5B50\u7ADF\u7136\u610F\u5916\u7684\u5E74\u8F7B\u6F02\u4EAE\u3002"
+  WordList:
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  DelayEventList: []
+--- !u!114 &-4992996647884441688
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1622,25 +944,199 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6b35c27257741442ab93e8657cbf08a, type: 3}
-  m_Name: 1
+  m_Name: 2
   m_EditorClassIdentifier: 
-  TalkId: 1
-  Body: {fileID: 8016273694264784401, guid: 75db53d3daad49c419989a1a4c475668, type: 3}
+  TalkId: 2
+  Body: {fileID: 3824271601306615221, guid: 70b91d118afc59341aca40f2220ac033, type: 3}
   FaceSprite: {fileID: 0}
   FaceAnimation: {fileID: 0}
-  Background: {fileID: 21300000, guid: f6f7491872cd47747a9f785c4cfe867e, type: 3}
-  Bgm: {fileID: 8300000, guid: ed9aae482269bb443892db09bef2b1fe, type: 3}
+  Background: {fileID: 0}
+  Bgm: {fileID: 0}
   DubDelay: 0
   Dub: {fileID: 8300000, guid: 910115caa09f72c42b82a34b08398913, type: 3}
-  TalkerName: "\u59B9\u7EA2"
-  BodyPos: 1
+  TalkerName: "\u6797\u539F"
+  BodyPos: 2
   TalkEvent: 0
+  DialogType: 1
+  IsNewTalk: 1
+  IsNewPage: 0
+  AudioEventList: []
+  Content: "\u5168\u5C4F\u5BF9\u8BDD\u6846\u7684\u5F00\u5934\u5168\u5C4F\u5BF9\u8BDD\u6846\u7684\u5F00\u5934\u5168\u5C4F\u5BF9\u8BDD\u6846\u7684\u5F00\u5934\u5168\u5C4F\u5BF9\u8BDD\u6846\u7684\u5F00\u5934\uFF0C"
+--- !u!114 &-4890071666917779769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1477e4a55f894b34fb78f5a0eea75bf2, type: 3}
+  m_Name: 12
+  m_EditorClassIdentifier: 
+  DialogueId: 12
   DialogType: 0
   IsNewTalk: 0
   IsNewPage: 0
+  LeftBody: {fileID: 0}
+  LeftBodyShowType: 1
+  CenterBody: {fileID: 5341689530235567728, guid: 73af1b03a06c0614180faee2b38e7f9e,
+    type: 3}
+  CenterBodyShowType: 0
+  RightBody: {fileID: 0}
+  RightBodyShowType: 1
+  BottomBody: {fileID: 0}
+  BottomBodyShowType: 1
+  Background: {fileID: 3308985845883351212, guid: f06b32b21f4d72446af58e864a21d1bb,
+    type: 3}
+  Bgm: {fileID: 0}
+  DubDelay: 0
+  Dub: {fileID: 0}
+  TalkerName: "\u59B9\u7EA2"
+  NamePos: 1
+  Content: "\uF06C\u201C\u6211\u662F\u85E4\u539F\u59B9\u7EA2\uFF0C\u8FD9\u91CC\u7684\u8001\u5927\u3002\u95EE\u4F60\u70B9\u8BDD\uFF0C\u8001\u5B9E\u56DE\u7B54\u3001\u5426\u5219\u514D\u4E0D\u4E86\u8981\u5403\u70B9\u82E6\u5934\u3002\u201D"
+  WordList:
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  DelayEventList: []
+--- !u!114 &-4254679376517863056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6b35c27257741442ab93e8657cbf08a, type: 3}
+  m_Name: 7
+  m_EditorClassIdentifier: 
+  TalkId: 7
+  Body: {fileID: 0}
+  FaceSprite: {fileID: 0}
+  FaceAnimation: {fileID: 0}
+  Background: {fileID: 0}
+  Bgm: {fileID: 0}
+  DubDelay: 0
+  Dub: {fileID: 0}
+  TalkerName: 
+  BodyPos: 0
+  TalkEvent: 0
+  DialogType: 1
+  IsNewTalk: 0
+  IsNewPage: 0
   AudioEventList: []
-  Content: "\u554A\u554A\u554A\u554A\u554A"
---- !u!114 &-1743580695247617780
+  Content: "\u7B2C\u4E8C\u53E5\u7B2C\u4E8C\u53E5\u7B2C\u4E8C\u53E5\u7B2C\u4E8C\u53E5\u7B2C\u4E8C\u53E5\u7B2C\u4E8C\u53E5"
+--- !u!114 &-3504110518068076259
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1726,7 +1222,7 @@ MonoBehaviour:
     WaitTime: 0.05
     IsDrective: 0
   DelayEventList: []
---- !u!114 &-1642340603580174190
+--- !u!114 &-3100182770808450366
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1736,9 +1232,162 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1477e4a55f894b34fb78f5a0eea75bf2, type: 3}
-  m_Name: 16
+  m_Name: 9
   m_EditorClassIdentifier: 
-  DialogueId: 16
+  DialogueId: 9
+  DialogType: 0
+  IsNewTalk: 0
+  IsNewPage: 0
+  LeftBody: {fileID: 0}
+  LeftBodyShowType: 1
+  CenterBody: {fileID: 5341689530235567728, guid: 73af1b03a06c0614180faee2b38e7f9e,
+    type: 3}
+  CenterBodyShowType: 1
+  RightBody: {fileID: 0}
+  RightBodyShowType: 1
+  BottomBody: {fileID: 0}
+  BottomBodyShowType: 1
+  Background: {fileID: 3308985845883351212, guid: f06b32b21f4d72446af58e864a21d1bb,
+    type: 3}
+  Bgm: {fileID: 0}
+  DubDelay: 0
+  Dub: {fileID: 0}
+  TalkerName: 
+  NamePos: 0
+  Content: "\uF06C\u5728\u8FD9\u79CD\u7A77\u4E61\u50FB\u58E4\u9047\u89C1\u7F8E\u5973\u7B97\u662F\u610F\u5916\u4E4B\u559C\uFF0C\u7B97\u662F\u7A0D\u5FAE\u6253\u8D77\u4E86\u70B9\u7CBE\u795E\u3002"
+  WordList:
+  - Word: 
+    WaitTime: 1
+    IsDrective: 0
+  - Word: 
+    WaitTime: 1
+    IsDrective: 0
+  - Word: 
+    WaitTime: 1
+    IsDrective: 0
+  - Word: 
+    WaitTime: 1
+    IsDrective: 0
+  - Word: 
+    WaitTime: 1
+    IsDrective: 0
+  - Word: 
+    WaitTime: 1
+    IsDrective: 0
+  - Word: 
+    WaitTime: 1
+    IsDrective: 0
+  - Word: 
+    WaitTime: 1
+    IsDrective: 0
+  - Word: 
+    WaitTime: 1
+    IsDrective: 0
+  - Word: 
+    WaitTime: 1
+    IsDrective: 0
+  - Word: 
+    WaitTime: 1
+    IsDrective: 0
+  - Word: 
+    WaitTime: 1
+    IsDrective: 0
+  - Word: 
+    WaitTime: 1
+    IsDrective: 0
+  - Word: 
+    WaitTime: 1
+    IsDrective: 0
+  - Word: 
+    WaitTime: 1
+    IsDrective: 0
+  - Word: 
+    WaitTime: 1
+    IsDrective: 0
+  - Word: 
+    WaitTime: 1
+    IsDrective: 0
+  - Word: 
+    WaitTime: 1
+    IsDrective: 0
+  - Word: 
+    WaitTime: 1
+    IsDrective: 0
+  - Word: 
+    WaitTime: 1
+    IsDrective: 0
+  - Word: 
+    WaitTime: 1
+    IsDrective: 0
+  - Word: 
+    WaitTime: 1
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  DelayEventList: []
+--- !u!114 &-2824987440454425900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6b35c27257741442ab93e8657cbf08a, type: 3}
+  m_Name: 1
+  m_EditorClassIdentifier: 
+  TalkId: 1
+  Body: {fileID: 8016273694264784401, guid: 75db53d3daad49c419989a1a4c475668, type: 3}
+  FaceSprite: {fileID: 0}
+  FaceAnimation: {fileID: 0}
+  Background: {fileID: 21300000, guid: f6f7491872cd47747a9f785c4cfe867e, type: 3}
+  Bgm: {fileID: 8300000, guid: ed9aae482269bb443892db09bef2b1fe, type: 3}
+  DubDelay: 0
+  Dub: {fileID: 8300000, guid: 910115caa09f72c42b82a34b08398913, type: 3}
+  TalkerName: "\u59B9\u7EA2"
+  BodyPos: 1
+  TalkEvent: 0
+  DialogType: 0
+  IsNewTalk: 0
+  IsNewPage: 0
+  AudioEventList: []
+  Content: "\u554A\u554A\u554A\u554A\u554A"
+--- !u!114 &-2732146801117293306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1477e4a55f894b34fb78f5a0eea75bf2, type: 3}
+  m_Name: 21
+  m_EditorClassIdentifier: 
+  DialogueId: 21
   DialogType: 0
   IsNewTalk: 0
   IsNewPage: 0
@@ -1756,9 +1405,9 @@ MonoBehaviour:
   Bgm: {fileID: 0}
   DubDelay: 0
   Dub: {fileID: 0}
-  TalkerName: "\u59B9\u7EA2"
-  NamePos: 1
-  Content: "\u201C\u804C\u4E1A\uFF1F"
+  TalkerName: 
+  NamePos: 0
+  Content: "\u653E\u5728\u4E61\u4E0B\uFF0C\u4EE5\u6211\u73B0\u5728\u7684\u5E74\u9F84\uFF0C\u80AF\u5B9A\u88AB\u5F53\u505A\u662F\u5403\u95F2\u996D\u7684\u4E86\u3002"
   WordList:
   - Word: 
     WaitTime: 0.05
@@ -1772,8 +1421,71 @@ MonoBehaviour:
   - Word: 
     WaitTime: 0.05
     IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
   DelayEventList: []
---- !u!114 &-884106943821403719
+--- !u!114 &-1838229026355958587
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1783,9 +1495,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1477e4a55f894b34fb78f5a0eea75bf2, type: 3}
-  m_Name: 15
+  m_Name: 22
   m_EditorClassIdentifier: 
-  DialogueId: 15
+  DialogueId: 22
   DialogType: 0
   IsNewTalk: 0
   IsNewPage: 0
@@ -1805,7 +1517,7 @@ MonoBehaviour:
   Dub: {fileID: 0}
   TalkerName: "\u6797\u539F"
   NamePos: 1
-  Content: "\uF06C\u201C\u6797\u539F\u3002\u201D"
+  Content: "\u201C\u5443\uFF0C\u6216\u8BB8\u89E3\u91CA\u4E3A\u300C\u5B66\u5F92\u300D\u66F4\u9760\u8C31\u70B9\u3002\u201D"
   WordList:
   - Word: 
     WaitTime: 0.05
@@ -1825,8 +1537,319 @@ MonoBehaviour:
   - Word: 
     WaitTime: 0.05
     IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
   DelayEventList: []
---- !u!114 &-771964628449436218
+--- !u!114 &-1583521219460435510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1477e4a55f894b34fb78f5a0eea75bf2, type: 3}
+  m_Name: 26
+  m_EditorClassIdentifier: 
+  DialogueId: 26
+  DialogType: 0
+  IsNewTalk: 0
+  IsNewPage: 0
+  LeftBody: {fileID: 0}
+  LeftBodyShowType: 1
+  CenterBody: {fileID: 5341689530235567728, guid: 73af1b03a06c0614180faee2b38e7f9e,
+    type: 3}
+  CenterBodyShowType: 2
+  RightBody: {fileID: 0}
+  RightBodyShowType: 1
+  BottomBody: {fileID: 0}
+  BottomBodyShowType: 1
+  Background: {fileID: 3308985845883351212, guid: f06b32b21f4d72446af58e864a21d1bb,
+    type: 3}
+  Bgm: {fileID: 0}
+  DubDelay: 0
+  Dub: {fileID: 0}
+  TalkerName: 
+  NamePos: 0
+  Content: "\uF06C\u59B9\u7EA2\u5C0F\u59D0\u82E5\u6709\u6240\u601D\uFF0C\u6700\u540E\u7EC8\u4E8E\u70B9\u4E86\u70B9\u5934\uFF0C\u4E5F\u4E0D\u77E5\u662F\u5426\u63A5\u53D7\u4E86\u6211\u7684\u8BF4\u6CD5\u3002"
+  WordList:
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  DelayEventList: []
+--- !u!114 &-1140055772155676381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1477e4a55f894b34fb78f5a0eea75bf2, type: 3}
+  m_Name: 5
+  m_EditorClassIdentifier: 
+  DialogueId: 5
+  DialogType: 0
+  IsNewTalk: 0
+  IsNewPage: 0
+  LeftBody: {fileID: 0}
+  LeftBodyShowType: 1
+  CenterBody: {fileID: 7154556819876718590, guid: de6365d05c9644d4abee4266c6541dc9,
+    type: 3}
+  CenterBodyShowType: 1
+  RightBody: {fileID: 0}
+  RightBodyShowType: 1
+  BottomBody: {fileID: 0}
+  BottomBodyShowType: 1
+  Background: {fileID: 3308985845883351212, guid: f06b32b21f4d72446af58e864a21d1bb,
+    type: 3}
+  Bgm: {fileID: 0}
+  DubDelay: 0
+  Dub: {fileID: 0}
+  TalkerName: 
+  NamePos: 0
+  Content: "\uF06C\u88AB\u770B\u62BC\u7684\u8FD9\u6BB5\u65F6\u95F4\u91CC\uFF0C\u6211\u4E0D\u65AD\u5730\u5728\u8111\u4E2D\u601D\u7D22\u7740\u8BE5\u5982\u4F55\u5BF9\u7B54\u3002"
+  WordList:
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  DelayEventList: []
+--- !u!114 &-336856421502637641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6b35c27257741442ab93e8657cbf08a, type: 3}
+  m_Name: 4
+  m_EditorClassIdentifier: 
+  TalkId: 4
+  Body: {fileID: 0}
+  FaceSprite: {fileID: 0}
+  FaceAnimation: {fileID: 0}
+  Background: {fileID: 0}
+  Bgm: {fileID: 0}
+  DubDelay: 0
+  Dub: {fileID: 0}
+  TalkerName: 
+  BodyPos: 0
+  TalkEvent: 0
+  DialogType: 0
+  IsNewTalk: 0
+  IsNewPage: 0
+  AudioEventList: []
+  Content: "\u7136\u540E\u5C31\u6563\u573A\u4E86\u3002\u3002\u3002\u3002\u3002"
+--- !u!114 &-120107966030912556
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1992,7 +2015,319 @@ MonoBehaviour:
     WaitTime: 0.05
     IsDrective: 0
   DelayEventList: []
---- !u!114 &-429960731064266137
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 014c16a60c3197346b3efe8ce131ad28, type: 3}
+  m_Name: GameStartAsset
+  m_EditorClassIdentifier: 
+  OptionName: 
+  UnLockType: 0
+  NeedDialogAsset: {fileID: 0}
+  TalkEndEventType: 0
+  LinkedDialogAsset: {fileID: 11400000, guid: 04e2903b2ac87734ca189b564736fbcf, type: 2}
+  SelectDialogAssetList:
+  - {fileID: 11400000, guid: 04e2903b2ac87734ca189b564736fbcf, type: 2}
+  - {fileID: 11400000, guid: ea2a0989346f09a488fed3fd91df504f, type: 2}
+  DialogueAssetList:
+  - {fileID: 3848032903095798482}
+  - {fileID: -6283890613598345740}
+  - {fileID: 5347155915622616157}
+  - {fileID: 836366986762293232}
+  - {fileID: -1140055772155676381}
+  - {fileID: 6901405188438157000}
+  - {fileID: -5032597619676196300}
+  - {fileID: 508745891048532563}
+  - {fileID: -3100182770808450366}
+  - {fileID: -120107966030912556}
+  - {fileID: 7267557713315082830}
+  - {fileID: -4890071666917779769}
+  - {fileID: -9212824638315803182}
+  - {fileID: 6479502173233409600}
+  - {fileID: 7707444317318215638}
+  - {fileID: 6451101363280523173}
+  - {fileID: 4294809685204764133}
+  - {fileID: -7415354428727812332}
+  - {fileID: 3772648965090927014}
+  - {fileID: 4147234433069629108}
+  - {fileID: -2732146801117293306}
+  - {fileID: -1838229026355958587}
+  - {fileID: -3504110518068076259}
+  - {fileID: -6878798832744393159}
+  - {fileID: -7242231186429175353}
+  - {fileID: -1583521219460435510}
+  - {fileID: -6909337559787554854}
+  - {fileID: 6439395521251609776}
+  - {fileID: -8046401752419168572}
+  - {fileID: 333512412481680422}
+  - {fileID: -6320640135563257609}
+  - {fileID: 3439531543515413303}
+--- !u!114 &333512412481680422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1477e4a55f894b34fb78f5a0eea75bf2, type: 3}
+  m_Name: 30
+  m_EditorClassIdentifier: 
+  DialogueId: 30
+  DialogType: 0
+  IsNewTalk: 0
+  IsNewPage: 0
+  LeftBody: {fileID: 0}
+  LeftBodyShowType: 1
+  CenterBody: {fileID: 5341689530235567728, guid: 73af1b03a06c0614180faee2b38e7f9e,
+    type: 3}
+  CenterBodyShowType: 3
+  RightBody: {fileID: 0}
+  RightBodyShowType: 1
+  BottomBody: {fileID: 0}
+  BottomBodyShowType: 1
+  Background: {fileID: 3308985845883351212, guid: f06b32b21f4d72446af58e864a21d1bb,
+    type: 3}
+  Bgm: {fileID: 0}
+  DubDelay: 0
+  Dub: {fileID: 0}
+  TalkerName: "\u6797\u539F"
+  NamePos: 1
+  Content: "\uF06C\u201C\u90A3\u4E48\uFF0C\u6211\u53EF\u4EE5\u8D70\u4E86\u5427\uFF1F\u201D"
+  WordList:
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  DelayEventList: []
+--- !u!114 &508745891048532563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1477e4a55f894b34fb78f5a0eea75bf2, type: 3}
+  m_Name: 8
+  m_EditorClassIdentifier: 
+  DialogueId: 8
+  DialogType: 0
+  IsNewTalk: 0
+  IsNewPage: 0
+  LeftBody: {fileID: 0}
+  LeftBodyShowType: 1
+  CenterBody: {fileID: 5341689530235567728, guid: 73af1b03a06c0614180faee2b38e7f9e,
+    type: 3}
+  CenterBodyShowType: 2
+  RightBody: {fileID: 0}
+  RightBodyShowType: 1
+  BottomBody: {fileID: 0}
+  BottomBodyShowType: 1
+  Background: {fileID: 3308985845883351212, guid: f06b32b21f4d72446af58e864a21d1bb,
+    type: 3}
+  Bgm: {fileID: 0}
+  DubDelay: 0
+  Dub: {fileID: 0}
+  TalkerName: 
+  NamePos: 0
+  Content: "\uF06C\u867D\u7136\u662F\u5E74\u8F7B\u5C11\u5973\uFF0C\u4F46\u767D\u53D1\u8D64\u773C\u7684\u6837\u5B50\u7ADF\u4E5F\u6709\u4E9B\u538B\u8FEB\u529B\u3002"
+  WordList:
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  DelayEventList: []
+--- !u!114 &836366986762293232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1477e4a55f894b34fb78f5a0eea75bf2, type: 3}
+  m_Name: 4
+  m_EditorClassIdentifier: 
+  DialogueId: 4
+  DialogType: 0
+  IsNewTalk: 0
+  IsNewPage: 0
+  LeftBody: {fileID: 0}
+  LeftBodyShowType: 1
+  CenterBody: {fileID: 7154556819876718590, guid: de6365d05c9644d4abee4266c6541dc9,
+    type: 3}
+  CenterBodyShowType: 0
+  RightBody: {fileID: 0}
+  RightBodyShowType: 1
+  BottomBody: {fileID: 0}
+  BottomBodyShowType: 1
+  Background: {fileID: 3308985845883351212, guid: f06b32b21f4d72446af58e864a21d1bb,
+    type: 3}
+  Bgm: {fileID: 0}
+  DubDelay: 0
+  Dub: {fileID: 0}
+  TalkerName: "\u6797\u539F\uFF08\u6211\uFF09"
+  NamePos: 1
+  Content: "\u201C\u2026\u2026\u201D"
+  WordList:
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  DelayEventList: []
+--- !u!114 &1375079130444089883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6b35c27257741442ab93e8657cbf08a, type: 3}
+  m_Name: 9
+  m_EditorClassIdentifier: 
+  TalkId: 9
+  Body: {fileID: 0}
+  FaceSprite: {fileID: 0}
+  FaceAnimation: {fileID: 0}
+  Background: {fileID: 0}
+  Bgm: {fileID: 0}
+  DubDelay: 0
+  Dub: {fileID: 0}
+  TalkerName: 
+  BodyPos: 0
+  TalkEvent: 0
+  DialogType: 1
+  IsNewTalk: 1
+  IsNewPage: 1
+  AudioEventList: []
+  Content: "\u65B0\u7684\u4E00\u9875\u65B0\u7684\u4E00\u9875\u65B0\u7684\u4E00\u9875\u65B0\u7684\u4E00\u9875\u65B0\u7684\u4E00\u9875\u65B0\u7684\u4E00\u9875"
+--- !u!114 &3439531543515413303
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2080,7 +2415,7 @@ MonoBehaviour:
     WaitTime: 0.05
     IsDrective: 0
   DelayEventList: []
---- !u!114 &-336856421502637641
+--- !u!114 &3712530396434581293
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2090,25 +2425,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6b35c27257741442ab93e8657cbf08a, type: 3}
-  m_Name: 4
+  m_Name: 6
   m_EditorClassIdentifier: 
-  TalkId: 4
-  Body: {fileID: 0}
+  TalkId: 6
+  Body: {fileID: 3824271601306615221, guid: 70b91d118afc59341aca40f2220ac033, type: 3}
   FaceSprite: {fileID: 0}
   FaceAnimation: {fileID: 0}
   Background: {fileID: 0}
   Bgm: {fileID: 0}
   DubDelay: 0
-  Dub: {fileID: 0}
-  TalkerName: 
-  BodyPos: 0
+  Dub: {fileID: 8300000, guid: 910115caa09f72c42b82a34b08398913, type: 3}
+  TalkerName: "\u6797\u539F"
+  BodyPos: 4
   TalkEvent: 0
   DialogType: 0
   IsNewTalk: 0
   IsNewPage: 0
   AudioEventList: []
-  Content: "\u7136\u540E\u5C31\u6563\u573A\u4E86\u3002\u3002\u3002\u3002\u3002"
---- !u!114 &11400000
+  Content: "\u8FD9\u4E48\u5C2C\u7684\u5417\uFF1F\n\u6211\u4F5B\u4E86\u3002\u3002\u3002"
+--- !u!114 &3772648965090927014
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2117,51 +2452,361 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 014c16a60c3197346b3efe8ce131ad28, type: 3}
-  m_Name: GameStartAsset
+  m_Script: {fileID: 11500000, guid: 1477e4a55f894b34fb78f5a0eea75bf2, type: 3}
+  m_Name: 19
   m_EditorClassIdentifier: 
-  OptionName: 
-  UnLockType: 0
-  NeedDialogAsset: {fileID: 0}
-  TalkEndEventType: 0
-  LinkedDialogAsset: {fileID: 11400000, guid: 04e2903b2ac87734ca189b564736fbcf, type: 2}
-  SelectDialogAssetList:
-  - {fileID: 11400000, guid: 04e2903b2ac87734ca189b564736fbcf, type: 2}
-  - {fileID: 11400000, guid: ea2a0989346f09a488fed3fd91df504f, type: 2}
-  DialogueAssetList:
-  - {fileID: 2631941510470780009}
-  - {fileID: 6861397258984273577}
-  - {fileID: 728143508296006387}
-  - {fileID: 2537293837236149002}
-  - {fileID: -8825891016548715307}
-  - {fileID: 4432657262269080705}
-  - {fileID: 1606769863673684265}
-  - {fileID: -3053416761137818374}
-  - {fileID: 1945571606051454565}
-  - {fileID: -771964628449436218}
-  - {fileID: -8855332327918764045}
-  - {fileID: 7988243921999862107}
-  - {fileID: -3313043388845557636}
-  - {fileID: -7379203816911020062}
-  - {fileID: -884106943821403719}
-  - {fileID: -1642340603580174190}
-  - {fileID: 2684276837003474446}
-  - {fileID: 5389341115446545414}
-  - {fileID: -3884115145753455368}
-  - {fileID: -7269985909351456668}
-  - {fileID: -5847571280785408528}
-  - {fileID: -6515095835569604772}
-  - {fileID: -1743580695247617780}
-  - {fileID: 3087475109626252559}
-  - {fileID: -4686301783635489431}
-  - {fileID: -3560976742923553637}
-  - {fileID: -6093931240025811189}
-  - {fileID: 1075443491748095197}
-  - {fileID: -7353783448814185457}
-  - {fileID: 8558093448181786679}
-  - {fileID: -6735213441056879490}
-  - {fileID: -429960731064266137}
---- !u!114 &728143508296006387
+  DialogueId: 19
+  DialogType: 0
+  IsNewTalk: 0
+  IsNewPage: 0
+  LeftBody: {fileID: 0}
+  LeftBodyShowType: 1
+  CenterBody: {fileID: 5341689530235567728, guid: 73af1b03a06c0614180faee2b38e7f9e,
+    type: 3}
+  CenterBodyShowType: 3
+  RightBody: {fileID: 0}
+  RightBodyShowType: 1
+  BottomBody: {fileID: 0}
+  BottomBodyShowType: 1
+  Background: {fileID: 3308985845883351212, guid: f06b32b21f4d72446af58e864a21d1bb,
+    type: 3}
+  Bgm: {fileID: 0}
+  DubDelay: 0
+  Dub: {fileID: 0}
+  TalkerName: "\u6797\u539F"
+  NamePos: 1
+  Content: "\u201C\u2026\u2026\u60A8\u662F\u4E0D\u7406\u89E3\u300C\u5B66\u751F\u300D\u7684\u610F\u601D\u5417\uFF1F\u201D"
+  WordList:
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  DelayEventList: []
+--- !u!114 &3848032903095798482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1477e4a55f894b34fb78f5a0eea75bf2, type: 3}
+  m_Name: 1
+  m_EditorClassIdentifier: 
+  DialogueId: 1
+  DialogType: 0
+  IsNewTalk: 0
+  IsNewPage: 0
+  LeftBody: {fileID: 0}
+  LeftBodyShowType: 1
+  CenterBody: {fileID: 0}
+  CenterBodyShowType: 1
+  RightBody: {fileID: 0}
+  RightBodyShowType: 1
+  BottomBody: {fileID: 0}
+  BottomBodyShowType: 1
+  Background: {fileID: 3308985845883351212, guid: f06b32b21f4d72446af58e864a21d1bb,
+    type: 3}
+  Bgm: {fileID: 0}
+  DubDelay: 0
+  Dub: {fileID: 0}
+  TalkerName: "\uFF1F\uFF08\u5973\u58F0\uFF09"
+  NamePos: 1
+  Content: "\u201C\u62BC<c=FF00B7>\u8FDB</c>\u6765\u3002\u201D"
+  WordList:
+  - Word: "\u201C"
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: "\u62BC"
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: <color=#FF00B7>
+    WaitTime: 0.05
+    IsDrective: 1
+  - Word: "\u8FDB"
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: </color>
+    WaitTime: 0.05
+    IsDrective: 1
+  - Word: "\u6765"
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: "\u3002"
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: "\u201D"
+    WaitTime: 0.05
+    IsDrective: 0
+  DelayEventList: []
+--- !u!114 &4147234433069629108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1477e4a55f894b34fb78f5a0eea75bf2, type: 3}
+  m_Name: 20
+  m_EditorClassIdentifier: 
+  DialogueId: 20
+  DialogType: 0
+  IsNewTalk: 0
+  IsNewPage: 0
+  LeftBody: {fileID: 0}
+  LeftBodyShowType: 1
+  CenterBody: {fileID: 5341689530235567728, guid: 73af1b03a06c0614180faee2b38e7f9e,
+    type: 3}
+  CenterBodyShowType: 2
+  RightBody: {fileID: 0}
+  RightBodyShowType: 1
+  BottomBody: {fileID: 0}
+  BottomBodyShowType: 1
+  Background: {fileID: 3308985845883351212, guid: f06b32b21f4d72446af58e864a21d1bb,
+    type: 3}
+  Bgm: {fileID: 0}
+  DubDelay: 0
+  Dub: {fileID: 0}
+  TalkerName: 
+  NamePos: 0
+  Content: "\u5BF9\u65B9\u7684\u773C\u795E\u770B\u8D77\u6765\u9887\u4E3A\u53E4\u602A\u2026\u2026\u4ED4\u7EC6\u60F3\u60F3\uFF0C\u5728\u5F53\u5B66\u751F\uFF0C\u4E5F\u5C31\u610F\u5473\u7740\u8FD8\u6CA1\u6709\u5DE5\u4F5C\u3001\u662F\u8FD9\u4E2A\u610F\u601D\u5427\uFF1F"
+  WordList:
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  DelayEventList: []
+--- !u!114 &4294809685204764133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1477e4a55f894b34fb78f5a0eea75bf2, type: 3}
+  m_Name: 17
+  m_EditorClassIdentifier: 
+  DialogueId: 17
+  DialogType: 0
+  IsNewTalk: 0
+  IsNewPage: 0
+  LeftBody: {fileID: 0}
+  LeftBodyShowType: 1
+  CenterBody: {fileID: 0}
+  CenterBodyShowType: 3
+  RightBody: {fileID: 0}
+  RightBodyShowType: 1
+  BottomBody: {fileID: 0}
+  BottomBodyShowType: 1
+  Background: {fileID: 3308985845883351212, guid: f06b32b21f4d72446af58e864a21d1bb,
+    type: 3}
+  Bgm: {fileID: 0}
+  DubDelay: 0
+  Dub: {fileID: 0}
+  TalkerName: "\u6797\u539F"
+  NamePos: 1
+  Content: "\uF06C\u201C\u5927\u5B66\u751F\u3002\u201D"
+  WordList:
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  DelayEventList: []
+--- !u!114 &5347155915622616157
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2231,7 +2876,7 @@ MonoBehaviour:
     WaitTime: 0.05
     IsDrective: 0
   DelayEventList: []
---- !u!114 &1075443491748095197
+--- !u!114 &6439395521251609776
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2370,35 +3015,7 @@ MonoBehaviour:
     WaitTime: 0.05
     IsDrective: 0
   DelayEventList: []
---- !u!114 &1375079130444089883
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6b35c27257741442ab93e8657cbf08a, type: 3}
-  m_Name: 9
-  m_EditorClassIdentifier: 
-  TalkId: 9
-  Body: {fileID: 0}
-  FaceSprite: {fileID: 0}
-  FaceAnimation: {fileID: 0}
-  Background: {fileID: 0}
-  Bgm: {fileID: 0}
-  DubDelay: 0
-  Dub: {fileID: 0}
-  TalkerName: 
-  BodyPos: 0
-  TalkEvent: 0
-  DialogType: 1
-  IsNewTalk: 1
-  IsNewPage: 1
-  AudioEventList: []
-  Content: "\u65B0\u7684\u4E00\u9875\u65B0\u7684\u4E00\u9875\u65B0\u7684\u4E00\u9875\u65B0\u7684\u4E00\u9875\u65B0\u7684\u4E00\u9875\u65B0\u7684\u4E00\u9875"
---- !u!114 &1606769863673684265
+--- !u!114 &6451101363280523173
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2408,9 +3025,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1477e4a55f894b34fb78f5a0eea75bf2, type: 3}
-  m_Name: 7
+  m_Name: 16
   m_EditorClassIdentifier: 
-  DialogueId: 7
+  DialogueId: 16
   DialogType: 0
   IsNewTalk: 0
   IsNewPage: 0
@@ -2428,9 +3045,9 @@ MonoBehaviour:
   Bgm: {fileID: 0}
   DubDelay: 0
   Dub: {fileID: 0}
-  TalkerName: 
-  NamePos: 0
-  Content: "\uF06C\u4E00\u65C1\u9760\u5728\u5899\u4E0A\u7684\u3001\u5F88\u6709\u9996\u9886\u8303\u5973\u5B69\u5B50\u7ADF\u7136\u610F\u5916\u7684\u5E74\u8F7B\u6F02\u4EAE\u3002"
+  TalkerName: "\u59B9\u7EA2"
+  NamePos: 1
+  Content: "\u201C\u804C\u4E1A\uFF1F"
   WordList:
   - Word: 
     WaitTime: 0.05
@@ -2444,77 +3061,8 @@ MonoBehaviour:
   - Word: 
     WaitTime: 0.05
     IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
   DelayEventList: []
---- !u!114 &1945571606051454565
+--- !u!114 &6479502173233409600
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2524,9 +3072,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1477e4a55f894b34fb78f5a0eea75bf2, type: 3}
-  m_Name: 9
+  m_Name: 14
   m_EditorClassIdentifier: 
-  DialogueId: 9
+  DialogueId: 14
   DialogType: 0
   IsNewTalk: 0
   IsNewPage: 0
@@ -2534,7 +3082,7 @@ MonoBehaviour:
   LeftBodyShowType: 1
   CenterBody: {fileID: 5341689530235567728, guid: 73af1b03a06c0614180faee2b38e7f9e,
     type: 3}
-  CenterBodyShowType: 1
+  CenterBodyShowType: 2
   RightBody: {fileID: 0}
   RightBodyShowType: 1
   BottomBody: {fileID: 0}
@@ -2544,238 +3092,9 @@ MonoBehaviour:
   Bgm: {fileID: 0}
   DubDelay: 0
   Dub: {fileID: 0}
-  TalkerName: 
-  NamePos: 0
-  Content: "\uF06C\u5728\u8FD9\u79CD\u7A77\u4E61\u50FB\u58E4\u9047\u89C1\u7F8E\u5973\u7B97\u662F\u610F\u5916\u4E4B\u559C\uFF0C\u7B97\u662F\u7A0D\u5FAE\u6253\u8D77\u4E86\u70B9\u7CBE\u795E\u3002"
-  WordList:
-  - Word: 
-    WaitTime: 1
-    IsDrective: 0
-  - Word: 
-    WaitTime: 1
-    IsDrective: 0
-  - Word: 
-    WaitTime: 1
-    IsDrective: 0
-  - Word: 
-    WaitTime: 1
-    IsDrective: 0
-  - Word: 
-    WaitTime: 1
-    IsDrective: 0
-  - Word: 
-    WaitTime: 1
-    IsDrective: 0
-  - Word: 
-    WaitTime: 1
-    IsDrective: 0
-  - Word: 
-    WaitTime: 1
-    IsDrective: 0
-  - Word: 
-    WaitTime: 1
-    IsDrective: 0
-  - Word: 
-    WaitTime: 1
-    IsDrective: 0
-  - Word: 
-    WaitTime: 1
-    IsDrective: 0
-  - Word: 
-    WaitTime: 1
-    IsDrective: 0
-  - Word: 
-    WaitTime: 1
-    IsDrective: 0
-  - Word: 
-    WaitTime: 1
-    IsDrective: 0
-  - Word: 
-    WaitTime: 1
-    IsDrective: 0
-  - Word: 
-    WaitTime: 1
-    IsDrective: 0
-  - Word: 
-    WaitTime: 1
-    IsDrective: 0
-  - Word: 
-    WaitTime: 1
-    IsDrective: 0
-  - Word: 
-    WaitTime: 1
-    IsDrective: 0
-  - Word: 
-    WaitTime: 1
-    IsDrective: 0
-  - Word: 
-    WaitTime: 1
-    IsDrective: 0
-  - Word: 
-    WaitTime: 1
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  DelayEventList: []
---- !u!114 &2537293837236149002
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1477e4a55f894b34fb78f5a0eea75bf2, type: 3}
-  m_Name: 4
-  m_EditorClassIdentifier: 
-  DialogueId: 4
-  DialogType: 0
-  IsNewTalk: 0
-  IsNewPage: 0
-  LeftBody: {fileID: 0}
-  LeftBodyShowType: 1
-  CenterBody: {fileID: 7154556819876718590, guid: de6365d05c9644d4abee4266c6541dc9,
-    type: 3}
-  CenterBodyShowType: 0
-  RightBody: {fileID: 0}
-  RightBodyShowType: 1
-  BottomBody: {fileID: 0}
-  BottomBodyShowType: 1
-  Background: {fileID: 3308985845883351212, guid: f06b32b21f4d72446af58e864a21d1bb,
-    type: 3}
-  Bgm: {fileID: 0}
-  DubDelay: 0
-  Dub: {fileID: 0}
-  TalkerName: "\u6797\u539F\uFF08\u6211\uFF09"
+  TalkerName: "\u59B9\u7EA2"
   NamePos: 1
-  Content: "\u201C\u2026\u2026\u201D"
-  WordList:
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  DelayEventList: []
---- !u!114 &2631941510470780009
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1477e4a55f894b34fb78f5a0eea75bf2, type: 3}
-  m_Name: 1
-  m_EditorClassIdentifier: 
-  DialogueId: 1
-  DialogType: 0
-  IsNewTalk: 0
-  IsNewPage: 0
-  LeftBody: {fileID: 0}
-  LeftBodyShowType: 1
-  CenterBody: {fileID: 0}
-  CenterBodyShowType: 1
-  RightBody: {fileID: 0}
-  RightBodyShowType: 1
-  BottomBody: {fileID: 0}
-  BottomBodyShowType: 1
-  Background: {fileID: 3308985845883351212, guid: f06b32b21f4d72446af58e864a21d1bb,
-    type: 3}
-  Bgm: {fileID: 0}
-  DubDelay: 0
-  Dub: {fileID: 0}
-  TalkerName: "\uFF1F\uFF08\u5973\u58F0\uFF09"
-  NamePos: 1
-  Content: "\u201C\u62BC<color=#FF00B7>\u8FDB</color>\u6765\u3002\u201D"
-  WordList:
-  - Word: "\u201C"
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: "\u62BC"
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: <color=#FF00B7>
-    WaitTime: 0.05
-    IsDrective: 1
-  - Word: "\u8FDB"
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: </color>
-    WaitTime: 0.05
-    IsDrective: 1
-  - Word: "\u6765"
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: "\u3002"
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: "\u201D"
-    WaitTime: 0.05
-    IsDrective: 0
-  DelayEventList: []
---- !u!114 &2684276837003474446
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1477e4a55f894b34fb78f5a0eea75bf2, type: 3}
-  m_Name: 17
-  m_EditorClassIdentifier: 
-  DialogueId: 17
-  DialogType: 0
-  IsNewTalk: 0
-  IsNewPage: 0
-  LeftBody: {fileID: 0}
-  LeftBodyShowType: 1
-  CenterBody: {fileID: 0}
-  CenterBodyShowType: 3
-  RightBody: {fileID: 0}
-  RightBodyShowType: 1
-  BottomBody: {fileID: 0}
-  BottomBodyShowType: 1
-  Background: {fileID: 3308985845883351212, guid: f06b32b21f4d72446af58e864a21d1bb,
-    type: 3}
-  Bgm: {fileID: 0}
-  DubDelay: 0
-  Dub: {fileID: 0}
-  TalkerName: "\u6797\u539F"
-  NamePos: 1
-  Content: "\uF06C\u201C\u5927\u5B66\u751F\u3002\u201D"
+  Content: "\uF06C\u201C\u59D3\u540D\uFF1F\u201D"
   WordList:
   - Word: 
     WaitTime: 0.05
@@ -2795,170 +3114,8 @@ MonoBehaviour:
   - Word: 
     WaitTime: 0.05
     IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
   DelayEventList: []
---- !u!114 &3087475109626252559
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1477e4a55f894b34fb78f5a0eea75bf2, type: 3}
-  m_Name: 24
-  m_EditorClassIdentifier: 
-  DialogueId: 24
-  DialogType: 0
-  IsNewTalk: 0
-  IsNewPage: 0
-  LeftBody: {fileID: 0}
-  LeftBodyShowType: 1
-  CenterBody: {fileID: 5341689530235567728, guid: 73af1b03a06c0614180faee2b38e7f9e,
-    type: 3}
-  CenterBodyShowType: 3
-  RightBody: {fileID: 0}
-  RightBodyShowType: 1
-  BottomBody: {fileID: 0}
-  BottomBodyShowType: 1
-  Background: {fileID: 3308985845883351212, guid: f06b32b21f4d72446af58e864a21d1bb,
-    type: 3}
-  Bgm: {fileID: 0}
-  DubDelay: 0
-  Dub: {fileID: 0}
-  TalkerName: "\u6797\u539F"
-  NamePos: 1
-  Content: "\uF06C\u201C\u4E2D\u6587\u7CFB\uFF0C\u975E\u8981\u89E3\u91CA\u7684\u8BDD\u5927\u6982\u7B97\u662F\u2026\u2026\u4E00\u95E8\u5916\u56FD\u7684\u8BED\u8A00\u4E0E\u6587\u5B57\u5B66\u79D1\uFF1F\u201D"
-  WordList:
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  DelayEventList: []
---- !u!114 &3712530396434581293
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6b35c27257741442ab93e8657cbf08a, type: 3}
-  m_Name: 6
-  m_EditorClassIdentifier: 
-  TalkId: 6
-  Body: {fileID: 3824271601306615221, guid: 70b91d118afc59341aca40f2220ac033, type: 3}
-  FaceSprite: {fileID: 0}
-  FaceAnimation: {fileID: 0}
-  Background: {fileID: 0}
-  Bgm: {fileID: 0}
-  DubDelay: 0
-  Dub: {fileID: 8300000, guid: 910115caa09f72c42b82a34b08398913, type: 3}
-  TalkerName: "\u6797\u539F"
-  BodyPos: 4
-  TalkEvent: 0
-  DialogType: 0
-  IsNewTalk: 0
-  IsNewPage: 0
-  AudioEventList: []
-  Content: "\u8FD9\u4E48\u5C2C\u7684\u5417\uFF1F\n\u6211\u4F5B\u4E86\u3002\u3002\u3002"
---- !u!114 &4432657262269080705
+--- !u!114 &6901405188438157000
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3008,111 +3165,6 @@ MonoBehaviour:
     WaitTime: 0.05
     IsDrective: 0
   DelayEventList: []
---- !u!114 &5389341115446545414
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1477e4a55f894b34fb78f5a0eea75bf2, type: 3}
-  m_Name: 18
-  m_EditorClassIdentifier: 
-  DialogueId: 18
-  DialogType: 0
-  IsNewTalk: 0
-  IsNewPage: 0
-  LeftBody: {fileID: 0}
-  LeftBodyShowType: 1
-  CenterBody: {fileID: 5341689530235567728, guid: 73af1b03a06c0614180faee2b38e7f9e,
-    type: 3}
-  CenterBodyShowType: 2
-  RightBody: {fileID: 0}
-  RightBodyShowType: 1
-  BottomBody: {fileID: 0}
-  BottomBodyShowType: 1
-  Background: {fileID: 3308985845883351212, guid: f06b32b21f4d72446af58e864a21d1bb,
-    type: 3}
-  Bgm: {fileID: 0}
-  DubDelay: 0
-  Dub: {fileID: 0}
-  TalkerName: "\u59B9\u7EA2"
-  NamePos: 1
-  Content: "\uF06C\u201C\u90A3\u662F\u4EC0\u4E48\uFF1F\u201D"
-  WordList:
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  DelayEventList: []
---- !u!114 &6861397258984273577
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1477e4a55f894b34fb78f5a0eea75bf2, type: 3}
-  m_Name: 2
-  m_EditorClassIdentifier: 
-  DialogueId: 2
-  DialogType: 0
-  IsNewTalk: 0
-  IsNewPage: 0
-  LeftBody: {fileID: 0}
-  LeftBodyShowType: 1
-  CenterBody: {fileID: 0}
-  CenterBodyShowType: 1
-  RightBody: {fileID: 0}
-  RightBodyShowType: 1
-  BottomBody: {fileID: 0}
-  BottomBodyShowType: 1
-  Background: {fileID: 3308985845883351212, guid: f06b32b21f4d72446af58e864a21d1bb,
-    type: 3}
-  Bgm: {fileID: 0}
-  DubDelay: 0
-  Dub: {fileID: 0}
-  TalkerName: "\uFF1F\uFF08\u7537\u58F0\uFF09"
-  NamePos: 1
-  Content: "\u201C\u662F\u3002\u201D"
-  WordList:
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  DelayEventList: []
 --- !u!114 &7071271191512078818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3141,6 +3193,121 @@ MonoBehaviour:
   IsNewPage: 0
   AudioEventList: []
   Content: "\u65B0\u7684\u4E00\u6BB5\u65B0\u7684\u4E00\u6BB5\u65B0\u7684\u4E00\u6BB5\u65B0\u7684\u4E00\u6BB5\u65B0\u7684\u4E00\u6BB5\u65B0\u7684\u4E00\u6BB5"
+--- !u!114 &7267557713315082830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1477e4a55f894b34fb78f5a0eea75bf2, type: 3}
+  m_Name: 11
+  m_EditorClassIdentifier: 
+  DialogueId: 11
+  DialogType: 0
+  IsNewTalk: 0
+  IsNewPage: 0
+  LeftBody: {fileID: 0}
+  LeftBodyShowType: 1
+  CenterBody: {fileID: 0}
+  CenterBodyShowType: 1
+  RightBody: {fileID: 0}
+  RightBodyShowType: 1
+  BottomBody: {fileID: 0}
+  BottomBodyShowType: 1
+  Background: {fileID: 3308985845883351212, guid: f06b32b21f4d72446af58e864a21d1bb,
+    type: 3}
+  Bgm: {fileID: 0}
+  DubDelay: 0
+  Dub: {fileID: 0}
+  TalkerName: 
+  NamePos: 0
+  Content: "\uF06C\u4E00\u65C1\u7684\u7537\u5B50\u94FA\u5F00\u5377\u5B97\uFF0C\u4F3C\u4E4E\u5728\u505A\u7B14\u5F55\u2026\u2026\u610F\u5916\u8FD8\u86EE\u6B63\u5F0F\u7684\u3002"
+  WordList:
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  - Word: 
+    WaitTime: 0.05
+    IsDrective: 0
+  DelayEventList: []
 --- !u!114 &7359235310718460537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3197,7 +3364,7 @@ MonoBehaviour:
   IsNewPage: 0
   AudioEventList: []
   Content: "\u7237\u53C8\u56DE\u6765\u4E86"
---- !u!114 &7988243921999862107
+--- !u!114 &7707444317318215638
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3207,155 +3374,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1477e4a55f894b34fb78f5a0eea75bf2, type: 3}
-  m_Name: 12
+  m_Name: 15
   m_EditorClassIdentifier: 
-  DialogueId: 12
-  DialogType: 0
-  IsNewTalk: 0
-  IsNewPage: 0
-  LeftBody: {fileID: 0}
-  LeftBodyShowType: 1
-  CenterBody: {fileID: 5341689530235567728, guid: 73af1b03a06c0614180faee2b38e7f9e,
-    type: 3}
-  CenterBodyShowType: 0
-  RightBody: {fileID: 0}
-  RightBodyShowType: 1
-  BottomBody: {fileID: 0}
-  BottomBodyShowType: 1
-  Background: {fileID: 3308985845883351212, guid: f06b32b21f4d72446af58e864a21d1bb,
-    type: 3}
-  Bgm: {fileID: 0}
-  DubDelay: 0
-  Dub: {fileID: 0}
-  TalkerName: "\u59B9\u7EA2"
-  NamePos: 1
-  Content: "\uF06C\u201C\u6211\u662F\u85E4\u539F\u59B9\u7EA2\uFF0C\u8FD9\u91CC\u7684\u8001\u5927\u3002\u95EE\u4F60\u70B9\u8BDD\uFF0C\u8001\u5B9E\u56DE\u7B54\u3001\u5426\u5219\u514D\u4E0D\u4E86\u8981\u5403\u70B9\u82E6\u5934\u3002\u201D"
-  WordList:
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  DelayEventList: []
---- !u!114 &8558093448181786679
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1477e4a55f894b34fb78f5a0eea75bf2, type: 3}
-  m_Name: 30
-  m_EditorClassIdentifier: 
-  DialogueId: 30
+  DialogueId: 15
   DialogType: 0
   IsNewTalk: 0
   IsNewPage: 0
@@ -3375,29 +3396,8 @@ MonoBehaviour:
   Dub: {fileID: 0}
   TalkerName: "\u6797\u539F"
   NamePos: 1
-  Content: "\uF06C\u201C\u90A3\u4E48\uFF0C\u6211\u53EF\u4EE5\u8D70\u4E86\u5427\uFF1F\u201D"
+  Content: "\uF06C\u201C\u6797\u539F\u3002\u201D"
   WordList:
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
-  - Word: 
-    WaitTime: 0.05
-    IsDrective: 0
   - Word: 
     WaitTime: 0.05
     IsDrective: 0
