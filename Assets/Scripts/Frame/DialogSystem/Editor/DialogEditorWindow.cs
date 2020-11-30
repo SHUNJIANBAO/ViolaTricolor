@@ -347,7 +347,7 @@ public class DialogEditorWindow : EditorWindow
                         word += asset.Content[j];
                         if (asset.Content[j] == '>')
                         {
-                            Regex reg = new Regex(@"<c=\w{6}");
+                            Regex reg = new Regex(@"<c=[0-9a-fA-F]{6}");
                             if (word.Equals("<b>") || word.Equals("</b>") || reg.IsMatch(word) || word.Equals("</c>"))
                             {
                                 isDirective = true;
@@ -385,7 +385,29 @@ public class DialogEditorWindow : EditorWindow
         EditorGUILayout.BeginHorizontal();
         foreach (var word in wordList)
         {
-            if (word.IsDrective) continue;
+            if (word.IsDrective)
+            {
+                if (word.Word.StartsWith("<color=#"))
+                {
+                    Color newColor;
+                    string colorStr = word.Word.Substring(7, 7);
+                    ColorUtility.TryParseHtmlString(colorStr, out newColor);
+                    _wordTextStyle.normal.textColor = newColor;
+                }
+                else if (word.Word.Equals("</color>"))
+                {
+                    _wordTextStyle.normal.textColor = Color.white;
+                }
+                else if(word.Word.Equals("<b>"))
+                {
+                    _wordTextStyle.fontStyle = FontStyle.Bold;
+                }
+                else if (word.Word.Equals("</b>"))
+                {
+                    _wordTextStyle.fontStyle = FontStyle.Normal;
+                }
+                continue;
+            }
             count++;
             if (count * (_wordWidth + 7) >= _talkAssetRectWidth)
             {
