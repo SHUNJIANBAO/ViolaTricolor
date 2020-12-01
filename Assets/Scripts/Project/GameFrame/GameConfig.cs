@@ -8,7 +8,7 @@ public class GameConfig : MonoSingleton<GameConfig>
     public int WordSizeLevel1 = 10;
     public int WordSizeLevel2 = 15;
     public int WordSizeLevel3 = 20;
-    [Header("文字速度(每个文字等待时间)")]
+    [Header("文字速度倍率")]
     public float TyperSpeedLevel1 = 0.8f;
     public float TyperSpeedLevel2 = 1f;
     public float TyperSpeedLevel3 = 1.2f;
