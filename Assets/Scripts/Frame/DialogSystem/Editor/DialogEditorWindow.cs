@@ -136,7 +136,8 @@ public class DialogEditorWindow : EditorWindow
         _dialogueList.drawElementCallback = (rect, index, isActive, isFocused) =>
         {
             var talkAsset = asset.DialogueAssetList[index];
-            GUI.Label(rect, asset.DialogueAssetList[index].DialogueId.ToString());
+            GUI.Label(rect, (index + 1).ToString() + ":   " + asset.DialogueAssetList[index].Content);
+            //GUI.Label(rect, asset.DialogueAssetList[index].DialogueId.ToString());
             if (isFocused)
             {
                 _curDialogueAsset = talkAsset;
@@ -368,6 +369,8 @@ public class DialogEditorWindow : EditorWindow
                 TyperRhythm typerWord = new TyperRhythm(word, 0.05f, isDirective);
                 asset.WordList.Add(typerWord);
             }
+
+            SaveDialogAsset(_curDialogAsset, _copyAsset);
         }
         EditorGUILayout.EndHorizontal();
         if (asset.WordList.Count > 0)
@@ -398,7 +401,7 @@ public class DialogEditorWindow : EditorWindow
                 {
                     _wordTextStyle.normal.textColor = Color.white;
                 }
-                else if(word.Word.Equals("<b>"))
+                else if (word.Word.Equals("<b>"))
                 {
                     _wordTextStyle.fontStyle = FontStyle.Bold;
                 }
