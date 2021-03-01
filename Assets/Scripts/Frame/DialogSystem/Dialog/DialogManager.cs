@@ -7,7 +7,9 @@ public class DialogManager : Singleton<DialogManager>
     bool _isClosing;
     public static bool IsTalking { get; private set; }
     DialogAsset _curDialogAsset;
+    public DialogAsset CurDialogAsset => _curDialogAsset;
     int _index;
+    public int CurTalkIndex => _index;
 
     UIDialogPanel _dialogPanel;
 

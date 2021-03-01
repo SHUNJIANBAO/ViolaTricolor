@@ -9,9 +9,9 @@ using PbUISystem;
 public class UIMainMenuPanel : UIPanelBase
 {
     #region 参数
-    Button Button_NewGame; 
-     Button Button_Load;
-      Button Button_Set;
+    Button Button_NewGame;
+    Button Button_Load;
+    Button Button_Set;
 
     Button Button_ExitGame;
     #endregion

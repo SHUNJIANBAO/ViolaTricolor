@@ -34,6 +34,10 @@ public class UIDialogPanel : UIPanelBase
     Coroutine _talkCoroutine;
     Coroutine _talkStopCoroutine;
 
+    Button Button_QuickSave;
+    Button Button_QuickLoad;
+    Button Button_Set;
+
     Text Text_TalkContent;
     Text Text_FullScreenTalkContent;
     Button Button_Talk;
@@ -84,6 +88,10 @@ public class UIDialogPanel : UIPanelBase
         Text_LeftName = GetUI<Text>("Text_LeftName");
         Text_RightName = GetUI<Text>("Text_RightName");
         Panel_FullScreenDialog = GetUI<GameObject>("Panel_FullScreenDialog");
+
+        Button_Set = GetUI<Button>("Button_Set");
+        Button_QuickSave = GetUI<Button>("Button_QuickSave");
+        Button_QuickLoad = GetUI<Button>("Button_QuickLoad");
     }
 
     /// <summary>
@@ -97,6 +105,9 @@ public class UIDialogPanel : UIPanelBase
         ActionManager.Instance.AddListener(ActionType.SetDialogAlpha, SetDialogAlpha);
         ActionManager.Instance.AddListener(ActionType.SetShowShortcutKey, SetShowShortcutKey);
         AddButtonListen(Button_Talk, () => DialogManager.Instance.Talk());
+        AddButtonListen(Button_Set, OnButtonClickSet);
+        AddButtonListen(Button_QuickSave, OnButtonClickQuickSave);
+        AddButtonListen(Button_QuickLoad, OnButtonClickQuickLoad);
     }
 
     /// <summary>
@@ -436,7 +447,7 @@ public class UIDialogPanel : UIPanelBase
         {
             PlayTalkEventByIndex(wordCount);
             text.text += word.Word;
-            if (word.WaitTime > 0 && !_isSkip && !_isSkiping&& !word.IsDrective)
+            if (word.WaitTime > 0 && !_isSkip && !_isSkiping && !word.IsDrective)
                 yield return new WaitForSeconds(word.WaitTime * _typerSpeed);
             wordCount++;
         }
@@ -791,6 +802,25 @@ public class UIDialogPanel : UIPanelBase
             }
         }
     }
+    #endregion
+
+    #region ButtonFunction
+
+    void OnButtonClickQuickSave()
+    {
+        PlayerManager.Instance.QuickSave();
+    }
+
+    void OnButtonClickQuickLoad()
+    {
+        PlayerManager.Instance.QuickLoad();
+    }
+
+    void OnButtonClickSet()
+    {
+        UIManager.Instance.OpenPanel<UISetPanel>();
+    }
+
     #endregion
 
     #endregion

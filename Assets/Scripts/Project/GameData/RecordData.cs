@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Linq;
 
 [Serializable]
-public struct RecordInfo
+public class RecordInfo
 {
     public int RecordIndex;
     public DialogAsset RecordDiaologAsset;
@@ -16,7 +17,7 @@ public struct RecordInfo
 /// </summary>
 public class RecordData : Data<RecordData>
 {
-    List<RecordInfo> _recordInfoList;
+    [SerializeField] List<RecordInfo> _recordInfoList;
     Dictionary<int, RecordInfo> _recordInfoDict = new Dictionary<int, RecordInfo>();
     protected override void OnLoad()
     {
@@ -34,12 +35,57 @@ public class RecordData : Data<RecordData>
     public RecordInfo CreateNewRecord()
     {
         RecordInfo info = new RecordInfo();
+        if (_recordInfoList.Count > 0)
+        {
+            var maxIndex = _recordInfoList.Max(record => record.RecordIndex);
+            for (int i = 0; i < Mathf.Max(maxIndex, 1); i++)
+            {
+                if (!_recordInfoDict.ContainsKey(i))
+                {
+                    info.RecordIndex = i;
+                    break;
+                }
+            }
+        }
+        else
+        {
+            info.RecordIndex = 0;
+        }
+        info.RecordDiaologAsset = DialogManager.Instance.DefaultDialogAsset;
         return info;
     }
 
-    public void SaveRecordByIndex(RecordInfo info, int recordIndex)
+    public void SaveRecord(RecordInfo info)
+    {
+        for (int i = 0; i < _recordInfoList.Count; i++)
+        {
+            if (_recordInfoList[i].RecordIndex == info.RecordIndex)
+            {
+                _recordInfoList[i] = info;
+            }
+        }
+        if (!_recordInfoDict.ContainsKey(info.RecordIndex))
+        {
+            _recordInfoDict.Add(info.RecordIndex, info);
+        }
+        else
+        {
+            _recordInfoDict[info.RecordIndex] = info;
+        }
+        Save();
+    }
+
+    public void SaveRecordByIndex(ref RecordInfo info, int recordIndex)
     {
         info.RecordIndex = recordIndex;
+        for (int i = 0; i < _recordInfoList.Count; i++)
+        {
+            if (_recordInfoList[i].RecordIndex == recordIndex)
+            {
+                _recordInfoList[i] = info;
+            }
+        }
+
         if (!_recordInfoDict.TryGetValue(recordIndex, out RecordInfo record))
         {
             _recordInfoDict.Add(recordIndex, info);
@@ -56,6 +102,8 @@ public class RecordData : Data<RecordData>
                 }
             }
         }
+
+        Save();
     }
 
     public void DeleteRecord(int recordIndex)
