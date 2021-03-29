@@ -220,15 +220,11 @@ public class UIDialogPanel : UIPanelBase
         Text_FullScreenTalkContent.text = "";
         Panel_FullScreenDialog.SetActive(asset.DialogType == E_DialogType.FullScreen);
 
-        SetBodySpriteByPosType(E_BodyPos.Left, asset.LeftBody);
-        SetBodySpriteByPosType(E_BodyPos.Right, asset.RightBody);
-        SetBodySpriteByPosType(E_BodyPos.Center, asset.CenterBody);
-        SetBodySpriteByPosType(E_BodyPos.Bottom, asset.BottomBody);
 
-        ShowBodyByBodyShowType(E_BodyPos.Left, asset.LeftBodyShowType);
-        ShowBodyByBodyShowType(E_BodyPos.Right, asset.RightBodyShowType);
-        ShowBodyByBodyShowType(E_BodyPos.Center, asset.CenterBodyShowType);
-        ShowBodyByBodyShowType(E_BodyPos.Bottom, asset.BottomBodyShowType);
+        ShowBodyByBodyShowType(E_BodyPos.Left, asset.LeftBodyShowType,()=> SetBodySpriteByPosType(E_BodyPos.Left, asset.LeftBody));
+        ShowBodyByBodyShowType(E_BodyPos.Right, asset.RightBodyShowType,()=> SetBodySpriteByPosType(E_BodyPos.Right, asset.RightBody));
+        ShowBodyByBodyShowType(E_BodyPos.Center, asset.CenterBodyShowType,() => SetBodySpriteByPosType(E_BodyPos.Center, asset.CenterBody));
+        ShowBodyByBodyShowType(E_BodyPos.Bottom, asset.BottomBodyShowType,()=> SetBodySpriteByPosType(E_BodyPos.Bottom, asset.BottomBody));
     }
 
 
@@ -543,7 +539,7 @@ public class UIDialogPanel : UIPanelBase
 
     }
 
-    void ShowBodyByBodyShowType(E_BodyPos bodyPosType, E_BodyShowType showType)
+    void ShowBodyByBodyShowType(E_BodyPos bodyPosType, E_BodyShowType showType, Action callback = null)
     {
         switch (bodyPosType)
         {
@@ -556,11 +552,13 @@ public class UIDialogPanel : UIPanelBase
                             ShowBody(false, bodyPosType, Image_LeftBody, () =>
                             {
                                 Image_LeftBody.DOKill();
+                                callback?.Invoke();
                                 ShowBody(true, bodyPosType, Image_LeftBody);
                             });
                         }
                         else
                         {
+                            callback?.Invoke();
                             Image_LeftBody.rectTransform.anchoredPosition = new Vector2(-Image_LeftBody.rectTransform.rect.width, 0);
                             ShowBody(true, bodyPosType, Image_LeftBody);
                         }
@@ -569,12 +567,15 @@ public class UIDialogPanel : UIPanelBase
                         ShowBody(false, bodyPosType, Image_LeftBody, () =>
                         {
                             Image_LeftBody.DOKill();
+                            callback?.Invoke();
                         });
                         break;
                     case E_BodyShowType.Highlight:
+                        callback?.Invoke();
                         Image_LeftBody.color = Color.white;
                         break;
                     case E_BodyShowType.Gray:
+                        callback?.Invoke();
                         Image_LeftBody.color = Color.gray;
                         break;
                 }
@@ -588,11 +589,13 @@ public class UIDialogPanel : UIPanelBase
                             ShowBody(false, bodyPosType, Image_RightBody, () =>
                             {
                                 Image_RightBody.DOKill();
+                                callback?.Invoke();
                                 ShowBody(true, bodyPosType, Image_RightBody);
                             });
                         }
                         else
                         {
+                            callback?.Invoke();
                             Image_RightBody.rectTransform.anchoredPosition = new Vector2(Image_RightBody.rectTransform.rect.width, 0);
                             ShowBody(true, bodyPosType, Image_RightBody);
                         }
@@ -600,13 +603,16 @@ public class UIDialogPanel : UIPanelBase
                     case E_BodyShowType.Hide:
                         ShowBody(false, bodyPosType, Image_RightBody, () =>
                         {
+                            callback?.Invoke();
                             Image_RightBody.DOKill();
                         });
                         break;
                     case E_BodyShowType.Highlight:
+                        callback?.Invoke();
                         Image_RightBody.color = Color.white;
                         break;
                     case E_BodyShowType.Gray:
+                        callback?.Invoke();
                         Image_RightBody.color = Color.gray;
                         break;
                 }
@@ -620,29 +626,35 @@ public class UIDialogPanel : UIPanelBase
                             ShowBody(false, bodyPosType, Image_CenterBody, () =>
                             {
                                 Image_CenterBody.DOKill();
+                                callback?.Invoke();
                                 ShowBody(true, bodyPosType, Image_CenterBody);
                             });
                         }
                         else
                         {
+                            callback?.Invoke();
                             ShowBody(true, bodyPosType, Image_CenterBody);
                         }
                         break;
                     case E_BodyShowType.Hide:
                         ShowBody(false, bodyPosType, Image_CenterBody, () =>
                         {
+                            callback?.Invoke();
                             Image_CenterBody.DOKill();
                         });
                         break;
                     case E_BodyShowType.Highlight:
+                        callback?.Invoke();
                         Image_CenterBody.color = Color.white;
                         break;
                     case E_BodyShowType.Gray:
+                        callback?.Invoke();
                         Image_CenterBody.color = Color.gray;
                         break;
                 }
                 break;
             case E_BodyPos.Bottom:
+                callback?.Invoke();
                 switch (showType)
                 {
                     case E_BodyShowType.Show:
