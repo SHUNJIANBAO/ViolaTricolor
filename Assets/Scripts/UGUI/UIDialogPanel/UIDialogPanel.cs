@@ -17,7 +17,11 @@ public class UIDialogPanel : UIPanelBase
     bool _isSkip;
     bool _isSkiping;
     bool _isTyping;
-    bool _isBodyMoving;
+    bool _isBodyMoving => _isLeftBodyMoving || _isRightBodyMoving || _isCenterBodyMoving || _isBottomBodyMoving;
+    bool _isLeftBodyMoving;
+    bool _isRightBodyMoving;
+    bool _isCenterBodyMoving;
+    bool _isBottomBodyMoving;
     public bool IsTalking
     {
         get { return _isTyping || _isBodyMoving; }
@@ -544,6 +548,7 @@ public class UIDialogPanel : UIPanelBase
         switch (bodyPosType)
         {
             case E_BodyPos.Left:
+                _isLeftBodyMoving = true;
                 switch (showType)
                 {
                     case E_BodyShowType.Show:
@@ -553,14 +558,14 @@ public class UIDialogPanel : UIPanelBase
                             {
                                 Image_LeftBody.DOKill();
                                 callback?.Invoke();
-                                ShowBody(true, bodyPosType, Image_LeftBody);
+                                ShowBody(true, bodyPosType, Image_LeftBody,()=> _isLeftBodyMoving = false);
                             });
                         }
                         else
                         {
                             callback?.Invoke();
                             Image_LeftBody.rectTransform.anchoredPosition = new Vector2(-Image_LeftBody.rectTransform.rect.width, 0);
-                            ShowBody(true, bodyPosType, Image_LeftBody);
+                            ShowBody(true, bodyPosType, Image_LeftBody, () => _isLeftBodyMoving = false);
                         }
                         break;
                     case E_BodyShowType.Hide:
@@ -568,19 +573,23 @@ public class UIDialogPanel : UIPanelBase
                         {
                             Image_LeftBody.DOKill();
                             callback?.Invoke();
+                            _isLeftBodyMoving = false;
                         });
                         break;
                     case E_BodyShowType.Highlight:
                         callback?.Invoke();
                         Image_LeftBody.color = Color.white;
+                        _isLeftBodyMoving = false;
                         break;
                     case E_BodyShowType.Gray:
                         callback?.Invoke();
                         Image_LeftBody.color = Color.gray;
+                        _isLeftBodyMoving = false;
                         break;
                 }
                 break;
             case E_BodyPos.Right:
+                _isRightBodyMoving = true;
                 switch (showType)
                 {
                     case E_BodyShowType.Show:
@@ -590,14 +599,14 @@ public class UIDialogPanel : UIPanelBase
                             {
                                 Image_RightBody.DOKill();
                                 callback?.Invoke();
-                                ShowBody(true, bodyPosType, Image_RightBody);
+                                ShowBody(true, bodyPosType, Image_RightBody, () => _isRightBodyMoving = false);
                             });
                         }
                         else
                         {
                             callback?.Invoke();
                             Image_RightBody.rectTransform.anchoredPosition = new Vector2(Image_RightBody.rectTransform.rect.width, 0);
-                            ShowBody(true, bodyPosType, Image_RightBody);
+                            ShowBody(true, bodyPosType, Image_RightBody, () => _isRightBodyMoving = false);
                         }
                         break;
                     case E_BodyShowType.Hide:
@@ -605,19 +614,23 @@ public class UIDialogPanel : UIPanelBase
                         {
                             callback?.Invoke();
                             Image_RightBody.DOKill();
+                            _isRightBodyMoving = false;
                         });
                         break;
                     case E_BodyShowType.Highlight:
                         callback?.Invoke();
                         Image_RightBody.color = Color.white;
+                        _isRightBodyMoving = false;
                         break;
                     case E_BodyShowType.Gray:
                         callback?.Invoke();
                         Image_RightBody.color = Color.gray;
+                        _isRightBodyMoving = false;
                         break;
                 }
                 break;
             case E_BodyPos.Center:
+                _isCenterBodyMoving = true;
                 switch (showType)
                 {
                     case E_BodyShowType.Show:
@@ -627,13 +640,13 @@ public class UIDialogPanel : UIPanelBase
                             {
                                 Image_CenterBody.DOKill();
                                 callback?.Invoke();
-                                ShowBody(true, bodyPosType, Image_CenterBody);
+                                ShowBody(true, bodyPosType, Image_CenterBody, () => _isCenterBodyMoving = false);
                             });
                         }
                         else
                         {
                             callback?.Invoke();
-                            ShowBody(true, bodyPosType, Image_CenterBody);
+                            ShowBody(true, bodyPosType, Image_CenterBody, () => _isCenterBodyMoving = false);
                         }
                         break;
                     case E_BodyShowType.Hide:
@@ -641,33 +654,39 @@ public class UIDialogPanel : UIPanelBase
                         {
                             callback?.Invoke();
                             Image_CenterBody.DOKill();
+                            _isCenterBodyMoving = false;
                         });
                         break;
                     case E_BodyShowType.Highlight:
                         callback?.Invoke();
                         Image_CenterBody.color = Color.white;
+                        _isCenterBodyMoving = false;
                         break;
                     case E_BodyShowType.Gray:
                         callback?.Invoke();
                         Image_CenterBody.color = Color.gray;
+                        _isCenterBodyMoving = false;
                         break;
                 }
                 break;
             case E_BodyPos.Bottom:
+                _isBottomBodyMoving = true;
                 callback?.Invoke();
                 switch (showType)
                 {
                     case E_BodyShowType.Show:
-                        ShowBody(true, bodyPosType, Image_BottomBody);
+                        ShowBody(true, bodyPosType, Image_BottomBody, () => _isBottomBodyMoving = false);
                         break;
                     case E_BodyShowType.Hide:
-                        ShowBody(false, bodyPosType, Image_BottomBody);
+                        ShowBody(false, bodyPosType, Image_BottomBody, () => _isBottomBodyMoving = false);
                         break;
                     case E_BodyShowType.Highlight:
                         Image_BottomBody.color = Color.white;
+                        _isBottomBodyMoving = false;
                         break;
                     case E_BodyShowType.Gray:
                         Image_BottomBody.color = Color.gray;
+                        _isBottomBodyMoving = false;
                         break;
                 }
                 break;
@@ -677,7 +696,6 @@ public class UIDialogPanel : UIPanelBase
 
     void ShowBody(bool value, E_BodyPos bodyPos, Image bodyImage, Action callback = null)
     {
-        _isBodyMoving = true;
         if (value) bodyImage.color = Color.clear;
         Color targetColor = value ? Color.white : Color.clear;
         float colorTransitionTime = TransitionTime * (value ? 1 : 2);
@@ -691,7 +709,6 @@ public class UIDialogPanel : UIPanelBase
                 endValue = value ? 0 : -bodyImage.rectTransform.rect.width;
                 bodyImage.rectTransform.DOAnchorPosX(endValue, TransitionTime).OnComplete(() =>
                 {
-                    _isBodyMoving = false;
                     bodyImage.DOKill();
                     bodyImage.color = targetColor;
                     callback?.Invoke();
@@ -702,7 +719,6 @@ public class UIDialogPanel : UIPanelBase
                 endValue = value ? 0 : bodyImage.rectTransform.rect.width;
                 bodyImage.rectTransform.DOAnchorPosX(endValue, TransitionTime).OnComplete(() =>
                 {
-                    _isBodyMoving = false;
                     bodyImage.DOKill();
                     bodyImage.color = targetColor;
                     callback?.Invoke();
@@ -712,7 +728,6 @@ public class UIDialogPanel : UIPanelBase
             case E_BodyPos.Center:
                 bodyImage.DOColor(targetColor, colorTransitionTime).OnComplete(() =>
                 {
-                    _isBodyMoving = false;
                     bodyImage.DOKill();
                     bodyImage.color = targetColor;
                     callback?.Invoke();
@@ -720,7 +735,6 @@ public class UIDialogPanel : UIPanelBase
                 break;
             case E_BodyPos.Bottom:
                 bodyImage.color = targetColor;
-                _isBodyMoving = false;
                 callback?.Invoke();
                 break;
         }
