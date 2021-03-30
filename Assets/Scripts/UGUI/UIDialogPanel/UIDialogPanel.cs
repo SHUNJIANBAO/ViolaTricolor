@@ -146,8 +146,8 @@ public class UIDialogPanel : UIPanelBase
         Image_RightBody.color = Color.clear;
         Image_CenterBody.color = Color.clear;
         Image_BottomBody.color = Color.clear;
-        Image_LeftBody.rectTransform.position = new Vector2(-Image_LeftBody.rectTransform.rect.width, 0);
-        Image_RightBody.rectTransform.position = new Vector2(Image_RightBody.rectTransform.rect.width, 0);
+        //Image_LeftBody.rectTransform.position = new Vector2(-Image_LeftBody.rectTransform.rect.width, 0);
+        //Image_RightBody.rectTransform.position = new Vector2(Image_RightBody.rectTransform.rect.width, 0);
 
         if (objs != null && objs.Length > 0)
         {
@@ -564,7 +564,7 @@ public class UIDialogPanel : UIPanelBase
                         else
                         {
                             callback?.Invoke();
-                            Image_LeftBody.rectTransform.anchoredPosition = new Vector2(-Image_LeftBody.rectTransform.rect.width, 0);
+                            //Image_LeftBody.rectTransform.anchoredPosition = new Vector2(-Image_LeftBody.rectTransform.rect.width, 0);
                             ShowBody(true, bodyPosType, Image_LeftBody, () => _isLeftBodyMoving = false);
                         }
                         break;
@@ -605,7 +605,7 @@ public class UIDialogPanel : UIPanelBase
                         else
                         {
                             callback?.Invoke();
-                            Image_RightBody.rectTransform.anchoredPosition = new Vector2(Image_RightBody.rectTransform.rect.width, 0);
+                            //Image_RightBody.rectTransform.anchoredPosition = new Vector2(Image_RightBody.rectTransform.rect.width, 0);
                             ShowBody(true, bodyPosType, Image_RightBody, () => _isRightBodyMoving = false);
                         }
                         break;
@@ -698,32 +698,42 @@ public class UIDialogPanel : UIPanelBase
     {
         if (value) bodyImage.color = Color.clear;
         Color targetColor = value ? Color.white : Color.clear;
-        float colorTransitionTime = TransitionTime * (value ? 1 : 2);
+        float colorTransitionTime = TransitionTime;// * (value ? 1 : 2);
         bodyImage.transform.SetAsLastSibling();
         bodyImage.DOKill();
 
-        float endValue = 0;
+        //float endValue = 0;
         switch (bodyPos)
         {
             case E_BodyPos.Left:
-                endValue = value ? 0 : -bodyImage.rectTransform.rect.width;
-                bodyImage.rectTransform.DOAnchorPosX(endValue, TransitionTime).OnComplete(() =>
+                //endValue = value ? 0 : -bodyImage.rectTransform.rect.width;
+                //bodyImage.rectTransform.DOAnchorPosX(endValue, TransitionTime).OnComplete(() =>
+                //{
+                //    bodyImage.DOKill();
+                //    bodyImage.color = targetColor;
+                //    callback?.Invoke();
+                //});
+                bodyImage.DOColor(targetColor, colorTransitionTime).OnComplete(() =>
                 {
                     bodyImage.DOKill();
                     bodyImage.color = targetColor;
                     callback?.Invoke();
                 });
-                bodyImage.DOColor(targetColor, colorTransitionTime);
                 break;
             case E_BodyPos.Right:
-                endValue = value ? 0 : bodyImage.rectTransform.rect.width;
-                bodyImage.rectTransform.DOAnchorPosX(endValue, TransitionTime).OnComplete(() =>
+                //endValue = value ? 0 : bodyImage.rectTransform.rect.width;
+                //bodyImage.rectTransform.DOAnchorPosX(endValue, TransitionTime).OnComplete(() =>
+                //{
+                //    bodyImage.DOKill();
+                //    bodyImage.color = targetColor;
+                //    callback?.Invoke();
+                //});
+                bodyImage.DOColor(targetColor, colorTransitionTime).OnComplete(() =>
                 {
                     bodyImage.DOKill();
                     bodyImage.color = targetColor;
                     callback?.Invoke();
                 });
-                bodyImage.DOColor(targetColor, colorTransitionTime);
                 break;
             case E_BodyPos.Center:
                 bodyImage.DOColor(targetColor, colorTransitionTime).OnComplete(() =>
