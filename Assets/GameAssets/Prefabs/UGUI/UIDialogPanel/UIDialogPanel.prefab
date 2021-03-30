@@ -114,7 +114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PanelType: 0
   CloseBtn: {fileID: 0}
-  TransitionTime: 0.5
+  TransitionTime: 0.2
 --- !u!1 &1902070164644934
 GameObject:
   m_ObjectHideFlags: 0
@@ -300,6 +300,7 @@ GameObject:
   - component: {fileID: 3173846633431128480}
   - component: {fileID: 3253290213671988474}
   - component: {fileID: 283753413313406910}
+  - component: {fileID: 4689079547948135375}
   m_Layer: 5
   m_Name: Image_BottomBody
   m_TagString: Untagged
@@ -363,6 +364,25 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &4689079547948135375
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1154898766234944965}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1558596696625414067
 GameObject:
   m_ObjectHideFlags: 0
