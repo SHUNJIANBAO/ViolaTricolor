@@ -153,9 +153,8 @@ public class UIDialogPanel : UIPanelBase
         {
             var asset = objs[0] as DialogueAsset;
 
-            //SetMessageByAsset(asset);
+            SetMessageByAsset(asset);
             //ShowBodyByPosType(asset.BodyPos);
-            ShowDialog();
         }
     }
 
@@ -218,17 +217,16 @@ public class UIDialogPanel : UIPanelBase
         _curDialogueAsset = asset;
         AudioManager.Instance.StopAudioByType(E_AudioType.Dub);
         AudioManager.Instance.StopAudioByType(E_AudioType.Audio);
-        SetDelayEventList(asset.DelayEventList);
         PlayBgm(asset.Bgm);
         SetBackground(asset.Background);
         Text_FullScreenTalkContent.text = "";
+        Text_TalkContent.text = "";
         Panel_FullScreenDialog.SetActive(asset.DialogType == E_DialogType.FullScreen);
-
-
-        ShowBodyByBodyShowType(E_BodyPos.Left, asset.LeftBodyShowType,()=> SetBodySpriteByPosType(E_BodyPos.Left, asset.LeftBody));
-        ShowBodyByBodyShowType(E_BodyPos.Right, asset.RightBodyShowType,()=> SetBodySpriteByPosType(E_BodyPos.Right, asset.RightBody));
-        ShowBodyByBodyShowType(E_BodyPos.Center, asset.CenterBodyShowType,() => SetBodySpriteByPosType(E_BodyPos.Center, asset.CenterBody));
-        ShowBodyByBodyShowType(E_BodyPos.Bottom, asset.BottomBodyShowType,()=> SetBodySpriteByPosType(E_BodyPos.Bottom, asset.BottomBody));
+        ShowDialog();
+        Image_LeftBody.color = Color.clear;
+        Image_RightBody.color = Color.clear;
+        Image_CenterBody.color = Color.clear;
+        Image_BottomBody.color = Color.clear;
     }
 
 
@@ -328,22 +326,25 @@ public class UIDialogPanel : UIPanelBase
         {
             return false;
         }
-        //if (_curDialogueAsset.DialogType == E_DialogType.Normal && !IsShowDialog)
-        //{
-        //    ShowDialog();
-        //    //return false;
-        //}
-
         return true;
 
     }
 
     public void Talk(DialogueAsset asset)
     {
-        SetMessageByAsset(asset);
+        //SetMessageByAsset(asset);
+        AudioManager.Instance.StopAudioByType(E_AudioType.Dub);
+        AudioManager.Instance.StopAudioByType(E_AudioType.Audio);
+        SetDelayEventList(asset.DelayEventList);
+        PlayBgm(asset.Bgm);
+        SetBackground(asset.Background);
         switch (asset.DialogType)
         {
             case E_DialogType.Normal:
+                ShowBodyByBodyShowType(E_BodyPos.Left, asset.LeftBodyShowType, () => SetBodySpriteByPosType(E_BodyPos.Left, asset.LeftBody));
+                ShowBodyByBodyShowType(E_BodyPos.Right, asset.RightBodyShowType, () => SetBodySpriteByPosType(E_BodyPos.Right, asset.RightBody));
+                ShowBodyByBodyShowType(E_BodyPos.Center, asset.CenterBodyShowType, () => SetBodySpriteByPosType(E_BodyPos.Center, asset.CenterBody));
+                ShowBodyByBodyShowType(E_BodyPos.Bottom, asset.BottomBodyShowType, () => SetBodySpriteByPosType(E_BodyPos.Bottom, asset.BottomBody));
                 StartCoroutine(PlayNormalTalk(asset));
                 break;
             case E_DialogType.FullScreen:
@@ -558,7 +559,7 @@ public class UIDialogPanel : UIPanelBase
                             {
                                 Image_LeftBody.DOKill();
                                 callback?.Invoke();
-                                ShowBody(true, bodyPosType, Image_LeftBody,()=> _isLeftBodyMoving = false);
+                                ShowBody(true, bodyPosType, Image_LeftBody, () => _isLeftBodyMoving = false);
                             });
                         }
                         else
@@ -776,7 +777,7 @@ public class UIDialogPanel : UIPanelBase
                 {
                     return;
                 }
-                GameObject.Destroy(bg);
+                GameObject.Destroy(_curBg);
             }
             _curBg = GameObject.Instantiate(bg, Image_BG.transform, false);
             _curBg.name = bg.name;

@@ -9,6 +9,7 @@ public class DialogAsset : ScriptableObject
     public DialogAsset NeedDialogAsset;
 
     public E_TalkEndEventType TalkEndEventType;
+    public E_MaskType MaskType;
     public DialogAsset LinkedDialogAsset; //连接的段落
     public List<DialogAsset> SelectDialogAssetList = new List<DialogAsset>();
 
@@ -22,6 +23,7 @@ public class DialogAsset : ScriptableObject
 
         asset.OptionName = OptionName;
         asset.UnLockType = UnLockType;
+        asset.MaskType = MaskType;
         asset.NeedDialogAsset = NeedDialogAsset;
         asset.LinkedDialogAsset = LinkedDialogAsset;
 
@@ -47,6 +49,7 @@ public enum E_UnLockType
 
 public enum E_TalkEndEventType
 {
+    Transition,
     Night,
     Select,
     GameOver,

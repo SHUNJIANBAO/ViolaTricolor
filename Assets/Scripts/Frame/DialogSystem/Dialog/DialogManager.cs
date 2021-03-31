@@ -113,6 +113,17 @@ public class DialogManager : Singleton<DialogManager>
         GameData.Save();
         switch (_curDialogAsset.TalkEndEventType)
         {
+            case E_TalkEndEventType.Transition:
+                var maskType = CurDialogAsset.MaskType;
+                UIManager.Instance.OpenPanel<UIMaskPanel>(true, () =>
+                {
+
+                    var linkedAsset = _curDialogAsset.LinkedDialogAsset;
+                    SetTalkAsset(linkedAsset);
+                    _dialogPanel.SetMessageByAsset(linkedAsset.DialogueAssetList[0]);
+                    Talk(linkedAsset.DialogueAssetList[0].DialogueId);
+                }, _curDialogAsset.MaskType);
+                break;
             case E_TalkEndEventType.Night:
                 UIManager.Instance.OpenPanel<UIMaskPanel>(true, () =>
                 {

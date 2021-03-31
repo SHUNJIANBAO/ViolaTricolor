@@ -108,6 +108,10 @@ public class DialogEditorWindow : EditorWindow
         _copyAsset.TalkEndEventType = (E_TalkEndEventType)EditorGUILayout.EnumPopup("结束事件类型", _copyAsset.TalkEndEventType);
         switch (_copyAsset.TalkEndEventType)
         {
+            case E_TalkEndEventType.Transition:
+                _copyAsset.MaskType = (E_MaskType)EditorGUILayout.EnumPopup("过渡类型", _copyAsset.MaskType);
+                _copyAsset.LinkedDialogAsset = (DialogAsset)EditorGUILayout.ObjectField("连接对话", _copyAsset.LinkedDialogAsset, typeof(DialogAsset), false);
+                break;
             case E_TalkEndEventType.Night:
                 _copyAsset.LinkedDialogAsset = (DialogAsset)EditorGUILayout.ObjectField("连接对话", _copyAsset.LinkedDialogAsset, typeof(DialogAsset), false);
                 break;
@@ -507,6 +511,7 @@ public class DialogEditorWindow : EditorWindow
         }
         dialogAsset.DialogueAssetList.Clear();
 
+        dialogAsset.MaskType = copyAsset.MaskType;
         dialogAsset.OptionName = copyAsset.OptionName;
         dialogAsset.UnLockType = copyAsset.UnLockType;
         dialogAsset.NeedDialogAsset = copyAsset.NeedDialogAsset;
