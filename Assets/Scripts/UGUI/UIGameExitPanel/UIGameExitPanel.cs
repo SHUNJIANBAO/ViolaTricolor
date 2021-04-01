@@ -126,7 +126,9 @@ public class UIGameExitPanel : UIPanelBase
     #region 成员方法
     void OnClickButtonEnter()
     {
-        Application.Quit();
+        UIManager.Instance.CloseAllNormalPanel();
+        UIManager.Instance.OpenPanel<UIMainMenuPanel>();
+       // Application.Quit();
     }
 
     void OnClickButtonCancel()

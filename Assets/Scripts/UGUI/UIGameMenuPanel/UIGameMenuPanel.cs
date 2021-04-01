@@ -12,7 +12,7 @@ public class UIGameMenuPanel : UIPanelBase
     Button Button_Set;
     Button Button_MainMenu;
 
-    Button Button_ExitGame;
+    //Button Button_ExitGame;
     #endregion
 
     #region 继承方法
@@ -25,7 +25,7 @@ public class UIGameMenuPanel : UIPanelBase
         base.GetUIComponent();
         Button_Set = GetUI<Button>("Button_Set");
         Button_MainMenu = GetUI<Button>("Button_MainMenu");
-        Button_ExitGame = GetUI<Button>("Button_ExitGame");
+        //Button_ExitGame = GetUI<Button>("Button_ExitGame");
     }
 
     /// <summary>
@@ -36,7 +36,7 @@ public class UIGameMenuPanel : UIPanelBase
         base.AddUIListener();
         AddButtonListen(Button_Set, OnClickButtonSet);
         AddButtonListen(Button_MainMenu, OnClickButtonOpenMainMenu);
-        AddButtonListen(Button_ExitGame, OnClickButtonExitGame);
+        //AddButtonListen(Button_ExitGame, OnClickButtonExitGame);
     }
 
     /// <summary>
@@ -137,8 +137,9 @@ public class UIGameMenuPanel : UIPanelBase
 
     void OnClickButtonOpenMainMenu()
     {
-        UIManager.Instance.CloseAllNormalPanel();
-        UIManager.Instance.OpenPanel<UIMainMenuPanel>();
+        UIManager.Instance.OpenPanel<UIGameExitPanel>();
+        //UIManager.Instance.CloseAllNormalPanel();
+        //UIManager.Instance.OpenPanel<UIMainMenuPanel>();
     }
 
     void OnClickButtonExitGame()

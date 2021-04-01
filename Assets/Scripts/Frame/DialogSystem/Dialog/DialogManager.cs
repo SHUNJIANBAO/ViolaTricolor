@@ -77,7 +77,7 @@ public class DialogManager : Singleton<DialogManager>
         }
         else
         {
-            if (!_dialogPanel.IsCanTalk()) return;
+            if (!_dialogPanel.IsCanTalk()|| !_dialogPanel.enabled) return;
             //对话框类型相同直接谈话，不同则切换模式后谈话
             if (_dialogPanel.IsSameDialogType(_curDialogAsset.DialogueAssetList[_index].DialogType))
             {
