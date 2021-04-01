@@ -5,7 +5,7 @@ public class DialogManager : Singleton<DialogManager>
 {
     bool _isOpen;
     bool _isClosing;
-    public static bool IsTalking { get; private set; }
+    public static bool IsTalking { get; set; }
     DialogAsset _curDialogAsset;
     public DialogAsset CurDialogAsset => _curDialogAsset;
     int _index;
@@ -64,6 +64,7 @@ public class DialogManager : Singleton<DialogManager>
                  _isOpen = true;
                  Talk();
              }, _curDialogAsset.DialogueAssetList[_index]);
+            return;
         }
 
         if (!_isOpen || _dialogPanel == null) return;
@@ -77,7 +78,7 @@ public class DialogManager : Singleton<DialogManager>
         }
         else
         {
-            if (!_dialogPanel.IsCanTalk()|| !_dialogPanel.enabled) return;
+            if (!_dialogPanel.IsCanTalk()) return;
             //对话框类型相同直接谈话，不同则切换模式后谈话
             if (_dialogPanel.IsSameDialogType(_curDialogAsset.DialogueAssetList[_index].DialogType))
             {

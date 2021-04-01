@@ -126,6 +126,7 @@ public class UIGameExitPanel : UIPanelBase
     #region 成员方法
     void OnClickButtonEnter()
     {
+        DialogManager.IsTalking = false;
         UIManager.Instance.CloseAllNormalPanel();
         UIManager.Instance.OpenPanel<UIMainMenuPanel>();
        // Application.Quit();
