@@ -16,6 +16,7 @@ MonoBehaviour:
   UnLockType: 0
   NeedDialogAsset: {fileID: 0}
   TalkEndEventType: 0
+  MaskType: 0
   LinkedDialogAsset: {fileID: 0}
   SelectDialogAssetList: []
   DialogueAssetList: []
