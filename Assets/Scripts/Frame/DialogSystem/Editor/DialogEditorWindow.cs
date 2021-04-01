@@ -370,7 +370,7 @@ public class DialogEditorWindow : EditorWindow
                 {
                     word = asset.Content[i].ToString();
                 }
-                TyperRhythm typerWord = new TyperRhythm(word, 0.05f, isDirective);
+                TyperRhythm typerWord = new TyperRhythm(word, 0.1f, isDirective);
                 asset.WordList.Add(typerWord);
             }
 
