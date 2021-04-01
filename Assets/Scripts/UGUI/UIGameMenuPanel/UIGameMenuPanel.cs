@@ -4,14 +4,19 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using PbUISystem;
+using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(CanvasGroup))]
 public class UIGameMenuPanel : UIPanelBase
 {
     #region 参数
     Button Button_Set;
+    Button Button_Note;
+    Button Button_Load;
+    Button Button_Save;
     Button Button_MainMenu;
 
+    GameObject Image_Selected;
     //Button Button_ExitGame;
     #endregion
 
@@ -24,8 +29,13 @@ public class UIGameMenuPanel : UIPanelBase
     {
         base.GetUIComponent();
         Button_Set = GetUI<Button>("Button_Set");
+        Button_Note = GetUI<Button>("Button_Note");
+        Button_Load = GetUI<Button>("Button_Load");
+        Button_Save = GetUI<Button>("Button_Save");
         Button_MainMenu = GetUI<Button>("Button_MainMenu");
         //Button_ExitGame = GetUI<Button>("Button_ExitGame");
+
+        Image_Selected = GetUI<GameObject>("Image_Selected");
     }
 
     /// <summary>
@@ -37,6 +47,18 @@ public class UIGameMenuPanel : UIPanelBase
         AddButtonListen(Button_Set, OnClickButtonSet);
         AddButtonListen(Button_MainMenu, OnClickButtonOpenMainMenu);
         //AddButtonListen(Button_ExitGame, OnClickButtonExitGame);
+
+        AddOnPointerEnterListen("Button_Set",(data)=> OnPointerEnterShowSelected(Button_Set.transform,data));
+        AddOnPointerEnterListen("Button_Note", (data) => OnPointerEnterShowSelected(Button_Note.transform, data));
+        AddOnPointerEnterListen("Button_Load", (data) => OnPointerEnterShowSelected(Button_Load.transform, data));
+        AddOnPointerEnterListen("Button_Save", (data) => OnPointerEnterShowSelected(Button_Save.transform, data));
+        AddOnPointerEnterListen("Button_MainMenu", (data) => OnPointerEnterShowSelected(Button_MainMenu.transform, data));
+
+        AddOnPointerExitListen("Button_Set", OnPointerExitHideSelected);
+        AddOnPointerExitListen("Button_Note", OnPointerExitHideSelected);
+        AddOnPointerExitListen("Button_Load", OnPointerExitHideSelected);
+        AddOnPointerExitListen("Button_Save", OnPointerExitHideSelected);
+        AddOnPointerExitListen("Button_MainMenu", OnPointerExitHideSelected);
     }
 
     /// <summary>
@@ -55,6 +77,7 @@ public class UIGameMenuPanel : UIPanelBase
     public override void OnOpen(params object[] objs)
     {
         base.OnOpen(objs);
+        Image_Selected.SetActive(false);
     }
 
     /// <summary>
@@ -147,5 +170,16 @@ public class UIGameMenuPanel : UIPanelBase
         UIManager.Instance.OpenPanel<UIGameExitPanel>();
     }
 
+
+    void OnPointerEnterShowSelected(Transform parent, BaseEventData data)
+    {
+        Image_Selected.SetActive(true);
+        Image_Selected.transform.SetParent(parent, false);
+    }
+
+    void OnPointerExitHideSelected(BaseEventData data)
+    {
+        Image_Selected.SetActive(false);
+    }
     #endregion
 }
