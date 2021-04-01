@@ -7,6 +7,7 @@ using PbUISystem;
 
 public enum E_MaskType
 {
+    None,
     Black,
     White,
     GameStateChange,
