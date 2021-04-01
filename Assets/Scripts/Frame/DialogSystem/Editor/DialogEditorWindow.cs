@@ -28,7 +28,6 @@ public class DialogEditorWindow : EditorWindow
     #endregion
 
     #region Assets
-    DialogAsset _copyAsset;
     DialogAsset _curDialogAsset;
 
     ReorderableList _dialogueList;
@@ -38,7 +37,7 @@ public class DialogEditorWindow : EditorWindow
 
     private void OnEnable()
     {
-        _copyAsset = null;
+        _curDialogAsset = null;
         _curDialogueAsset = null;
 
         _wordTextStyle = new GUIStyle();
@@ -46,13 +45,12 @@ public class DialogEditorWindow : EditorWindow
         _wordTextStyle.fontStyle = FontStyle.Bold;
         _wordTextStyle.normal.textColor = Color.white;
         _wordTextStyle.alignment = TextAnchor.MiddleCenter;
-
     }
 
     private void OnGUI()
     {
         DrawMenuLabel();
-        if (_copyAsset != null)
+        if (_curDialogAsset != null)
         {
             _selectIndex = GUILayout.Toolbar(_selectIndex, _selectToolBarArray);
             switch (_selectIndex)
@@ -73,15 +71,15 @@ public class DialogEditorWindow : EditorWindow
     #region DrawPanel
     void DrawBeforeDialogPanel()
     {
-        _copyAsset.OptionName = EditorGUILayout.TextField("选项名称", _copyAsset.OptionName);
-        _copyAsset.UnLockType = (E_UnLockType)EditorGUILayout.EnumPopup("解锁条件", _copyAsset.UnLockType);
-        switch (_copyAsset.UnLockType)
+        _curDialogAsset.OptionName = EditorGUILayout.TextField("选项名称", _curDialogAsset.OptionName);
+        _curDialogAsset.UnLockType = (E_UnLockType)EditorGUILayout.EnumPopup("解锁条件", _curDialogAsset.UnLockType);
+        switch (_curDialogAsset.UnLockType)
         {
             case E_UnLockType.None:
-                _copyAsset.NeedDialogAsset = null;
+                _curDialogAsset.NeedDialogAsset = null;
                 break;
             case E_UnLockType.Talked:
-                _copyAsset.NeedDialogAsset = (DialogAsset)EditorGUILayout.ObjectField("所需对话", _copyAsset.NeedDialogAsset, typeof(DialogAsset), false);
+                _curDialogAsset.NeedDialogAsset = (DialogAsset)EditorGUILayout.ObjectField("所需对话", _curDialogAsset.NeedDialogAsset, typeof(DialogAsset), false);
                 break;
         }
     }
@@ -105,15 +103,15 @@ public class DialogEditorWindow : EditorWindow
 
     void DrawAfterDialogPanel()
     {
-        _copyAsset.TalkEndEventType = (E_TalkEndEventType)EditorGUILayout.EnumPopup("结束事件类型", _copyAsset.TalkEndEventType);
-        switch (_copyAsset.TalkEndEventType)
+        _curDialogAsset.TalkEndEventType = (E_TalkEndEventType)EditorGUILayout.EnumPopup("结束事件类型", _curDialogAsset.TalkEndEventType);
+        switch (_curDialogAsset.TalkEndEventType)
         {
             case E_TalkEndEventType.Transition:
-                _copyAsset.MaskType = (E_MaskType)EditorGUILayout.EnumPopup("过渡类型", _copyAsset.MaskType);
-                _copyAsset.LinkedDialogAsset = (DialogAsset)EditorGUILayout.ObjectField("连接对话", _copyAsset.LinkedDialogAsset, typeof(DialogAsset), false);
+                _curDialogAsset.MaskType = (E_MaskType)EditorGUILayout.EnumPopup("过渡类型", _curDialogAsset.MaskType);
+                _curDialogAsset.LinkedDialogAsset = (DialogAsset)EditorGUILayout.ObjectField("连接对话", _curDialogAsset.LinkedDialogAsset, typeof(DialogAsset), false);
                 break;
             case E_TalkEndEventType.Night:
-                _copyAsset.LinkedDialogAsset = (DialogAsset)EditorGUILayout.ObjectField("连接对话", _copyAsset.LinkedDialogAsset, typeof(DialogAsset), false);
+                _curDialogAsset.LinkedDialogAsset = (DialogAsset)EditorGUILayout.ObjectField("连接对话", _curDialogAsset.LinkedDialogAsset, typeof(DialogAsset), false);
                 break;
             case E_TalkEndEventType.Select:
                 _talkEndEventList.DoLayoutList();
@@ -154,6 +152,7 @@ public class DialogEditorWindow : EditorWindow
             InitAudioEventList(_curDialogueAsset);
         }
         _dialogueList.onAddCallback = AddDialogueAsset;
+        _dialogueList.onRemoveCallback = RemoveDialogueAsset;
     }
 
     void InitTalkEndEventList(DialogAsset asset)
@@ -244,10 +243,9 @@ public class DialogEditorWindow : EditorWindow
 
     void AddDialogueAsset(ReorderableList reorderable)
     {
-        DialogueAsset dialogueAsset = null;
+        DialogueAsset dialogueAsset = ScriptableObject.CreateInstance<DialogueAsset>();
         if (reorderable.list.Count > 0)
         {
-            dialogueAsset = ScriptableObject.CreateInstance<DialogueAsset>();
             var list = reorderable.list as List<DialogueAsset>;
             var maxId = list.Max(i => i.DialogueId);
             var asset = list.Find(i => i.DialogueId == maxId);
@@ -256,11 +254,20 @@ public class DialogEditorWindow : EditorWindow
         }
         else
         {
-            dialogueAsset = ScriptableObject.CreateInstance<DialogueAsset>();
             dialogueAsset.DialogueId = 1;
         }
         dialogueAsset.name = dialogueAsset.DialogueId.ToString();
-        _copyAsset.DialogueAssetList.Add(dialogueAsset);
+        _curDialogAsset.DialogueAssetList.Add(dialogueAsset);
+
+        AssetDatabase.AddObjectToAsset(dialogueAsset, _curDialogAsset);
+        AssetDatabase.SaveAssets();
+    }
+
+    void RemoveDialogueAsset(ReorderableList reorderable)
+    {
+        _curDialogAsset.DialogueAssetList.Remove(_curDialogueAsset);
+        AssetDatabase.RemoveObjectFromAsset(_curDialogueAsset);
+        AssetDatabase.SaveAssets();
     }
 
     Vector2 _talkScrollPos;
@@ -375,7 +382,7 @@ public class DialogEditorWindow : EditorWindow
                 asset.WordList.Add(typerWord);
             }
 
-            SaveDialogAsset(_curDialogAsset, _copyAsset);
+            //SaveDialogAsset(_curDialogAsset, _curDialogAsset);
         }
         EditorGUILayout.EndHorizontal();
         if (asset.WordList.Count > 0)
@@ -458,19 +465,19 @@ public class DialogEditorWindow : EditorWindow
         {
             LoadDiaologAsset();
         }
-        if (_copyAsset != null)
+        if (_curDialogAsset != null)
         {
             string path = AssetDatabase.GetAssetPath(_curDialogAsset);
-            if (!string.IsNullOrEmpty(path))
-            {
-                if (GUILayout.Button("保存", GUILayout.Width(80)))
-                {
-                    SaveDialogAsset(_curDialogAsset, _copyAsset);
-                }
-            }
+            //if (!string.IsNullOrEmpty(path))
+            //{
+            //    if (GUILayout.Button("保存", GUILayout.Width(80)))
+            //    {
+            //        SaveDialogAsset(_curDialogAsset, _curDialogAsset);
+            //    }
+            //}
             if (GUILayout.Button("另存为", GUILayout.Width(80)))
             {
-                SaveAsDialogAsset(_copyAsset);
+                SaveAsDialogAsset(_curDialogAsset);
             }
         }
 
@@ -483,9 +490,9 @@ public class DialogEditorWindow : EditorWindow
         _curDialogAsset = ScriptableObject.CreateInstance<DialogAsset>();
         if (SaveAsDialogAsset(_curDialogAsset))
         {
-            _copyAsset = _curDialogAsset.Copy();
-            InitTalkAsset(_copyAsset);
-            InitTalkEndEventList(_copyAsset);
+            //_curDialogAsset = _curDialogAsset.Copy();
+            InitTalkAsset(_curDialogAsset);
+            InitTalkEndEventList(_curDialogAsset);
         }
     }
 
@@ -499,42 +506,45 @@ public class DialogEditorWindow : EditorWindow
         assetPath = assetPath.Replace(Application.dataPath, "Assets");
 
         _curDialogAsset = AssetDatabase.LoadAssetAtPath(assetPath, typeof(DialogAsset)) as DialogAsset;
-        _copyAsset = _curDialogAsset.Copy();
-        InitTalkAsset(_copyAsset);
-        InitTalkEndEventList(_copyAsset);
+        //_curDialogAsset = _curDialogAsset.Copy();
+        InitTalkAsset(_curDialogAsset);
+        InitTalkEndEventList(_curDialogAsset);
     }
 
-    void SaveDialogAsset(DialogAsset dialogAsset, DialogAsset copyAsset)
-    {
-        foreach (var talkAsset in dialogAsset.DialogueAssetList)
-        {
-            AssetDatabase.RemoveObjectFromAsset(talkAsset);
-        }
-        dialogAsset.DialogueAssetList.Clear();
+    //void SaveDialogAsset(DialogAsset dialogAsset, DialogAsset copyAsset)
+    //{
+    //    //foreach (var talkAsset in dialogAsset.DialogueAssetList)
+    //    //{
+    //    //    AssetDatabase.RemoveObjectFromAsset(talkAsset);
+    //    //}
+    //    //dialogAsset.DialogueAssetList.Clear();
 
-        dialogAsset.MaskType = copyAsset.MaskType;
-        dialogAsset.OptionName = copyAsset.OptionName;
-        dialogAsset.UnLockType = copyAsset.UnLockType;
-        dialogAsset.NeedDialogAsset = copyAsset.NeedDialogAsset;
-        dialogAsset.LinkedDialogAsset = copyAsset.LinkedDialogAsset;
-        dialogAsset.SelectDialogAssetList = new List<DialogAsset>(copyAsset.SelectDialogAssetList);
+    //    //dialogAsset.MaskType = copyAsset.MaskType;
+    //    //dialogAsset.OptionName = copyAsset.OptionName;
+    //    //dialogAsset.UnLockType = copyAsset.UnLockType;
+    //    //dialogAsset.NeedDialogAsset = copyAsset.NeedDialogAsset;
+    //    //dialogAsset.LinkedDialogAsset = copyAsset.LinkedDialogAsset;
+    //    //dialogAsset.SelectDialogAssetList = new List<DialogAsset>(copyAsset.SelectDialogAssetList);
 
-        dialogAsset.TalkEndEventType = copyAsset.TalkEndEventType;
+    //    //dialogAsset.TalkEndEventType = copyAsset.TalkEndEventType;
 
-        AssetDatabase.SaveAssets();
-        AssetDatabase.Refresh();
-        foreach (var talkAsset in copyAsset.DialogueAssetList)
-        {
-            var tempTalkAsset = talkAsset.Copy();
-            tempTalkAsset.name = tempTalkAsset.DialogueId.ToString();
-            AssetDatabase.AddObjectToAsset(tempTalkAsset, dialogAsset);
-            dialogAsset.DialogueAssetList.Add(tempTalkAsset);
-        }
+    //    //AssetDatabase.SaveAssets();
+    //    //AssetDatabase.Refresh();
+    //    //foreach (var talkAsset in copyAsset.DialogueAssetList)
+    //    //{
+    //    //    var tempTalkAsset = talkAsset.Copy();
+    //    //    tempTalkAsset.name = tempTalkAsset.DialogueId.ToString();
+    //    //    AssetDatabase.AddObjectToAsset(tempTalkAsset, dialogAsset);
+    //    //    dialogAsset.DialogueAssetList.Add(tempTalkAsset);
+    //    //}
 
-        EditorUtility.SetDirty(dialogAsset);
-        AssetDatabase.SaveAssets();
-        AssetDatabase.Refresh();
-    }
+    //    dialogAsset = _curDialogAsset.Copy();
+    //    EditorUtility.SetDirty(dialogAsset);
+
+    //    //EditorUtility.SetDirty(dialogAsset);
+    //    AssetDatabase.SaveAssets();
+    //    AssetDatabase.Refresh();
+    //}
 
     bool SaveAsDialogAsset(DialogAsset newAsset)
     {
@@ -545,13 +555,15 @@ public class DialogEditorWindow : EditorWindow
         AssetDatabase.Refresh();
         string assetPath = EditorUtility.SaveFilePanelInProject("Save", "New DialogAsset", "asset", "", _defaultPath);
         if (string.IsNullOrEmpty(assetPath)) return false;
-        AssetDatabase.CreateAsset(newAsset, assetPath);
+        var tempAsset = ScriptableObject.CreateInstance<DialogAsset>();
+        EditorUtility.CopySerialized(newAsset, tempAsset);
+        AssetDatabase.CreateAsset(tempAsset, assetPath);
 
-        foreach (var talkAsset in newAsset.DialogueAssetList)
-        {
-            talkAsset.name = talkAsset.DialogueId.ToString();
-            AssetDatabase.AddObjectToAsset(talkAsset, newAsset);
-        }
+        //foreach (var talkAsset in newAsset.DialogueAssetList)
+        //{
+        //    talkAsset.name = talkAsset.DialogueId.ToString();
+        //    AssetDatabase.AddObjectToAsset(talkAsset, newAsset);
+        //}
         AssetDatabase.SaveAssets();
         AssetDatabase.Refresh();
         _curDialogAsset = AssetDatabase.LoadAssetAtPath(assetPath, typeof(DialogAsset)) as DialogAsset;
