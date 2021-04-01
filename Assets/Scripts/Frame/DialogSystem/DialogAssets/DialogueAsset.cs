@@ -7,6 +7,8 @@ public class DialogueAsset : ScriptableObject
 {
     public int DialogueId;
 
+    public E_MaskType MaskType;
+
     public E_DialogType DialogType;
     public bool IsNewTalk;
     public bool IsNewPage;

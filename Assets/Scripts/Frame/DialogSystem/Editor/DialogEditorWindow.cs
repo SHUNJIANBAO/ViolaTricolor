@@ -284,6 +284,7 @@ public class DialogEditorWindow : EditorWindow
             asset.IsNewTalk = EditorGUILayout.Toggle("是否为新段落", asset.IsNewTalk);
             asset.IsNewPage = EditorGUILayout.Toggle("是否为新的一页", asset.IsNewPage);
         }
+        asset.MaskType = (E_MaskType)EditorGUILayout.EnumPopup("显示动画", asset.MaskType);
         GUILayout.Label("背景");
         asset.Background = (GameObject)EditorGUILayout.ObjectField(asset.Background, typeof(GameObject), false);
         asset.Bgm = (AudioClip)EditorGUILayout.ObjectField("背景音乐", asset.Bgm, typeof(AudioClip), false);

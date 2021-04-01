@@ -27,10 +27,11 @@ public class DialogManager : Singleton<DialogManager>
     }
 
 
-    public void SetTalkAsset(DialogAsset asset)
+    public void SetTalkAsset(DialogAsset asset,int index=0)
     {
-        _index = 0;
+        _index = index;
         _curDialogAsset = asset;
+        _dialogPanel?.SetMessageByAsset(_curDialogAsset.DialogueAssetList[_index]);
     }
 
     public void Talk(int dialogueId = -1)

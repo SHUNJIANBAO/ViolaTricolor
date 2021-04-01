@@ -17,7 +17,7 @@ public class PlayerManager : Singleton<PlayerManager>
     {
         UIManager.Instance.OpenPanel<UIMaskPanel>(true, () =>
          {
-             DialogManager.Instance.SetTalkAsset(CurrentRecord.RecordDiaologAsset);
+             DialogManager.Instance.SetTalkAsset(CurrentRecord.RecordDiaologAsset, CurrentRecord.TalkIndex);
              DialogManager.Instance.Talk(CurrentRecord.TalkIndex);
          }, E_MaskType.GameStateChange);
     }

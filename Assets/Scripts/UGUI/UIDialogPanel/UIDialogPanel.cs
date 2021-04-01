@@ -332,7 +332,28 @@ public class UIDialogPanel : UIPanelBase
 
     public void Talk(DialogueAsset asset)
     {
-        //SetMessageByAsset(asset);
+        switch (asset.MaskType)
+        {
+            case E_MaskType.None:
+                InitDialog(asset);
+                StartTalk(asset);
+                break;
+            case E_MaskType.Black:
+            case E_MaskType.White:
+            case E_MaskType.GameStateChange:
+                UIManager.Instance.OpenPanel<UIMaskPanel>(true, () =>
+                 {
+                     InitDialog(asset);
+                     StartTalk(asset);
+                 }, asset.MaskType);
+                break;
+            default:
+                break;
+        }
+    }
+
+    void InitDialog(DialogueAsset asset)
+    {
         AudioManager.Instance.StopAudioByType(E_AudioType.Dub);
         AudioManager.Instance.StopAudioByType(E_AudioType.Audio);
         SetDelayEventList(asset.DelayEventList);
@@ -345,6 +366,19 @@ public class UIDialogPanel : UIPanelBase
                 ShowBodyByBodyShowType(E_BodyPos.Right, asset.RightBodyShowType, () => SetBodySpriteByPosType(E_BodyPos.Right, asset.RightBody));
                 ShowBodyByBodyShowType(E_BodyPos.Center, asset.CenterBodyShowType, () => SetBodySpriteByPosType(E_BodyPos.Center, asset.CenterBody));
                 ShowBodyByBodyShowType(E_BodyPos.Bottom, asset.BottomBodyShowType, () => SetBodySpriteByPosType(E_BodyPos.Bottom, asset.BottomBody));
+                break;
+            case E_DialogType.FullScreen:
+                break;
+        }
+
+    }
+
+    void StartTalk(DialogueAsset asset)
+    {
+        switch (asset.DialogType)
+        {
+            case E_DialogType.Normal:
+                Text_TalkContent.text = "";
                 StartCoroutine(PlayNormalTalk(asset));
                 break;
             case E_DialogType.FullScreen:
