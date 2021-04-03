@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GameConfig : MonoSingleton<GameConfig>
 {
+    public DialogAsset Asset;
+
     [Header("字体大小")]
     public int WordSizeLevel1 = 10;
     public int WordSizeLevel2 = 15;

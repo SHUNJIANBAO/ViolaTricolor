@@ -34,7 +34,7 @@ public class PlayerManager : Singleton<PlayerManager>
     {
         CurrentRecord = RecordData.Instance.CreateNewRecord();
         UIManager.Instance.CloseAllNormalPanel();
-        DialogManager.Instance.SetTalkAsset(DialogManager.Instance.DefaultDialogAsset);
+        DialogManager.Instance.SetTalkAsset(GameConfig.Instance.Asset ?? DialogManager.Instance.DefaultDialogAsset);
         DialogManager.Instance.Talk();
     }
 
