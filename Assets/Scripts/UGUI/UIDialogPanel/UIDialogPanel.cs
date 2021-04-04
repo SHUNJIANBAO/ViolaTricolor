@@ -264,6 +264,14 @@ public class UIDialogPanel : UIPanelBase
                 Text_TalkContent.fontSize = GameConfig.Instance.WordSizeLevel3;
                 Text_FullScreenTalkContent.fontSize = GameConfig.Instance.WordSizeLevel3;
                 break;
+            case 3:
+                Text_TalkContent.fontSize = GameConfig.Instance.WordSizeLevel4;
+                Text_FullScreenTalkContent.fontSize = GameConfig.Instance.WordSizeLevel4;
+                break;
+            case 4:
+                Text_TalkContent.fontSize = GameConfig.Instance.WordSizeLevel5;
+                Text_FullScreenTalkContent.fontSize = GameConfig.Instance.WordSizeLevel5;
+                break;
         }
     }
 
