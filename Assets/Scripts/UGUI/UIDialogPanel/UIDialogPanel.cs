@@ -33,7 +33,8 @@ public class UIDialogPanel : UIPanelBase
         get => _isShowDialog;
     }
 
-    Image Panel_TalkContent;
+    CanvasGroup Panel_TalkContent;
+    Image Image_TalkContent;
     DialogueAsset _curDialogueAsset;
     Coroutine _talkCoroutine;
     Coroutine _talkStopCoroutine;
@@ -85,7 +86,8 @@ public class UIDialogPanel : UIPanelBase
 
         Text_TalkContent = GetUI<Text>("Text_TalkContent");
         Text_FullScreenTalkContent = GetUI<Text>("Text_FullScreenTalkContent");
-        Panel_TalkContent = GetUI<Image>("Panel_TalkContent");
+        Panel_TalkContent = GetUI<CanvasGroup>("Panel_TalkContent");
+        Image_TalkContent = GetUI<Image>("Panel_TalkContent");
 
         Panel_LeftName = GetUI<CanvasGroup>("Panel_LeftName");
         Panel_RightName = GetUI<CanvasGroup>("Panel_RightName");
@@ -129,7 +131,7 @@ public class UIDialogPanel : UIPanelBase
         Panel_LeftName.alpha = 0;
         Panel_RightName.alpha = 0;
         _isShowDialog = false;
-        Panel_TalkContent.transform.localPosition = new Vector3(0, -Panel_TalkContent.rectTransform.rect.height);
+        //Panel_TalkContent.transform.localPosition = new Vector3(0, -Panel_TalkContent.rectTransform.rect.height);
         //Panel_TalkContent.rectTransform.anchoredPosition = new Vector2(Panel_TalkContent.rectTransform.anchoredPosition.x, Panel_TalkContent.rectTransform.anchoredPosition.y - Panel_TalkContent.rectTransform.rect.height);
     }
 
@@ -267,20 +269,20 @@ public class UIDialogPanel : UIPanelBase
 
     void SetDialogAlpha(params object[] objs)
     {
-        Color tmpColor = Panel_TalkContent.color;
+        Color tempColor = Color.white;
         switch (GameConfigData.Instance.DialogAlphaLevel)
         {
             case 0:
-                tmpColor.a = GameConfig.Instance.DialogAlphaLevel1;
+                tempColor.a = GameConfig.Instance.DialogAlphaLevel1;
                 break;
             case 1:
-                tmpColor.a = GameConfig.Instance.DialogAlphaLevel2;
+                tempColor.a = GameConfig.Instance.DialogAlphaLevel2;
                 break;
             case 2:
-                tmpColor.a = GameConfig.Instance.DialogAlphaLevel3;
+                tempColor.a = GameConfig.Instance.DialogAlphaLevel3;
                 break;
         }
-        Panel_TalkContent.color = tmpColor;
+        Image_TalkContent.color = tempColor;
     }
 
     void SetShowShortcutKey(params object[] objs)
@@ -295,24 +297,36 @@ public class UIDialogPanel : UIPanelBase
         if (_isShowDialog) return;
         if (_curDialogueAsset != null)
             SetName(_curDialogueAsset.TalkerName, _curDialogueAsset.NamePos);
-        Panel_TalkContent.rectTransform.DOAnchorPosY(0, 0.5f).OnComplete(() =>
+        Panel_TalkContent.DOFade(1, 0.5f).OnComplete(() =>
         {
             _isShowDialog = true;
             callback?.Invoke();
         });
+        //Panel_TalkContent.rectTransform.DOAnchorPosY(0, 0.5f).OnComplete(() =>
+        //{
+        //    _isShowDialog = true;
+        //    callback?.Invoke();
+        //});
     }
 
     public void HideDialog(bool clearContent, Action callback = null)
     {
         if (!_isShowDialog) return;
         SetName("", E_NamePos.None);
-        Panel_TalkContent.rectTransform.DOAnchorPosY(-Panel_TalkContent.rectTransform.rect.height, 0.5f).OnComplete(() =>
-      {
-          _isShowDialog = false;
-          //SetName("", E_BodyPos.None);
-          if (clearContent) Text_TalkContent.text = "";
-          callback?.Invoke();
-      });
+        float alpha = 0;
+        Panel_TalkContent.DOFade(0, 0.5f).OnComplete(() =>
+        {
+            _isShowDialog = false;
+            if (clearContent) Text_TalkContent.text = "";
+            callback?.Invoke();
+        });
+        //  Panel_TalkContent.rectTransform.DOAnchorPosY(-Panel_TalkContent.rectTransform.rect.height, 0.5f).OnComplete(() =>
+        //{
+        //    _isShowDialog = false;
+        //    //SetName("", E_BodyPos.None);
+        //    if (clearContent) Text_TalkContent.text = "";
+        //    callback?.Invoke();
+        //});
     }
 
     public bool IsCanTalk()

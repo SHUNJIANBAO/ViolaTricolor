@@ -342,13 +342,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f10d72a794d33ba4eb116b2b45295ccf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Asset: {fileID: 0}
   WordSizeLevel1: 40
   WordSizeLevel2: 50
   WordSizeLevel3: 60
   TyperSpeedLevel1: 0.3
   TyperSpeedLevel2: 0.2
   TyperSpeedLevel3: 0.1
-  DialogAlphaLevel1: 0.8
+  DialogAlphaLevel1: 1
   DialogAlphaLevel2: 0.5
   DialogAlphaLevel3: 0.2
   BlackTransitionTime: 0.1
