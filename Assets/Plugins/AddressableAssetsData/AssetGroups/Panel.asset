@@ -22,10 +22,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - UI
-    m_MainAsset: {fileID: 1742495505607502, guid: 2036078840ba6df40a4fffec6e1fcfd3,
-      type: 3}
-    m_TargetAsset: {fileID: 1742495505607502, guid: 2036078840ba6df40a4fffec6e1fcfd3,
-      type: 3}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 2a4d02f687babd041aa80724fb3c3db7
     m_Address: Assets/GameAssets/Prefabs/UGUI/UISelectPanel/UISelectItem.prefab
     m_ReadOnly: 0
@@ -73,10 +71,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - UI
-    m_MainAsset: {fileID: 1742495505607502, guid: b0a411dbab2fd8644828d5af54771acd,
-      type: 3}
-    m_TargetAsset: {fileID: 1742495505607502, guid: b0a411dbab2fd8644828d5af54771acd,
-      type: 3}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: caf9f281af51fc747b3cef7cf3f86a45
     m_Address: Assets/GameAssets/Prefabs/UGUI/UIRecordPanel/UIRecordPanel.prefab
     m_ReadOnly: 0
@@ -86,6 +82,13 @@ MonoBehaviour:
     m_TargetAsset: {fileID: 0}
   - m_GUID: da76200cabd78f345b0baffdf6a38665
     m_Address: Assets/GameAssets/Prefabs/UGUI/UISelectPanel/UISelectPanel.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UI
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: f2bc959b7c8ae9e46ba4d1742ac5510c
+    m_Address: Assets/GameAssets/Prefabs/UGUI/UINoteBookPanel/UIPageItem.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - UI

@@ -19,31 +19,6 @@ public class DialogAsset : ScriptableObject
 
     public List<DialogueAsset> DialogueAssetList = new List<DialogueAsset>();
 
-    //public DialogAsset Copy()
-    //{
-    //    DialogAsset asset = ScriptableObject.CreateInstance<DialogAsset>();
-    //    UnityEditor.EditorUtility.CopySerialized(this, asset);
-
-    //    //asset.name = this.name;
-
-
-    //    //asset.OptionName = OptionName;
-    //    //asset.UnLockType = UnLockType;
-    //    //asset.MaskType = MaskType;
-    //    //asset.NeedDialogAsset = NeedDialogAsset;
-    //    //asset.LinkedDialogAsset = LinkedDialogAsset;
-
-    //    //asset.TalkEndEventType = TalkEndEventType;
-
-    //    //asset.SelectDialogAssetList = new List<DialogAsset>(SelectDialogAssetList);
-
-    //    //asset.DialogueAssetList = new List<DialogueAsset>();
-    //    //foreach (var dialogueAsset in DialogueAssetList)
-    //    //{
-    //    //    asset.DialogueAssetList.Add(dialogueAsset.Copy());
-    //    //}
-    //    return asset;
-    //}
 }
 
 
@@ -59,4 +34,11 @@ public enum E_TalkEndEventType
     Night,
     Select,
     GameOver,
+}
+
+public enum E_CatalogType
+{
+    People,
+    Thing,
+    Record,
 }

@@ -23,19 +23,20 @@ public class AutoFlip : MonoBehaviour
         if (AutoStartFlip)
             StartFlipping();
     }
-    public void FlipRightPage()
+    public void FlipRightPage(Action callback=null)
     {
         if (isPageFlipping) return;
         if (ControledBook.CurrentPaper >= ControledBook.papers.Count) return;
         isPageFlipping = true;
-        PageFlipper.FlipPage(ControledBook, PageFlipTime, FlipMode.RightToLeft, ()=> { isPageFlipping = false; });
+        callback+=()=> { isPageFlipping = false; };
+        PageFlipper.FlipPage(ControledBook, PageFlipTime, FlipMode.RightToLeft, callback);
     }
-    public void FlipLeftPage()
+    public void FlipLeftPage(Action callback = null)
     {
         if (isPageFlipping) return;
         if (ControledBook.CurrentPaper <= 0) return;
-        isPageFlipping = true;
-        PageFlipper.FlipPage(ControledBook, PageFlipTime, FlipMode.LeftToRight, () => { isPageFlipping = false; });
+        callback += () => { isPageFlipping = false; };
+        PageFlipper.FlipPage(ControledBook, PageFlipTime, FlipMode.LeftToRight, callback);
     }
     public void StartFlipping()
     {

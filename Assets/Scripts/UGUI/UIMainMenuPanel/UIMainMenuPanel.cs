@@ -12,6 +12,7 @@ public class UIMainMenuPanel : UIPanelBase
     Button Button_NewGame;
     Button Button_Load;
     Button Button_Set;
+    Button Button_Note;
 
     Button Button_ExitGame;
     #endregion
@@ -27,6 +28,7 @@ public class UIMainMenuPanel : UIPanelBase
         Button_NewGame = GetUI<Button>("Button_NewGame");
         Button_Load = GetUI<Button>("Button_Load");
         Button_Set = GetUI<Button>("Button_Set");
+        Button_Note = GetUI<Button>("Button_Note");
 
         Button_ExitGame = GetUI<Button>("Button_ExitGame");
     }
@@ -40,6 +42,7 @@ public class UIMainMenuPanel : UIPanelBase
         AddButtonListen(Button_NewGame, OnClickButtonNewGame);
         AddButtonListen(Button_Load, OnClickButtonLoad);
         AddButtonListen(Button_Set, OnClickButtonSet);
+        AddButtonListen(Button_Note, OnClickButtonNote);
         AddButtonListen(Button_ExitGame, OnClickButtonExitGame);
     }
 
@@ -146,6 +149,11 @@ public class UIMainMenuPanel : UIPanelBase
     void OnClickButtonSet()
     {
         UIManager.Instance.OpenPanel<UISetPanel>();
+    }
+
+    void OnClickButtonNote()
+    {
+        UIManager.Instance.OpenPanel<UINoteBookPanel>();
     }
 
     void OnClickButtonExitGame()

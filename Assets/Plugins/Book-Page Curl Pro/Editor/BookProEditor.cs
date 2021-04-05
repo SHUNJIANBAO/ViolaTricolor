@@ -171,24 +171,24 @@ public class BookProEditor : Editor
         serializedObject.ApplyModifiedProperties();
         DrawNavigationPanel();
         DrawFlippingPapersRange();
-        if (GUILayout.Button("Update Pages Order"))
-        {
-            (target as BookPro).UpdatePages();
-        }
-        if (GUILayout.Button("Update Pages Names"))
-        {
-            if (EditorUtility.DisplayDialog("Warning!",
-                "All Pages will be renamed according to its order", "Ok", "Cancel"))
-            {
-                BookPro book = target as BookPro;
-                for (int i = 0; i < book.papers.Count; i++)
-                {
-                    book.papers[i].Front.name = "Page" + (i * 2);
-                    book.papers[i].Back.name = "Page" + (i * 2 + 1);
-                }
+        //if (GUILayout.Button("Update Pages Order"))
+        //{
+        //    (target as BookPro).UpdatePages();
+        //}
+        //if (GUILayout.Button("Update Pages Names"))
+        //{
+        //    if (EditorUtility.DisplayDialog("Warning!",
+        //        "All Pages will be renamed according to its order", "Ok", "Cancel"))
+        //    {
+        //        BookPro book = target as BookPro;
+        //        for (int i = 0; i < book.papers.Count; i++)
+        //        {
+        //            book.papers[i].Front.name = "Page" + (i * 2);
+        //            book.papers[i].Back.name = "Page" + (i * 2 + 1);
+        //        }
 
-            }
-        }
+        //    }
+        //}
     }
 
     private void DrawFlippingPapersRange()
@@ -232,7 +232,7 @@ public class BookProEditor : Editor
             book.CurrentPaper--;
         }
         book.CurrentPaper = EditorGUILayout.IntField(book.CurrentPaper, GUILayout.Width(30));
-        EditorUtility.SetDirty(book);
+        //EditorUtility.SetDirty(book);
         Undo.RecordObject(book, "CurrentPageChange");
         if (GUILayout.Button(">"))
         {

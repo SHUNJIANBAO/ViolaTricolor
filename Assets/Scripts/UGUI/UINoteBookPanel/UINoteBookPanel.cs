@@ -4,11 +4,18 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using PbUISystem;
+using System;
 
 [RequireComponent(typeof(CanvasGroup))]
 public class UINoteBookPanel : UIPanelBase
 {
     #region 参数
+    BookPro BookPro;
+    AutoFlip AutoFlip;
+    Button Button_LeftPage;
+    Button Button_RigthPage;
+
+    Button Button_Catalog;
     Button Button_Close;
     #endregion
 
@@ -21,6 +28,12 @@ public class UINoteBookPanel : UIPanelBase
     {
         base.GetUIComponent();
         Button_Close = GetUI<Button>("Button_Close");
+        Button_Catalog = GetUI<Button>("Button_Catalog");
+        BookPro = GetUI<BookPro>("BookPro");
+        AutoFlip = GetUI<AutoFlip>("BookPro");
+
+        Button_LeftPage = GetUI<Button>("Button_LeftPage");
+        Button_RigthPage = GetUI<Button>("Button_RigthPage");
     }
 
     /// <summary>
@@ -30,6 +43,9 @@ public class UINoteBookPanel : UIPanelBase
     {
         base.AddUIListener();
         AddButtonListen(Button_Close, OnButtonClickCloseNoteBook);
+        AddButtonListen(Button_Catalog, BackToCatalog);
+        AddButtonListen(Button_LeftPage, FlipToLeftPage);
+        AddButtonListen(Button_RigthPage, FlipToRightPage);
     }
 
     /// <summary>
@@ -48,6 +64,16 @@ public class UINoteBookPanel : UIPanelBase
     public override void OnOpen(params object[] objs)
     {
         base.OnOpen(objs);
+        BookPro.papers.Clear();
+        CreatePage();
+        CreatePage();
+        CreatePage();
+        CreatePage();
+        CreatePage();
+        BookPro.UpdatePages();
+        BookPro.CurrentPaper = 1;
+
+        ShowCatalogByType(E_CatalogType.People);
     }
 
     /// <summary>
@@ -131,5 +157,84 @@ public class UINoteBookPanel : UIPanelBase
         }, E_MaskType.GameStateChange);
     }
 
+    void OnButtonClickCatalog()
+    {
+
+    }
+
+    int _index;
+    void CreatePage()
+    {
+        _index++;
+        var rightPage = UIManager.Instance.CreateItem<UIPageItem>(BookPro.transform);
+        rightPage.SetPos(E_PagePos.Right);
+        var rightPageTrans = rightPage.GetComponent<RectTransform>();
+        rightPageTrans.sizeDelta = BookPro.RightPageTransform.sizeDelta;
+        rightPageTrans.pivot = BookPro.RightPageTransform.pivot;
+        rightPageTrans.anchoredPosition = BookPro.RightPageTransform.anchoredPosition;
+        rightPageTrans.localScale = BookPro.RightPageTransform.localScale;
+        rightPage.name = "Page";
+        rightPage.SetText("Test Right" + _index.ToString());
+        //lastElement.FindPropertyRelative("Front").objectReferenceInstanceIDValue = rightPage.GetInstanceID();
+
+        _index++;
+        var leftPage = UIManager.Instance.CreateItem<UIPageItem>(BookPro.transform);
+        leftPage.SetPos(E_PagePos.Left);
+        var leftPageTrans = leftPage.GetComponent<RectTransform>();
+        leftPageTrans.transform.SetParent(BookPro.transform, true);
+        leftPageTrans.sizeDelta = BookPro.LeftPageTransform.sizeDelta;
+        leftPageTrans.pivot = BookPro.LeftPageTransform.pivot;
+        leftPageTrans.anchoredPosition = BookPro.LeftPageTransform.anchoredPosition;
+        leftPageTrans.localScale = BookPro.LeftPageTransform.localScale;
+        leftPageTrans.name = "Page";
+        leftPage.SetText("Test Left" + _index.ToString());
+        //lastElement.FindPropertyRelative("Back").objectReferenceInstanceIDValue = leftPage.GetInstanceID();
+
+        Paper paper = new Paper();
+        paper.Back = leftPage.gameObject;
+        paper.Front = rightPage.gameObject;
+        BookPro.papers.Add(paper);
+
+        BookPro.EndFlippingPaper = BookPro.papers.Count - 1;
+    }
+
+    void ShowCatalogByType(E_CatalogType type)
+    {
+
+    }
+
+    void BackToCatalog()
+    {
+        float beforeTime = AutoFlip.PageFlipTime;
+
+        float flipTime =beforeTime/ (BookPro.CurrentPaper - 1);
+        AutoFlip.PageFlipTime = flipTime;
+
+        WhileBack(() => AutoFlip.PageFlipTime = beforeTime); ;
+    }
+
+    void WhileBack(Action callback)
+    {
+        if (BookPro.CurrentPaper > 1)
+        {
+            AutoFlip.FlipLeftPage(()=>WhileBack(callback));
+        }
+        else
+        {
+            callback?.Invoke();
+        }
+    }
+
+    void FlipToLeftPage()
+    {
+        if (BookPro.CurrentPaper <= 2) return;
+        AutoFlip.FlipLeftPage();
+    }
+
+    void FlipToRightPage()
+    {
+        if (BookPro.CurrentPaper >= BookPro.papers.Count - 1) return;
+        AutoFlip.FlipRightPage();
+    }
     #endregion
 }
