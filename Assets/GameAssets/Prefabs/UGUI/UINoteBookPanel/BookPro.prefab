@@ -409,8 +409,6 @@ MonoBehaviour:
     Back: {fileID: 0}
   - Front: {fileID: 0}
     Back: {fileID: 0}
-  - Front: {fileID: 0}
-    Back: {fileID: 0}
   OnFlip:
     m_PersistentCalls:
       m_Calls:
@@ -437,7 +435,7 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
   StartFlippingPaper: 0
-  EndFlippingPaper: 0
+  EndFlippingPaper: 1
 --- !u!114 &3249886931896583891
 MonoBehaviour:
   m_ObjectHideFlags: 0

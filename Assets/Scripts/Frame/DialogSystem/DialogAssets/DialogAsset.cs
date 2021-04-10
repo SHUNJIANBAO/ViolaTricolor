@@ -11,6 +11,7 @@ public class DialogAsset : ScriptableObject
     public E_TalkEndEventType TalkEndEventType;
     public E_MaskType MaskType;
     public DialogAsset LinkedDialogAsset; //连接的段落
+    public List<NoteRecordData> NodeRecordDataList = new List<NoteRecordData>();
 
     public DialogAsset LockConditionAsset;
     public DialogAsset LockLinkedAsset;
@@ -21,6 +22,14 @@ public class DialogAsset : ScriptableObject
 
 }
 
+[System.Serializable]
+public class NoteRecordData
+{
+    public E_CatalogType CatalogType;
+    public string Title;
+    public int Page;
+    public string Text;
+}
 
 public enum E_UnLockType
 {

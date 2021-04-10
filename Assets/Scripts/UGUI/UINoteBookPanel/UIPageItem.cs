@@ -6,17 +6,14 @@ using UnityEngine.UI;
 
 public class UIPageItem : UIItemBase
 {
-    Image Image_Left;
-    Image Image_Right;
+    //Image Image_Left;
+    //Image Image_Right;
     Image _image;
     Text Text_Content;
     protected override void GetUIComponent()
     {
         base.GetUIComponent();
         _image = GetComponent<Image>();
-        Image_Left = GetUI<Image>("Image_Left");
-        Image_Right = GetUI<Image>("Image_Right");
-        Text_Content = GetUI<Text>("Text_Content");
     }
     protected override void AddUIListener()
     {
@@ -29,16 +26,18 @@ public class UIPageItem : UIItemBase
         switch (posType)
         {
             case E_PagePos.Left:
-                _image.sprite = Image_Left.sprite;
+                _image.sprite = GetUI<Image>("Image_Left").sprite;
                 break;
             case E_PagePos.Right:
-                _image.sprite = Image_Right.sprite;
+                _image.sprite = GetUI<Image>("Image_Right").sprite;
                 break;
         }
     }
 
     public void SetText(string text)
     {
+        if(Text_Content==null) Text_Content = GetUI<Text>("Text_Content");
+
         Text_Content.text = text;
     }
 }

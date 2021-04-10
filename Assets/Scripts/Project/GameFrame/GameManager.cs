@@ -14,7 +14,8 @@ public class GameManager : MonoSingleton<GameManager>
         yield return DialogManager.Instance.Init();
         //yield return AudioManager.Instance.Init();
         Debug.Log("资源加载完成!");
-        UIManager.Instance.OpenPanel<UIMainMenuPanel>();
+        UIManager.Instance.OpenPanel<UINoteBookPanel>();
+        //UIManager.Instance.OpenPanel<UIMainMenuPanel>();
     }
 
     public void LoadConfig()
@@ -28,6 +29,7 @@ public class GameManager : MonoSingleton<GameManager>
         GameConfigData.Load();
         RecordData.Load();
         Debug.Log("加载数据完成");
+
     }
 
 

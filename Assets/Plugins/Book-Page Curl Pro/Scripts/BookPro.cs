@@ -231,51 +231,51 @@ public class BookPro : MonoBehaviour
 
             }
         }
-        #region Shadow Effect
-        if (enableShadowEffect)
-        {
-            //the shadow effect enabled
-            if (previousPaper >= 0)
-            {
-                //has at least one previous page, then left shadow should be active
-                LeftPageShadow.gameObject.SetActive(true);
-                LeftPageShadow.transform.SetParent(papers[previousPaper].Back.transform, true);
-                LeftPageShadow.rectTransform.anchoredPosition = new Vector3();
-                LeftPageShadow.rectTransform.localRotation = Quaternion.identity;
-            }
-            else
-            {
-                //if no previous pages, the leftShaow should be disabled
-                LeftPageShadow.gameObject.SetActive(false);
-                LeftPageShadow.transform.SetParent(BookPanel, true);
-            }
+        //#region Shadow Effect
+        //if (enableShadowEffect)
+        //{
+        //    //the shadow effect enabled
+        //    if (previousPaper >= 0)
+        //    {
+        //        //has at least one previous page, then left shadow should be active
+        //        LeftPageShadow.gameObject.SetActive(true);
+        //        LeftPageShadow.transform.SetParent(papers[previousPaper].Back.transform, true);
+        //        LeftPageShadow.rectTransform.anchoredPosition = new Vector3();
+        //        LeftPageShadow.rectTransform.localRotation = Quaternion.identity;
+        //    }
+        //    else
+        //    {
+        //        //if no previous pages, the leftShaow should be disabled
+        //        LeftPageShadow.gameObject.SetActive(false);
+        //        LeftPageShadow.transform.SetParent(BookPanel, true);
+        //    }
 
-            if (currentPaper < papers.Count)
-            {
-                //has at least one next page, the right shadow should be active
-                RightPageShadow.gameObject.SetActive(true);
-                RightPageShadow.transform.SetParent(papers[currentPaper].Front.transform, true);
-                RightPageShadow.rectTransform.anchoredPosition = new Vector3();
-                RightPageShadow.rectTransform.localRotation = Quaternion.identity;
-            }
-            else
-            {
-                //no next page, the right shadow should be diabled
-                RightPageShadow.gameObject.SetActive(false);
-                RightPageShadow.transform.SetParent(BookPanel, true);
-            }
-        }
-        else
-        {
-            //Enable Shadow Effect is Unchecked, all shadow effects should be disabled
-            LeftPageShadow.gameObject.SetActive(false);
-            LeftPageShadow.transform.SetParent(BookPanel, true);
+        //    if (currentPaper < papers.Count)
+        //    {
+        //        //has at least one next page, the right shadow should be active
+        //        RightPageShadow.gameObject.SetActive(true);
+        //        RightPageShadow.transform.SetParent(papers[currentPaper].Front.transform, true);
+        //        RightPageShadow.rectTransform.anchoredPosition = new Vector3();
+        //        RightPageShadow.rectTransform.localRotation = Quaternion.identity;
+        //    }
+        //    else
+        //    {
+        //        //no next page, the right shadow should be diabled
+        //        RightPageShadow.gameObject.SetActive(false);
+        //        RightPageShadow.transform.SetParent(BookPanel, true);
+        //    }
+        //}
+        //else
+        //{
+        //    //Enable Shadow Effect is Unchecked, all shadow effects should be disabled
+        //    LeftPageShadow.gameObject.SetActive(false);
+        //    LeftPageShadow.transform.SetParent(BookPanel, true);
 
-            RightPageShadow.gameObject.SetActive(false);
-            RightPageShadow.transform.SetParent(BookPanel, true);
+        //    RightPageShadow.gameObject.SetActive(false);
+        //    RightPageShadow.transform.SetParent(BookPanel, true);
 
-        }
-        #endregion
+        //}
+        //#endregion
     }
 
 
@@ -516,10 +516,10 @@ public class BookPro : MonoBehaviour
             Shadow.transform.localPosition = new Vector3(0, 0, 0);
             Shadow.transform.localEulerAngles = new Vector3(0, 0, 0);
 
-            ShadowLTR.transform.SetParent(Left.transform);
-            ShadowLTR.rectTransform.anchoredPosition = new Vector3();
-            ShadowLTR.transform.localEulerAngles = Vector3.zero;
-            ShadowLTR.gameObject.SetActive(true);
+            //ShadowLTR.transform.SetParent(Left.transform);
+            //ShadowLTR.rectTransform.anchoredPosition = new Vector3();
+            //ShadowLTR.transform.localEulerAngles = Vector3.zero;
+            //ShadowLTR.gameObject.SetActive(true);
         }
         Right.transform.SetParent(ClippingPlane.transform, true);
 
@@ -559,10 +559,10 @@ public class BookPro : MonoBehaviour
             ShadowLTR.transform.localPosition = new Vector3(0, 0, 0);
             ShadowLTR.transform.localEulerAngles = new Vector3(0, 0, 0);
 
-            Shadow.transform.SetParent(Right.transform);
-            Shadow.rectTransform.anchoredPosition = new Vector3(0, 0, 0);
-            Shadow.transform.localEulerAngles = Vector3.zero;
-            Shadow.gameObject.SetActive(true);
+            //Shadow.transform.SetParent(Right.transform);
+            //Shadow.rectTransform.anchoredPosition = new Vector3(0, 0, 0);
+            //Shadow.transform.localEulerAngles = Vector3.zero;
+            //Shadow.gameObject.SetActive(true);
         }
         Left.transform.SetParent(ClippingPlane.transform, true);
         Right.transform.SetParent(BookPanel.transform, true);

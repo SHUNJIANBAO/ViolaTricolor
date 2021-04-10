@@ -346,6 +346,8 @@ MonoBehaviour:
   WordSizeLevel1: 40
   WordSizeLevel2: 50
   WordSizeLevel3: 60
+  WordSizeLevel4: 25
+  WordSizeLevel5: 30
   TyperSpeedLevel1: 0.3
   TyperSpeedLevel2: 0.2
   TyperSpeedLevel3: 0.1

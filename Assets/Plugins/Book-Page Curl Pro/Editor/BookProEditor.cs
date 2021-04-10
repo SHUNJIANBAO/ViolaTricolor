@@ -16,9 +16,11 @@ public class BookProEditor : Editor
         {
             tex = Texture2D.blackTexture;
         }
+
         list = new ReorderableList(serializedObject,
                 serializedObject.FindProperty("papers"),
                 true, true, true, true);
+
         list.elementHeight = 75;
         list.drawElementCallback = DrawElement;
         list.drawHeaderCallback = drawHeader;
@@ -43,8 +45,10 @@ public class BookProEditor : Editor
                 book.RightPageShadow.gameObject.SetActive(false);
                 book.RightPageShadow.transform.SetParent(book.transform);
 
-                Undo.DestroyObjectImmediate(paper.Back);
-                Undo.DestroyObjectImmediate(paper.Front);
+                if (paper.Back != null)
+                    Undo.DestroyObjectImmediate(paper.Back);
+                if (paper.Front != null)
+                    Undo.DestroyObjectImmediate(paper.Front);
                 ReorderableList.defaultBehaviours.DoRemoveButton(l);
                 EditorUtility.SetDirty(book);
             }
@@ -53,7 +57,7 @@ public class BookProEditor : Editor
 
     private bool canremove(ReorderableList list)
     {
-        if (list.count == 1)
+        if (list.count == 0)
             return false;
         return true;
     }

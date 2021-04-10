@@ -10,6 +10,8 @@ public class RecordInfo
     public int RecordIndex;
     public DialogAsset RecordDiaologAsset;
     public int TalkIndex;
+
+    public Dictionary<E_CatalogType, Dictionary<string, Dictionary<int, string>>> Note = new Dictionary<E_CatalogType, Dictionary<string, Dictionary<int, string>>>();
 }
 
 /// <summary>
@@ -17,27 +19,19 @@ public class RecordInfo
 /// </summary>
 public class RecordData : Data<RecordData>
 {
-    [SerializeField] List<RecordInfo> _recordInfoList;
     Dictionary<int, RecordInfo> _recordInfoDict = new Dictionary<int, RecordInfo>();
     protected override void OnLoad()
     {
         base.OnLoad();
-        if (_recordInfoList == null)
-        {
-            _recordInfoList = new List<RecordInfo>();
-        }
-        foreach (var record in _recordInfoList)
-        {
-            _recordInfoDict.Add(record.RecordIndex, record);
-        }
     }
 
     public RecordInfo CreateNewRecord()
     {
         RecordInfo info = new RecordInfo();
-        if (_recordInfoList.Count > 0)
+        info.RecordIndex = 0;
+        if (_recordInfoDict.Count > 0)
         {
-            var maxIndex = _recordInfoList.Max(record => record.RecordIndex);
+            var maxIndex = _recordInfoDict.Values.Max(record => record.RecordIndex);
             for (int i = 0; i < Mathf.Max(maxIndex, 1); i++)
             {
                 if (!_recordInfoDict.ContainsKey(i))
@@ -46,24 +40,15 @@ public class RecordData : Data<RecordData>
                     break;
                 }
             }
+            if (info.RecordIndex == 0) info.RecordIndex = maxIndex + 1;
         }
-        else
-        {
-            info.RecordIndex = 0;
-        }
+
         info.RecordDiaologAsset = DialogManager.Instance.DefaultDialogAsset;
         return info;
     }
 
     public void SaveRecord(RecordInfo info)
     {
-        for (int i = 0; i < _recordInfoList.Count; i++)
-        {
-            if (_recordInfoList[i].RecordIndex == info.RecordIndex)
-            {
-                _recordInfoList[i] = info;
-            }
-        }
         if (!_recordInfoDict.ContainsKey(info.RecordIndex))
         {
             _recordInfoDict.Add(info.RecordIndex, info);
@@ -78,29 +63,14 @@ public class RecordData : Data<RecordData>
     public void SaveRecordByIndex(ref RecordInfo info, int recordIndex)
     {
         info.RecordIndex = recordIndex;
-        for (int i = 0; i < _recordInfoList.Count; i++)
-        {
-            if (_recordInfoList[i].RecordIndex == recordIndex)
-            {
-                _recordInfoList[i] = info;
-            }
-        }
 
         if (!_recordInfoDict.TryGetValue(recordIndex, out RecordInfo record))
         {
             _recordInfoDict.Add(recordIndex, info);
-            _recordInfoList.Add(info);
         }
         else
         {
             _recordInfoDict[recordIndex] = info;
-            for (int i = 0; i < _recordInfoList.Count; i++)
-            {
-                if (_recordInfoList[i].RecordIndex == recordIndex)
-                {
-                    _recordInfoList[i] = info;
-                }
-            }
         }
 
         Save();
@@ -112,7 +82,6 @@ public class RecordData : Data<RecordData>
         {
             Debug.LogError("该槽位的存档为空：" + recordIndex);
         }
-        _recordInfoList.Remove(record);
         _recordInfoDict.Remove(recordIndex);
     }
 

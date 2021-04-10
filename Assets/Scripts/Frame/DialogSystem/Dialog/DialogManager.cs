@@ -135,6 +135,8 @@ public class DialogManager : Singleton<DialogManager>
                     _isClosing = false;
                     _dialogPanel = null;
                     UIManager.Instance.CloseAllNormalPanel(false);
+
+                    PlayerManager.Instance.NoteRecord(_curDialogAsset.NodeRecordDataList);
                     UIManager.Instance.OpenPanel<UINoteBookPanel>();
                     SetTalkAsset(_curDialogAsset.LinkedDialogAsset);
                 }, E_MaskType.GameStateChange);

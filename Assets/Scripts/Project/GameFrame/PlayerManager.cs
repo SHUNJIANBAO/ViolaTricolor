@@ -47,4 +47,41 @@ public class PlayerManager : Singleton<PlayerManager>
     {
         return GameData.Instance.IsReaded(asset);
     }
+
+    public void NoteRecord(List<NoteRecordData> dataList)
+    {
+        foreach (var data in dataList)
+        {
+            NoteRecord(data);
+        }
+    }
+    public void NoteRecord(NoteRecordData data)
+    {
+        if (!CurrentRecord.Note.TryGetValue(data.CatalogType, out var dict))
+        {
+            dict = new Dictionary<string, Dictionary<int, string>>();
+            dict.Add(data.Title, new Dictionary<int, string>());
+        }
+        dict.TryGetValue(data.Title, out var pageDict);
+
+        string content = data.Text + "\n";
+        if (!pageDict.TryGetValue(data.Page,out _))
+        {
+            pageDict.Add(data.Page, content);
+        }
+        else
+        {
+            pageDict[data.Page] += content;
+        }
+    }
+
+    public Dictionary<int,string> GetRecordContent(E_CatalogType catalogType, string catalog)
+    {
+        if (!CurrentRecord.Note.TryGetValue(catalogType, out var dict))
+        {
+            return null;
+        }
+        dict.TryGetValue(catalog, out var pageDict);
+        return pageDict;
+    }
 }

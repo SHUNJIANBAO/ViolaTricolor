@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-
+using Newtonsoft.Json;
 
 public abstract class Data<T> where T : Data<T>, new()
 {
@@ -22,13 +22,16 @@ public abstract class Data<T> where T : Data<T>, new()
         if (string.IsNullOrEmpty(json))
             _instance = new T();
         else
-            _instance = JsonUtility.FromJson<T>(json);
+            _instance = JsonConvert.DeserializeObject<T>(json);
+          //_instance = JsonUtility.FromJson<T>(json);
         _instance.OnLoad();
     }
+
     protected virtual void OnLoad() { }
     public static void Save()
     {
-        string json = JsonUtility.ToJson(_instance);
+        //string json = JsonUtility.ToJson(_instance);
+        string json = JsonConvert.SerializeObject(_instance);
         PlayerPrefs.SetString(typeof(T).Name, json);
     }
 
