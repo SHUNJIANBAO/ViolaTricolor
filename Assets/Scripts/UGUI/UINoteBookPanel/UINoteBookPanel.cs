@@ -6,6 +6,7 @@ using DG.Tweening;
 using PbUISystem;
 using System;
 using System.Linq;
+using PbFramework;
 
 [RequireComponent(typeof(CanvasGroup))]
 public class UINoteBookPanel : UIPanelBase
@@ -61,6 +62,7 @@ public class UINoteBookPanel : UIPanelBase
     protected override void OnInit()
     {
         base.OnInit();
+
     }
 
 
@@ -92,6 +94,8 @@ public class UINoteBookPanel : UIPanelBase
             CreatePage("5", "6");
             CreatePage("7", "8");
 
+            BookPro.UpdatePages();
+            BookPro.CurrentPaper = 1;
         }
     }
     /// <summary>
@@ -216,19 +220,21 @@ public class UINoteBookPanel : UIPanelBase
     void CreatePage(string frontPageContent, string backPageContent)
     {
         _index++;
-        var rightPage = UIManager.Instance.CreateItem<UIPageItem>(BookPro.transform);
+        var rightPage = PoolManager.Spawn("UIPageItem").GetComponent<UIPageItem>();
+        rightPage.transform.SetParent(BookPro.transform);
+
         rightPage.SetPos(E_PagePos.Right);
         var rightPageTrans = rightPage.GetComponent<RectTransform>();
         rightPageTrans.sizeDelta = BookPro.RightPageTransform.sizeDelta;
         rightPageTrans.pivot = BookPro.RightPageTransform.pivot;
         rightPageTrans.anchoredPosition = BookPro.RightPageTransform.anchoredPosition;
         rightPageTrans.localScale = BookPro.RightPageTransform.localScale;
-        rightPage.name = "Page";
         rightPage.SetText(frontPageContent);
 
 
         _index++;
-        var leftPage = UIManager.Instance.CreateItem<UIPageItem>(BookPro.transform);
+        var leftPage = PoolManager.Spawn("UIPageItem").GetComponent<UIPageItem>();
+        leftPage.transform.SetParent(BookPro.transform);
         leftPage.SetPos(E_PagePos.Left);
         var leftPageTrans = leftPage.GetComponent<RectTransform>();
         leftPageTrans.transform.SetParent(BookPro.transform, true);
@@ -236,7 +242,6 @@ public class UINoteBookPanel : UIPanelBase
         leftPageTrans.pivot = BookPro.LeftPageTransform.pivot;
         leftPageTrans.anchoredPosition = BookPro.LeftPageTransform.anchoredPosition;
         leftPageTrans.localScale = BookPro.LeftPageTransform.localScale;
-        leftPageTrans.name = "Page";
         leftPage.SetText(backPageContent);
 
 
@@ -250,11 +255,13 @@ public class UINoteBookPanel : UIPanelBase
 
     void ClearPages()
     {
-        //for (int i = BookPro.papers.Count - 1; i > 2; i--)
-        //{
-        //    BookPro.papers.RemoveAt(i);
-        //}
-        //BookPro.UpdatePages();
+        for (int i = BookPro.papers.Count - 1; i > 1; i--)
+        {
+            PoolManager.DeSpawn(BookPro.papers[i].Front);
+            PoolManager.DeSpawn(BookPro.papers[i].Back);
+            BookPro.papers.RemoveAt(i);
+        }
+        BookPro.UpdatePages();
     }
 
     void BackToCatalog()

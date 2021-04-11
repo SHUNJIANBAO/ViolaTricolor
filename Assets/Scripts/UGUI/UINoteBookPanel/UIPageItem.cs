@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIPageItem : UIItemBase
+public class UIPageItem : UIItemBase,PbFramework.IPoolItem
 {
     //Image Image_Left;
     //Image Image_Right;
@@ -39,6 +39,16 @@ public class UIPageItem : UIItemBase
         if(Text_Content==null) Text_Content = GetUI<Text>("Text_Content");
 
         Text_Content.text = text;
+    }
+
+    public void OnSpawn()
+    {
+
+    }
+
+    public void OnDeSpawn()
+    {
+
     }
 }
 

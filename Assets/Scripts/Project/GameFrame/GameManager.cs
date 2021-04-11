@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using PbUISystem;
+using PbFramework;
 
 public class GameManager : MonoSingleton<GameManager>
 {
@@ -11,11 +12,12 @@ public class GameManager : MonoSingleton<GameManager>
         LoadData();
         SetGameConfig();
         yield return ResourcesManager.LoadAssetsForLabelAsync<GameObject>("UI", UIManager.Instance.Init);
+        yield return ResourcesManager.LoadAssetAsync<GameObject>("Assets/GameAssets/Prefabs/UGUI/UINoteBookPanel/UIPageItem.prefab", PoolManager.Push);
         yield return DialogManager.Instance.Init();
         //yield return AudioManager.Instance.Init();
         Debug.Log("资源加载完成!");
-        UIManager.Instance.OpenPanel<UINoteBookPanel>();
-        //UIManager.Instance.OpenPanel<UIMainMenuPanel>();
+        //UIManager.Instance.OpenPanel<UINoteBookPanel>();
+        UIManager.Instance.OpenPanel<UIMainMenuPanel>();
     }
 
     public void LoadConfig()
