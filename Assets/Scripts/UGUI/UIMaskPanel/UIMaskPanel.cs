@@ -7,10 +7,10 @@ using PbUISystem;
 
 public enum E_MaskType
 {
-    None,
-    Black,
-    White,
-    GameStateChange,
+    [InspectorName("无")]None,
+    [InspectorName("黑色过渡")] Black,
+    [InspectorName("白色过渡")] White,
+    [InspectorName("特殊过渡")] GameStateChange,
 }
 
 [RequireComponent(typeof(CanvasGroup))]

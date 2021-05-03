@@ -266,6 +266,10 @@ public class DialogEditorWindow : EditorWindow
             asset.IsNewTalk = EditorGUILayout.Toggle("是否为新段落", asset.IsNewTalk);
             asset.IsNewPage = EditorGUILayout.Toggle("是否为新的一页", asset.IsNewPage);
         }
+        else
+        {
+            asset.TalkType = (E_TalkType)EditorGUILayout.EnumPopup("内容类型", asset.TalkType);
+        }
         asset.MaskType = (E_MaskType)EditorGUILayout.EnumPopup("显示动画", asset.MaskType);
         GUILayout.Label("背景");
         asset.Background = (GameObject)EditorGUILayout.ObjectField(asset.Background, typeof(GameObject), false);

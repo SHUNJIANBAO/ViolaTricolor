@@ -10,6 +10,7 @@ public class DialogueAsset : ScriptableObject
     public E_MaskType MaskType;
 
     public E_DialogType DialogType;
+    public E_TalkType TalkType;
     public bool IsNewTalk;
     public bool IsNewPage;
 
@@ -49,37 +50,44 @@ public class DialogueAsset : ScriptableObject
 
 public enum E_BodyShowType
 {
-    Show,
-    Hide,
-    Highlight,
-    Gray,
+    [InspectorName("显示")] Show,
+    [InspectorName("隐藏")] Hide,
+    [InspectorName("高亮")] Highlight,
+    [InspectorName("置灰")] Gray,
 }
 
 public enum E_NamePos
 {
-    None,
-    Left,
-    Right
+    [InspectorName("无")] None,
+    [InspectorName("左")] Left,
+    [InspectorName("右")] Right
 }
 
 public enum E_BodyPos
 {
-    Left,
-    Right,
-    Center,
-    Bottom,
+    [InspectorName("左")] Left,
+    [InspectorName("右")] Right,
+    [InspectorName("中")] Center,
+    [InspectorName("下")] Bottom,
 }
 
 public enum E_DialogType
 {
-    Normal,
-    FullScreen
+    [InspectorName("普通")]Normal,
+    [InspectorName("全屏")] FullScreen
+}
+
+public enum E_TalkType
+{
+    [InspectorName("讲话")] Talk,
+    [InspectorName("思考")] Think,
+    [InspectorName("旁白")] Voiceover
 }
 
 public enum E_EventType
 {
-    PlayAudio,
-    ChangeBody,
+    [InspectorName("播放音效")] PlayAudio,
+    [InspectorName("切换立绘")] ChangeBody,
 }
 
 [System.Serializable]

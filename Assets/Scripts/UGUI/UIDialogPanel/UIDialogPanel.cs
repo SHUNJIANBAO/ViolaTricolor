@@ -61,6 +61,10 @@ public class UIDialogPanel : UIPanelBase
     Text Text_LeftName;
     Text Text_RightName;
 
+    Toggle Toggle_Talk;
+    Toggle Toggle_Think;
+    Toggle Toggle_Voiceover;
+
     GameObject Panel_FullScreenDialog;
     #endregion
 
@@ -77,6 +81,10 @@ public class UIDialogPanel : UIPanelBase
         Image_RightBody = GetUI<Image>("Image_RightBody");
         Image_CenterBody = GetUI<Image>("Image_CenterBody");
         Image_BottomBody = GetUI<Image>("Image_BottomBody");
+
+        Toggle_Talk = GetUI<Toggle>("Toggle_Talk");
+        Toggle_Think = GetUI<Toggle>("Toggle_Think");
+        Toggle_Voiceover = GetUI<Toggle>("Toggle_Voiceover");
 
         Animator_LeftBody = GetUI<Animator>("Image_LeftBody");
         Animator_RightBody = GetUI<Animator>("Image_RightBody");
@@ -229,6 +237,9 @@ public class UIDialogPanel : UIPanelBase
         Image_RightBody.color = Color.clear;
         Image_CenterBody.color = Color.clear;
         Image_BottomBody.color = Color.clear;
+        Toggle_Talk.isOn = asset.TalkType == E_TalkType.Talk;
+        Toggle_Think.isOn = asset.TalkType == E_TalkType.Think;
+        Toggle_Voiceover.isOn = asset.TalkType == E_TalkType.Voiceover;
     }
 
 
@@ -392,6 +403,9 @@ public class UIDialogPanel : UIPanelBase
             case E_DialogType.FullScreen:
                 break;
         }
+        Toggle_Talk.isOn = asset.TalkType == E_TalkType.Talk;
+        Toggle_Think.isOn = asset.TalkType == E_TalkType.Think;
+        Toggle_Voiceover.isOn = asset.TalkType == E_TalkType.Voiceover;
 
     }
 
