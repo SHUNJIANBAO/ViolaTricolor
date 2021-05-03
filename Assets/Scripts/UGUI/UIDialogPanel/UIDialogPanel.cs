@@ -332,7 +332,7 @@ public class UIDialogPanel : UIPanelBase
     {
         if (!_isShowDialog) return;
         SetName("", E_NamePos.None);
-        float alpha = 0;
+        //float alpha = 0;
         Panel_TalkContent.DOFade(0, 0.5f).OnComplete(() =>
         {
             _isShowDialog = false;
