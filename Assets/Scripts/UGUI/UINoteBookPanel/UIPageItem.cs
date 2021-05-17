@@ -10,10 +10,14 @@ public class UIPageItem : UIItemBase,PbFramework.IPoolItem
     //Image Image_Right;
     Image _image;
     Text Text_Content;
+    Transform Panel_Content;
+    List<UIContentItem> _contentItemList = new List<UIContentItem>();
+
     protected override void GetUIComponent()
     {
         base.GetUIComponent();
         _image = GetComponent<Image>();
+        Panel_Content = GetUI<Transform>("Panel_Content");
     }
     protected override void AddUIListener()
     {
@@ -34,11 +38,39 @@ public class UIPageItem : UIItemBase,PbFramework.IPoolItem
         }
     }
 
-    public void SetText(string text)
+    public void SetText(List<Sprite> contentList)
     {
-        if(Text_Content==null) Text_Content = GetUI<Text>("Text_Content");
+        if (contentList==null)
+        {
+            return;
+        }
+        
 
-        Text_Content.text = text;
+        for (int i = 0; i < Mathf.Max( contentList.Count, _contentItemList.Count); i++)
+        {
+            if (_contentItemList.Count<=i)
+            {
+                var item= UIManager.Instance.CreateItem<UIContentItem>(Panel_Content);
+                _contentItemList.Add(item);
+                item.Init(contentList[i]);
+            }
+            else
+            {
+                if (contentList.Count<i)
+                {
+                    _contentItemList[i].gameObject.SetActive(true);
+                    _contentItemList[i].Init(contentList[i]);
+                }
+                else
+                {
+                    _contentItemList[i].gameObject.SetActive(false);
+                }
+            }
+        }
+
+        //if(Text_Content==null) Text_Content = GetUI<Text>("Text_Content");
+
+        //Text_Content.text = text;
     }
 
     public void OnSpawn()

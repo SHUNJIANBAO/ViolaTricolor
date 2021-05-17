@@ -11,7 +11,7 @@ public class RecordInfo
     public DialogAsset RecordDiaologAsset;
     public int TalkIndex;
 
-    public Dictionary<E_CatalogType, Dictionary<string, Dictionary<int, string>>> Note = new Dictionary<E_CatalogType, Dictionary<string, Dictionary<int, string>>>();
+    public Dictionary<E_CatalogType, Dictionary<string, Dictionary<int, List<Sprite>>>> Note = new Dictionary<E_CatalogType, Dictionary<string, Dictionary<int, List<Sprite>>>>();
 }
 
 /// <summary>

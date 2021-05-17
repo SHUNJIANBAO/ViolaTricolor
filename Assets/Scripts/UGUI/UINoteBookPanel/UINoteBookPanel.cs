@@ -74,10 +74,10 @@ public class UINoteBookPanel : UIPanelBase
     {
         base.OnOpen(objs);
 
-        CreatePage("1", "2");
-        CreatePage("3", "4");
-        CreatePage("5", "6");
-        CreatePage("7", "8");
+        //CreatePage("1", "2");
+        //CreatePage("3", "4");
+        //CreatePage("5", "6");
+        //CreatePage("7", "8");
 
         BookPro.UpdatePages();
         BookPro.CurrentPaper = 1;
@@ -89,10 +89,10 @@ public class UINoteBookPanel : UIPanelBase
     {
         if (Input.GetKeyDown(KeyCode.N))
         {
-            CreatePage("1", "2");
-            CreatePage("3", "4");
-            CreatePage("5", "6");
-            CreatePage("7", "8");
+            //CreatePage("1", "2");
+            //CreatePage("3", "4");
+            //CreatePage("5", "6");
+            //CreatePage("7", "8");
 
             BookPro.UpdatePages();
             BookPro.CurrentPaper = 1;
@@ -196,28 +196,28 @@ public class UINoteBookPanel : UIPanelBase
             maxPage++;
         }
 
-        FirstPage.SetText(contentDict.TryGetValue(1, out string content) ? content : "");
+        FirstPage.SetText(contentDict.TryGetValue(1, out List<Sprite> content) ? content : null);
 
         for (int i = 2; i < maxPage;)
         {
-            string frontContent = GetContent(contentDict, i);
-            string backContent = GetContent(contentDict, i + 1);
+            var frontContent = GetContent(contentDict, i);
+            var backContent = GetContent(contentDict, i + 1);
             CreatePage(frontContent, backContent);
             i += 2;
         }
     }
 
-    string GetContent(Dictionary<int, string> content, int page)
+    List<Sprite> GetContent(Dictionary<int, List<Sprite>> content, int page)
     {
-        if (content.TryGetValue(page, out string value))
+        if (content.TryGetValue(page, out List<Sprite> value))
         {
             return value;
         }
-        return "";
+        return null;
     }
 
     int _index;
-    void CreatePage(string frontPageContent, string backPageContent)
+    void CreatePage(List<Sprite> frontPageContent, List<Sprite> backPageContent)
     {
         _index++;
         var rightPage = PoolManager.Spawn("UIPageItem").GetComponent<UIPageItem>();

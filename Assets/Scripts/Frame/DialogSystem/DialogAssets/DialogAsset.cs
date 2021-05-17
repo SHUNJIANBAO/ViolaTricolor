@@ -28,7 +28,8 @@ public class NoteRecordData
     public E_CatalogType CatalogType;
     public string Title;
     public int Page;
-    public string Text;
+    //public string Text;
+    public Sprite Text;
 }
 
 public enum E_UnLockType

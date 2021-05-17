@@ -59,23 +59,21 @@ public class PlayerManager : Singleton<PlayerManager>
     {
         if (!CurrentRecord.Note.TryGetValue(data.CatalogType, out var dict))
         {
-            dict = new Dictionary<string, Dictionary<int, string>>();
-            dict.Add(data.Title, new Dictionary<int, string>());
+            dict = new Dictionary<string, Dictionary<int, List<Sprite>>>();
+            dict.Add(data.Title, new Dictionary<int, List<Sprite>>());
         }
         dict.TryGetValue(data.Title, out var pageDict);
 
-        string content = data.Text + "\n";
-        if (!pageDict.TryGetValue(data.Page,out _))
+        //string content = data.Text + "\n";
+        if (!pageDict.TryGetValue(data.Page,out List<Sprite> contentList))
         {
-            pageDict.Add(data.Page, content);
+            contentList = new List<Sprite>();
+            pageDict.Add(data.Page, contentList);
         }
-        else
-        {
-            pageDict[data.Page] += content;
-        }
+        contentList.Add(data.Text);
     }
 
-    public Dictionary<int,string> GetRecordContent(E_CatalogType catalogType, string catalog)
+    public Dictionary<int, List<Sprite>> GetRecordContent(E_CatalogType catalogType, string catalog)
     {
         if (!CurrentRecord.Note.TryGetValue(catalogType, out var dict))
         {

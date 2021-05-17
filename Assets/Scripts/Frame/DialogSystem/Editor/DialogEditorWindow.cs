@@ -191,7 +191,7 @@ public class DialogEditorWindow : EditorWindow
     {
         _recordDataList = new ReorderableList(asset.NodeRecordDataList, typeof(RecordData));
         _recordDataList.headerHeight = 0;
-        _recordDataList.elementHeight = 110;
+        _recordDataList.elementHeight = 80;
         _recordDataList.drawElementCallback = DrawRecordDataElement;
     }
 
@@ -204,7 +204,9 @@ public class DialogEditorWindow : EditorWindow
         data.CatalogType = (E_CatalogType)EditorGUI.EnumPopup(GetRecordDataRect(rect), "类型", data.CatalogType);
         data.Title = EditorGUI.TextField(GetRecordDataRect(rect), "标题", data.Title);
         data.Page = EditorGUI.IntField(GetRecordDataRect(rect), "页数", data.Page);
-        data.Text = EditorGUI.TextArea(GetRecordDataRect(rect, 3), data.Text);
+        //data.Text = EditorGUI.TextArea(GetRecordDataRect(rect, 3), data.Text);
+        
+        data.Text = (Sprite)EditorGUI.ObjectField(GetRecordDataRect(rect),"内容", data.Text, typeof(Sprite), false);
 
     }
 
