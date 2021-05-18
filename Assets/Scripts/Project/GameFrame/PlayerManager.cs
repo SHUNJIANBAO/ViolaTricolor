@@ -57,25 +57,27 @@ public class PlayerManager : Singleton<PlayerManager>
     }
     public void NoteRecord(NoteRecordData data)
     {
-        if (!CurrentRecord.Note.TryGetValue(data.CatalogType, out var dict))
+        if (!CurrentRecord.Note.TryGetValue(data.CatalogType, out Dictionary<string, Dictionary<int, List<string>>> dict))
         {
-            dict = new Dictionary<string, Dictionary<int, List<Sprite>>>();
-            dict.Add(data.Title, new Dictionary<int, List<Sprite>>());
+            dict = new Dictionary<string, Dictionary<int, List<string>>>();
+            dict.Add(data.Title, new Dictionary<int, List<string>>());
         }
         dict.TryGetValue(data.Title, out var pageDict);
 
         //string content = data.Text + "\n";
-        if (!pageDict.TryGetValue(data.Page,out List<Sprite> contentList))
+        if (!pageDict.TryGetValue(data.Page, out List<string> contentList))
         {
-            contentList = new List<Sprite>();
+            contentList = new List<string>();
             pageDict.Add(data.Page, contentList);
         }
-        contentList.Add(data.Text);
+        contentList.Add(data.Text.name);
     }
 
-    public Dictionary<int, List<Sprite>> GetRecordContent(E_CatalogType catalogType, string catalog)
+    public Dictionary<int, List<string>> GetRecordContent(bool isClear, E_CatalogType catalogType, string catalog)
     {
-        if (!CurrentRecord.Note.TryGetValue(catalogType, out var dict))
+        var note = isClear ? RecordData.Instance.Note : CurrentRecord.Note;
+
+        if (!note.TryGetValue(catalogType, out Dictionary<string, Dictionary<int, List<string>>> dict))
         {
             return null;
         }

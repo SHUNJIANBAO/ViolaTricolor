@@ -52,7 +52,7 @@ public class UIMainMenuPanel : UIPanelBase
     protected override void OnInit()
     {
         base.OnInit();
-        GameManager.Instance.gameObject.hideFlags = HideFlags.HideInHierarchy;
+        //GameManager.Instance.gameObject.hideFlags = HideFlags.HideInHierarchy;
     }
 
 
@@ -153,7 +153,7 @@ public class UIMainMenuPanel : UIPanelBase
 
     void OnClickButtonNote()
     {
-        UIManager.Instance.OpenPanel<UINoteBookPanel>();
+        UIManager.Instance.OpenPanel<UINoteBookPanel>(true,null,true);
     }
 
     void OnClickButtonExitGame()

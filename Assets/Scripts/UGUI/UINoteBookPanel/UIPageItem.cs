@@ -4,20 +4,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIPageItem : UIItemBase,PbFramework.IPoolItem
+public class UIPageItem : UIItemBase, PbFramework.IPoolItem
 {
     //Image Image_Left;
     //Image Image_Right;
     Image _image;
     Text Text_Content;
-    Transform Panel_Content;
     List<UIContentItem> _contentItemList = new List<UIContentItem>();
 
     protected override void GetUIComponent()
     {
         base.GetUIComponent();
         _image = GetComponent<Image>();
-        Panel_Content = GetUI<Transform>("Panel_Content");
     }
     protected override void AddUIListener()
     {
@@ -38,25 +36,25 @@ public class UIPageItem : UIItemBase,PbFramework.IPoolItem
         }
     }
 
-    public void SetText(List<Sprite> contentList)
+    public void SetText(List<string> contentList)
     {
-        if (contentList==null)
+        if (contentList == null)
         {
             return;
         }
-        
 
-        for (int i = 0; i < Mathf.Max( contentList.Count, _contentItemList.Count); i++)
+
+        for (int i = 0; i < Mathf.Max(contentList.Count, _contentItemList.Count); i++)
         {
-            if (_contentItemList.Count<=i)
+            if (_contentItemList.Count <= i)
             {
-                var item= UIManager.Instance.CreateItem<UIContentItem>(Panel_Content);
+                var item = UIManager.Instance.CreateItem<UIContentItem>(transform);
                 _contentItemList.Add(item);
                 item.Init(contentList[i]);
             }
             else
             {
-                if (contentList.Count<i)
+                if (contentList.Count > i)
                 {
                     _contentItemList[i].gameObject.SetActive(true);
                     _contentItemList[i].Init(contentList[i]);

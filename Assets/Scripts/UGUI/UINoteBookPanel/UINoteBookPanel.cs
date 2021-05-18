@@ -20,9 +20,18 @@ public class UINoteBookPanel : UIPanelBase
     Button Button_Catalog;
     Button Button_Close;
 
+    Toggle Toggle_CatalogPeople;
+    Toggle Toggle_CatalogThing;
+    Toggle Toggle_CatalogRecord;
+
     UIPageItem FirstPage;
 
-    UICatalogPanel CatalogPanel;
+    CanvasGroup Panel_Catalog;
+
+    E_CatalogType _currentCatalogType = E_CatalogType.People;
+
+    public Sprite Test;
+    public Sprite Test2;
     #endregion
 
     #region 继承方法
@@ -42,6 +51,12 @@ public class UINoteBookPanel : UIPanelBase
 
         Button_LeftPage = GetUI<Button>("Button_LeftPage");
         Button_RigthPage = GetUI<Button>("Button_RigthPage");
+
+        Toggle_CatalogPeople = GetUI<Toggle>("Toggle_CatalogPeople");
+        Toggle_CatalogThing = GetUI<Toggle>("Toggle_CatalogThing");
+        Toggle_CatalogRecord = GetUI<Toggle>("Toggle_CatalogRecord");
+
+        Panel_Catalog = GetUI<CanvasGroup>("Panel_Catalog");
     }
 
     /// <summary>
@@ -54,6 +69,10 @@ public class UINoteBookPanel : UIPanelBase
         AddButtonListen(Button_Catalog, BackToCatalog);
         AddButtonListen(Button_LeftPage, FlipToLeftPage);
         AddButtonListen(Button_RigthPage, FlipToRightPage);
+
+        AddToggleListen(Toggle_CatalogPeople, (value) => OnToggleChange(E_CatalogType.People, value));
+        AddToggleListen(Toggle_CatalogThing, (value) => OnToggleChange(E_CatalogType.Thing, value));
+        AddToggleListen(Toggle_CatalogRecord, (value) => OnToggleChange(E_CatalogType.Record, value));
     }
 
     /// <summary>
@@ -65,6 +84,8 @@ public class UINoteBookPanel : UIPanelBase
 
     }
 
+    bool _isClear;
+    Dictionary<E_CatalogType, Dictionary<string, Dictionary<int, List<string>>>> _note;
 
     /// <summary>
     /// 打开界面时调用
@@ -74,30 +95,38 @@ public class UINoteBookPanel : UIPanelBase
     {
         base.OnOpen(objs);
 
-        //CreatePage("1", "2");
-        //CreatePage("3", "4");
-        //CreatePage("5", "6");
-        //CreatePage("7", "8");
+        _isClear = bool.Parse(objs[0].ToString());
 
-        BookPro.UpdatePages();
-        BookPro.CurrentPaper = 1;
+        Panel_Catalog.alpha = 1;
+        Panel_Catalog.blocksRaycasts = true;
 
-    }
-
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.N))
+        if (_isClear)
         {
-            //CreatePage("1", "2");
-            //CreatePage("3", "4");
-            //CreatePage("5", "6");
-            //CreatePage("7", "8");
-
-            BookPro.UpdatePages();
-            BookPro.CurrentPaper = 1;
+            _note = RecordData.Instance.Note;
         }
+        else
+        {
+            _note = PlayerManager.Instance.CurrentRecord.Note;
+        }
+
+        if (_note.TryGetValue(E_CatalogType.People, out Dictionary<string, Dictionary<int, List<string>>> peopleCatalogDict))
+        {
+            ShowCatalog(peopleCatalogDict.Keys);
+        }
+
+        if (_note.TryGetValue(E_CatalogType.Thing, out Dictionary<string, Dictionary<int, List<string>>> thingCatalogDict))
+        {
+            ShowCatalog(thingCatalogDict.Keys);
+        }
+        if (_note.TryGetValue(E_CatalogType.Record, out Dictionary<string, Dictionary<int, List<string>>> recordCatalogDict))
+        {
+            ShowCatalog(recordCatalogDict.Keys);
+        }
+
+        Toggle_CatalogPeople.isOn = true;
     }
+
+
     /// <summary>
     /// 获得焦点时
     /// </summary>
@@ -170,6 +199,30 @@ public class UINoteBookPanel : UIPanelBase
 
     #region 成员方法
 
+
+    void OnToggleChange(E_CatalogType type, bool value)
+    {
+        if (value)
+        {
+            SetCatalogType(type);
+        }
+    }
+
+    public void SetCatalogType(E_CatalogType type)
+    {
+        _currentCatalogType = type;
+    }
+
+    void ShowCatalog(IEnumerable<string> catalogList)
+    {
+        foreach (var catalog in catalogList)
+        {
+            var btn = GetUI<Button>(catalog);
+            if (btn == null) Debug.LogError(catalog);
+            btn.gameObject.SetActive(true);
+        }
+    }
+
     void OnButtonClickCloseNoteBook()
     {
         UIManager.Instance.OpenPanel<UIMaskPanel>(true, () =>
@@ -179,47 +232,60 @@ public class UINoteBookPanel : UIPanelBase
         }, E_MaskType.GameStateChange);
     }
 
-    void OnButtonClickCatalog()
-    {
-
-    }
-
-
     public void ReadContent(string catalog)
     {
-        var contentDict = PlayerManager.Instance.GetRecordContent(CatalogPanel.CurrentCatalogType, catalog);
+        Panel_Catalog.DOFade(0, 1).OnComplete(() => Panel_Catalog.blocksRaycasts = false);
 
-        int maxPage = Mathf.Max(contentDict.Keys.Max(), 3);
+        var contentDict = PlayerManager.Instance.GetRecordContent(_isClear, _currentCatalogType, catalog);
 
-        if ((maxPage % 2) != 1)
+        int maxPage = Mathf.Max(contentDict.Keys.Max(), 1);
+
+        if ((maxPage % 2) != 2)
         {
             maxPage++;
         }
 
-        FirstPage.SetText(contentDict.TryGetValue(1, out List<Sprite> content) ? content : null);
+        FirstPage.SetText(GetContent(contentDict, 1));
 
-        for (int i = 2; i < maxPage;)
+        for (int i = 2; i <= maxPage;)
         {
             var frontContent = GetContent(contentDict, i);
             var backContent = GetContent(contentDict, i + 1);
             CreatePage(frontContent, backContent);
             i += 2;
         }
+        BookPro.CurrentPaper = 1;
+        BookPro.UpdatePages();
     }
 
-    List<Sprite> GetContent(Dictionary<int, List<Sprite>> content, int page)
+    public void ShowPanel(CanvasGroup canvasGroup)
     {
-        if (content.TryGetValue(page, out List<Sprite> value))
+        canvasGroup.blocksRaycasts = false;
+        canvasGroup.DOKill();
+        canvasGroup.DOFade(0, 0.3f).OnComplete(() =>
+        {
+            canvasGroup.DOFade(1, 0.5f).OnComplete(() => canvasGroup.blocksRaycasts = true);
+        });
+    }
+
+    public void HidePanel(CanvasGroup canvasGroup)
+    {
+        canvasGroup.blocksRaycasts = false;
+        canvasGroup.DOKill();
+        canvasGroup.DOFade(0, 0.5f);
+    }
+
+    List<string> GetContent(Dictionary<int, List<string>> content, int page)
+    {
+        if (content.TryGetValue(page, out List<string> value))
         {
             return value;
         }
         return null;
     }
 
-    int _index;
-    void CreatePage(List<Sprite> frontPageContent, List<Sprite> backPageContent)
+    void CreatePage(List<string> frontPageContent, List<string> backPageContent)
     {
-        _index++;
         var rightPage = PoolManager.Spawn("UIPageItem").GetComponent<UIPageItem>();
         rightPage.transform.SetParent(BookPro.transform);
 
@@ -232,7 +298,6 @@ public class UINoteBookPanel : UIPanelBase
         rightPage.SetText(frontPageContent);
 
 
-        _index++;
         var leftPage = PoolManager.Spawn("UIPageItem").GetComponent<UIPageItem>();
         leftPage.transform.SetParent(BookPro.transform);
         leftPage.SetPos(E_PagePos.Left);
@@ -255,46 +320,61 @@ public class UINoteBookPanel : UIPanelBase
 
     void ClearPages()
     {
-        for (int i = BookPro.papers.Count - 1; i > 1; i--)
+        for (int i = BookPro.papers.Count - 1; i > 0; i--)
         {
             PoolManager.DeSpawn(BookPro.papers[i].Front);
             PoolManager.DeSpawn(BookPro.papers[i].Back);
             BookPro.papers.RemoveAt(i);
         }
+        BookPro.CurrentPaper = 1;
         BookPro.UpdatePages();
     }
 
     void BackToCatalog()
     {
-        float beforeTime = AutoFlip.PageFlipTime;
+        Panel_Catalog.DOFade(1, 1).OnComplete(() =>
+        {
+            Panel_Catalog.blocksRaycasts = true;
+            ClearPages();
+        });
 
-        float flipTime = beforeTime / (BookPro.CurrentPaper - 1);
-        AutoFlip.PageFlipTime = flipTime;
+        //float beforeTime = AutoFlip.PageFlipTime;
 
-        WhileBack(() => { AutoFlip.PageFlipTime = beforeTime; ClearPages(); }); ;
+        //float flipTime = beforeTime / (BookPro.CurrentPaper - 1);
+        //AutoFlip.PageFlipTime = flipTime;
+
+        //WhileBack(() => { AutoFlip.PageFlipTime = beforeTime; ClearPages(); }); ;
     }
 
-    void WhileBack(Action callback)
-    {
-        if (BookPro.CurrentPaper > 1)
-        {
-            AutoFlip.FlipLeftPage(() => WhileBack(callback));
-        }
-        else
-        {
-            callback?.Invoke();
-        }
-    }
+    //void WhileBack(Action callback)
+    //{
+    //    if (BookPro.CurrentPaper > 1)
+    //    {
+    //        AutoFlip.FlipLeftPage(() => WhileBack(callback));
+    //    }
+    //    else
+    //    {
+    //        callback?.Invoke();
+    //    }
+    //}
 
     void FlipToLeftPage()
     {
-        if (BookPro.CurrentPaper <= 1) return;
+        if (BookPro.CurrentPaper <= 1)
+        {
+            Button_LeftPage.interactable = true;
+            return;
+        }
         AutoFlip.FlipLeftPage();
     }
 
     void FlipToRightPage()
     {
-        if (BookPro.CurrentPaper >= BookPro.papers.Count - 1) return;
+        if (BookPro.CurrentPaper >= BookPro.papers.Count - 1)
+        {
+            Button_RigthPage.interactable = true;
+            return;
+        }
         AutoFlip.FlipRightPage();
     }
     #endregion

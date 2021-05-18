@@ -27,7 +27,7 @@ public class DialogManager : Singleton<DialogManager>
     }
 
 
-    public void SetTalkAsset(DialogAsset asset,int index=0)
+    public void SetTalkAsset(DialogAsset asset, int index = 0)
     {
         _index = index;
         _curDialogAsset = asset;
@@ -137,7 +137,7 @@ public class DialogManager : Singleton<DialogManager>
                     UIManager.Instance.CloseAllNormalPanel(false);
 
                     PlayerManager.Instance.NoteRecord(_curDialogAsset.NodeRecordDataList);
-                    UIManager.Instance.OpenPanel<UINoteBookPanel>();
+                    UIManager.Instance.OpenPanel<UINoteBookPanel>(true, null, false);
                     SetTalkAsset(_curDialogAsset.LinkedDialogAsset);
                 }, E_MaskType.GameStateChange);
                 break;

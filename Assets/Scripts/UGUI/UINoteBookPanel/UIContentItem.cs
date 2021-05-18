@@ -12,8 +12,9 @@ public class UIContentItem : UIItemBase
         base.GetUIComponent();
         _image = GetComponent<Image>();
     }
-    public void Init(Sprite sprite)
+    public void Init(string spriteName)
     {
+        var sprite = Resources.Load<Sprite>("NoteContents/" + spriteName);
         _image.sprite = sprite;
         _image.SetNativeSize();
     }

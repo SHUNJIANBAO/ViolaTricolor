@@ -11,7 +11,7 @@ public class RecordInfo
     public DialogAsset RecordDiaologAsset;
     public int TalkIndex;
 
-    public Dictionary<E_CatalogType, Dictionary<string, Dictionary<int, List<Sprite>>>> Note = new Dictionary<E_CatalogType, Dictionary<string, Dictionary<int, List<Sprite>>>>();
+    public Dictionary<E_CatalogType, Dictionary<string, Dictionary<int, List<string>>>> Note = new Dictionary<E_CatalogType, Dictionary<string, Dictionary<int, List<string>>>>();
 }
 
 /// <summary>
@@ -20,6 +20,8 @@ public class RecordInfo
 public class RecordData : Data<RecordData>
 {
     Dictionary<int, RecordInfo> _recordInfoDict = new Dictionary<int, RecordInfo>();
+    public bool IsClearGame;
+    public Dictionary<E_CatalogType, Dictionary<string, Dictionary<int, List<string>>>> Note = new Dictionary<E_CatalogType, Dictionary<string, Dictionary<int, List<string>>>>();
     protected override void OnLoad()
     {
         base.OnLoad();
