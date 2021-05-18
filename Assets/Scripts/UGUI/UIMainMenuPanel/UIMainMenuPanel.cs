@@ -52,7 +52,7 @@ public class UIMainMenuPanel : UIPanelBase
     protected override void OnInit()
     {
         base.OnInit();
-        //GameManager.Instance.gameObject.hideFlags = HideFlags.HideInHierarchy;
+        GameManager.Instance.gameObject.hideFlags = HideFlags.HideInHierarchy;
     }
 
 

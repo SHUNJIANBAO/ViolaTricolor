@@ -60,9 +60,13 @@ public class PlayerManager : Singleton<PlayerManager>
         if (!CurrentRecord.Note.TryGetValue(data.CatalogType, out Dictionary<string, Dictionary<int, List<string>>> dict))
         {
             dict = new Dictionary<string, Dictionary<int, List<string>>>();
-            dict.Add(data.Title, new Dictionary<int, List<string>>());
+            CurrentRecord.Note.Add(data.CatalogType, dict);
         }
-        dict.TryGetValue(data.Title, out var pageDict);
+        if (!dict.TryGetValue(data.Title, out var pageDict))
+        {
+            pageDict = new Dictionary<int, List<string>>();
+            dict.Add(data.Title, pageDict);
+        }
 
         //string content = data.Text + "\n";
         if (!pageDict.TryGetValue(data.Page, out List<string> contentList))

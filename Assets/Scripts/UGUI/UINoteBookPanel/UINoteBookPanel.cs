@@ -159,6 +159,10 @@ public class UINoteBookPanel : UIPanelBase
     public override void OnClose(params object[] objs)
     {
         base.OnClose(objs);
+        if (!_isClear)
+        {
+            DialogManager.Instance.Talk();
+        }
     }
 
 

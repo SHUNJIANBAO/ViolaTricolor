@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameData : Data<GameData>
 {
-    public List<DialogAsset> ReadAssetList;
+    [System.NonSerialized] public List<DialogAsset> ReadAssetList;
 
     protected override void OnLoad()
     {

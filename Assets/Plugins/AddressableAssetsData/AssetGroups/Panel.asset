@@ -94,6 +94,13 @@ MonoBehaviour:
     - UI
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
+  - m_GUID: 6d739c7b916e89d4b932e4e4428ec35a
+    m_Address: Assets/GameAssets/Prefabs/UGUI/UINoteBookPanel/UIContentItem.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UI
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 3aeec9b4888a59045b4a906aa804eb49, type: 2}
   m_SchemaSet:
