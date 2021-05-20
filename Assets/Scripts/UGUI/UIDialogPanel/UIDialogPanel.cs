@@ -186,7 +186,7 @@ public class UIDialogPanel : UIPanelBase
     /// <returns></returns>
     public override IEnumerator OpenAnim(System.Action callback, params object[] args)
     {
-        while (_isBodyMoving || !_isShowDialog)
+        while (_isBodyMoving)//|| !_isShowDialog)
         {
             yield return null;
         }
@@ -204,7 +204,7 @@ public class UIDialogPanel : UIPanelBase
     {
         HideBodys();
         HideDialog(true);
-        while (_isBodyMoving || _isShowDialog)
+        while (_isBodyMoving)//|| _isShowDialog)
         {
             yield return null;
         }
@@ -232,7 +232,17 @@ public class UIDialogPanel : UIPanelBase
         Text_FullScreenTalkContent.text = "";
         Text_TalkContent.text = "";
         Panel_FullScreenDialog.SetActive(asset.DialogType == E_DialogType.FullScreen);
-        ShowDialog();
+        switch (asset.DialogType)
+        {
+            case E_DialogType.Normal:
+                ShowDialog();
+                break;
+            case E_DialogType.FullScreen:
+                HideDialog(true);
+                break;
+            default:
+                break;
+        }
         Image_LeftBody.color = Color.clear;
         Image_RightBody.color = Color.clear;
         Image_CenterBody.color = Color.clear;
@@ -395,12 +405,14 @@ public class UIDialogPanel : UIPanelBase
         switch (asset.DialogType)
         {
             case E_DialogType.Normal:
+                ShowDialog();
                 ShowBodyByBodyShowType(E_BodyPos.Left, asset.LeftBodyShowType, () => SetBodySpriteByPosType(E_BodyPos.Left, asset.LeftBody));
                 ShowBodyByBodyShowType(E_BodyPos.Right, asset.RightBodyShowType, () => SetBodySpriteByPosType(E_BodyPos.Right, asset.RightBody));
                 ShowBodyByBodyShowType(E_BodyPos.Center, asset.CenterBodyShowType, () => SetBodySpriteByPosType(E_BodyPos.Center, asset.CenterBody));
                 ShowBodyByBodyShowType(E_BodyPos.Bottom, asset.BottomBodyShowType, () => SetBodySpriteByPosType(E_BodyPos.Bottom, asset.BottomBody));
                 break;
             case E_DialogType.FullScreen:
+                HideDialog(true);
                 break;
         }
         Toggle_Talk.isOn = asset.TalkType == E_TalkType.Talk;
@@ -436,10 +448,10 @@ public class UIDialogPanel : UIPanelBase
 
 
         yield return new WaitForEndOfFrame();
-        if (!IsShowDialog)
-        {
-            ShowDialog();
-        }
+        //if (!IsShowDialog)
+        //{
+        //    ShowDialog();
+        //}
         while (_isBodyMoving)
         {
             yield return null;

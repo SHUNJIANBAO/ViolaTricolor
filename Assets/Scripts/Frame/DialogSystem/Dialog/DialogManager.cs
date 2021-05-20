@@ -61,12 +61,13 @@ public class DialogManager : Singleton<DialogManager>
             IsTalking = true;
             //ActionManager.Instance.Invoke(ActionType.TalkStart);
             _dialogPanel = UIManager.Instance.OpenPanel<UIDialogPanel>(true, () =>
-             {
-                 _isOpen = true;
-                 Talk();
-             }, _curDialogAsset.DialogueAssetList[_index]);
+            {
+                _isOpen = true;
+                TimerManager.Instance.AddListener(0.1f,()=> Talk());
+            }, _curDialogAsset.DialogueAssetList[_index]);
             return;
         }
+
 
         if (!_isOpen || _dialogPanel == null) return;
 
@@ -88,15 +89,15 @@ public class DialogManager : Singleton<DialogManager>
             }
             else
             {
-                switch (_curDialogAsset.DialogueAssetList[_index].DialogType)
-                {
-                    case E_DialogType.Normal:
-                        break;
-                    case E_DialogType.FullScreen:
-                        _dialogPanel.HideBodys();
-                        _dialogPanel.HideDialog(true);
-                        break;
-                }
+                //switch (_curDialogAsset.DialogueAssetList[_index].DialogType)
+                //{
+                //    case E_DialogType.Normal:
+                //        break;
+                //    case E_DialogType.FullScreen:
+                //        _dialogPanel.HideBodys();
+                //        _dialogPanel.HideDialog(true);
+                //        break;
+                //}
                 UIManager.Instance.OpenPanel<UIMaskPanel>(true, () =>
                 {
                     _dialogPanel.SetMessageByAsset(_curDialogAsset.DialogueAssetList[_index]);
@@ -161,10 +162,9 @@ public class DialogManager : Singleton<DialogManager>
         }
     }
 
-    public void HideDialog()
-    {
-        if (!_isOpen) return;
-        if (_dialogPanel.IsShowDialog)
-            _dialogPanel.HideDialog(false);
-    }
+    //public void HideDialog()
+    //{
+    //    if (!_isOpen) return;
+    //    _dialogPanel.HideDialog(true);
+    //}
 }

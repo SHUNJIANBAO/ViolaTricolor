@@ -26,9 +26,9 @@ public class InputManager : MonoBehaviour
         //{
         //    DialogManager.Instance.Talk();
         //}
-        if (Input.GetMouseButtonDown(1))
-        {
-            DialogManager.Instance.HideDialog();
-        }
+        //if (Input.GetMouseButtonDown(1))
+        //{
+        //    DialogManager.Instance.HideDialog();
+        //}
     }
 }
