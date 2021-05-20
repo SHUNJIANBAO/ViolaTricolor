@@ -12,6 +12,7 @@ public class UIDialogPanel : UIPanelBase
 {
     #region 参数
     public float TransitionTime = 0.5f;
+    public float NameTransitionTime = 0;
     float _typerSpeed;
 
     bool _isSkip;
@@ -566,25 +567,25 @@ public class UIDialogPanel : UIPanelBase
     {
         if (string.IsNullOrEmpty(roleName))
         {
-            Panel_LeftName.DOFade(0, TransitionTime);
-            Panel_RightName.DOFade(0, TransitionTime);
+            Panel_LeftName.DOFade(0, NameTransitionTime);
+            Panel_RightName.DOFade(0, NameTransitionTime);
             return;
         }
         switch (pos)
         {
             case E_NamePos.None:
-                Panel_LeftName.DOFade(0, TransitionTime);
-                Panel_RightName.DOFade(0, TransitionTime);
+                Panel_LeftName.DOFade(0, NameTransitionTime);
+                Panel_RightName.DOFade(0, NameTransitionTime);
                 break;
             case E_NamePos.Left:
                 Text_LeftName.text = roleName;
-                Panel_LeftName.DOFade(1, TransitionTime);
-                Panel_RightName.DOFade(0, TransitionTime);
+                Panel_LeftName.DOFade(1, NameTransitionTime);
+                Panel_RightName.DOFade(0, NameTransitionTime);
                 break;
             case E_NamePos.Right:
                 Text_RightName.text = roleName;
-                Panel_LeftName.DOFade(0, TransitionTime);
-                Panel_RightName.DOFade(1, TransitionTime);
+                Panel_LeftName.DOFade(0, NameTransitionTime);
+                Panel_RightName.DOFade(1, NameTransitionTime);
                 break;
         }
     }
