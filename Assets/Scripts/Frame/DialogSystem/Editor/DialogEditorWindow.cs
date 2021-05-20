@@ -48,6 +48,10 @@ public class DialogEditorWindow : EditorWindow
         _wordTextStyle.alignment = TextAnchor.MiddleCenter;
     }
 
+    private void OnDisable()
+    {
+        AssetDatabase.SaveAssets();
+    }
     private void OnGUI()
     {
         DrawMenuLabel();
@@ -66,6 +70,7 @@ public class DialogEditorWindow : EditorWindow
                     DrawAfterDialogPanel();
                     break;
             }
+            EditorUtility.SetDirty(_curDialogAsset);
         }
     }
 
