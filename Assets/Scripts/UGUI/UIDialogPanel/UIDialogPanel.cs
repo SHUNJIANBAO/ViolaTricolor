@@ -527,14 +527,41 @@ public class UIDialogPanel : UIPanelBase
         _isTyping = true;
         int wordCount = 0;
 
+        string tmpText = "";
         foreach (var word in wordList)
         {
+            tmpText += word.Word;
+        }
+
+        yield return StartCoroutine(DialogTextHandle.Instance.MClearUpExplainMode(text, tmpText));
+
+        string finalText = DialogTextHandle.Instance.FinalText;
+
+        for (int i = 0; i < finalText.Length; i++)
+        {
+            var word = wordList[wordCount];
+
+            if (finalText[i].ToString() != word.Word)
+            {
+                text.text += finalText[i];
+                finalText.Remove(i, 1);
+                continue;
+            }
+
             PlayTalkEventByIndex(wordCount);
             if (word.WaitTime > 0 && !_isSkip && !_isSkiping && !word.IsDrective)
                 yield return new WaitForSeconds(word.WaitTime * _typerSpeed);
-            text.text += word.Word;
+            text.text += finalText[i];
             wordCount++;
         }
+        //foreach (var word in wordList)
+        //{
+        //    PlayTalkEventByIndex(wordCount);
+        //    if (word.WaitTime > 0 && !_isSkip && !_isSkiping && !word.IsDrective)
+        //        yield return new WaitForSeconds(word.WaitTime * _typerSpeed);
+        //    text.text += word.Word;
+        //    wordCount++;
+        //}
         _isSkip = false;
         _isTyping = false;
     }
