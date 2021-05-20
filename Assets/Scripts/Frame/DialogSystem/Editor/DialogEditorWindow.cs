@@ -5,8 +5,9 @@ using UnityEditor;
 using System.IO;
 using System.Linq;
 using UnityEditorInternal;
-using PbAudioSystem;
+//using PbAudioSystem;
 using System.Text.RegularExpressions;
+using PbFramework;
 
 public class DialogEditorWindow : EditorWindow
 {

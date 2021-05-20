@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
-using PbUISystem;
-using PbAudioSystem;
+using PbFramework;//using PbUISystem;
+//using PbAudioSystem;
 
 [RequireComponent(typeof(CanvasGroup))]
 public class UISetPanel : UIPanelBase

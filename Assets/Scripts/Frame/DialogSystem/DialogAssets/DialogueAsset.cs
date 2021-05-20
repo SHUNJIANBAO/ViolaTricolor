@@ -1,7 +1,8 @@
-﻿using PbAudioSystem;
+﻿//using PbAudioSystem;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using PbFramework;
 
 public class DialogueAsset : ScriptableObject
 {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
-using PbUISystem;
+using PbFramework;//using PbUISystem;
 
 [RequireComponent(typeof(CanvasGroup))]
 public class UISelectPanel : UIPanelBase

@@ -1,5 +1,6 @@
 ﻿using UnityEngine.ResourceManagement.AsyncOperations;
-using PbUISystem;
+//using PbFramework;//using PbUISystem;
+using PbFramework;
 
 public class DialogManager : Singleton<DialogManager>
 {
@@ -118,14 +119,24 @@ public class DialogManager : Singleton<DialogManager>
         {
             case E_TalkEndEventType.Transition:
                 var maskType = CurDialogAsset.MaskType;
-                UIManager.Instance.OpenPanel<UIMaskPanel>(true, () =>
+                if (maskType==E_MaskType.None)
                 {
-
                     var linkedAsset = _curDialogAsset.LinkedDialogAsset;
                     SetTalkAsset(linkedAsset);
                     _dialogPanel.SetMessageByAsset(linkedAsset.DialogueAssetList[0]);
                     Talk(linkedAsset.DialogueAssetList[0].DialogueId);
-                }, _curDialogAsset.MaskType);
+                }
+                else
+                {
+                    UIManager.Instance.OpenPanel<UIMaskPanel>(true, () =>
+                    {
+
+                        var linkedAsset = _curDialogAsset.LinkedDialogAsset;
+                        SetTalkAsset(linkedAsset);
+                        _dialogPanel.SetMessageByAsset(linkedAsset.DialogueAssetList[0]);
+                        Talk(linkedAsset.DialogueAssetList[0].DialogueId);
+                    }, _curDialogAsset.MaskType);
+                }
                 break;
             case E_TalkEndEventType.Night:
                 UIManager.Instance.OpenPanel<UIMaskPanel>(true, () =>

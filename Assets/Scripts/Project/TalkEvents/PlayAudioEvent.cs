@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using PbAudioSystem;
+//using PbAudioSystem;
+using PbFramework;
 
 public class PlayAudioEvent : TalkEvent
 {

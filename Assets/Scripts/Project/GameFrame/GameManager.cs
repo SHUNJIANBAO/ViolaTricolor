@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using PbUISystem;
+using PbFramework;//using PbUISystem;
 using PbFramework;
 
 public class GameManager : MonoSingleton<GameManager>
