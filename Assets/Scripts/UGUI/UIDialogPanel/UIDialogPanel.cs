@@ -529,9 +529,9 @@ public class UIDialogPanel : UIPanelBase
         foreach (var word in wordList)
         {
             PlayTalkEventByIndex(wordCount);
-            text.text += word.Word;
             if (word.WaitTime > 0 && !_isSkip && !_isSkiping && !word.IsDrective)
                 yield return new WaitForSeconds(word.WaitTime * _typerSpeed);
+            text.text += word.Word;
             wordCount++;
         }
         _isSkip = false;
