@@ -51,8 +51,8 @@ public class DialogueAsset : ScriptableObject
 
 public enum E_BodyShowType
 {
-    [InspectorName("显示")] Show,
     [InspectorName("隐藏")] Hide,
+    [InspectorName("显示")] Show,
     [InspectorName("高亮")] Highlight,
     [InspectorName("置灰")] Gray,
 }
