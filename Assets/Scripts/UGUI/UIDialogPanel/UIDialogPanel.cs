@@ -226,8 +226,8 @@ public class UIDialogPanel : UIPanelBase
     public void SetMessageByAsset(DialogueAsset asset)
     {
         _curDialogueAsset = asset;
-        AudioManager.Instance.StopAudioByType(E_AudioType.Dub);
-        AudioManager.Instance.StopAudioByType(E_AudioType.Audio);
+        AudioManager.Instance.StopAudioByType(E_AudioType.Dub, 0);
+        AudioManager.Instance.StopAudioByType(E_AudioType.Audio, 0);
         PlayBgm(asset.Bgm);
         SetBackground(asset.Background);
         Text_FullScreenTalkContent.text = "";
@@ -398,8 +398,8 @@ public class UIDialogPanel : UIPanelBase
 
     void InitDialog(DialogueAsset asset)
     {
-        AudioManager.Instance.StopAudioByType(E_AudioType.Dub);
-        AudioManager.Instance.StopAudioByType(E_AudioType.Audio);
+        AudioManager.Instance.StopAudioByType(E_AudioType.Dub, 0);
+        AudioManager.Instance.StopAudioByType(E_AudioType.Audio, 0);
         SetDelayEventList(asset.DelayEventList);
         PlayBgm(asset.Bgm);
         SetBackground(asset.Background);
@@ -904,7 +904,7 @@ public class UIDialogPanel : UIPanelBase
         if (audio != null)
         {
             _currentAudio = audio;
-            AudioManager.Instance.Play(audio, E_AudioType.Bgm, true, true);
+            AudioManager.Instance.Play(audio, E_AudioType.Bgm, true, true, 0.5f);
         }
     }
 
