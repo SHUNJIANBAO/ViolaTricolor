@@ -87,6 +87,10 @@ public class UISetPanel : UIPanelBase
         Slider_BgmVolume.value = GameConfigData.Instance.BgmVolumeLevel;
         Slider_AudioVolume.value = GameConfigData.Instance.AudioVolumeLevel;
 
+        Slider_WordSize.value = GameConfigData.Instance.WordSizeLevel;
+        Slider_DialogAlpha.value = GameConfigData.Instance.DialogAlphaLevel;
+        Slider_TyperSpeed.value = GameConfigData.Instance.TyperSpeedLevel;
+
         Toggle_SkipUnRead.isOn = GameConfigData.Instance.IsSkipUnRead;
         Toggle_ShowShortcutKey.isOn = GameConfigData.Instance.IsShowShortcutKey;
     }
