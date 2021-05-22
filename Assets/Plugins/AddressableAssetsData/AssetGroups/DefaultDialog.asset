@@ -17,8 +17,8 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: bb4f1b6e42d1a6b4fa00e2306f6f8949
   m_SerializeEntries:
-  - m_GUID: 2e6fca402e6183a43969b258bb10a7fd
-    m_Address: Assets/GameAssets/DialogAssets/GameStartAsset.asset
+  - m_GUID: e579e54c6dd7d644a9f776914c3e62e9
+    m_Address: "Assets/GameAssets/DialogAssets/1\u7AE0-1\u5E55-01.asset"
     m_ReadOnly: 0
     m_SerializedLabels:
     - DefaultDialog
