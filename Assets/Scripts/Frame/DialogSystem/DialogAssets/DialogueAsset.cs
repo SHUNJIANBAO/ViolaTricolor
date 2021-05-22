@@ -51,10 +51,10 @@ public class DialogueAsset : ScriptableObject
 
 public enum E_BodyShowType
 {
-    [InspectorName("隐藏")] Hide,
-    [InspectorName("显示")] Show,
-    [InspectorName("高亮")] Highlight,
-    [InspectorName("置灰")] Gray,
+    [InspectorName("隐藏")] Hide=1,
+    [InspectorName("显示")] Show=0,
+    [InspectorName("高亮")] Highlight=2,
+    [InspectorName("置灰")] Gray=3,
 }
 
 public enum E_NamePos
