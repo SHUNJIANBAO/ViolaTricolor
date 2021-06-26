@@ -186,6 +186,16 @@ public class DialogEditorWindow : EditorWindow
                     dialogueAsset.DelayEventList[index].Body = (GameObject)EditorGUI.ObjectField(tempRect, "立绘", dialogueAsset.DelayEventList[index].Body, typeof(GameObject), false);
 
                     break;
+                case E_EventType.Hint:
+                    posX += width;
+                    width = 200;
+                    tempRect = new Rect(posX, rect.position.y, width, height);
+                    dialogueAsset.DelayEventList[index].HintTime = EditorGUI.FloatField(tempRect, "显示时长", dialogueAsset.DelayEventList[index].HintTime);
+                    posX += width;
+                    width = 200;
+                    tempRect = new Rect(posX, rect.position.y, width, height);
+                    dialogueAsset.DelayEventList[index].StringValue = EditorGUI.TextField(tempRect, "提示文字", dialogueAsset.DelayEventList[index].StringValue);
+                    break;
                 default:
                     break;
             }

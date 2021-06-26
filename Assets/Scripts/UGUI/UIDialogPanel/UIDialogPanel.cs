@@ -44,6 +44,7 @@ public class UIDialogPanel : UIPanelBase
     Button Button_QuickLoad;
     Button Button_Set;
 
+    Text Text_Hint;
     Text Text_TalkContent;
     Text Text_FullScreenTalkContent;
     Button Button_Talk;
@@ -57,6 +58,7 @@ public class UIDialogPanel : UIPanelBase
     Animator Animator_CenterBody;
     Animator Animator_BottomBody;
 
+    CanvasGroup Text_HintGroup;
     CanvasGroup Panel_LeftName;
     CanvasGroup Panel_RightName;
     Text Text_LeftName;
@@ -67,6 +69,8 @@ public class UIDialogPanel : UIPanelBase
     Toggle Toggle_Voiceover;
 
     GameObject Panel_FullScreenDialog;
+
+    HintHandle _hintHandle;
     #endregion
 
     #region 继承方法
@@ -93,11 +97,13 @@ public class UIDialogPanel : UIPanelBase
         Animator_BottomBody = GetUI<Animator>("Image_BottomBody");
         Button_Talk = GetUI<Button>("Image_BG");
 
+        Text_Hint = GetUI<Text>("Text_Hint");
         Text_TalkContent = GetUI<Text>("Text_TalkContent");
         Text_FullScreenTalkContent = GetUI<Text>("Text_FullScreenTalkContent");
         Panel_TalkContent = GetUI<CanvasGroup>("Panel_TalkContent");
         Image_TalkContent = GetUI<Image>("Panel_TalkContent");
 
+        Text_HintGroup = GetUI<CanvasGroup>("Text_Hint");
         Panel_LeftName = GetUI<CanvasGroup>("Panel_LeftName");
         Panel_RightName = GetUI<CanvasGroup>("Panel_RightName");
         Text_LeftName = GetUI<Text>("Text_LeftName");
@@ -167,6 +173,18 @@ public class UIDialogPanel : UIPanelBase
             SetMessageByAsset(asset);
             //ShowBodyByPosType(asset.BodyPos);
         }
+    }
+
+    public override void OnFocus()
+    {
+        base.OnFocus();
+        _hintHandle?.Show();
+    }
+
+    public override void OnLostFocus()
+    {
+        base.OnLostFocus();
+        _hintHandle?.Hide();
     }
 
     /// <summary>
@@ -929,6 +947,9 @@ public class UIDialogPanel : UIPanelBase
                 case E_EventType.ChangeBody:
                     tempTalkEvent = new ChangeBodyEvent(tempEvent);
                     break;
+                case E_EventType.Hint:
+                    tempTalkEvent = new HintEvent(tempEvent);
+                    break;
             }
             if (!_talkEventDelayDict.TryGetValue(tempEvent.Delay, out List<TalkEvent> tempList))
             {
@@ -968,6 +989,33 @@ public class UIDialogPanel : UIPanelBase
         UIManager.Instance.OpenPanel<UISetPanel>();
     }
 
+    #endregion
+
+    #region Hint
+    public bool IsShowHint()
+    {
+        return Text_HintGroup.alpha == 1;
+    }
+    public void ShowHint(string text)
+    {
+        Text_Hint.text = text;
+        Text_HintGroup.DOKill();
+        Text_HintGroup.DOFade(1, 0.1f);
+        if (_hintHandle == null)
+        {
+            var obj = Resources.Load<GameObject>("HintHandle");
+            var go = GameObject.Instantiate(obj);
+            _hintHandle = go.GetComponent<HintHandle>();
+        }
+        _hintHandle.Show(text);
+    }
+
+    public void HideHint()
+    {
+        Text_HintGroup.DOKill();
+        Text_HintGroup.DOFade(0, 0.1f);
+        _hintHandle.Hide();
+    }
     #endregion
 
     #endregion

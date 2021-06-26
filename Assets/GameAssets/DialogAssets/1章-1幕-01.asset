@@ -248,7 +248,16 @@ MonoBehaviour:
   - Word: "\u3002"
     WaitTime: 0.1
     IsDrective: 0
-  DelayEventList: []
+  DelayEventList:
+  - Delay: 0
+    EventType: 0
+    AuidoType: 0
+    Audio: {fileID: 0}
+    Body: {fileID: 0}
+    BodyPos: 0
+    BodyShowType: 0
+    HintTime: -1
+    StringValue: 
 --- !u!114 &-2820853165438365778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -395,7 +404,16 @@ MonoBehaviour:
   - Word: "\u3002"
     WaitTime: 0.1
     IsDrective: 0
-  DelayEventList: []
+  DelayEventList:
+  - Delay: 0
+    EventType: 2
+    AuidoType: 0
+    Audio: {fileID: 0}
+    Body: {fileID: 0}
+    BodyPos: 0
+    BodyShowType: 0
+    HintTime: -1
+    StringValue: "\u6D4B\u8BD5\u6570\u636E"
 --- !u!114 &-1567827394897337562
 MonoBehaviour:
   m_ObjectHideFlags: 0

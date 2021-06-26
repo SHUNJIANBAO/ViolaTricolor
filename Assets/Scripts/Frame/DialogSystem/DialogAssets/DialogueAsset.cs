@@ -51,10 +51,10 @@ public class DialogueAsset : ScriptableObject
 
 public enum E_BodyShowType
 {
-    [InspectorName("隐藏")] Hide=1,
-    [InspectorName("显示")] Show=0,
-    [InspectorName("高亮")] Highlight=2,
-    [InspectorName("置灰")] Gray=3,
+    [InspectorName("隐藏")] Hide = 1,
+    [InspectorName("显示")] Show = 0,
+    [InspectorName("高亮")] Highlight = 2,
+    [InspectorName("置灰")] Gray = 3,
 }
 
 public enum E_NamePos
@@ -74,7 +74,7 @@ public enum E_BodyPos
 
 public enum E_DialogType
 {
-    [InspectorName("普通")]Normal,
+    [InspectorName("普通")] Normal,
     [InspectorName("全屏")] FullScreen
 }
 
@@ -89,6 +89,7 @@ public enum E_EventType
 {
     [InspectorName("播放音效")] PlayAudio,
     [InspectorName("切换立绘")] ChangeBody,
+    [InspectorName("场景名")] Hint,
 }
 
 [System.Serializable]
@@ -103,6 +104,9 @@ public class DelayEvent
     public GameObject Body;
     public E_BodyPos BodyPos;
     public E_BodyShowType BodyShowType;
+
+    public float HintTime = -1;
+    public string StringValue;
 }
 
 [System.Serializable]
@@ -118,8 +122,8 @@ public class TyperRhythm
         IsDrective = isDrective;
         if (isDrective)
         {
-            Word=Word.Replace("<c=", "<color=#");
-            Word=Word.Replace("</c>", "</color>");
+            Word = Word.Replace("<c=", "<color=#");
+            Word = Word.Replace("</c>", "</color>");
         }
 
     }
