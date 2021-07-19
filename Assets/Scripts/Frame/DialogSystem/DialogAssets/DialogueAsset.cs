@@ -90,6 +90,7 @@ public enum E_EventType
     [InspectorName("播放音效")] PlayAudio,
     [InspectorName("切换立绘")] ChangeBody,
     [InspectorName("场景名")] Hint,
+    [InspectorName("标注")] Label,
 }
 
 [System.Serializable]

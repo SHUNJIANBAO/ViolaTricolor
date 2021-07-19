@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameConfig : MonoSingleton<GameConfig>
 {
     public DialogAsset Asset;
+    public Canvas Canvas;
 
     [Header("字体大小")]
     public int WordSizeLevel1 = 10;

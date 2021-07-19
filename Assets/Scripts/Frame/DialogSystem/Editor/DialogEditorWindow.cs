@@ -196,6 +196,12 @@ public class DialogEditorWindow : EditorWindow
                     tempRect = new Rect(posX, rect.position.y, width, height);
                     dialogueAsset.DelayEventList[index].StringValue = EditorGUI.TextField(tempRect, "提示文字", dialogueAsset.DelayEventList[index].StringValue);
                     break;
+                case E_EventType.Label:
+                    posX += width;
+                    width = 200;
+                    tempRect = new Rect(posX, rect.position.y, width, height);
+                    dialogueAsset.DelayEventList[index].StringValue = EditorGUI.TextField(tempRect, "文字", dialogueAsset.DelayEventList[index].StringValue);
+                    break;
                 default:
                     break;
             }

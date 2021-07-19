@@ -11,6 +11,7 @@ using UnityEngine.UI;
 public class UIDialogPanel : UIPanelBase
 {
     #region 参数
+    public GameObject LabelGo;
     public float TransitionTime = 0.5f;
     public float NameTransitionTime = 0;
     float _typerSpeed;
@@ -33,6 +34,7 @@ public class UIDialogPanel : UIPanelBase
     {
         get => _isShowDialog;
     }
+
 
     CanvasGroup Panel_TalkContent;
     Image Image_TalkContent;
@@ -540,8 +542,17 @@ public class UIDialogPanel : UIPanelBase
         _talkCoroutine = StartCoroutine(Typer(Text_FullScreenTalkContent, wordList));
     }
 
+    Vector2 _topIndex;
+    Vector2 _labelPos;
     IEnumerator Typer(Text text, List<TyperRhythm> wordList)
     {
+        foreach (var go in _labelGoList)
+        {
+            GameObject.Destroy(go);
+        }
+        _labelGoList.Clear();
+
+        _topIndex = Vector2.zero;
         _isTyping = true;
         int wordCount = 0;
 
@@ -559,18 +570,32 @@ public class UIDialogPanel : UIPanelBase
         {
             var word = wordList[wordCount];
 
+            //换行
             if (finalText[i].ToString() != word.Word)
             {
+                _topIndex.x = 0;
+                _topIndex.y++;
                 text.text += finalText[i];
                 finalText.Remove(i, 1);
                 continue;
             }
+
+            if (word.Word == "\n")
+            {
+                _topIndex.x = 0;
+                _topIndex.y++;
+                continue;
+            }
+
+            _labelPos = TextPosHelper.GetPosAtText(GameConfig.Instance.Canvas, text, wordCount);
+            Debug.LogError(_labelPos);
 
             PlayTalkEventByIndex(wordCount);
             if (word.WaitTime > 0 && !_isSkip && !_isSkiping && !word.IsDrective)
                 yield return new WaitForSeconds(word.WaitTime * _typerSpeed);
             text.text += finalText[i];
             wordCount++;
+            _topIndex.x++;
         }
         //foreach (var word in wordList)
         //{
@@ -604,6 +629,20 @@ public class UIDialogPanel : UIPanelBase
         //        break;
         //}
         //_isTyping = false;
+    }
+
+    List<GameObject> _labelGoList = new List<GameObject>();
+    public void ShowLabel(string content)
+    {
+        var labelGo = GameObject.Instantiate(LabelGo, Text_TalkContent.transform);
+        //labelGo.transform.SetParent(Text_TalkContent.transform);
+        labelGo.transform.position = _labelPos;
+        _labelGoList.Add(labelGo);
+        var group = labelGo.GetComponent<CanvasGroup>();
+        group.alpha = 0;
+        var text = labelGo.GetComponent<Text>();
+        text.text = content;
+        group.DOFade(1, 0.2f);
     }
     #endregion
 
@@ -949,6 +988,9 @@ public class UIDialogPanel : UIPanelBase
                     break;
                 case E_EventType.Hint:
                     tempTalkEvent = new HintEvent(tempEvent);
+                    break;
+                case E_EventType.Label:
+                    tempTalkEvent = new LabelEvent(tempEvent);
                     break;
             }
             if (!_talkEventDelayDict.TryGetValue(tempEvent.Delay, out List<TalkEvent> tempList))
