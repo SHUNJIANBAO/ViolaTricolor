@@ -587,7 +587,7 @@ public class UIDialogPanel : UIPanelBase
                 continue;
             }
 
-            _labelPos = TextPosHelper.GetPosAtText(GameConfig.Instance.Canvas, text, wordCount - 1);
+            _labelPos = TextPosHelper.GetPosAtText(GameConfig.Instance.Canvas, text, wordCount);
 
             PlayTalkEventByIndex(wordCount);
             if (word.WaitTime > 0 && !_isSkip && !_isSkiping && !word.IsDrective)
