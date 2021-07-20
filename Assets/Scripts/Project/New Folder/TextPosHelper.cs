@@ -54,6 +54,10 @@ public class TextPosHelper
             }
         }
         charPos /= canvas.scaleFactor;//适应不同分辨率的屏幕
+
+        charPos.x -= text.fontSize / 2;
+        charPos.y += text.fontSize / 2;
+
         charPos = text.transform.TransformPoint(charPos);//转换为世界坐标
         return charPos;
     }

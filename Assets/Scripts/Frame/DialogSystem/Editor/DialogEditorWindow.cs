@@ -79,9 +79,9 @@ public class DialogEditorWindow : EditorWindow
 
     public void RefreshAsset(DialogAsset asset)
     {
-        InitTalkAsset(_curDialogAsset);
-        InitTalkEndEventList(_curDialogAsset);
-        InitRecordDataList(_curDialogAsset);
+        InitTalkAsset(asset);
+        InitTalkEndEventList(asset);
+        InitRecordDataList(asset);
     }
 
     void InitTalkAsset(DialogAsset asset)
@@ -96,13 +96,13 @@ public class DialogEditorWindow : EditorWindow
             if (isFocused)
             {
                 _curDialogueAsset = talkAsset;
-                InitAudioEventList(_curDialogueAsset);
+                InitTalkEventList(_curDialogueAsset);
             }
         };
         if (asset.DialogueAssetList != null && asset.DialogueAssetList.Count > 0)
         {
             _curDialogueAsset = asset.DialogueAssetList[0];
-            InitAudioEventList(_curDialogueAsset);
+            InitTalkEventList(_curDialogueAsset);
         }
         _dialogueList.onAddCallback = AddDialogueAsset;
         _dialogueList.onRemoveCallback = RemoveDialogueAsset;
@@ -138,7 +138,7 @@ public class DialogEditorWindow : EditorWindow
     }
 
 
-    void InitAudioEventList(DialogueAsset dialogueAsset)
+    void InitTalkEventList(DialogueAsset dialogueAsset)
     {
         if (dialogueAsset == null) return;
         _talkEventList = new ReorderableList(dialogueAsset.DelayEventList, typeof(DelayEvent));
@@ -334,13 +334,11 @@ public class DialogEditorWindow : EditorWindow
             asset.DubDelay = EditorGUILayout.IntField("配音等待字数", asset.DubDelay);
             asset.Dub = (AudioClip)EditorGUILayout.ObjectField("角色配音", asset.Dub, typeof(AudioClip), false);
             EditorGUILayout.EndHorizontal();
-
-            GUILayout.Label("事件列表");
-            _eventScrollPos = EditorGUILayout.BeginScrollView(_eventScrollPos, GUILayout.Height(90));
-            _talkEventList?.DoLayoutList();
-            EditorGUILayout.EndScrollView();
-
         }
+        GUILayout.Label("事件列表");
+        _eventScrollPos = EditorGUILayout.BeginScrollView(_eventScrollPos, GUILayout.Height(90));
+        _talkEventList?.DoLayoutList();
+        EditorGUILayout.EndScrollView();
 
 
         GUILayout.Label("对话内容");

@@ -587,8 +587,7 @@ public class UIDialogPanel : UIPanelBase
                 continue;
             }
 
-            _labelPos = TextPosHelper.GetPosAtText(GameConfig.Instance.Canvas, text, wordCount);
-            Debug.LogError(_labelPos);
+            _labelPos = TextPosHelper.GetPosAtText(GameConfig.Instance.Canvas, text, wordCount - 1);
 
             PlayTalkEventByIndex(wordCount);
             if (word.WaitTime > 0 && !_isSkip && !_isSkiping && !word.IsDrective)
@@ -634,7 +633,17 @@ public class UIDialogPanel : UIPanelBase
     List<GameObject> _labelGoList = new List<GameObject>();
     public void ShowLabel(string content)
     {
-        var labelGo = GameObject.Instantiate(LabelGo, Text_TalkContent.transform);
+        Transform parent = null;
+        switch (_curDialogueAsset.DialogType)
+        {
+            case E_DialogType.Normal:
+                parent = Text_TalkContent.transform;
+                break;
+            case E_DialogType.FullScreen:
+                parent = Text_FullScreenTalkContent.transform;
+                break;
+        }
+        var labelGo = GameObject.Instantiate(LabelGo, parent);
         //labelGo.transform.SetParent(Text_TalkContent.transform);
         labelGo.transform.position = _labelPos;
         _labelGoList.Add(labelGo);
