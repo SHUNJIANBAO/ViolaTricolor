@@ -72,7 +72,6 @@ public class UIDialogPanel : UIPanelBase
 
     GameObject Panel_FullScreenDialog;
 
-    HintHandle _hintHandle;
     #endregion
 
     #region 继承方法
@@ -180,13 +179,11 @@ public class UIDialogPanel : UIPanelBase
     public override void OnFocus()
     {
         base.OnFocus();
-        _hintHandle?.Show();
     }
 
     public override void OnLostFocus()
     {
         base.OnLostFocus();
-        _hintHandle?.Hide();
     }
 
     /// <summary>
@@ -1052,20 +1049,12 @@ public class UIDialogPanel : UIPanelBase
         Text_Hint.text = text;
         Text_HintGroup.DOKill();
         Text_HintGroup.DOFade(1, 0.1f);
-        if (_hintHandle == null)
-        {
-            var obj = Resources.Load<GameObject>("HintHandle");
-            var go = GameObject.Instantiate(obj);
-            _hintHandle = go.GetComponent<HintHandle>();
-        }
-        _hintHandle.Show(text);
     }
 
     public void HideHint()
     {
         Text_HintGroup.DOKill();
         Text_HintGroup.DOFade(0, 0.1f);
-        _hintHandle.Hide();
     }
     #endregion
 
