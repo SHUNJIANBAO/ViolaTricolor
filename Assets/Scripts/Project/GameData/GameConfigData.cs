@@ -23,4 +23,6 @@ public class GameConfigData : Data<GameConfigData>
     public int AudioVolumeLevel = 10;
     [Range(0, 10)]
     public int MasterVolumeLevel = 10;
+
+    public E_LanguageType Language;
 }

@@ -22,6 +22,7 @@ public class GameManager : MonoSingleton<GameManager>
 
     public void LoadConfig()
     {
+        LanguageConfig.LoadCsvCfg();
         Debug.Log("读取配置完成");
     }
 

@@ -91,7 +91,18 @@ public class DialogEditorWindow : EditorWindow
         _dialogueList.drawElementCallback = (rect, index, isActive, isFocused) =>
         {
             var talkAsset = asset.DialogueAssetList[index];
-            GUI.Label(rect, (index + 1).ToString() + ":   " + asset.DialogueAssetList[index].Content);
+
+            if (talkAsset.LanguageDict.Count == 0)
+            {
+                talkAsset.LanguageDict.Add(E_LanguageType.CN, new ContentData());
+                talkAsset.LanguageDict.Add(E_LanguageType.JP, new ContentData());
+                talkAsset.LanguageDict.Add(E_LanguageType.EN, new ContentData());
+            }
+
+            var languageType = talkAsset.LanguageType;
+            talkAsset.LanguageDict.TryGetValue(languageType, out ContentData data);
+
+            GUI.Label(rect, (index + 1).ToString() + ":   " + data.Content);
             //GUI.Label(rect, asset.DialogueAssetList[index].DialogueId.ToString());
             if (isFocused)
             {
@@ -102,6 +113,12 @@ public class DialogEditorWindow : EditorWindow
         if (asset.DialogueAssetList != null && asset.DialogueAssetList.Count > 0)
         {
             _curDialogueAsset = asset.DialogueAssetList[0];
+            if (_curDialogueAsset.LanguageDict.Count == 0)
+            {
+                _curDialogueAsset.LanguageDict.Add(E_LanguageType.CN, new ContentData());
+                _curDialogueAsset.LanguageDict.Add(E_LanguageType.JP, new ContentData());
+                _curDialogueAsset.LanguageDict.Add(E_LanguageType.EN, new ContentData());
+            }
             InitTalkEventList(_curDialogueAsset);
         }
         _dialogueList.onAddCallback = AddDialogueAsset;
@@ -141,7 +158,8 @@ public class DialogEditorWindow : EditorWindow
     void InitTalkEventList(DialogueAsset dialogueAsset)
     {
         if (dialogueAsset == null) return;
-        _talkEventList = new ReorderableList(dialogueAsset.DelayEventList, typeof(DelayEvent));
+        dialogueAsset.LanguageDict.TryGetValue(dialogueAsset.LanguageType, out ContentData data);
+        _talkEventList = new ReorderableList(data.DelayEventList, typeof(DelayEvent));
         _talkEventList.headerHeight = 0;
         _talkEventList.drawElementCallback = (rect, index, isActive, isFocused) =>
         {
@@ -151,56 +169,56 @@ public class DialogEditorWindow : EditorWindow
             EditorGUIUtility.labelWidth = 60;
 
             Rect tempRect = new Rect(posX, rect.position.y, width, height);
-            dialogueAsset.DelayEventList[index].Delay = EditorGUI.IntField(tempRect, "等待字数", dialogueAsset.DelayEventList[index].Delay);
+            data.DelayEventList[index].Delay = EditorGUI.IntField(tempRect, "等待字数", data.DelayEventList[index].Delay);
             posX += width;
             tempRect = new Rect(posX, rect.position.y, width, height);
-            dialogueAsset.DelayEventList[index].EventType = (E_EventType)EditorGUI.EnumPopup(tempRect, dialogueAsset.DelayEventList[index].EventType);
+            data.DelayEventList[index].EventType = (E_EventType)EditorGUI.EnumPopup(tempRect, data.DelayEventList[index].EventType);
 
-            switch (dialogueAsset.DelayEventList[index].EventType)
+            switch (data.DelayEventList[index].EventType)
             {
                 case E_EventType.PlayAudio:
                     posX += width;
                     width = 200;
                     tempRect = new Rect(posX, rect.position.y, width, height);
-                    dialogueAsset.DelayEventList[index].AuidoType = (E_AudioType)EditorGUI.EnumPopup(tempRect, "声音类型", dialogueAsset.DelayEventList[index].AuidoType);
+                    data.DelayEventList[index].AuidoType = (E_AudioType)EditorGUI.EnumPopup(tempRect, "声音类型", data.DelayEventList[index].AuidoType);
                     posX += width;
                     width = 200;
                     tempRect = new Rect(posX, rect.position.y, width, height);
-                    dialogueAsset.DelayEventList[index].Audio = (AudioClip)EditorGUI.ObjectField(tempRect, "音效", dialogueAsset.DelayEventList[index].Audio, typeof(AudioClip), false);
+                    data.DelayEventList[index].Audio = (AudioClip)EditorGUI.ObjectField(tempRect, "音效", data.DelayEventList[index].Audio, typeof(AudioClip), false);
                     break;
                 case E_EventType.ChangeBody:
                     posX += width;
                     width = 200;
                     tempRect = new Rect(posX, rect.position.y, width, height);
-                    dialogueAsset.DelayEventList[index].BodyPos = (E_BodyPos)EditorGUI.EnumPopup(tempRect, "立绘位置", dialogueAsset.DelayEventList[index].BodyPos);
+                    data.DelayEventList[index].BodyPos = (E_BodyPos)EditorGUI.EnumPopup(tempRect, "立绘位置", data.DelayEventList[index].BodyPos);
 
                     posX += width;
                     width = 200;
                     tempRect = new Rect(posX, rect.position.y, width, height);
-                    dialogueAsset.DelayEventList[index].BodyShowType = (E_BodyShowType)EditorGUI.EnumPopup(tempRect, "显示类型", dialogueAsset.DelayEventList[index].BodyShowType);
+                    data.DelayEventList[index].BodyShowType = (E_BodyShowType)EditorGUI.EnumPopup(tempRect, "显示类型", data.DelayEventList[index].BodyShowType);
 
                     posX += width;
                     width = 200;
                     tempRect = new Rect(posX, rect.position.y, width, height);
                     EditorGUIUtility.labelWidth = 40;
-                    dialogueAsset.DelayEventList[index].Body = (GameObject)EditorGUI.ObjectField(tempRect, "立绘", dialogueAsset.DelayEventList[index].Body, typeof(GameObject), false);
+                    data.DelayEventList[index].Body = (GameObject)EditorGUI.ObjectField(tempRect, "立绘", data.DelayEventList[index].Body, typeof(GameObject), false);
 
                     break;
                 case E_EventType.Hint:
                     posX += width;
                     width = 200;
                     tempRect = new Rect(posX, rect.position.y, width, height);
-                    dialogueAsset.DelayEventList[index].HintTime = EditorGUI.FloatField(tempRect, "显示时长", dialogueAsset.DelayEventList[index].HintTime);
+                    data.DelayEventList[index].HintTime = EditorGUI.FloatField(tempRect, "显示时长", data.DelayEventList[index].HintTime);
                     posX += width;
                     width = 200;
                     tempRect = new Rect(posX, rect.position.y, width, height);
-                    dialogueAsset.DelayEventList[index].StringValue = EditorGUI.TextField(tempRect, "提示文字", dialogueAsset.DelayEventList[index].StringValue);
+                    data.DelayEventList[index].StringValue = EditorGUI.TextField(tempRect, "提示文字", data.DelayEventList[index].StringValue);
                     break;
                 case E_EventType.Label:
                     posX += width;
                     width = 200;
                     tempRect = new Rect(posX, rect.position.y, width, height);
-                    dialogueAsset.DelayEventList[index].StringValue = EditorGUI.TextField(tempRect, "文字", dialogueAsset.DelayEventList[index].StringValue);
+                    data.DelayEventList[index].StringValue = EditorGUI.TextField(tempRect, "文字", data.DelayEventList[index].StringValue);
                     break;
                 default:
                     break;
@@ -227,8 +245,8 @@ public class DialogEditorWindow : EditorWindow
         data.Title = EditorGUI.TextField(GetRecordDataRect(rect), "标题", data.Title);
         data.Page = EditorGUI.IntField(GetRecordDataRect(rect), "页数", data.Page);
         //data.Text = EditorGUI.TextArea(GetRecordDataRect(rect, 3), data.Text);
-        
-        data.Text = (Sprite)EditorGUI.ObjectField(GetRecordDataRect(rect),"内容", data.Text, typeof(Sprite), false);
+
+        data.Text = (Sprite)EditorGUI.ObjectField(GetRecordDataRect(rect), "内容", data.Text, typeof(Sprite), false);
 
     }
 
@@ -279,6 +297,7 @@ public class DialogEditorWindow : EditorWindow
         EditorGUILayout.EndScrollView();
     }
 
+    E_LanguageType _lastLanguageType = E_LanguageType.CN;
     void DrawDialogueView(DialogueAsset asset)
     {
         EditorGUILayout.BeginHorizontal();
@@ -335,6 +354,14 @@ public class DialogEditorWindow : EditorWindow
             asset.Dub = (AudioClip)EditorGUILayout.ObjectField("角色配音", asset.Dub, typeof(AudioClip), false);
             EditorGUILayout.EndHorizontal();
         }
+        EditorGUILayout.BeginHorizontal();
+        asset.LanguageType = (E_LanguageType)EditorGUILayout.EnumPopup("语言类型", asset.LanguageType);
+        if (asset.LanguageType != _lastLanguageType)
+        {
+            _lastLanguageType = asset.LanguageType;
+        }
+        EditorGUILayout.EndHorizontal();
+
         GUILayout.Label("事件列表");
         _eventScrollPos = EditorGUILayout.BeginScrollView(_eventScrollPos, GUILayout.Height(90));
         _talkEventList?.DoLayoutList();
@@ -343,23 +370,24 @@ public class DialogEditorWindow : EditorWindow
 
         GUILayout.Label("对话内容");
         EditorGUILayout.BeginHorizontal();
-        asset.Content = EditorGUILayout.TextArea(asset.Content, GUILayout.Height(80));
+        asset.LanguageDict.TryGetValue(asset.LanguageType, out ContentData data);
+        data.Content = EditorGUILayout.TextArea(data.Content, GUILayout.Height(80));
         if (GUILayout.Button("生成", GUILayout.Width(80), GUILayout.Height(80)))
         {
-            asset.WordList = new List<TyperRhythm>();
+            data.WordList = new List<TyperRhythm>();
 
 
-            for (int i = 0; i < asset.Content.Length; i++)
+            for (int i = 0; i < data.Content.Length; i++)
             {
                 bool isDirective = false;
                 string word = null;
-                if (asset.Content[i] == '<')
+                if (data.Content[i] == '<')
                 {
                     int count = 0;
-                    for (int j = i; j < asset.Content.Length; j++)
+                    for (int j = i; j < data.Content.Length; j++)
                     {
-                        word += asset.Content[j];
-                        if (asset.Content[j] == '>')
+                        word += data.Content[j];
+                        if (data.Content[j] == '>')
                         {
                             Regex reg = new Regex(@"<c=[0-9a-fA-F]{6}");
                             if (word.Equals("<b>") || word.Equals("</b>") || reg.IsMatch(word) || word.Equals("</c>"))
@@ -373,22 +401,22 @@ public class DialogEditorWindow : EditorWindow
                     if (isDirective)
                         i += count;
                     else
-                        word = asset.Content[i].ToString();
+                        word = data.Content[i].ToString();
                 }
                 else
                 {
-                    word = asset.Content[i].ToString();
+                    word = data.Content[i].ToString();
                 }
                 TyperRhythm typerWord = new TyperRhythm(word, 0.1f, isDirective);
-                asset.WordList.Add(typerWord);
+                data.WordList.Add(typerWord);
             }
 
             //SaveDialogAsset(_curDialogAsset, _curDialogAsset);
         }
         EditorGUILayout.EndHorizontal();
-        if (asset.WordList.Count > 0)
+        if (data.WordList.Count > 0)
         {
-            DrawTyperWordList(asset.WordList);
+            DrawTyperWordList(data.WordList);
         }
 
 

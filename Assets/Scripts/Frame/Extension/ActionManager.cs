@@ -8,6 +8,7 @@ public enum ActionType
     SetSkipUnRead,
     SetDialogAlpha,
     SetShowShortcutKey,
+    ChangeLanguage,
 }
 
 public class ActionBase
@@ -63,12 +64,19 @@ public class ActionManager
     /// <param name="action">委托方法</param>
     public void AddListener(ActionType type, Action<object[]> action)
     {
-        UnRegistAction(type, action);
+        //UnRegistAction(type, action);
         if (!actions.ContainsKey(type))
         {
             actions.Add(type, new ActionBase());
         }
         actions[type].RegistAction(action);
+    }
+
+    public void RemoveListener(ActionType type, Action<object[]> action)
+    {
+        if (!actions.ContainsKey(type))
+            return;
+        actions[type].RemoveAction(action);
     }
 
     /// <summary>

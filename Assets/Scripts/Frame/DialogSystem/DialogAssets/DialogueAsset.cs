@@ -34,10 +34,10 @@ public class DialogueAsset : ScriptableObject
     public string TalkerName;
     public E_NamePos NamePos;
 
+    [System.NonSerialized]
+    public E_LanguageType LanguageType;
 
-    public string Content;
-    public List<TyperRhythm> WordList = new List<TyperRhythm>();
-    public List<DelayEvent> DelayEventList = new List<DelayEvent>();
+    public LanguageTypeDict<E_LanguageType, ContentData> LanguageDict = new LanguageTypeDict<E_LanguageType, ContentData>();
 
 #if UNITY_EDITOR
     public DialogueAsset Copy()
@@ -47,6 +47,63 @@ public class DialogueAsset : ScriptableObject
         return asset;
     }
 #endif
+}
+
+[System.Serializable]
+public class ContentData
+{
+    public string Content;
+    public List<TyperRhythm> WordList = new List<TyperRhythm>();
+    public List<DelayEvent> DelayEventList = new List<DelayEvent>();
+}
+
+[System.Serializable]
+public class LanguageTypeDict<Key, Value> 
+{
+    public List<Key> KeyList = new List<Key>();
+    public List<Value> ValueList = new List<Value>();
+
+    public int Count => KeyList.Count;
+
+    public void Add(Key key, Value value)
+    {
+        if (KeyList.Contains(key))
+        {
+            int index = KeyList.IndexOf(key);
+            ValueList[index] = value;
+
+            return;
+        }
+        KeyList.Add(key);
+        ValueList.Add(value);
+    }
+
+    public void Remove(Key key)
+    {
+        int index = KeyList.IndexOf(key);
+        KeyList.RemoveAt(index);
+        ValueList.RemoveAt(index);
+
+    }
+
+    public bool TryGetValue(Key key, out Value value)
+    {
+        int index = KeyList.IndexOf(key);
+        if (ValueList.Count >= index)
+        {
+            value = ValueList[index];
+            return true;
+        }
+        value = default(Value);
+        return false;
+    }
+}
+
+public enum E_LanguageType
+{
+    [InspectorName("中文")] CN,
+    [InspectorName("日文")] JP,
+    [InspectorName("英文")] EN
 }
 
 public enum E_BodyShowType

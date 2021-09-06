@@ -417,7 +417,11 @@ public class UIDialogPanel : UIPanelBase
     {
         AudioManager.Instance.StopAudioByType(E_AudioType.Dub, 0);
         AudioManager.Instance.StopAudioByType(E_AudioType.Audio, 0);
-        SetDelayEventList(asset.DelayEventList);
+        var languageType = GameConfigData.Instance.Language;
+        if (asset.LanguageDict.TryGetValue(languageType,out ContentData value))
+        {
+            SetDelayEventList(value.DelayEventList);
+        }
         PlayBgm(asset.Bgm);
         SetBackground(asset.Background);
         switch (asset.DialogType)
@@ -476,7 +480,10 @@ public class UIDialogPanel : UIPanelBase
         }
         SetName(asset.TalkerName, asset.NamePos);
         PlayDub(asset.Dub);
-        StartTyper(asset.WordList);
+        var languageType = GameConfigData.Instance.Language;
+        if (asset.LanguageDict.TryGetValue(languageType, out ContentData value))
+            StartTyper(value.WordList);
+
     }
 
     IEnumerator PlayFullScreenTalk(DialogueAsset asset)
@@ -484,7 +491,9 @@ public class UIDialogPanel : UIPanelBase
         _curDialogueAsset = asset;
         SetBackground(asset.Background);
         PlayBgm(asset.Bgm);
-        StartFullScreenTyper(asset.WordList, asset.IsNewTalk, asset.IsNewPage);
+        var languageType = GameConfigData.Instance.Language;
+        if (asset.LanguageDict.TryGetValue(languageType, out ContentData value))
+            StartFullScreenTyper(value.WordList, asset.IsNewTalk, asset.IsNewPage);
         yield return null;
     }
 
