@@ -246,8 +246,8 @@ public class DialogEditorWindow : EditorWindow
         data.Page = EditorGUI.IntField(GetRecordDataRect(rect), "页数", data.Page);
         //data.Text = EditorGUI.TextArea(GetRecordDataRect(rect, 3), data.Text);
 
-        data.Text = (Sprite)EditorGUI.ObjectField(GetRecordDataRect(rect), "内容", data.Text, typeof(Sprite), false);
-
+        //data.Text = (Sprite)EditorGUI.ObjectField(GetRecordDataRect(rect), "内容", data.Text, typeof(Sprite), false);
+        data.ContentKey = EditorGUI.TextField(GetRecordDataRect(rect), "多语言图片Key", data.ContentKey);
     }
 
     int _recordIndex = 0;
@@ -532,6 +532,7 @@ public class DialogEditorWindow : EditorWindow
                 break;
             case E_TalkEndEventType.Night:
                 _curDialogAsset.LinkedDialogAsset = (DialogAsset)EditorGUILayout.ObjectField("连接对话", _curDialogAsset.LinkedDialogAsset, typeof(DialogAsset), false);
+                GUILayout.Label("记事本当晚新记录的内容");
                 _recordDataList?.DoLayoutList();
                 break;
             case E_TalkEndEventType.Select:

@@ -74,7 +74,7 @@ public class PlayerManager : Singleton<PlayerManager>
             contentList = new List<string>();
             pageDict.Add(data.Page, contentList);
         }
-        contentList.Add(data.Text.name);
+        contentList.Add(data.ContentKey);
     }
 
     public Dictionary<int, List<string>> GetRecordContent(bool isClear, E_CatalogType catalogType, string catalog)

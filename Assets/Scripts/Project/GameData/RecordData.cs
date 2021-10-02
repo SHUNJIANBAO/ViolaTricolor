@@ -10,7 +10,9 @@ public class RecordInfo
     public int RecordIndex;
     public DialogAsset RecordDiaologAsset;
     public int TalkIndex;
-
+    /// <summary>
+    /// 人事记类型、标题名、页数、多语言图片key列表
+    /// </summary>
     public Dictionary<E_CatalogType, Dictionary<string, Dictionary<int, List<string>>>> Note = new Dictionary<E_CatalogType, Dictionary<string, Dictionary<int, List<string>>>>();
 }
 
